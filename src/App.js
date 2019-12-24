@@ -6,6 +6,7 @@ import store from './redux/store';
 import Signout from './containers/user/signout/signout';
 import Notfound from './NotFound';
 import Demo from './components/Demo';
+import './assets/css/App.scss';
 
 const App = () => {
   return (
