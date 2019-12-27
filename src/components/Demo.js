@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sayHello } from '../Redux/actions';
+import { sayHello } from '../redux/actions';
 
 const Button = ({ whatsUp, stateObject, saySomething }) => (
   <div>
