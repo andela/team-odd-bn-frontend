@@ -17,4 +17,14 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            export COVERALLS_REPO_TOKEN=lfiAmCYD9ESrFrE3vNyYoKriiCUIskuaa >> $BASH_ENV
+            npm test
+            npm run coveralls
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+
