@@ -3,5 +3,10 @@
     "@babel/preset-env",
     "@babel/preset-react"
   ],
-  "plugins": ["@babel/plugin-transform-runtime"]
+  "plugins": ["@babel/plugin-transform-runtime", "require-context-hook"],
+  "env": {
+    "test": {
+      "plugins": ["require-context-hook"]
+    }
+  }
 }

@@ -1,7 +1,7 @@
-import GREETING_SUCCESS from '../actionTypes/demoActionTypes';
+import HELLO_REACT from '../actionTypes/demoActionTypes';
 
 const sayHello = () => ({
-  type: GREETING_SUCCESS,
+  type: HELLO_REACT,
 });
 
 export default sayHello;
