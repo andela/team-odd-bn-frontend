@@ -1,0 +1,28 @@
+%errors {
+  background-color: #dc3545;
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+  font-family: sans-serif;
+  border-radius: 7px;
+  display: flex;
+}
+
+.erroHandler {
+  @extend %errors;
+  .availableErrors p {
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 0.8px;
+  }
+  .closeErrors {
+    margin-left: auto;
+  }
+
+  .closeErrors img:hover{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+}

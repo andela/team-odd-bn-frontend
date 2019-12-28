@@ -1,5 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 const webpack = {
   mode: 'development',
@@ -26,7 +27,13 @@ const webpack = {
         ],
       },
       {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, './src/assets'),
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.s[ac]ss$/i,
+        include: path.resolve(__dirname, './src/assets'),
         use: [
           'style-loader',
           'css-loader',
@@ -41,11 +48,18 @@ const webpack = {
   devServer: {
     contentBase: path.resolve(__dirname, 'public/'),
     historyApiFallback: true,
-    port: 3000,
+    port: 4000,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+    }),
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
     }),
   ],
   node: {
