@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import UserSignup from './containers/user/signup/signup';
 import store from './redux/store';
 import Signout from './containers/user/signout/signout';
+import VerifyEmail from './views/auth/VerifyEmail';
 import Notfound from './NotFound';
 import Signin from './containers/user/signin/Signin';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/social/auth/success" exact component={SocialLogin} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/signout" exact component={Signout} />
+          <Route path="/dashboard" exact component={VerifyEmail} />
           <Route component={Notfound} />
         </Switch>
       </div>

@@ -1,4 +1,3 @@
-import '../../assets/css/socialLogin.scss';
 import facebookIcon from '../../assets/images/facebook_32px.png';
 import socialLoginButton from '../../components/socialLoginButton';
 

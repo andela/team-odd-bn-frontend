@@ -28,5 +28,4 @@ const mockData = {
     payload: 'I am error',
   },
 };
-
 export default mockData;
