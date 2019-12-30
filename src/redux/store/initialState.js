@@ -10,6 +10,6 @@ const state = {
       signinData: { blockSpinner: 'blockSpinner' },
       signinError: { blockSpinner: 'blockSpinner' },
     },
-  }
-}
+  },
+};
 export default state;
