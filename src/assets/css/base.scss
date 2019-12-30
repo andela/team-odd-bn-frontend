@@ -3,6 +3,10 @@
   height: 100%;
   width: 100%;
 }
+.authContainer * {
+  box-sizing: border-box;
+    margin: auto;
+}
 %auth-container {
   position: fixed;
   background-image: url('https://res.cloudinary.com/hezzie/image/upload/v1577619008/Screen_Shot_2019-12-29_at_13.26.26_reywu7.png');

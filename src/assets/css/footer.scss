@@ -1,0 +1,28 @@
+@import './App.scss';
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+* {
+  margin: auto;
+  font-family: 'Muli', sans-serif;
+}
+* {
+  margin: 0;
+}
+.defaultFooter {
+  background-color: $logo-color;
+  color: white;
+  display: block;
+  justify-content: space-evenly;
+  position: absolute;
+  width: 100%;
+  padding: 23px 0;
+  bottom: 0;
+  text-align: center;
+
+  .footer-link {
+    text-decoration: none;
+    color: white;
+  }
+  .footer-link:hover {
+    cursor: pointer;
+  }
+}
