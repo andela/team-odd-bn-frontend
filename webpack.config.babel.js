@@ -65,6 +65,5 @@ const webpack = {
   node: {
     fs: 'empty',
   },
-}
-
-export default webpack
+};
+export default webpack;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login page Should redirect to dashboard 1`] = `ReactWrapper {}`;
+
+exports[`login page Test spinner action 1`] = `ReactWrapper {}`;

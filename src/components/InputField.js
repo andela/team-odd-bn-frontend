@@ -1,6 +1,7 @@
 import React from 'react';
 import dotenv from 'dotenv';
 import '../assets/css/signup.scss';
+import '../assets/css/signin.scss';
 import propTypes from 'prop-types';
 
 dotenv.config();
