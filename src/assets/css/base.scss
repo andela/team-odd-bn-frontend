@@ -8,6 +8,7 @@
     margin: auto;
 }
 %auth-container {
+  min-height: 650px;
   position: fixed;
   background-image: url('https://res.cloudinary.com/hezzie/image/upload/v1577619008/Screen_Shot_2019-12-29_at_13.26.26_reywu7.png');
   @extend %full-height-width;

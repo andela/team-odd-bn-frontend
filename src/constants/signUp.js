@@ -7,14 +7,14 @@ export const signupInputs = [
     className: 'password',
     pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}',
     type: 'password',
-    title: 'Invalid Password',
+    title: 'A valid password should have a character, number, UPPER CASE letter and a lower case letter and should be longer than 8',
   },
   {
     input: 'Confirm Password',
     pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}',
     className: 'confirmPassword',
     type: 'password',
-    title: 'Invalid Password',
+    title: 'A valid password should have a character, number, UPPER CASE letter and a lower case letter and should be longer than 8',
   },
 ];
 export const signupFirstNameLastNameInputs = [
@@ -24,7 +24,7 @@ export const signupFirstNameLastNameInputs = [
 export const extraInfoData = {
   link1: '/signin',
   link2: '/forgot-password',
-  displayText1: 'Don\'t have an account',
+  displayText1: 'Already have an account?',
   displayText2: 'signin here',
   displayText3: 'Forgot password?',
 };

@@ -14,7 +14,7 @@ export const passwordBox = [
   },
   {
     input: 'Confirm password',
-    className: 'password',
+    className: 'confirmPassword',
     type: 'password',
     pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}',
     title:

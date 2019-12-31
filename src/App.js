@@ -1,6 +1,9 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import dotenv from 'dotenv';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import axios from 'axios';
 import resetPasswordView from './containers/user/password/resetPassword';
 import forgotPasswordView from './views/forgotPasswordView';
 import store from './redux/store';
@@ -11,6 +14,13 @@ import Notfound from './NotFound';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import Dashboard from './views/Dashboard/index';
 import './assets/css/App.scss';
+import Profile from './components/Profile';
+import Navbar from './components/Navbar';
+import './assets/css/style.css';
+
+dotenv.config();
+
+axios.defaults.BASE_URL = process.env.BASE_URL;
 
 const App = () => (
   <Provider store={store}>
@@ -24,11 +34,12 @@ const App = () => (
           <Route path="/signup" exact component={Signup} />
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
+          <Route path="/profile" exact component={Profile} />
           <Route component={Notfound} />
         </Switch>
       </div>
+      <ToastContainer />
     </Router>
   </Provider>
-)
-
+);
 export default App;
