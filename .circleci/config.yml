@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node
 
     working_directory: ~/repo
 
@@ -24,6 +24,7 @@ jobs:
             export COVERALLS_REPO_TOKEN=lfiAmCYD9ESrFrE3vNyYoKriiCUIskuaa >> $BASH_ENV
             npm test
             npm run coveralls
+            
       - store_artifacts:
           path: coverage
           destination: coverage

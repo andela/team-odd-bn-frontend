@@ -1,4 +1,4 @@
-import { HELLO_REACT } from '../actionTypes/demoActionTypes';
+import { HELLO_REACT } from '../actions';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {

@@ -8,21 +8,19 @@ import Notfound from './NotFound';
 import Demo from './components/Demo';
 import './assets/css/App.scss';
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Router>
-        <div className="container">
-          <Switch>
-            <Route path="/" exact component={Demo} />
-            <Route path="/signup" exact component={UserSignup} />
-            <Route path="/signout" exact component={Signout} />
-            <Route component={Notfound} />
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route path="/" exact component={Demo} />
+          <Route path="/signup" exact component={UserSignup} />
+          <Route path="/signout" exact component={Signout} />
+          <Route component={Notfound} />
+        </Switch>
+      </div>
+    </Router>
+  </Provider>
+);
 
 export default App;
