@@ -22,6 +22,8 @@ import './assets/css/App.scss';
 import Profile from './components/Profile';
 import './assets/css/style.css';
 import LandingPage from './components/LandingPage';
+import './assets/css/App.scss';
+import './assets/css/style.scss';
 
 dotenv.config();
 
@@ -50,7 +52,6 @@ const App = () => (
           <Route path="/verify-email" exact component={verifyEmailView} />
           <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/dashboard" exact component={Dashboard} />
-          <Route path="/" exact component={Dashboard} />
           <Route component={Notfound} />
         </Switch>
       </div>

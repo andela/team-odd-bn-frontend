@@ -237,6 +237,7 @@ export class Profile extends Component {
                   <option value="female">female</option>
                 </select>
                 <input
+                  className="birthDate"
                   data-test="birthDate"
                   type="date"
                   name="birthDate"
