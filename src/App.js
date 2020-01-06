@@ -22,6 +22,11 @@ dotenv.config();
 
 axios.defaults.BASE_URL = process.env.BASE_URL;
 
+
+dotenv.config();
+
+axios.defaults.BASE_URL = process.env.BASE_URL;
+
 const App = () => (
   <Provider store={store}>
     <Router>
@@ -30,7 +35,7 @@ const App = () => (
           <Route path="/signin" exact component={Signin} />
           <Route path="/social/auth/success" exact component={SocialLogin} />
           <Route path="/dashboard" exact component={Dashboard} />
-          <Route path="/dashboard" exact component={VerifyEmail} />
+          <Route path="/verify-email" exact component={VerifyEmail} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
