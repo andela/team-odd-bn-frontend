@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import defaultProfileImg from '../assets/images/default_user_32px.png';
 import '../assets/css/header.scss';
 import verifyToken from '../helpers/verifyToken';
-
 const Header = ({ menuList }) => (
-  <nav data-testid="header" className="defaultHeader">
+  <nav data_testid="header" className="defaultHeader">
     <a className="app-logo" href="/">
       <img
         className="logo"
@@ -34,7 +33,6 @@ const Header = ({ menuList }) => (
             </li>
             <li>
               <span className={menu.className}>
-
                 {verifyToken(localStorage.getItem('token')).firstName}
                 {' '}
                 {verifyToken(localStorage.getItem('token')).lastName}
@@ -49,5 +47,4 @@ const Header = ({ menuList }) => (
 Header.propTypes = {
   menuList: PropTypes.instanceOf(Object).isRequired,
 };
-
 export default Header;

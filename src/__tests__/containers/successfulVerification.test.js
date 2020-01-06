@@ -18,7 +18,7 @@ describe('Resend Email test suite', () => {
   };
   it('should check `componentDidMount()`', () => {
     const wrapper = shallow(<SuccessfulEmailVerification {...props} />);
-    expect(wrapper.find('[data-testid="verifiedEmail-Container"]').length).toBe(1);
+    expect(wrapper.find('[data_testid="verifiedEmail-Container"]').length).toBe(1);
   });
   it('should map state to props', () => {
     const initialState = {};

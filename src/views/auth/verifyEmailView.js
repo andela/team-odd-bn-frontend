@@ -6,7 +6,7 @@ import VerifyEmail from '../../containers/user/email/verifyEmail';
 dotenv.config();
 
 const verifyEmailView = () => (
-  <div data-testid="verifyEmail-View">
+  <div data_testid="verifyEmail-View">
     <VerifyEmail />
   </div>
 );

@@ -330,35 +330,50 @@ const mockData = {
       getProfile: jest.fn(),
       updateSpinnerStatus: jest.fn(),
     },
-    roundTripProps: {
-      spinner: true,
+  },
+  roundTripProps: {
+    spinner: true,
+    roundTrip: {
+      data: {
+        originId: 1,
+        destinationId: 1,
+        reason: 'Meeting department heads',
+        startDate: '2020-12-02',
+        returnDate: '2030-02-03',
+      },
+      getCities: jest.fn(),
+      createRoundTrip: jest.fn(),
+      updateSpinnerStatus: jest.fn(),
+    },
+  },
+  roundTripMainState: {
+    trips: {
       roundTrip: {
-        data: {
-          originId: 1,
-          destinationId: 1,
-          reason: 'Meeting department heads',
-          startDate: '2020-12-02',
-          returnDate: '2030-02-03',
-        },
-        getCities: jest.fn(),
-        createRoundTrip: jest.fn(),
-        updateSpinnerStatus: jest.fn(),
+        roundTripMessage: null,
+        roundTripError: null,
+        spinner: null,
+        spinnerError: null,
+      },
+      allCities: {
+        cities: null,
+        citiesError: null,
       },
     },
-    roundTripMainState: {
+  },
+  tripStateProps: {
+    tripState: {
       trips: {
-        roundTrip: {
-          roundTripMessage: null,
-          roundTripError: null,
-          spinner: null,
-          spinnerError: null,
-        },
-        allCities: {
-          cities: null,
-          citiesError: null,
+        tripRequests: {
+          getCity: [{
+            id: null,
+            city: null,
+            createdAt: null,
+            updatedAt: null,
+          }],
         },
       },
     },
+    handleChange: jest.fn(),
   },
   jwtTokenMocks: {
     error: {

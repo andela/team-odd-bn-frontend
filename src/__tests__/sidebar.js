@@ -113,19 +113,6 @@ describe('Expect to mock user profile info', () => {
     ])
   })
 
-  it('Should user profile info be mocked', async () => {
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent()
-      request.respondWith(userProfileMockData.successResponse)
-    })
-
-    store = mockStore({})
-    await store.dispatch(getProfile()).then(async () => {
-      const calledActions = store.getActions()
-      expect(calledActions[0].type).toBe('SPINNER_STATUS')
-      expect(calledActions[1].type).toBe('FETCH_PROFILE_SUCCESS')
-    })
-  })
 
   it('Should user profile fetching info fail', async () => {
     moxios.wait(() => {

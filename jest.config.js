@@ -1,3 +1,5 @@
+const { defaults } = require('jest-config');
+
 module.exports = {
   clearMocks: true,
   testEnvironment: 'jsdom',
@@ -43,4 +45,5 @@ module.exports = {
     'html',
   ],
   coverageDirectory: 'coverage',
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
 };

@@ -37,15 +37,15 @@ describe('Profile Test Suite', () => {
     const department = { target: { name: 'department', value: 'Finance' } };
     const bio = { target: { name: 'bio', value: 'Work hard play hard' } };
 
-    component.find('[data-test="editButton"]').simulate('click');
-    component.find('[data-test="firstName"]').simulate('change', firstName);
-    component.find('[data-test="lastName"]').simulate('change', lastName);
-    component.find('[data-test="gender"]').simulate('change', gender);
-    component.find('[data-test="birthDate"]').simulate('change', birthDate);
-    component.find('[data-test="address"]').simulate('change', address);
-    component.find('[data-test="department"]').simulate('change', department);
-    component.find('[data-test="bio"]').simulate('change', bio);
-    component.find('[data-test="submitButton"]').simulate('click');
+    component.find('[data_test="editButton"]').simulate('click');
+    component.find('[data_test="firstName"]').simulate('change', firstName);
+    component.find('[data_test="lastName"]').simulate('change', lastName);
+    component.find('[data_test="gender"]').simulate('change', gender);
+    component.find('[data_test="birthDate"]').simulate('change', birthDate);
+    component.find('[data_test="address"]').simulate('change', address);
+    component.find('[data_test="department"]').simulate('change', department);
+    component.find('[data_test="bio"]').simulate('change', bio);
+    component.find('[data_test="submitButton"]').simulate('click');
     component.find('form').simulate('submit', {
       preventDefault() {},
     });
@@ -58,9 +58,9 @@ describe('Profile Test Suite', () => {
     const address = { target: { name: 'address', value: 'Ki' } };
     const department = { target: { name: 'department', value: 'Fi' } };
     const bio = { target: { name: 'bio', value: 'Work ' } };
-    component.find('[data-test="address"]').simulate('change', address);
-    component.find('[data-test="department"]').simulate('change', department);
-    component.find('[data-test="bio"]').simulate('change', bio);
+    component.find('[data_test="address"]').simulate('change', address);
+    component.find('[data_test="department"]').simulate('change', department);
+    component.find('[data_test="bio"]').simulate('change', bio);
   });
 
   it('Should Pass New props Successfully', () => {

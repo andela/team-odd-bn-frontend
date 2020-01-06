@@ -42,8 +42,8 @@ export class VerifyEmail extends Component {
     return (
       <div>
         <Header menuList={unverifiedUserMenu} />
-        {spinner ? <Spinner data-test="verifyEmail-spinner" /> : ''}
-        <div data-testid="verifyEmail-Container" className="boxContainer">
+        {spinner ? <Spinner data_test="verifyEmail-spinner" /> : ''}
+        <div data_testid="verifyEmail-Container" className="boxContainer">
           <div className="fieldContainer">
             <div className="center">
               <img
@@ -66,12 +66,12 @@ export class VerifyEmail extends Component {
             </div>
             <form
               className="center-form"
-              data-test="verifyEmail-form"
+              data_test="verifyEmail-form"
               onSubmit={this.handleSubmit.bind(this)}
             >
               <div className="inputbox">
                 <InputField
-                  data-test="email"
+                  data_test="email"
                   name="requestEmail"
                   handleChange={updateEmailInput}
                   type="email"
@@ -80,7 +80,7 @@ export class VerifyEmail extends Component {
               </div>
               <div className="btn-box">
                 <SubmitButton
-                  data-test="send-request-btn"
+                  data_test="send-request-btn"
                   buttonName="Resend"
                   className="btn-long"
                 />

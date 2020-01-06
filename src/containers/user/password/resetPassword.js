@@ -64,7 +64,7 @@ export class PasswordReset extends Component {
               </div>
               <div className="btn-box">
                 <SubmitButton
-                  data-test="reset-password-btn"
+                  data_test="reset-password-btn"
                   buttonName="Reset"
                   className="btn-long"
                 />

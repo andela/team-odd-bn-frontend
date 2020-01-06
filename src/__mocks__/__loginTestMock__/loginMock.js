@@ -85,6 +85,6 @@ export const noDataInStore = {
 };
 
 export const useLoginData = {
-  email: 'sugira@gmail.com',
-  password: 'Simulation1$',
+  email: 'sugiraw@gmail.com',
+  password: 'Simulation1!!',
 };

@@ -18,18 +18,19 @@ import Signup from './containers/user/signup/signup';
 import successfulVerification from './containers/user/email/successfulVerification';
 import Signin from './containers/user/signin/signin';
 import Notfound from './NotFound';
-import Requests from './containers/Trips/Requests';
+import Requests from './containers/TripsContainer/Requests';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import verifyEmailView from './views/auth/verifyEmailView';
-import Dashboard from './views/Dashboard';
 import RoundTrip from './containers/trips/RoundTrip';
 import './assets/css/App.scss';
 import './assets/css/style.scss';
-import SingleRequest from './containers/Trips/SingleRequest';
+import SingleRequest from './containers/TripsContainer/SingleRequest';
 import Profile from './components/Profile';
 import './assets/css/style.css';
 import LandingPage from './components/LandingPage';
 import { isTravelAdmin } from './helpers/isTravelAdmin';
+import Dashboard from './views/Dashboard/sidebar/index';
+import OneWayTrip from './containers/TripsContainer/oneway';
 
 dotenv.config();
 
@@ -75,6 +76,7 @@ const App = () => (
               )
             )}
           />
+          <Route path="/trips/oneway" exact component={OneWayTrip} />
           <Route component={Notfound} />
         </Switch>
       </div>

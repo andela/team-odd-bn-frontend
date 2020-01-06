@@ -191,7 +191,7 @@ export class Profile extends Component {
             <img src={imageURL || profilePicture} alt="profilePicture" />
             {isEdit ? (
               <button
-                data-test="editButton"
+                data_test="editButton"
                 type="submit"
                 onClick={this.handleChange}
               >
@@ -215,7 +215,7 @@ export class Profile extends Component {
             <form className="profile-form" onSubmit={this.handleSubmit}>
               <div className="names">
                 <TextInput
-                  data-test="firstName"
+                  data_test="firstName"
                   name="firstName"
                   value={firstName || ''}
                   placeholder="Please enter first name"
@@ -223,7 +223,7 @@ export class Profile extends Component {
                   disabled={!!isEdit}
                 />
                 <TextInput
-                  data-test="lastName"
+                  data_test="lastName"
                   name="lastName"
                   value={lastName}
                   placeholder="Please enter last name"
@@ -233,7 +233,7 @@ export class Profile extends Component {
               </div>
               <div className="gender">
                 <select
-                  data-test="gender"
+                  data_test="gender"
                   onChange={this.handleChangeInput}
                   disabled={!!isEdit}
                   value={gender}
@@ -245,7 +245,7 @@ export class Profile extends Component {
                 </select>
                 <input
                   className="birthDate"
-                  data-test="birthDate"
+                  data_test="birthDate"
                   type="date"
                   name="birthDate"
                   onChange={this.handleChangeInput}
@@ -255,7 +255,7 @@ export class Profile extends Component {
               </div>
               <div className="address">
                 <TextInput
-                  data-test="address"
+                  data_test="address"
                   name="address"
                   value={address}
                   placeholder="Your address"
@@ -271,7 +271,7 @@ export class Profile extends Component {
               </div>
               <div className="department">
                 <TextInput
-                  data-test="department"
+                  data_test="department"
                   name="department"
                   value={department}
                   placeholder="Department"
@@ -311,7 +311,7 @@ export class Profile extends Component {
               </div>
               <div className="bio">
                 <textarea
-                  data-test="bio"
+                  data_test="bio"
                   name="bio"
                   placeholder="Please input your bio"
                   onChange={this.handleChangeInput}
@@ -334,7 +334,7 @@ export class Profile extends Component {
               <div>
                 {isEdit ? null : (
                   <button
-                    data-test="submitButton"
+                    data_test="submitButton"
                     className="submit-button"
                     type="submit"
                   >

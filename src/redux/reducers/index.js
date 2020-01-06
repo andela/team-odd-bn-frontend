@@ -20,4 +20,5 @@ export default combineReducers({
   trips: tripReducers,
   allCities: getAllCitiesReducers,
   accommodation: accommodationReducer,
+
 });

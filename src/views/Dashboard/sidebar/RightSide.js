@@ -15,4 +15,8 @@ export const RightSide = (props) => {
   );
 };
 
+RightSide.propTypes = {
+  RightSideContent: PropTypes.node.isRequired,
+};
+
 export default RightSide;

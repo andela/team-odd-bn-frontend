@@ -9,6 +9,7 @@ import accommodationIcon from '../../../assets/images/accommodation_icon/accommo
 import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png';
 import signoutUser from '../../../redux/actions/signoutAction';
 
+
 // eslint-disable-next-line react/prefer-stateless-function
 export const LeftSide = (props) => {
   const logout = async () => {

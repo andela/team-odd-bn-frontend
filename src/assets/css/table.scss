@@ -1,14 +1,12 @@
 @import 'base.scss';
 @import 'App.scss';
-$contents: (
-  tripId: 'Trip Id ',
+$contents: (tripId: 'Trip Id ',
   tripType: 'tripType',
   createdAt: 'createdAt',
   status: 'status',
   action: 'action',
 );
-$tt: (
-  originId: 'originId',
+$tt: (originId: 'originId',
   destinationId: 'destination',
   startDate: 'start date',
   returnDate: 'return date',
@@ -16,10 +14,12 @@ $tt: (
 );
 $kk: destinationId originId startDate returnDate reason;
 $attributes: tripId tripType createdAt status action;
+
 %div_style {
   height: auto;
   padding: 10px 0px;
 }
+
 @each $attr in $kk {
   .#{$attr}:before {
     width: 50%;
@@ -30,6 +30,7 @@ $attributes: tripId tripType createdAt status action;
       'Lucida Sans', Arial, sans-serif;
   }
 }
+
 @each $attr in $attributes {
   @media screen and (min-width: 200px) and (max-width: 600px) {
     .#{$attr}:before {
@@ -42,16 +43,20 @@ $attributes: tripId tripType createdAt status action;
     }
   }
 }
+
 .tableMainContainer {
   height: 92%;
   margin-top: 4%;
   width: 99%;
   overflow: auto;
+
   .tableContainer {
     width: 90%;
+
     @media screen and (min-width: 200px) and (max-width: 800px) {
       width: 100%;
     }
+
     padding: 1% 0%;
     height: auto;
     margin: auto;
@@ -63,33 +68,41 @@ $attributes: tripId tripType createdAt status action;
       @extend %full-height-width;
       display: flex;
     }
+
     .tableHead {
       @extend %div_style;
       background-color: #34c6f3;
       color: white !important;
+
       @media screen and (min-width: 200px) and (max-width: 800px) {
         display: none;
       }
+
       div {
         padding-left: 10px;
         margin: 1px;
       }
     }
+
     .tableNav {
       margin: 10px 0px;
-      
+
       display: flex;
+
       @media screen and (min-width: 200px) and (max-width: 800px) {
         flex-direction: column;
         padding-left: 10px;
       }
+
       div {
         height: 100%;
         min-height: 30px;
+
         @media screen and (min-width: 200px) and (max-width: 600px) {
           margin-top: 20px;
         }
       }
+
       .tableHeader {
         @media screen and (min-width: 200px) and (max-width: 600px) {
           width: 60%;
@@ -97,14 +110,17 @@ $attributes: tripId tripType createdAt status action;
           margin: auto;
         }
       }
+
       .search {
         height: 100%;
+
         input {
           @media screen and (min-width: 200px) and (max-width: 600px) {
             width: 60%;
             margin: auto;
             height: 40px;
           }
+
           width: 235px;
           background: #ffffff;
           border: 1px solid #00b9f2;
@@ -122,8 +138,10 @@ $attributes: tripId tripType createdAt status action;
       @extend %div_style;
       width: 98%;
       padding-left: 2%;
+
       div {
         margin-left: 2%;
+
         .actionButton {
           margin-left: -13px;
           width: 70px;
@@ -131,6 +149,7 @@ $attributes: tripId tripType createdAt status action;
           background: #34c6f3;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
+
           a {
             color: #ffff;
             margin: auto;
@@ -138,10 +157,12 @@ $attributes: tripId tripType createdAt status action;
         }
       }
     }
+
     .singleRequestFooter {
       @extend %div_style;
       width: 98%;
       padding-left: 2%;
+
       button {
         outline: none;
         color: white !important;
@@ -154,11 +175,14 @@ $attributes: tripId tripType createdAt status action;
         border-radius: 4px;
       }
     }
+
     .singleRequest {
       @extend %div_style;
+
       @media screen and (min-width: 200px) and (max-width: 1000px) {
         flex-direction: column;
       }
+
       width: 98%;
       margin: 10px auto;
 
@@ -166,32 +190,40 @@ $attributes: tripId tripType createdAt status action;
         display: flex;
         flex-direction: column;
       }
+
       .trips {
         width: 98%;
         margin-left: 2%;
         display: flex;
+
         .trip {
           border: 1px solid #dddddd;
           padding: 5px;
           margin-bottom: 20px;
         }
+
         div {
           min-height: 40px;
+
           div {
             width: 100%;
             flex-direction: row;
           }
+
           div:nth-child(2n) {
             background: #dddddd;
           }
         }
+
         .corasselButtons {
           display: flex;
           flex-direction: row;
+
           div {
             background-color: #f7f7f7 !important;
 
             z-index: 1;
+
             #back {
               background-color: #f7f7f7 !important;
               margin: auto;
@@ -204,6 +236,7 @@ $attributes: tripId tripType createdAt status action;
               margin-right: 5px;
               transform: matrix(0, -1, 1, 0, 0, 0);
             }
+
             #front {
               background-color: #f7f7f7 !important;
               margin: auto;
@@ -220,23 +253,27 @@ $attributes: tripId tripType createdAt status action;
         }
       }
     }
+
     .comments {
       width: 98%;
       margin-left: 2%;
       @extend %div_style;
       display: flex;
       flex-direction: column;
+
       .commentCardContainer {
         width: 100%;
         display: flex;
         flex-direction: column;
         margin: 10px 0px;
+
         .commentCardHeader {
           height: 30px;
           flex-direction: row;
           width: 100%;
           display: flex;
           margin-bottom: 5px;
+
           .commentCardHeaderLeftSide {
             padding-left: 2px;
             color: white !important;
@@ -248,10 +285,12 @@ $attributes: tripId tripType createdAt status action;
 
             display: flex;
           }
+
           .commentCardHeaderRigthSide {
             display: flex;
           }
         }
+
         .commentBody {
           padding: 5px;
           margin-right: 5px;
@@ -260,10 +299,12 @@ $attributes: tripId tripType createdAt status action;
           border: 1px solid rgba(0, 0, 0, 0.12);
           box-sizing: border-box;
           border-radius: 0px;
+
           textarea {
             height: 100%;
           }
         }
+
         .commentInputField {
           margin-right: 5px;
           display: flex;
@@ -271,6 +312,7 @@ $attributes: tripId tripType createdAt status action;
           border: 1px solid rgba(0, 0, 0, 0.12);
           box-sizing: border-box;
           border-radius: 0px;
+
           textarea {
             border: none;
             padding: 5px;
@@ -283,8 +325,10 @@ $attributes: tripId tripType createdAt status action;
     .entity:nth-child(2n) {
       background: white;
     }
+
     .entity {
       @extend %div_style;
+
       @media screen and (min-width: 200px) and (max-width: 600px) {
         flex-direction: column;
         width: 100%;
@@ -295,6 +339,7 @@ $attributes: tripId tripType createdAt status action;
       div {
         width: 100%;
         text-align: center !important;
+
         div {
           width: 90px;
           height: 20px;
@@ -303,15 +348,19 @@ $attributes: tripId tripType createdAt status action;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
         }
+
         .Pending {
           background: #34c6f3;
         }
+
         .Approved {
           background: green;
         }
+
         .Rejected {
           background: red;
         }
+
         .actionButton {
           padding: 0px !important;
           text-align: center !important;
@@ -319,6 +368,7 @@ $attributes: tripId tripType createdAt status action;
           height: 40px;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
+
           a {
             margin: 10px auto;
             color: white;
@@ -327,20 +377,24 @@ $attributes: tripId tripType createdAt status action;
             width: 100%;
             height: 100%;
           }
+
           a:hover {
-          color: #00b9f2 !important;
+            color: #00b9f2 !important;
           }
         }
+
         .actionButton:hover {
           background-color: #ffffff !important;
           border: solid 1px #00b9f2;
         }
+
         padding-left: 10px;
         @extend %div_style;
       }
     }
   }
 }
+
 .itemsNotFound {
   width: 80% !important;
   margin: 20px auto;
