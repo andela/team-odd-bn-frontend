@@ -15,10 +15,10 @@ const InputField = ({ handleChange, inputList }) => inputList.map((i) => (
       title={i.title}
       type={i.type}
       id={i.className}
-      onChange={(e) => {
+      onChange={handleChange ? ((e) => {
         singleInput[i.className] = e.target.value;
         return handleChange(singleInput);
-      }}
+      }) : () => 0}
     />
   </div>
 ));

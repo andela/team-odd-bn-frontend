@@ -3,13 +3,6 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import apiCall from '../../helpers/apiCall';
 import {
-  PASSWORD_RESET_EMAIL,
-  RESET_PASSWORD_INPUT,
-  RESET_REQUEST_SUCCESS,
-  RESET_PASSWORD_SUCCESS,
-  ERROR, SPINNER_STATUS,
-} from '../../redux/actionTypes/authActionTypes';
-import {
   resetPasswordAction,
   sendResetRequestAction,
   updateEmailInput,

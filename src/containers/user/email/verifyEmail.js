@@ -53,11 +53,13 @@ export class VerifyEmail extends Component {
             <div className="boxTitle">Verify your email address</div>
             <hr className="boxLine" />
             <div className="boxDescription blue-bg">
-              {` We have sent you a verification email to ${verifyToken(localStorage.getItem('token')).email}`}
+              {` We have sent you a verification email to ${
+                verifyToken(localStorage.getItem('token')).email
+              }`}
             </div>
             <div className="boxDescription">
-             If you have not received verification email or if you mistyped your email address,
-             you can resend the verication email
+              If you have not received verification email or if you mistyped
+              your email address, you can resend the verication email
             </div>
             <form
               className="center-form"
