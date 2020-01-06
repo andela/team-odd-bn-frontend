@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Expect signout to be connected with redux and dashboard Expect to render without problem 1`] = `ShallowWrapper {}`;

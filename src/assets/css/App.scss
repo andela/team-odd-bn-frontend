@@ -1,13 +1,13 @@
+/********************
+  Add re-usable style
+ *********************/
+
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import '../../../node_modules/react-toastify/scss/main.scss';
 
-* {
-
-  font-family: 'Muli', sans-serif;
-}
-
-$body-color: #F3FAFF;
+$body-color: #F4F4F4;
 $logo-color: #00B9F2;
+
 
 body {
   background-color: #F7F7F7;
