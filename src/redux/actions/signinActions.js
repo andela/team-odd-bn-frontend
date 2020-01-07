@@ -12,14 +12,14 @@ export const loginError = (message) => ({
   payload: message,
 });
 
-export const spinnerStatusAction = () => ({
+export const spinnerStatusAction = (status) => ({
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
+  payload: status,
 });
 
 
 export const signinAction = (signinData) => async (dispatch) => {
-  dispatch(spinnerStatusAction());
+  dispatch(spinnerStatusAction(true));
   try {
     const signinResponse = await apiCall.post('auth/signin', signinData);
     notificationSuccess(signinResponse.data.message);
@@ -37,6 +37,7 @@ export const signinAction = (signinData) => async (dispatch) => {
     }
     return dispatch(loginError({ message: 'Server Error' }));
   }
+  dispatch(spinnerStatusAction(false));
 };
 
 

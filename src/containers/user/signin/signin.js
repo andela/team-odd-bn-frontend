@@ -25,15 +25,15 @@ class Login extends Component {
 
   render() {
     const { updateSigninInputAction, signInState, signinAction } = this.props;
-    const { signinData, signinError } = signInState.auth.signin;
+    const { signinData, signinError,spinnerStatus } = signInState.auth.signin;
     const loggedUser = this.verifyExistToken();
 
-    return (loggedUser !== false) || signinData.data ? (
+    return (loggedUser !== false) ? (
       <Redirect to="dashboard" />
     )
       : (
         <>
-          {Object.keys(signinData).length === 0 && Object.keys(signinError).length === 0 ? (
+          {spinnerStatus ? (
             <Spinner />
           ) : (
             ''

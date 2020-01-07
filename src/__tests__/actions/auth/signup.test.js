@@ -18,6 +18,7 @@ import {
   successResponse,
   expectedSignupErrorActions,
   expectedSignupSuccessActions,
+  expectedSignupFailureAction,
   signupPasswordMismatch,
   errorRequest,
   expectedSignuperrorRequestActions,
@@ -89,7 +90,7 @@ describe('Signup Tests ', () => {
       )
       .then(async () => {
         const calledActions = store.getActions();
-        expect(calledActions).toEqual(expectedSignupSuccessActions);
+        expect(calledActions).toEqual(expectedSignupFailureAction);
       });
   });
   it('it Should dispatch error wrong input is provided', async () => {
@@ -114,10 +115,10 @@ describe('Signup Tests ', () => {
     });
   });
   it('Should handle changing spinner status', () => {
-    const newState = spinnerStatusAction();
+    const newState = spinnerStatusAction(false);
     expect(newState).toEqual({
       type: UPDATE_SPINNER_STATUS,
-      payload: {},
+      payload: false,
     });
   });
 });

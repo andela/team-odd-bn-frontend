@@ -20,12 +20,16 @@ export const errorRequest = {
   },
 };
 export const expectedSignuperrorRequestActions = [
-  { type: UPDATE_SPINNER_STATUS, payload: {} },
+  { type: UPDATE_SPINNER_STATUS, payload: true },
   {
     type: SIGNUP_ERROR,
     payload: {
       message: 'Ooops! Network Error',
     },
+  },
+  {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
   },
 ];
 export const errorTypeResponse = {
@@ -38,6 +42,7 @@ export const
   spinnerInitialState = {
     auth: {
       signup: {
+        spinnerStatus: true,
         signupInputData: {},
         signupData: {},
         signupError: {},
@@ -47,6 +52,7 @@ export const
 export const redirectInitialState = {
   auth: {
     signup: {
+      spinnerStatus: false,
       signupInputData: {},
       signupData: { message: 'blockSpinner' },
       signupError: { message: 'blockSpinner' },
@@ -54,12 +60,16 @@ export const redirectInitialState = {
   },
 };
 export const expectedSignupErrorTypeActions = [
-  { type: UPDATE_SPINNER_STATUS, payload: {} },
+  { type: UPDATE_SPINNER_STATUS, payload: true },
   {
     type: SIGNUP_ERROR,
     payload: {
       error: 'first name should be valid',
     },
+  },
+  {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
   },
 ];
 
@@ -76,7 +86,7 @@ export const errorResponse = {
 };
 
 export const expectedSignupErrorActions = [
-  { type: UPDATE_SPINNER_STATUS, payload: {} },
+  { type: UPDATE_SPINNER_STATUS, payload: true },
   {
     type: SIGNUP_ERROR,
     payload: {
@@ -88,10 +98,14 @@ export const expectedSignupErrorActions = [
       ],
     },
   },
+  {
+    payload: false,
+    type: 'UPDATE_SPINNER_STATUS',
+  },
 ];
 
 export const expectedSignupSuccessActions = [
-  { type: UPDATE_SPINNER_STATUS, payload: {} },
+  { type: UPDATE_SPINNER_STATUS, payload: false },
   {
     type: SIGNUP_SUCCESS,
     payload: {
@@ -99,6 +113,21 @@ export const expectedSignupSuccessActions = [
       message: 'successfully signed up',
       data: 'jkjhjhhjkb',
     },
+  },
+];
+export const expectedSignupFailureAction = [
+  { type: UPDATE_SPINNER_STATUS, payload: true },
+  {
+    type: SIGNUP_SUCCESS,
+    payload: {
+      status: 'success',
+      message: 'successfully signed up',
+      data: 'jkjhjhhjkb',
+    },
+  },
+  {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
   },
 ];
 
@@ -130,7 +159,7 @@ export const signupErrorAction = {
 };
 export const spinnerStatusAction = {
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
+  payload: true,
 };
 export const signupMatchingPasswords = {
   firstName: 'hezron',

@@ -15,19 +15,21 @@ describe('Reducer tests', () => {
     };
     const newState = signinReducer(initialState.auth.signin, loginSuccess);
     expect(newState).toEqual({
+      spinnerStatus: false,
       signinInputData: {},
       signinData: loginSuccess.payload,
-      signinError: { blockSpinner: 'blockSpinner' },
+      signinError: { },
     });
   });
 
   it('Should update spinner status', () => {
     const spinnerStatus = {
       type: UPDATE_SPINNER_STATUS,
-      payload: {},
+      payload: false,
     };
     const newState = signinReducer(initialState.auth.signin, spinnerStatus);
     expect(newState).toEqual({
+      spinnerStatus: false,
       signinInputData: {},
       signinData: {},
       signinError: {},
@@ -43,9 +45,10 @@ describe('Reducer tests', () => {
     };
     const newState = signinReducer(initialState.auth.signin, loginInput);
     expect(newState).toEqual({
+      spinnerStatus: false,
       signinInputData: loginInput.payload,
-      signinData: { blockSpinner: 'blockSpinner' },
-      signinError: { blockSpinner: 'blockSpinner' },
+      signinData: { },
+      signinError: { },
     });
   });
 
@@ -58,8 +61,9 @@ describe('Reducer tests', () => {
     };
     const newState = signinReducer(initialState.auth.signin, loginInput);
     expect(newState).toEqual({
+      spinnerStatus: false,
       signinInputData: {},
-      signinData: { blockSpinner: 'blockSpinner' },
+      signinData: { },
       signinError: loginInput.payload,
     });
   });

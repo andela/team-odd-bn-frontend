@@ -36,10 +36,6 @@ dotenv.config();
 axios.defaults.BASE_URL = process.env.BASE_URL;
 
 
-dotenv.config();
-
-axios.defaults.BASE_URL = process.env.BASE_URL;
-const token = localStorage.getItem('token');
 const App = () => (
   <Provider store={store}>
     <Router>

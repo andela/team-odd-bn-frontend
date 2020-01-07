@@ -46,9 +46,12 @@ describe('login page', () => {
     stores = mockStore(loginInitialState);
 
     expect(mount(
-      <Router>
-        <Login store={stores} />
-      </Router>,
+      <Provider store={store}>
+        <Router>
+          <Login />
+        </Router>
+      </Provider>
+      ,
     )).toMatchSnapshot();
   });
   it('Test spinner action', () => {

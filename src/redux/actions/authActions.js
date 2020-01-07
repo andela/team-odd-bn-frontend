@@ -14,9 +14,9 @@ export const updateSignupInputAction = (data) => ({
   type: SIGNUP_INPUT,
   payload: data,
 });
-export const spinnerStatusAction = () => ({
+export const spinnerStatusAction = (status) => ({
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
+  payload: status,
 });
 
 export const signupAction = (signupData) => (signupData.password !== signupData.confirmPassword
@@ -30,7 +30,7 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
     });
   }
   : async (dispatch) => {
-    dispatch(spinnerStatusAction());
+    dispatch(spinnerStatusAction(true));
     try {
       const signupResponse = await apiCall.post('/auth/signup', signupData);
       notificationSuccess(signupResponse.data.message);
@@ -51,4 +51,5 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
         payload: error.response.data,
       });
     }
+    dispatch(spinnerStatusAction(false));
   });

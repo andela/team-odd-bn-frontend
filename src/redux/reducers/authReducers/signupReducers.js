@@ -26,8 +26,7 @@ const reducer = (state = initialState, action) => {
     case UPDATE_SPINNER_STATUS:
       return {
         ...state,
-        signupData: action.payload,
-        signupError: action.payload,
+        spinnerStatus: action.payload,
 
       };
     default:
