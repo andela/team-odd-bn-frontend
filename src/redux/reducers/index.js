@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import demoReducers from './demoReducers';
+import socialAuth from './socialAuthReducer';
+
 
 export default combineReducers({
-  greetings: demoReducers,
+  socialAuth,
 });

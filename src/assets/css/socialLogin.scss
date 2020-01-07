@@ -1,0 +1,35 @@
+.socio-login-btn-link {
+  color: black;
+}
+
+.socio-log-btn {
+  box-shadow: 0 9px 6px -5px #C2C2C2;
+
+  .social-login-auth {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    margin: 20px 0px;
+    border-radius: 5px;
+  }
+
+  .social-login-auth:hover {
+    cursor: pointer;
+  }
+
+  .social-login-auth img {
+    width: 36px;
+    height: 36px;
+    padding-left: 15px;
+  };
+
+  .social-login-auth p {
+    margin: auto;
+  };
+}
+
+
+.social-login-auth:active {
+  border: solid 1px #00B9F2;
+}
