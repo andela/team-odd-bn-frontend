@@ -11,6 +11,7 @@ import Notfound from './NotFound';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import resetPasswordView from './containers/user/password/resetPassword';
 import forgotPasswordView from './views/forgotPasswordView';
+import resendEmailView from './views/resendEmailView';
 import Dashboard from './views/Dashboard/index';
 import './assets/css/App.scss';
 
@@ -22,12 +23,11 @@ const App = () => (
           <Route path="/signin" exact component={Signin} />
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
+          <Route path="/resend-email" exact component={resendEmailView} />
           <Route path="/social/auth/success" exact component={SocialLogin} />
-          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/dashboard" exact component={VerifyEmail} />
           <Route path="/signup" exact component={Signup} />
-          <Route path="/reset-password" exact component={resetPasswordView} />
-          <Route path="/forgot-password" exact component={forgotPasswordView} />
+          <Route path="/" exact component={Dashboard} />
           <Route component={Notfound} />
         </Switch>
       </div>

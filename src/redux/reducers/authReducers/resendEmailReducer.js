@@ -1,30 +1,19 @@
 import {
-  PASSWORD_RESET_EMAIL,
-  RESET_PASSWORD_INPUT,
-  RESET_REQUEST_SUCCESS,
-  RESET_PASSWORD_SUCCESS,
-  ERROR, SPINNER_STATUS,
+  RESEND_VERIFICATION_EMAIL,
+  RESEND_EMAIL_SUCCESS,
+  ERROR,
+  SPINNER_STATUS,
 } from '../../actionTypes/authActionTypes';
 import initialState from '../../store/initialState';
 
-const resetPasswordReducer = (state = initialState, action) => {
+const resendEmailReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PASSWORD_RESET_EMAIL:
+    case RESEND_VERIFICATION_EMAIL:
       return {
         ...state,
         payload: action.payload,
       };
-    case RESET_PASSWORD_INPUT:
-      return {
-        ...state,
-        payload: action.payload,
-      };
-    case RESET_REQUEST_SUCCESS:
-      return {
-        ...state,
-        payload: action.payload,
-      };
-    case RESET_PASSWORD_SUCCESS:
+    case RESEND_EMAIL_SUCCESS:
       return {
         ...state,
         payload: action.payload,
@@ -45,4 +34,4 @@ const resetPasswordReducer = (state = initialState, action) => {
   }
 };
 
-export default resetPasswordReducer;
+export default resendEmailReducer;

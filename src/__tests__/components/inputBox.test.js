@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import InputField from '../../components/InputField';
-import { emailBox, passwordBox } from '../../constants/passwordReset';
+import emailBox from '../../constants/resendEmail';
 
 describe('First React component test with Enzyme', () => {
   it('should call onChange prop', () => {
