@@ -17,6 +17,7 @@ import './assets/css/App.scss';
 import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import './assets/css/style.css';
+import LandingPage from './components/LandingPage';
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ const App = () => (
     <Router>
       <div className="container">
         <Switch>
+          <Route path="/" exact component={LandingPage} />
           <Route path="/signin" exact component={Signin} />
           <Route path="/social/auth/success" exact component={SocialLogin} />
           <Route path="/dashboard" exact component={Dashboard} />
@@ -47,4 +49,5 @@ const App = () => (
     </Router>
   </Provider>
 );
+
 export default App;

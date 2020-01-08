@@ -1,4 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Muli;
 
+}
+.main-logo {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+.logo img{
+  width: 50px;
+  height: 50px;
+}
+
+.logo-name {
+  width: 100%;
+  height: 100%;
+  margin-top: 19px;
+  margin-left: 15px;
+    
+  }
+  
+.logo-name a {
+  text-decoration: none;
+  margin-top: 10px;
+  font-family: Muli;
+  font-size: 28px;
+  line-height: 18%;
+  color: #00B9F2;
+  font-weight: 1000;
+}
+
+.main-title {
+  color: #000;
+  font-size: 20px;
+  margin-top: 7em;
+  margin-left: 3em;
+}
+
+.button {
+  padding: 14px 32px;
+  margin-top: 10em;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  border: 2px solid #00B9F2;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #00B9F2; 
+  color: white;
+  opacity: 1;
+}
+
+.column-left {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 100vh;
+  background: #ffffff;  
+}
+
+.column-right {
+  float: left;
+  width: 70%;
+  padding: 10px;
+  height: 100vh;
+  background-image: url('../images/landing.png');
+  background-repeat: no-repeat;
+  
+}
+
+@media screen and (max-width: 800px) {
+  .column {
+    width: 100%;
+  }
+  .column-right {
+    display: none;
+  }
+  .column-left {
+    width: 100%;
+    background-image: url('../images/responsive.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+  }
+  .main-title {
+    font-size: 17px;
+  }
+  .button {
+    background-color: #ffffff;
+  }
+  .logo img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-logo {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  .logo-name {
+    width: 100%;
+    height: 100%;
+    margin-top: 6px;
+    margin-left: 15px;
+      
+    }
+    
+  .logo-name a {
+    text-decoration: none;
+    margin-top: 10px;
+    font-family: Muli;
+    font-size: 18px;
+    line-height: 18%;
+    color: #00B9F2;
+    font-weight: 1000;
+  }
+
+  .main-title {
+    color: #000;
+    font-size: 15px;
+    margin-top: 7em;
+    margin-left: 15px;
+  }
+}
 
 
 
