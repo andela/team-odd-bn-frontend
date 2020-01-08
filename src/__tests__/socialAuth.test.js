@@ -18,7 +18,7 @@ const mockStore = configureMockStore(middlewares);
 
 describe('Test social login', () => {
   JSON.parse = jest.fn().mockImplementationOnce(() => 'I am token');
-  const wrapper = mount(
+  wrapper = mount(
     <Router>
       <SocialLogin {...socialAuthDummyData} />
     </Router>,

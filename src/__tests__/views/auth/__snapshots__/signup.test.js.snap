@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Signout page  Test redirect 1`] = `ReactWrapper {}`;
+
+exports[`Test Signout page  Test snapshot using the initial state 1`] = `ReactWrapper {}`;
+
+exports[`Test Signout page  Test spinner action 1`] = `ReactWrapper {}`;

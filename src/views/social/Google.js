@@ -1,4 +1,3 @@
-import '../../assets/css/socialLogin.scss';
 import googleIcon from '../../assets/images/google_32px.png';
 import socialLoginButton from '../../components/socialLoginButton';
 
