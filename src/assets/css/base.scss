@@ -3,6 +3,24 @@
   height: 100%;
   width: 100%;
 }
+%profile-name {
+  margin-top: 17px;
+  width: 145px;
+  height: 20px;
+  left: 1050px;
+  top: 15px;
+  font-family: Muli;
+  font-size: 13px;
+  line-height: 15px;
+  color: #00B9F2;
+}
+%profile-img img {
+  margin-top: 13px;
+  width: 20px;
+  margin-right: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
 .authContainer * {
   box-sizing: border-box;
     margin: auto;
@@ -14,6 +32,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
 .authContainer *{
   box-sizing: border-box;
   margin: auto;

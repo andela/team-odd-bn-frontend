@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
-import Header from '../../components/header';
+import Header from '../../components/headerUnverified';
 import Footer from '../../components/footer';
 import InputField from '../../components/InputField';
 import SubmitButton from '../../components/SubmitButton';

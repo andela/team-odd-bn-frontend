@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`First React component test with Enzyme should call onChange prop for Login page 1`] = `ShallowWrapper {}`;
-
-exports[`First React component test with Enzyme should call onChange prop for signup 1`] = `ShallowWrapper {}`;

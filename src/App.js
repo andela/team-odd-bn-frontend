@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import axios from 'axios';
 import resetPasswordView from './containers/user/password/resetPassword';
 import forgotPasswordView from './views/forgotPasswordView';
 import store from './redux/store';
@@ -9,8 +10,6 @@ import VerifyEmail from './views/auth/VerifyEmail';
 import Signin from './containers/user/signin/signin';
 import Notfound from './NotFound';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
-import resetPasswordView from './containers/user/password/resetPassword';
-import forgotPasswordView from './views/forgotPasswordView';
 import resendEmailView from './views/resendEmailView';
 import Dashboard from './views/Dashboard/index';
 import './assets/css/App.scss';
@@ -34,6 +33,6 @@ const App = () => (
       </div>
     </Router>
   </Provider>
-)
+);
 
 export default App;
