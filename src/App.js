@@ -13,6 +13,7 @@ import Signin from './containers/user/signin/signin';
 import Notfound from './NotFound';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import Dashboard from './views/Dashboard/index';
+import HomePage from './components/HomePage';
 import './assets/css/App.scss';
 import Profile from './components/Profile';
 import Navbar from './components/Navbar';
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/home" exact component={HomePage} />
           <Route component={Notfound} />
         </Switch>
       </div>

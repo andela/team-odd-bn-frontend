@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin-left: 200px;
+  margin-top: 40px;
+  height: 100vh;
+  background-color: #F7F7F7;
+}
+
+.home-title {
+  padding: 10px 10px;
+  width: 50px;
+  font-size: 18px;
+  line-height: 23px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.destination-name {
+  font-size: 21px;
+  color: #4f4f4f;
+}
+
+.destination {
+  font-size: 21px;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.column-top {
+  float: left;
+  width: 97%;
+  padding: 0 10px;
+}
+
+.card-top img{
+  width: 350px;
+  height: 286px;
+  object-fit: cover;
+}
+
+.column-two {
+  float: left;
+  width: 50%;
+  padding-right: 40px;
+}
+.column-three {
+  float: left;
+  width: 50%;
+  padding-left: 10px;
+}
+
+.row {
+  margin: 0 -5px;
+  padding: 5px;
+}
+
+.row-bottom {
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.request-title {
+  text-align: start;
+  margin-bottom: 4em;
+}
+
+.requests {
+margin-bottom: 2em;
+font-size: 15px;
+}
+
+.new-requests {
+  font-size: 13px;
+  text-decoration: none;
+  color: #00B9F2;
+}
+
+.card-top {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 286px;
+  display: flex;
+}
+
+.card-requests {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 40vh;
+  width: 70vh;
+}
+
+.card-bookings {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 40vh;
+
+}
+
+.destination-details {
+ padding: 68px 40px;
+ text-align: left;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    margin-left: 0px;
+    margin-top: 40px;
+    height: 100vh;
+    background-color: #F7F7F7;
+  }
+
+  .column-top {
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .card-top {
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    height: 80vh;
+  }
+
+  .card-top img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .destination-details {
+    padding: 48px 20px;
+    text-align: left;
+    display: block;
+   }
+
+  .card-requests, .card-bookings {
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    height: 50vh;
+  }
+
+  .column-two ,  .column-three{
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+}
+
+
