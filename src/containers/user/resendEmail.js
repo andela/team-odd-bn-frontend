@@ -50,7 +50,7 @@ export class ResendEmail extends Component {
             <div className="boxTitle">Verify your email address</div>
             <hr className="boxLine" />
             <div className="boxDescription">
-              In order to start using your barefoot-nomad account , you need to
+              In order to start using your barefoot-nomad account, you need to
               confirm your email address
             </div>
             <form
