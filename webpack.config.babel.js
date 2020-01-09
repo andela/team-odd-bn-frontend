@@ -1,6 +1,6 @@
 import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const webpack = {
   mode: 'development',

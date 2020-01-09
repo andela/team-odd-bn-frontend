@@ -13,7 +13,7 @@ const mockStore = configureStore([]);
 let wrapper;
 let store;
 
-describe('Test Signout page ', () => {
+describe('Test Signup page ', () => {
   it('Test redirect', () => {
     store = mockStore(redirectInitialState);
 
