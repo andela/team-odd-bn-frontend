@@ -1,7 +1,7 @@
 import React from 'react';
 import dotenv from 'dotenv';
-import '../assets/css/passwordReset.scss';
-import ResetPassword from '../containers/user/password/resetPassword';
+import '../../assets/css/authentication.scss';
+import ResetPassword from '../../containers/user/password/resetPassword';
 
 dotenv.config();
 

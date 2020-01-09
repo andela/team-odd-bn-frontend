@@ -15,7 +15,7 @@ import Spinner from '../../../components/Spinner';
 const Signup = ({ updateSignUpInput, signUp, stateObject }) => {
   const { signupData, signupError } = stateObject.auth.signup;
   return signupData.message ? (
-    <Redirect to="/dashboard" />
+    <Redirect to="/verify-email" />
   ) : (
     <>
       {Object.keys(signupData).length === 0 && Object.keys(signupError).length === 0 ? (

@@ -11,7 +11,7 @@ import InputField from '../../../components/InputField';
 import SubmitButton from '../../../components/SubmitButton';
 import { sendResetRequestAction, updateEmailInput, updateSpinnerStatus } from '../../../redux/actions/resetPasswordActions';
 import Spinner from '../../../components/Spinner';
-import { emailBox } from '../../../constants/passwordReset';
+import { emailBox, menu } from '../../../constants/passwordReset';
 
 export class ForgotPassword extends Component {
   handleSubmit(event) {
@@ -26,7 +26,7 @@ export class ForgotPassword extends Component {
     const { stateObject, updateEmailInput } = this.props;
     return (
       <div>
-        <Header />
+        <Header menuList={menu} />
         {
           stateObject.auth.resetPassword.spinner ? <Spinner data-test="forgotPassword-spinner" />
             : ('')
@@ -41,7 +41,7 @@ export class ForgotPassword extends Component {
                 Please enter your email address.
                 You will receive an email to create a new password via email.
             </div>
-            <form data-test="forgotPassword-form" onSubmit={this.handleSubmit.bind(this)}>
+            <form data-test="forgotPassword-form" className="center-form" onSubmit={this.handleSubmit.bind(this)}>
               <div className="inputbox">
                 <InputField data-test="email" name="requestEmail" handleChange={updateEmailInput} type="email" inputList={emailBox} />
               </div>
@@ -75,10 +75,7 @@ ForgotPassword.defaultProps = {
   stateObject: null,
   updateEmailInput: null,
 };
-export const mapStateToProps = (state) => {
-
-  return ({ stateObject: state });
-};
+export const mapStateToProps = (state) => ({ stateObject: state });
 
 export default connect(mapStateToProps, {
   sendResetRequestAction, updateEmailInput, updateSpinnerStatus,

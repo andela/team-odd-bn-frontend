@@ -13,7 +13,7 @@ import SubmitButton from '../../../components/SubmitButton';
 import InputField from '../../../components/InputField';
 import { resetPasswordAction, updatePasswordInput, updateSpinnerStatus } from '../../../redux/actions/resetPasswordActions';
 import Spinner from '../../../components/Spinner';
-import { passwordBox } from '../../../constants/passwordReset';
+import { passwordBox, menu } from '../../../constants/passwordReset';
 
 export class PasswordReset extends Component {
   handleSubmit(event) {
@@ -36,7 +36,7 @@ export class PasswordReset extends Component {
     const { stateObject, updatePasswordInput } = this.props;
     return (
       <div>
-        <Header />
+        <Header menuList={menu} />
         {stateObject.auth.resetPassword.spinner ? <Spinner data-test="resetPassword-spinner" />
           : ('')}
         <div data-testid="resetPassword-View" className="boxContainer">
@@ -48,7 +48,7 @@ export class PasswordReset extends Component {
             <div className="boxDescription">
                 Please enter your new password to finalize password reset
             </div>
-            <form data-test="resetPassword-form" onSubmit={this.handleSubmit.bind(this)}>
+            <form className="center-form" data-test="resetPassword-form" onSubmit={this.handleSubmit.bind(this)}>
               <div className="inputbox">
                 <InputField data-test="password" handleChange={updatePasswordInput} type="password" inputList={passwordBox} />
               </div>
