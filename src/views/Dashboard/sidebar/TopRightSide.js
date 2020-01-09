@@ -7,7 +7,7 @@ import notificationIcon from '../../../assets/images/notification_icon/notificat
 import settingsIcon from '../../../assets/images/settings_icon/settings_32px.png';
 import defaultUserIcon from '../../../assets/images/default_user_icon/default_user_32px.png';
 import ToolTip from '../../../components/Sidebar/ToolTip';
-
+import { updateNotificationDisplay } from '../../../redux/actions/notificationActions';
 // eslint-disable-next-line react/prefer-stateless-function
 class TopRightSide extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class TopRightSide extends Component {
       image: defaultUserIcon,
       firstName: '',
       lastName: '',
+      display: 'none',
     };
   }
 
@@ -32,39 +33,48 @@ class TopRightSide extends Component {
   }
 
   render() {
-    const { image, firstName, lastName } = this.state;
+    const {
+      image, firstName, lastName,
+    } = this.state;
     return (
-      <div className="top-side-right">
-        <ul>
-          <li className="tooltip notification-icon">
-            <Link to="/notification">
-              <img src={notificationIcon} alt="notification icon" />
-            </Link>
-            { ToolTip('notifications') }
-          </li>
-          <li className="tooltip settings-icon">
-            <Link to="/settings">
-              <img src={settingsIcon} alt="notification icon" />
-            </Link>
-            { ToolTip('settings') }
-          </li>
-          <li className="username">
-            <p>{`${firstName} ${lastName}`}</p>
-          </li>
-          <li className="profile-icon">
-            <img src={image} alt="profile icon" />
-          </li>
-        </ul>
-      </div>
+      <>
+        <div className="top-side-right">
+          <ul>
+            <li className="tooltip notification-icon">
+              <button
+                onClick={() => {
+                  const display = this.props.notification.display == 'none' ? 'block' : 'none';
+                  this.props.updateNotificationDisplay(display);
+                }}
+                type="button"
+              >
+                <img src={notificationIcon} alt="notification icon" />
+              </button>
+              { ToolTip('notifications') }
+            </li>
+            <li className="tooltip settings-icon">
+              <Link to="/settings">
+                <img src={settingsIcon} alt="notification icon" />
+              </Link>
+              { ToolTip('settings') }
+            </li>
+            <li className="username">
+              <p>{`${firstName} ${lastName}`}</p>
+            </li>
+            <li className="profile-icon">
+              <img src={image} alt="profile icon" />
+            </li>
+          </ul>
+        </div>
+      </>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    profile: state.viewProfile.profile,
-    profileError: state.profileError,
-  };
-};
+const mapStateToProps = (state) => ({
+  profile: state.viewProfile.profile,
+  profileError: state.profileError,
+  notification: state.notification,
+});
 
-export default connect(mapStateToProps, null)(TopRightSide);
+export default connect(mapStateToProps, { updateNotificationDisplay })(TopRightSide);
