@@ -23,6 +23,7 @@ button {
   align-items: center;
   width: 100%;
   position: fixed;
+  z-index: 1;
   
   .top-side-left {
     height: 100%;
@@ -95,16 +96,16 @@ button {
   width: 100%;
 
   .left-side {
-    @extend %z-index-value;
+    // @extend %z-index-value;
     width: 15%;
-    background-color: #34C6F3;
+    background-color: #00B9F2;
     height: 100%;
     position: fixed;
     left: 0;
   }
 
   .right-side {
-    @extend %z-index-value;
+    // @extend %z-index-value;
     width: 85%;
     height: 100%;
     background-color: #f7f7f7;
@@ -226,7 +227,7 @@ button {
   .both-side { 
 
     .left-side {
-      z-index: 100;
+      // z-index: 100;
       ul {
         list-style: none;
         padding: 0;
@@ -254,4 +255,8 @@ button {
       }
     }
   }
+}
+
+@media (max-width: 576px) and (min-width: 360px) {
+  
 }

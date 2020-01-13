@@ -13,8 +13,8 @@ import Notfound from './NotFound';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import './assets/css/style.scss';
 
-import TempA from './views/temp/TempA';
-import TempB from './views/temp/TempB';
+import Multicity from './containers/trips/Multicity';
+
 
 dotenv.config();
 
@@ -32,8 +32,7 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/dashboard" exact component={VerifyEmail} />
-          <Route path="/tempA" exact component={TempA} />
-          <Route path="/tempB" exact component={TempB} />
+          <Route path="/multicity-trip" exact component={Multicity} />
           <Route component={Notfound} />
         </Switch>
       </div>
