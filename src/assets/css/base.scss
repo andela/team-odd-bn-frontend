@@ -1,4 +1,5 @@
 @import 'App.scss';
+
 %full-height-width {
   height: 100%;
   width: 100%;
@@ -21,10 +22,12 @@
   height: 20px;
   border-radius: 50%;
 }
+
 .authContainer * {
   box-sizing: border-box;
   margin: auto;
 }
+
 %auth-container {
   min-height: 650px;
   position: fixed;
@@ -48,6 +51,7 @@
     height: 100%;
     margin: 0px;
   }
+
   @media screen and (min-width: 500px) and (max-width: 1030px) {
     width: 70%;
     height: 100%;
@@ -90,6 +94,7 @@
       @extend %full-height-width;
     }
   }
+
   .introNote {
     div {
       font-size: 30px;
@@ -112,6 +117,7 @@
       width: 70%;
       margin: 0% 15%;
     }
+
     div {
       width: 100%;
       height: 40%;
@@ -157,29 +163,77 @@
     height: auto;
   }
 
-  .submitBtn {
-    button {
+
+}
+
+%tripHeaders {
+  margin-top: 40px;
+
+  h2 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+    margin-top: -10px;
+    margin-left: 20px;
+  }
+
+}
+
+%trip-left-side-button {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding-top: 80px;
+
+  @media screen and (min-width: 200px) and (max-width: 500px) {
+    flex-direction: row;
+    width: 100%;
+    margin-top: -90px;
+    margin-botton: 20px;
+  }
+
+  div {
+    padding-top: 40px;
+
+    a {
+      position: relative;
+      margin-left: 24%;
+      width: 68%;
+      height: 50px;
+      background-color: transparent;
       font-size: 18px;
-      height: 80%;
-      background-color: #00b9f2;
-      color: white;
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #000000;
+      padding-left: 15px;
       outline: none;
       border: none;
-      margin: 2% 20%;
-      cursor: pointer;
+      color: rgba(0, 0, 0, 0.53);
+
     }
 
-    .btn-short {
-      width: 60%;
+    a:hover {
+      z-index: 10;
+      border: 1px solid #00B9F2;
+      z-index: 3;
+      border-right: 4px solid #F4F4F4;
+      color: black;
+      font-weight: bold;
+
     }
 
-    button:hover {
-      background-color: white;
-      color: #00b9f2;
-      border: solid 1px #00b9f2;
+    .active {
+      z-index: 10;
+      border: 1px solid #00B9F2;
+      z-index: 3;
+      border-right: 4px solid #F4F4F4;
+      color: black;
+      font-weight: bold;
+
     }
   }
 }
+
 ::-webkit-scrollbar {
   width: 0px;
 }

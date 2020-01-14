@@ -15,6 +15,7 @@ import Requests from './containers/Trips/Requests';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import verifyEmailView from './views/auth/verifyEmailView';
 import Dashboard from './views/Dashboard/sidebar/index';
+import RoundTrip from './containers/trips/RoundTrip';
 import './assets/css/App.scss';
 import './assets/css/style.scss';
 import SingleRequest from './containers/Trips/SingleRequest';
@@ -52,6 +53,9 @@ const App = () => (
           <Route path="/verify-email" exact component={verifyEmailView} />
           <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/dashboard" exact component={VerifyEmail} />
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/trips/roundtrip" exact component={RoundTrip} />
           <Route component={Notfound} />
         </Switch>
       </div>

@@ -1,0 +1,166 @@
+@import 'base.scss';
+
+.oneway-container {
+    display: flex;
+    flex-direction: column;
+    font-family: Muli;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 30px;
+    min-height: 100%;
+    width: 90%;
+    z-index: -2;
+
+
+    @media screen and (min-width: 200px) and (max-width: 500px) {
+
+        width: 100%;
+        height: 100%;
+
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 1030px) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @extend %tripHeaders;
+    .header-container {
+        margin-top: 40px;
+
+        h2 {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+            margin-top: -5%;
+            margin-left: 4%;
+        }
+
+    }
+
+    .trip-field-container {
+        @media screen and (min-width: 200px) and (max-width: 500px) {
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        display: flex;
+        margin-left: 3%;
+        width: 90%;
+        padding-top: 1%;
+        box-sizing: border-box;
+
+
+        .trip-button-container {
+
+            @extend %trip-left-side-button;
+
+
+        }
+
+
+
+        .trip-form {
+            position: relative;
+            width: 75%;
+            z-index: 1;
+            border: 1px solid #00B9F2;
+
+            form {
+
+                padding-top: 60px;
+
+                .cityField {
+                    margin-left: 10%;
+                    margin-bottom: 6%;
+
+                    .originCity select{
+                        margin-right: 100px;
+                    }
+
+                    .destinationCity select{
+                        margin-left: 100px;
+                    }
+
+                    div {
+                        display: inline-block;
+                        margin-left: 7%;
+
+                        select {
+                            width: 100%;
+                            height: 42px;
+                            border: 1px solid #00B9F2;
+                            font-weight: bold;
+                            font-size: 15px;
+                            line-height: 19px;
+                            color: rgba(0, 0, 0, 0.33);
+                        }
+                    }
+
+                    label{
+                        margin-left: 2%;
+                    }
+                }
+
+                .reasonField {
+                    margin-left: 11.5%;
+                    margin-bottom: 5%;
+
+                    textarea {
+                        width: 81.5%;
+                        height: 18%;
+                        border: 1px solid rgba(0, 0, 0, 0.18);
+                        margin-left: 75px;
+
+                    }
+
+                    label {
+                        position: absolute;
+                
+                    }
+
+                }
+
+                .dateField {
+                    margin-left: 11.5%;
+                    margin-bottom: -4%;
+                    display: flex;
+
+
+                    div {
+                        display: flex;
+                        padding-right: 5%;
+
+                        input {
+
+                            margin-left: 5px;
+                            width: 50%;
+                            height: 44px;
+                            background: #FFFFFF;
+                            border: 1px solid rgba(0, 0, 0, 0.18);
+                            box-sizing: border-box;
+                            border-radius: 3px;
+                            margin-right: 80px;
+                            padding: 20px;
+                            padding-right: 20px;
+                            
+                        }
+                    }
+
+                }
+                .btnField {
+                    width: 50%;
+                    margin-left: 29%;
+                    margin-top: 10%;
+                    margin-bottom: 2%;
+
+                    .btn-submit {
+                        width:55%;
+                        height: 45px;
+
+                    }
+
+                }
+            }
+        }
+    }
+}

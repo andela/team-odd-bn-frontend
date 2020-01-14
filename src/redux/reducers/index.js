@@ -7,7 +7,6 @@ import getAllUsersReducer from './getAllUsersReducers';
 import signoutReducer from './signoutReducer';
 import tripReducers from './tripReducers';
 
-
 export default combineReducers({
   viewProfile: profileReducers,
   updateProfile: updateProfileReducer,
