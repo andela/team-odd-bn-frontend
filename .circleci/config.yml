@@ -21,7 +21,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            export COVERALLS_REPO_TOKEN=lfiAmCYD9ESrFrE3vNyYoKriiCUIskuaa >> $BASH_ENV
+            export COVERALLS_REPO_TOKEN=USpDZC2EfmSHR3auzg2qQNpBp2Q3jZrvS >> $BASH_ENV
             npm test -- -u
             npm run coveralls
             

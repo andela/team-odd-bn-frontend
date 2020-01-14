@@ -1,0 +1,215 @@
+* {
+  font-family: Muli;
+}
+
+.main-profile {
+  background: #F7F7F7;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  margin-top: 40px;
+}
+
+.profile-picture {
+  display: grid;
+  justify-content: space-evenly;
+
+}
+
+.profile-picture h3 {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 23px;
+  color: #000000;
+  text-align: center;
+
+}
+
+.profile-picture img{
+  width: 140px;
+  height: 150px;
+  margin-top: -9em;
+  border-radius: 50%;
+
+}
+
+.profile-picture button {
+  width: 160px;
+  height: 40px;
+  border: 1px solid #00B9F2;
+  box-sizing: border-box;
+  background: #F7F7F7;
+  text-align: center;
+  margin-top: -9em;
+
+}
+.react-file-reader{
+  margin-top: -9em;
+  height: 40px;
+}
+
+.profile-picture p {
+  color: #00B9F2;
+}
+
+.profile-details h3 {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 25px;
+  color: #000000;
+  margin-left: 10px;
+  text-transform: uppercase;
+
+}
+
+.profile-underline {
+  display: block;
+  margin: 0.5em 0.5em;
+  border-style: inset;
+  border-width: 1px;
+  width: 100px;
+  margin-right: 7px;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto auto 10%;
+  grid-gap: 15px 10px;
+  padding: 10px;
+}
+
+select{
+  width: 35%;
+  height: 60%;
+  margin-right: 3.5em;
+}
+
+input[type=date] {
+  padding: 10px;
+  width: 200px;
+}
+
+.names {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.names input[type=text] {
+  padding: 10px;
+  width: 200px;
+  margin-right: 37px;
+}
+
+.gender {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.address {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  height: 50px;
+}
+
+.department {
+  height: 50px;
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+
+.linemanager {
+  grid-column: 1/2;
+  grid-row: 5/6;
+  width: 77%;
+  height: 40px;
+}
+
+.bio {
+  grid-column: 1/2;
+  grid-row: 6/7;
+}
+
+.address input[type=text], .department input[type=text] {
+  padding: 10px;
+  width: 73%;
+  margin-right: 40px;
+}
+
+.bio textarea {
+  width: 65%;
+  padding: 40px;
+}
+
+.submit-button {
+  background-color: #00B9F2;
+  border: none;
+  color: white;
+  padding: 10px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 64px 2px;
+  cursor: pointer;
+}
+
+.errorMessageInputs {
+  color: red;
+  font-size: 10px;
+}
+
+.error {
+  min-height: 3em;
+}
+
+@media screen and (max-width: 700px) {
+  .main-profile {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+  }
+
+  .profile-form{
+    display: flex;
+    flex-direction: column;
+  }
+  select{
+    width: 100%;
+    padding: 0%;
+    height: 40px;
+  }
+  .profile-picture {
+    height: 70%;
+  }
+  .profile-details h3 {
+    text-align: center;
+  }
+ form {
+    text-align: center;
+  }
+  
+  .profile-underline {
+   display: none;
+  }
+  .names input[type=text], .linemanager {
+    width: 100%;
+    margin-bottom: 37px;
+
+  }
+  .gender select ,input[type=date]{
+    margin-bottom: 37px;
+    width: 100%;
+  } 
+  .address input[type=text], .department input[type=text] {
+    width: 100%;
+    margin-bottom: 37px;
+  }
+  .bio {
+    width: 100%;
+  }
+}

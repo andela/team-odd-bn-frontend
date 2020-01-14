@@ -64,7 +64,7 @@ export class PasswordReset extends Component {
         </div>
 
         <ToastContainer />
-        {stateObject.auth.resetPassword.status === 'success' && <Redirect data-test="login-redirect" to="login" />}
+        {stateObject.auth.resetPassword.status === 'success' && <Redirect data-test="login-redirect" to="signin" />}
         <Footer />
       </div>
     );
