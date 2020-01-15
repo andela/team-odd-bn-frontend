@@ -36,7 +36,7 @@ class RequestView extends Component {
         {entities.length == 0 && (
           <div className="itemsNotFound">
             No trip requests found click &nbsp;
-            <Link to="/oneway">here</Link>
+            <Link to="/trips/roundtrip">here</Link>
             &nbsp; to create one
           </div>
         )}

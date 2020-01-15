@@ -13,10 +13,12 @@ const createRoundTripReducer = (state = initialState, action) => {
       return {
         ...state,
         roundTripMessage: action.payload,
+        roundTripError: null,
       };
     case CREATE_ROUND_TRIP_ERROR:
       return {
         ...state,
+        roundTripMessage: null,
         roundTripError: action.payload,
       };
     case SPINNER_STATUS:

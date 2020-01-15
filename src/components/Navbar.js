@@ -35,10 +35,10 @@ export class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="align-left">
-          <div className="logo">
+          <div className="logo-left">
             <img src={logo} alt="logo" />
           </div>
-          <div className="logo-name">
+          <div className="profile-logo-name">
             <a href="#home">Barefoot</a>
           </div>
         </div>

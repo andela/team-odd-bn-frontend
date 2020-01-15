@@ -26,7 +26,7 @@ export const LeftSide = (props) => {
           </Link>
         </li>
         <li>
-          <Link to="/trips">
+          <Link to="/requests">
             <img src={tripIcon} alt="trip icon" />
             <span>Trips</span>
           </Link>

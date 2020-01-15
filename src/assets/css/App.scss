@@ -1,14 +1,33 @@
 /********************
   Add re-usable style
  *********************/
-
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import '../../../node_modules/react-toastify/scss/main.scss';
-
-$body-color: #F4F4F4;
-$logo-color: #00B9F2;
-
-
-body {
-  background-color: #F7F7F7;
+ @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+ @import '../../../node_modules/react-toastify/scss/main.scss';
+ $body-color: #F4F4F4;
+ $logo-color: #00B9F2;
+ body {
+   background-color: #F7F7F7;
+ }
+ .submitBtn {
+   button {
+     font-size: 18px;
+     height: 80%;
+     background-color: #00b9f2;
+     color: white;
+     outline: none;
+     border: none;
+     margin: 2% 20%;
+     cursor: pointer;
+   }
+   .btn-short {
+     width: 60%;
+   }
+   button:hover {
+     background-color: white;
+     color: #00b9f2;
+     border: solid 1px #00b9f2;
+   }
+ }
+.dashboard{
+  min-height: 90%;
 }

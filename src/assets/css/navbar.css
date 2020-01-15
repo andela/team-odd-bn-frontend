@@ -17,18 +17,18 @@
   display: flex;
 }
 
-.logo-name {
+.profile-logo-name {
 width: 100%;
 height: 100%;
 margin-top: 13px;
-  
+
 }
 
-.logo-name a {
+.profile-logo-name a {
   text-decoration: none;
   margin-top: 10px;
   font-family: Muli;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 18%;
   color: #00B9F2;
   font-weight: 1000;
@@ -40,7 +40,7 @@ margin-top: 13px;
   
 
 }
-.logo img {
+.logo-left img {
   width: 25px;
   height: 25px;
   margin: 10px;
@@ -57,7 +57,7 @@ margin-top: 13px;
 }
 
 .notifications {
-  margin-top: 13px;
+  margin-top: 15px;
   height: 60%;
 }
 

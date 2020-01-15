@@ -22,8 +22,13 @@ const createRoundTrip = (data) => async (dispatch) => {
       payload: createRoundTripRequest.data.message,
     });
   } catch (error) {
+    const errorResponse = error.response.data.message;
+    if (typeof (errorResponse) === 'object') {
+      toast.error('Please ensure you have filled in all the fields');
+    } else {
+      toast.error(errorResponse);
+    }
     dispatch(updateSpinnerStatus(false));
-    toast.success('Error');
     return dispatch({
       type: CREATE_ROUND_TRIP_ERROR,
       payload: error.response.data,

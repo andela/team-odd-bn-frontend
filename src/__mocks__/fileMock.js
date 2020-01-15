@@ -287,24 +287,18 @@ const mockData = {
     logout: jest.fn(),
   },
   userProfileMockData: {
-    spinnerStatusAction: (data) => {
-      return {
-        type: 'SPINNER_STATUS',
-        spinner: data,
-      };
-    },
-    successfulyProfileReducer: (data) => {
-      return {
-        type: 'FETCH_PROFILE_SUCCESS',
-        payload: data,
-      };
-    },
-    failedProfileReducer: (data) => {
-      return {
-        type: 'FETCH_PROFILE_ERROR',
-        payload: data,
-      };
-    },
+    spinnerStatusAction: (data) => ({
+      type: 'SPINNER_STATUS',
+      spinner: data,
+    }),
+    successfulyProfileReducer: (data) => ({
+      type: 'FETCH_PROFILE_SUCCESS',
+      payload: data,
+    }),
+    failedProfileReducer: (data) => ({
+      type: 'FETCH_PROFILE_ERROR',
+      payload: data,
+    }),
     successResponse: {
       profileInformation: {
         data: {
@@ -323,21 +317,46 @@ const mockData = {
         },
       },
     },
-    fetchUsersSuccessAction: (profileInformation) => {
-      return {
-        type: 'FETCH_PROFILE_SUCCESS',
-        payload: profileInformation.data,
-      };
-    },
-    fetchUsersFailure: (error) => {
-      return {
-        type: 'FETCH_PROFILE_ERROR',
-        payload: error.response.data,
-      };
-    },
+    fetchUsersSuccessAction: (profileInformation) => ({
+      type: 'FETCH_PROFILE_SUCCESS',
+      payload: profileInformation.data,
+    }),
+    fetchUsersFailure: (error) => ({
+      type: 'FETCH_PROFILE_ERROR',
+      payload: error.response.data,
+    }),
     userProfileMocData: {
       getProfile: jest.fn(),
       updateSpinnerStatus: jest.fn(),
+    },
+    roundTripProps: {
+      spinner: true,
+      roundTrip: {
+        data: {
+          originId: 1,
+          destinationId: 1,
+          reason: 'Meeting department heads',
+          startDate: '2020-12-02',
+          returnDate: '2030-02-03',
+        },
+        getCities: jest.fn(),
+        createRoundTrip: jest.fn(),
+        updateSpinnerStatus: jest.fn(),
+      },
+    },
+    roundTripMainState: {
+      trips: {
+        roundTrip: {
+          roundTripMessage: null,
+          roundTripError: null,
+          spinner: null,
+          spinnerError: null,
+        },
+        allCities: {
+          cities: null,
+          citiesError: null,
+        },
+      },
     },
   },
 };
