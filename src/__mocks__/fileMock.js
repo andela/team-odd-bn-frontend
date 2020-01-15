@@ -207,5 +207,35 @@ const mockData = {
       message: null,
     },
   },
+  signoutProps: {
+    signout: jest.fn(),
+    isSignout: true,
+    mapStateToProps: jest.fn(),
+    mapDispatchToProps: jest.fn(),
+    signoutAction: jest.fn(),
+    state: {
+      signout: true,
+      isLoggedin: {},
+    },
+    signoutSuccessfully: {
+      message: 'Loggout successfully',
+    },
+    signoutFail: {
+      message: 'Loggout failed',
+    },
+    successReducer: {
+      type: 'SIGNOUT_SUCCESS',
+      payload: true,
+    },
+    failureReducer: {
+      type: 'SIGNOUT_FAILURE',
+      payload: true,
+    },
+    logout: jest.fn(),
+    history: {
+      push: jest.fn(),
+    },
+    signoutUser: jest.fn(),
+  },
 };
 export default mockData;
