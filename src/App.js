@@ -11,15 +11,17 @@ import Signup from './containers/user/signup/signup';
 import successfulVerification from './containers/user/email/successfulVerification';
 import Signin from './containers/user/signin/signin';
 import Notfound from './NotFound';
+import Requests from './containers/Trips/Requests';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import verifyEmailView from './views/auth/verifyEmailView';
 import Dashboard from './views/Dashboard/sidebar/index';
 import './assets/css/App.scss';
-import './assets/css/style.css';
-import LandingPage from './components/LandingPage';
+import './assets/css/style.scss';
+import SingleRequest from './containers/Trips/SingleRequest';
 import './assets/css/App.scss';
 import Profile from './components/Profile';
-import './assets/css/style.scss';
+import './assets/css/style.css';
+import LandingPage from './components/LandingPage';
 
 dotenv.config();
 
@@ -40,12 +42,15 @@ const App = () => (
           <Route path="/social/auth/success" exact component={SocialLogin} />
           <Route path="/verify-email" exact component={verifyEmailView} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/requests" exact component={Requests} />
+          <Route path="/requests/:tripRequestId" exact component={SingleRequest} />
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/verify-email" exact component={verifyEmailView} />
           <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/" exact component={Dashboard} />
           <Route component={Notfound} />
         </Switch>
       </div>

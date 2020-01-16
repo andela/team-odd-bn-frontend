@@ -23,7 +23,7 @@ export class SideDrawer extends Component {
 
   UNSAFE_componentWillReceiveProps(prevProps, nextProps) {
     const { profile } = prevProps;
-    if (profile) {
+    if (profile.data) {
       const { data: { imageURL, user: { firstName, lastName } } } = profile;
       this.setState({
         image: imageURL,

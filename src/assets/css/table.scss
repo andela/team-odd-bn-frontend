@@ -1,0 +1,349 @@
+@import 'base.scss';
+@import 'App.scss';
+$contents: (
+  tripId: 'Trip Id ',
+  tripType: 'tripType',
+  createdAt: 'createdAt',
+  status: 'status',
+  action: 'action',
+);
+$tt: (
+  originId: 'originId',
+  destinationId: 'destination',
+  startDate: 'start date',
+  returnDate: 'return date',
+  reason: 'reason',
+);
+$kk: destinationId originId startDate returnDate reason;
+$attributes: tripId tripType createdAt status action;
+%div_style {
+  height: auto;
+  padding: 10px 0px;
+}
+@each $attr in $kk {
+  .#{$attr}:before {
+    width: 50%;
+    content: map-get($tt, $attr);
+    font-weight: 900;
+    padding-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+}
+@each $attr in $attributes {
+  @media screen and (min-width: 200px) and (max-width: 600px) {
+    .#{$attr}:before {
+      content: map-get($contents, $attr);
+      padding: 5px 20px;
+      width: 40%;
+      font-weight: 900;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    }
+  }
+}
+.tableMainContainer {
+  height: 92%;
+  margin-top: 4%;
+  width: 99%;
+  overflow: auto;
+  .tableContainer {
+    width: 90%;
+    @media screen and (min-width: 200px) and (max-width: 800px) {
+      width: 100%;
+    }
+    padding: 1% 0%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+
+    div {
+      @extend %full-height-width;
+      display: flex;
+    }
+    .tableHead {
+      @extend %div_style;
+      background-color: #34c6f3;
+      color: white !important;
+      @media screen and (min-width: 200px) and (max-width: 800px) {
+        display: none;
+      }
+      div {
+        padding-left: 10px;
+        margin: 1px;
+      }
+    }
+    .tableNav {
+      margin: 10px 0px;
+      
+      display: flex;
+      @media screen and (min-width: 200px) and (max-width: 800px) {
+        flex-direction: column;
+        padding-left: 10px;
+      }
+      div {
+        height: 100%;
+        min-height: 30px;
+        @media screen and (min-width: 200px) and (max-width: 600px) {
+          margin-top: 20px;
+        }
+      }
+      .tableHeader {
+        @media screen and (min-width: 200px) and (max-width: 600px) {
+          width: 60%;
+          height: 40px;
+          margin: auto;
+        }
+      }
+      .search {
+        height: 100%;
+        input {
+          @media screen and (min-width: 200px) and (max-width: 600px) {
+            width: 60%;
+            margin: auto;
+            height: 40px;
+          }
+          width: 235px;
+          background: #ffffff;
+          border: 1px solid #00b9f2;
+          box-sizing: border-box;
+          border-radius: 10px;
+          padding-left: 5px;
+          margin-right: 10px;
+          margin-left: 60%;
+          width: 40%;
+        }
+      }
+    }
+
+    .singleRequestHeader {
+      @extend %div_style;
+      width: 98%;
+      padding-left: 2%;
+      div {
+        margin-left: 2%;
+        .actionButton {
+          margin-left: -13px;
+          width: 70px;
+          height: 30px;
+          background: #34c6f3;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+          a {
+            color: #ffff;
+            margin: auto;
+          }
+        }
+      }
+    }
+    .singleRequestFooter {
+      @extend %div_style;
+      width: 98%;
+      padding-left: 2%;
+      button {
+        outline: none;
+        color: white !important;
+        margin-left: 78%;
+        width: 20%;
+        min-width: 45px;
+        height: 37px;
+        background: #34c6f3;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+      }
+    }
+    .singleRequest {
+      @extend %div_style;
+      @media screen and (min-width: 200px) and (max-width: 1000px) {
+        flex-direction: column;
+      }
+      width: 98%;
+      margin: 10px auto;
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+      .trips {
+        width: 98%;
+        margin-left: 2%;
+        display: flex;
+        .trip {
+          border: 1px solid #dddddd;
+          padding: 5px;
+          margin-bottom: 20px;
+        }
+        div {
+          min-height: 40px;
+          div {
+            width: 100%;
+            flex-direction: row;
+          }
+          div:nth-child(2n) {
+            background: #dddddd;
+          }
+        }
+        .corasselButtons {
+          display: flex;
+          flex-direction: row;
+          div {
+            background-color: #f7f7f7 !important;
+
+            z-index: 1;
+            #back {
+              background-color: #f7f7f7 !important;
+              margin: auto;
+              width: 0;
+              height: 0;
+              border: solid 20px;
+              border-color: transparent transparent #34c6f3 transparent;
+              border-radius: 2px;
+              outline: none;
+              margin-right: 5px;
+              transform: matrix(0, -1, 1, 0, 0, 0);
+            }
+            #front {
+              background-color: #f7f7f7 !important;
+              margin: auto;
+              width: 0;
+              height: 0;
+              margin-left: 5px;
+              border: solid 20px;
+              outline: none;
+              border-color: transparent transparent #34c6f3 transparent;
+              border-radius: 2px;
+              transform: matrix(0, 1, -1, -0.01, 0, 0);
+            }
+          }
+        }
+      }
+    }
+    .comments {
+      width: 98%;
+      margin-left: 2%;
+      @extend %div_style;
+      display: flex;
+      flex-direction: column;
+      .commentCardContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0px;
+        .commentCardHeader {
+          height: 30px;
+          flex-direction: row;
+          width: 100%;
+          display: flex;
+          margin-bottom: 5px;
+          .commentCardHeaderLeftSide {
+            padding-left: 2px;
+            color: white !important;
+            width: 20%;
+            min-width: 161.41px;
+            background: #00b9f2;
+            border-radius: 0px 10px 0px 0px;
+            margin-right: 10px;
+
+            display: flex;
+          }
+          .commentCardHeaderRigthSide {
+            display: flex;
+          }
+        }
+        .commentBody {
+          padding: 5px;
+          margin-right: 5px;
+          display: flex;
+          width: auto;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          box-sizing: border-box;
+          border-radius: 0px;
+          textarea {
+            height: 100%;
+          }
+        }
+        .commentInputField {
+          margin-right: 5px;
+          display: flex;
+          width: auto;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          box-sizing: border-box;
+          border-radius: 0px;
+          textarea {
+            border: none;
+            padding: 5px;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .entity:nth-child(2n) {
+      background: white;
+    }
+    .entity {
+      @extend %div_style;
+      @media screen and (min-width: 200px) and (max-width: 600px) {
+        flex-direction: column;
+        width: 100%;
+        margin: 10px auto;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      div {
+        width: 100%;
+        text-align: center !important;
+        div {
+          width: 80px;
+          height: 40px;
+          color: white !important;
+          background: #34c6f3;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+        }
+        .Pending {
+          background: #34c6f3;
+        }
+        .Approved {
+          background: green;
+        }
+        .Rejected {
+          background: red;
+        }
+        .actionButton {
+          padding: 0px !important;
+          text-align: center !important;
+          width: 80px;
+          height: 40px;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+          a {
+            margin: 10px auto;
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+          a:hover {
+          color: #00b9f2 !important;
+          }
+        }
+        .actionButton:hover {
+          background-color: #ffffff !important;
+          border: solid 1px #00b9f2;
+        }
+        padding-left: 10px;
+        @extend %div_style;
+      }
+    }
+  }
+}
+.itemsNotFound {
+  width: 80% !important;
+  margin: 20px auto;
+  padding: 20px 5px;
+  border: green solid 1px;
+}

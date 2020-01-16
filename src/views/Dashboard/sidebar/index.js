@@ -17,9 +17,9 @@ export class Sidebar extends Component {
     };
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     const { getCurrentUserinfo } = this.props;
-    getCurrentUserinfo(this.props.viewProfile);
+    await getCurrentUserinfo(this.props.viewProfile);
   }
 
   drawerToggleClickHandler = () => {
@@ -33,6 +33,7 @@ export class Sidebar extends Component {
   }
 
   render() {
+    
     let backdrop;
     const { sideDrawerOpen } = this.state;
     const { children } = this.props;
@@ -41,7 +42,7 @@ export class Sidebar extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-    if (this.props.profile) {
+    if (this.props.profile.data) {
       if (!this.props.profile.data.managerId) {
         return <Redirect to="/profile"/>;
       }
