@@ -30,7 +30,7 @@ describe('Test Signup page ', () => {
     );
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Router').prop('history').location.pathname).toEqual(
-      '/dashboard',
+      '/verify-email',
     );
     expect(wrapper.find('Redirect').length).toEqual(1);
   });

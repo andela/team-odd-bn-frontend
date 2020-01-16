@@ -1,35 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import defaultProfileImg from '../assets/images/default_user_32px.png';
 import '../assets/css/header.scss';
 
-class Header extends Component {
-  render() {
-    return (
-      <nav data-testid="header" className="defaultHeader">
-        <a className="app-logo" href="/">
-          <img
-            className="logo"
-            alt="barefoot_logo"
-            src={`
+const Header = ({ menuList }) => (
+  <nav data-testid="header" className="defaultHeader">
+    <a className="app-logo" href="/">
+      <img
+        className="logo"
+        alt="barefoot_logo"
+        src={`
    https://res.cloudinary.com/victorkarangwa4/image/upload/v1577709616/icons/Blogo_jl7eyl.png`}
-          />
-          <p className="app-name">Barefoot</p>
-        </a>
-        <div className="nav-menu">
-          <ul>
-            <li>
-              <input className="btn-small" type="button" value="Signup" />
+      />
+      <p className="app-name">Barefoot</p>
+    </a>
+    <div className="nav-menu">
+      <ul>
+        {menuList.map((menu) => (
+          menu.link ? (
+            <li key={menu.text}>
+              <a href={menu.page} className={menu.className}>{menu.text}</a>
             </li>
-            <li>
-              <input className="btn-small" type="button" value="Login" />
-            </li>
-            <li>
-              <input className="btn-transparent" type="button" value="Home" />
-            </li>
-          </ul>
-        </div>
-      </nav>
-    );
-  }
-}
+          ) : (
+            <div key={menu.text}>
+              <li>
+                <img
+                  className={menu.className}
+                  src={defaultProfileImg}
+                  alt={menu}
+                />
+              </li>
+              <li>
+                <span className={menu.className}>{menu.text}</span>
+              </li>
+            </div>
+
+          )
+        ))}
+      </ul>
+    </div>
+  </nav>
+);
+Header.propTypes = {
+  menuList: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default Header;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ResetPasswordView from '../../views/resetPasswordView';
-import ForgotPasswordView from '../../views/forgotPasswordView';
+import ResetPasswordView from '../../../views/auth/resetPasswordView';
+import ForgotPasswordView from '../../../views/auth/forgotPasswordView';
 
 describe('Rendering password reset views', () => {
   test('should render ForgotPasswordView without crash', () => {

@@ -35,7 +35,7 @@ const login = ({ updateSigninInputAction, loginAction, signInState }) => (
               <Link to="/signup">signup here</Link>
             </div>
             <div>
-              <Link to="/forgotpassword">Forgot Password?</Link>
+              <Link to="/forgot-password">Forgot Password?</Link>
             </div>
           </div>
           <div>
