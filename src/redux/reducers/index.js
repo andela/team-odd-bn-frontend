@@ -5,6 +5,8 @@ import profileReducers from './ProfileReducers';
 import updateProfileReducer from './updateProfileReducer';
 import getAllUsersReducer from './getAllUsersReducers';
 import signoutReducer from './signoutReducer';
+import tripReducers from './tripReducers';
+
 
 export default combineReducers({
   viewProfile: profileReducers,
@@ -13,4 +15,5 @@ export default combineReducers({
   socialAuth,
   auth: authReducers,
   signout: signoutReducer,
+  trips: tripReducers,
 });

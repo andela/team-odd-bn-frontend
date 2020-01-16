@@ -10,6 +10,18 @@ const state = {
       signinData: { blockSpinner: 'blockSpinner' },
       signinError: { blockSpinner: 'blockSpinner' },
     },
-  }
-}
+  },
+  trips: {
+    requests: {
+      requestsData: [],
+      singleRequestData: {},
+      requestCommentsData: {},
+      requestsError: {},
+    },
+  },
+  viewProfile: {
+    profile: {},
+  },
+  profileError: {},
+};
 export default state;

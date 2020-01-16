@@ -28,9 +28,10 @@ export class Navbar extends Component {
     } = this.state;
     let urlImage;
 
-    if (profile) {
+    if (profile && profile.data) {
       urlImage = profile.data.imageURL;
     }
+
     return (
       <div className="navbar">
         <div className="align-left">
@@ -49,7 +50,7 @@ export class Navbar extends Component {
             <hr />
           </div>
           <div className="profile-name">
-            <p href="#home">{(profile) ? `${profile.data.user.firstName}  ${profile.data.user.lastName}` : ''}</p>
+            <p href="#home">{(profile && profile.data) ? `${profile.data.user.firstName}  ${profile.data.user.lastName}` : ''}</p>
 
           </div>
           <div className="profile-img">

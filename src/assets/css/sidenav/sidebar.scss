@@ -1,0 +1,260 @@
+%top-side-header {
+  display: flex;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+
+%z-index-value {
+  z-index: -1;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul li .signout {
+  margin-top: 3rem;
+}
+
+/*******************************
+  Left and right sidebar style
+*******************************/
+
+.top-side {
+  @extend %top-side-header;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  
+  .top-side-left {
+    height: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+
+    .top-left-custom-logo {
+
+      .top-left-custom-app-name {
+        margin-top: 10px;
+      }
+    
+      .top-left-custom-logo{
+        padding: 10px;
+        height: 35px;
+        width: 25px;
+      }
+    
+      .top-left-custom-nav-app-logo {
+        display: flex;
+        text-decoration: none;
+        color: #00B9F2;
+        font-weight: bold;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .leaveSpaceBetweenTop-LeftAndTop-RightHeader {
+    flex: 1;
+  }
+
+  .top-side-right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      padding-right: 2rem;
+      align-items: center;
+    }
+
+    li {
+      padding: 0 1rem;
+    }
+
+    li p {
+      color: #00B9F2;
+      font-size: 1.2em;
+    }
+    ul .profile-icon img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+  }
+}
+
+.both-side {
+  display: flex;
+  height: 90%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  top: 10%;
+  width: 100%;
+
+  .left-side {
+    width: 15%;
+    background-color: #00B9F2;
+    height: 100%;
+    position: fixed;
+    left: 0;
+  }
+
+  .right-side {
+    width: 85%;
+    height: 100%;
+    background-color: #f7f7f7;
+    position: relative;
+  }
+}
+
+
+
+/***********************
+  Responsiveness
+***********************/
+
+
+@media (max-width: 576px) and (min-width: 320px) {
+
+  .top-side {
+    position: absolute;
+  }
+  .both-side .left-side {
+    display: none;
+  }
+  .both-side .right-side {
+    width: 100%;
+    height: auto;
+  }
+
+  .top-side .top-side-left .top-left-custom-logo .top-left-custom-nav-app-logo {
+    font-size: 1.5rem;
+    padding-left: 10px;
+  }
+  .top-side .top-side-left .top-left-custom-logo .top-left-custom-logo {
+    padding: 5px;
+  }
+
+  .top-side .top-side-right {
+    ul .username, ul .profile-icon {
+      display: none;
+    }
+  }
+
+  .top-side .top-side-right ul {
+    padding-right: 2.5rem;
+  }
+  .side-drawer {
+    ul a {
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    ul li img {
+      padding-right: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 775px) and (min-width: 577px) {
+  .top-side {
+    height: 11%;
+    position: absolute;
+
+    .nav-toggle-btn {
+      display: flex;
+    }
+
+    .top-side-right li p {
+      font-size: 1em;
+    }
+    .top-side-right ul {
+      padding-right: 0;
+    }
+
+    .top-side-left {
+      .top-left-custom-logo {
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  .side-drawer {
+    .user-info {
+      display: none;
+    }
+    ul {
+      padding: 5rem 3rem;
+    }
+    ul li {
+      margin: 1.4rem 2rem
+    }
+    ul a {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    ul li img {
+      padding-right: 0.5rem;
+    }
+    ul li a span:hover {
+      border-bottom: 2px solid white;
+    }
+  }
+
+  .both-side {
+    .left-side {
+      display: none;
+    }
+    .right-side {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 776px) {
+  .nav-toggle-btn {
+    display: none;
+  }
+
+  .both-side { 
+
+    .left-side {
+      z-index: 100;
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        padding: 5rem 0.5rem;
+      }
+      ul li {
+        padding: 1.2rem 0.5rem;
+        border-bottom: solid 1px;
+      }
+      ul li:hover {
+        cursor: pointer;
+      }
+      ul li a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      ul li img {
+        padding-right: 0.5rem;
+      }
+      ul li a span:hover {
+        border-bottom: 2px solid white;
+      }
+    }
+  }
+}

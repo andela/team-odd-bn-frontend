@@ -12,7 +12,7 @@
   font-family: Muli;
   font-size: 13px;
   line-height: 15px;
-  color: #00B9F2;
+  color: #00b9f2;
 }
 %profile-img img {
   margin-top: 13px;
@@ -23,7 +23,7 @@
 }
 .authContainer * {
   box-sizing: border-box;
-    margin: auto;
+  margin: auto;
 }
 %auth-container {
   min-height: 650px;
@@ -34,7 +34,7 @@
   background-size: 100% 100%;
 }
 
-.authContainer *{
+.authContainer * {
   box-sizing: border-box;
   margin: auto;
 }
@@ -76,7 +76,7 @@
 
         a {
           text-decoration: none;
-          color: #00B9F2
+          color: #00b9f2;
         }
       }
     }
@@ -144,7 +144,7 @@
     }
 
     input {
-      border: solid 1px #5C5C5C;
+      border: solid 1px #5c5c5c;
       opacity: 93%;
       width: 100%;
       height: 60%;

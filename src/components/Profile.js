@@ -58,7 +58,7 @@ export class Profile extends Component {
   UNSAFE_componentWillReceiveProps(prevProps) {
     const { profile, imageURL: image } = prevProps;
 
-    if (profile) {
+    if (profile && profile.data) {
       const {
         gender,
         birthDate,
@@ -294,7 +294,7 @@ export class Profile extends Component {
                     <option
                       key={index}
                       value={item.id}
-                      selected={(profile && item.id === profile.data.managerId)}
+                      selected={(profile && profile.data && item.id === profile.data.managerId)}
                     >
                       {`${item.firstName} ${item.lastName}`}
                     </option>
