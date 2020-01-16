@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect SideDrawer to render Expect side drawer nav to render without problem 1`] = `ShallowWrapper {}`;
+
+exports[`Expect TopRightSide to render Expect TopRightSide to render without problem 1`] = `ShallowWrapper {}`;
