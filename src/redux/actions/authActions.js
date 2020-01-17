@@ -35,6 +35,7 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
       const signupResponse = await apiCall.post('/auth/signup', signupData);
       notificationSuccess(signupResponse.data.message);
       localStorage.setItem('token', signupResponse.data.data);
+      dispatch(spinnerStatusAction(false));
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: signupResponse.data,
@@ -46,10 +47,10 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
         : error.response.data.error;
       err = typeof err === 'object' ? err : [err];
       err.map((e) => notificationError(e));
+      dispatch(spinnerStatusAction(false));
       dispatch({
         type: SIGNUP_ERROR,
         payload: error.response.data,
       });
     }
-    dispatch(spinnerStatusAction(false));
   });

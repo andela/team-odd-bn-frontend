@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import verifyToken from '../../../helpers/verifyToken';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer';
@@ -36,6 +36,7 @@ export class VerifyEmail extends Component {
   render() {
     const { stateObject, updateEmailInput } = this.props;
     const { spinner } = stateObject.auth.verifyEmail;
+    toast.dismiss();
     return (
       <div>
         <Header menuList={unverifiedUserMenu} />

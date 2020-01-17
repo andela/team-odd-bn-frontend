@@ -22,14 +22,14 @@ export const errorRequest = {
 export const expectedSignuperrorRequestActions = [
   { type: UPDATE_SPINNER_STATUS, payload: true },
   {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
+  },
+  {
     type: SIGNUP_ERROR,
     payload: {
       message: 'Ooops! Network Error',
     },
-  },
-  {
-    payload: false,
-    type: UPDATE_SPINNER_STATUS,
   },
 ];
 export const errorTypeResponse = {
@@ -62,14 +62,14 @@ export const redirectInitialState = {
 export const expectedSignupErrorTypeActions = [
   { type: UPDATE_SPINNER_STATUS, payload: true },
   {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
+  },
+  {
     type: SIGNUP_ERROR,
     payload: {
       error: 'first name should be valid',
     },
-  },
-  {
-    payload: false,
-    type: UPDATE_SPINNER_STATUS,
   },
 ];
 
@@ -88,6 +88,10 @@ export const errorResponse = {
 export const expectedSignupErrorActions = [
   { type: UPDATE_SPINNER_STATUS, payload: true },
   {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
+  },
+  {
     type: SIGNUP_ERROR,
     payload: {
       message: [
@@ -97,10 +101,6 @@ export const expectedSignupErrorActions = [
         'A valid password should have a character, number, …d a lower case letter and should be longer than 8',
       ],
     },
-  },
-  {
-    payload: false,
-    type: 'UPDATE_SPINNER_STATUS',
   },
 ];
 
@@ -118,16 +118,16 @@ export const expectedSignupSuccessActions = [
 export const expectedSignupFailureAction = [
   { type: UPDATE_SPINNER_STATUS, payload: true },
   {
+    payload: false,
+    type: UPDATE_SPINNER_STATUS,
+  },
+  {
     type: SIGNUP_SUCCESS,
     payload: {
       status: 'success',
       message: 'successfully signed up',
       data: 'jkjhjhhjkb',
     },
-  },
-  {
-    payload: false,
-    type: UPDATE_SPINNER_STATUS,
   },
 ];
 
@@ -136,7 +136,7 @@ export const signupPasswordMismatch = [
     payload: {
       message: 'The password and confirm password should match',
     },
-    type: 'SIGNUP_ERROR',
+    type: SIGNUP_ERROR,
   },
 ];
 export const signupSuccessAction = {

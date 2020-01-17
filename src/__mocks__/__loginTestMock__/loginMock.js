@@ -29,6 +29,9 @@ export const errorRequest = {
 export const loginRequestErrorActions = [{
   type: UPDATE_SPINNER_STATUS,
   payload: true,
+}, {
+  payload: false,
+  type: 'UPDATE_SPINNER_STATUS',
 },
 {
   type: SIGNIN_ERROR,
@@ -49,8 +52,10 @@ export const loginSuccessActions = [
 export const loginErrorActions = [{
   type: UPDATE_SPINNER_STATUS,
   payload: true,
-},
-{
+}, {
+  payload: false,
+  type: 'UPDATE_SPINNER_STATUS',
+}, {
   type: SIGNIN_ERROR,
   payload: {
     message: 'Incorrect Credential',

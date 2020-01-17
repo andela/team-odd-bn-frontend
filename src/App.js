@@ -55,7 +55,7 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
-          <Route path="/verify-email" exact component={verifyEmailView} />
+          <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/trips/roundtrip" exact component={RoundTrip} />
           <Route
             path="/successful-verification"

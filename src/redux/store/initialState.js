@@ -30,6 +30,5 @@ const state = {
   viewProfile: {
     profile: {},
   },
-  profileError: {},
 };
 export default state;

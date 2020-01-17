@@ -29,15 +29,17 @@ export const signinAction = (signinData) => async (dispatch) => {
     });
     const { data } = signinResponse.data;
     localStorage.setItem('token', data);
+    dispatch(spinnerStatusAction(false));
   } catch (err) {
     if (err.response) {
       const { message } = err.response.data;
       notificationError('Email or password is not correct');
+      dispatch(spinnerStatusAction(false));
       return dispatch(loginError({ message }));
     }
+    dispatch(spinnerStatusAction(false));
     return dispatch(loginError({ message: 'Server Error' }));
   }
-  dispatch(spinnerStatusAction(false));
 };
 
 
