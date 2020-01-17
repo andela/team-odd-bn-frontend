@@ -58,7 +58,7 @@ export class ForgotPassword extends Component {
 
 
         <ToastContainer />
-        <Footer />
+        <Footer className="authFooter" />
       </div>
     );
   }

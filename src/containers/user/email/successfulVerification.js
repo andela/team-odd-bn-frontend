@@ -61,7 +61,7 @@ export class SuccessfulEmailVerification extends Component {
         </div>
 
         <ToastContainer />
-        <Footer />
+        <Footer className="authFooter" />
       </div>
     );
   }

@@ -147,6 +147,7 @@ export class Profile extends Component {
     };
     await this.props.updateProfile(data);
     await this.props.getProfile();
+    this.props.history.push('/dashboard');
   }
 
   async handleFiles(files) {
@@ -174,7 +175,6 @@ export class Profile extends Component {
 
     return (
       <>
-
         <Navbar />
         { spinner ? <Spinner /> : '' }
 
@@ -237,6 +237,7 @@ export class Profile extends Component {
                   <option value="female">female</option>
                 </select>
                 <input
+                  className="birthDate"
                   data-test="birthDate"
                   type="date"
                   name="birthDate"
@@ -332,6 +333,7 @@ export class Profile extends Component {
                   >
                     Save Changes
                   </button>
+
                 )}
               </div>
             </form>

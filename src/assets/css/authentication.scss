@@ -3,7 +3,7 @@
 .boxContainer {
   width: 100%;
   height: 300px;
-  margin-top: 150px;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   .fieldContainer {
@@ -41,10 +41,8 @@
                 font-size: 20px;
       border: 1px solid #5c5c5c;
       border-radius: 2px;
-          
         }
       }
-
     }
     .blue-bg{
       background: rgba(0, 186, 242, 0.137);
@@ -68,8 +66,6 @@
       border: 1px solid #5c5c5c;
       border-radius: 2px;
     }
-    
-
     .btn-long {
       background-color: $logo-color;
       font-size: 18px;
@@ -104,7 +100,6 @@
   }
   }
 }
-
 .profile-name{
 @extend %profile-name;
 }
@@ -112,8 +107,6 @@
   margin-top: -5px;
   color: $logo-color;
 }
-
-
 @media screen and (min-width: 1024px) and (max-width: 1223px) {
   .boxContainer {
     .fieldContainer {
@@ -129,10 +122,8 @@
                 font-size: 20px;
       border: 1px solid #5c5c5c;
       border-radius: 2px;
-          
         }
       }
-
     }
     }
   }
@@ -152,15 +143,12 @@
                 font-size: 20px;
       border: 1px solid #5c5c5c;
       border-radius: 2px;
-          
         }
       }
-
     }
     }
   }
 }
-
 @media screen and (min-width: 324px) and (max-width: 1024px) {
   .boxContainer {
     .fieldContainer {
@@ -176,14 +164,11 @@
                 font-size: 20px;
       border: 1px solid #5c5c5c;
       border-radius: 2px;
-          
         }
       }
-
     }
     }
   }
-
 }
 @media screen and (max-width: 768px) {
   .boxContainer {
@@ -205,10 +190,8 @@
                 font-size: 20px;
       border: 1px solid #5c5c5c;
       border-radius: 2px;
-          
         }
       }
-
     }
       .btn-long {
         background-color: $logo-color;
@@ -227,13 +210,11 @@
   .boxContainer {
     margin: 0px;
     margin-top:25px;
-    
     .fieldContainer {
       position: absolute;
       background-color: rgb(255, 255, 255);
       width: 100%;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-
             .btn-long {
             font-size: 15px;
             margin: 10px;
@@ -241,3 +222,5 @@
     }
   }
 }
+
+

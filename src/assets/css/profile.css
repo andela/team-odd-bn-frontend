@@ -101,8 +101,8 @@ input[type=date] {
 
 .names input[type=text] {
   padding: 10px;
-  width: 200px;
-  margin-right: 37px;
+  width: 209px;
+  margin-right: 40px;
 }
 
 .gender {
@@ -125,7 +125,7 @@ input[type=date] {
 .linemanager {
   grid-column: 1/2;
   grid-row: 5/6;
-  width: 77%;
+  width: 80%;
   height: 40px;
 }
 
@@ -133,15 +133,17 @@ input[type=date] {
   grid-column: 1/2;
   grid-row: 6/7;
 }
-
+.gender input {
+  width: 220px;
+}
 .address input[type=text], .department input[type=text] {
   padding: 10px;
-  width: 73%;
+  width: 76%;
   margin-right: 40px;
 }
 
 .bio textarea {
-  width: 65%;
+  width: 68%;
   padding: 40px;
 }
 

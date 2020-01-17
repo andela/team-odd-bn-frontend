@@ -1,13 +1,13 @@
 import React from 'react';
 import Sidebar from './Dashboard/sidebar/index';
 
-const Dashboard = () => {
-  return (
-    <Sidebar>
+const Dashboard = () => (
+  <Sidebar>
+    <div className="dashboard">
       <p>Welcome to Barefoot</p>
       <p>This is content</p>
-    </Sidebar>
-  );
-};
+    </div>
+  </Sidebar>
+);
 
 export default Dashboard;
