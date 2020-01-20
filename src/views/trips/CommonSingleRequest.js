@@ -1,20 +1,38 @@
-import React, { Component } from 'react';
+
+/* eslint-disable no-unused-expressions */
+
+import React, { Component } from 'react'
+import { plusDivs } from '../../helpers/carousel'
+import Action from '../../components/Action'
 import { Redirect } from 'react-router-dom';
-import { plusDivs } from '../../helpers/carousel';
-import Action from '../../components/Action';
 import verifyToken from '../../helpers/verifyToken';
 
-class RequestView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isApproved: false,
-      isRejected: false,
-    };
 
-    // this.handleChange = this.handleChange.bind(this);
+class RequestView extends Component {
+  state = {
+    ds: 'none',
+    commentId: '',
+    tripRId: '',
+    isApproved: false,
+      isRejected: false,
+  }
+  componentDidMount() {
+    this.refs.trips && plusDivs(1, this.refs.trips.children)
+    this.scrollToBottom()
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
+  scrollToBottom() {
+    const scrollHeight = this.messagesEnd && this.messagesEnd.scrollHeight
+    const height = this.messagesEnd && this.messagesEnd.clientHeight
+    const maxScrollTop = scrollHeight - height
+    this.messagesEnd
+      ? (this.messagesEnd.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0)
+      : ''
+  }
   handleChange(value) {
     this.setState({
       isApproved: !value,
@@ -24,15 +42,60 @@ class RequestView extends Component {
 
   render() {
     const { isApproved, isRejected } = this.state;
-    console.log('state', this.state);
     const {
-      comments, trips, approveRequest, params,
-    } = this.props;
-    this.refs.trips && plusDivs(1, this.refs.trips.children);
+      approveRequest, params,
+      comments,
+      trips,
+      postCommentsAction,
+      updateCommentInputAction,
+      input,
+      tripRequestId,
+      deleteCommentAction,
+      fetchRequestCommentsAction,
+    } = this.props
+    const inputValue = input ? input.comment : ''
 
     return (
       <>
+        <div
+          className="confirmPopup"
+          style={{
+            display: this.state.ds,
+          }}
+        >
+          <div className="popupContainer">
+          <div className="popupMessage">Are you sure you want to delete?</div>
+          <div>
+            <div><button
+            onClick={async () => {
+              await deleteCommentAction(this.state.commentId)
+              await fetchRequestCommentsAction(this.state.tripRId)
+              this.setState({
+                ds: 'none',
+              })
+            }}
+            id="delete"
+          >
+            delete
+          </button></div>
+          <div>
+          <button
+          id="cancel"
+            onClick={async () => {
+              this.setState({
+                ds: 'none',
+              })
+            }}
+          >
+            cancel
+          </button>
+          </div>
+          </div>
+          </div>
+        </div>
+
         <div className="singleRequestHeader">
+
           { verifyToken(localStorage.getItem('token')).roleId === 6
             ? (
               <>
@@ -86,8 +149,9 @@ class RequestView extends Component {
                     <div className="startDate">{trip.startDate.slice(0, 10)}</div>
                     <div className="returnDate">{trip.returnDate === null ? null : trip.returnDate.slice(0, 10)}</div>
                     <div className="reason">{trip.reason}</div>
-                  </div>
-                ))}
+
+                </div>
+              ))}
             <div className="corasselButtons">
               {verifyToken(localStorage.getItem('token')).roleId === 6 ? (
                 <div>
@@ -101,54 +165,98 @@ class RequestView extends Component {
                   </div>
                 )}
               <div>
-                <button id="back" type="button" onClick={() => plusDivs(-1, this.refs.trips.children)}>
-              &nbsp;
+                <button
+                  id="back"
+                  type="button"
+                  onClick={() => plusDivs(-1, this.refs.trips.children)}
+                >
+                  &nbsp;
                 </button>
-
               </div>
               <div>
-                <button id="front" type="button" onClick={() => plusDivs(1, this.refs.trips.children)}>
-              &nbsp;
+                <button
+                  id="front"
+                  type="button"
+                  onClick={() => plusDivs(1, this.refs.trips.children)}
+                >
+                  &nbsp;
                 </button>
               </div>
             </div>
           </div>
-          <div className="comments">
-            <div><h3>comments</h3></div>
-            {comments && comments.map((comment, index) => (
-              <div className="commentCardContainer" key={index}>
-                <div className="commentCardHeader">
-                  <div className="commentCardHeaderLeftSide">
-                    {comment.user.firstName}
+          <div
+            ref={el => {
+              this.messagesEnd = el
+            }}
+            className="comments"
+          >
+            <div>
+              <h3>comments</h3>
+            </div>
+            <div className='chats'>
+            {comments &&
+              comments.map((comment, index) => (
+                <div className="commentCardContainer" key={index}>
+                  <div className="commentCardHeader">
+                    <div className="commentCardHeaderLeftSide">
+                      {comment.user.firstName}
+                    </div>
+                    <div className="commentCardHeaderCenterSide">
+                      {comment.updatedAt.slice(0, 10)}
+                    </div>
+                    <div className="commentCardHeaderRigthSide">
+                      <button
+                        id="deleteComment"
+                        onClick={async () => {
+                          this.setState({
+                            commentId: comment.id,
+                            tripRId: tripRequestId,
+                            ds: 'flex',
+                          })
+                        }}
+                        type="button"
+                      >
+                        <img
+                          alt="deleteCommentButton"
+                          src="https://img.icons8.com/color/48/000000/delete-forever.png"
+                        />
+                      </button>
+                    </div>
                   </div>
-                  <div className="commentCardHeaderRigthSide">
-                    {comment.updatedAt.slice(0, 10)}
+                  <div className="commentBody" key={comment.key}>
+                    {comment.comment}
                   </div>
                 </div>
-                <div className="commentBody" key={comment.key}>
-                  {comment.comment}
-                </div>
-              </div>
-            ))}
-            <div className="commentCardContainer">
-              <div className="commentCardHeader">
-                <div className="commentCardHeaderLeftSide">
-                    Comment
-                </div>
-                <div className="commentCardHeaderRigthSide" />
+
+              ))}
               </div>
               <div className="commentInputField">
-                <textarea />
-              </div>
+                <label>New Comment:</label>
+                <textarea
+                  value={inputValue}
+                  onChange={e =>
+                    updateCommentInputAction({ comment: e.target.value })
+                  }
+                  placeholder='Comment'
+                />
             </div>
             <div className="singleRequestFooter">
-              <button type="button">post</button>
+              <button
+                type="button"
+                onClick={async () => {
+                  updateCommentInputAction({ comment: '' })
+                  await postCommentsAction(tripRequestId, input)
+                  await fetchRequestCommentsAction(tripRequestId)
+                }}
+              >
+                post
+              </button>
             </div>
           </div>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default RequestView;
+export default RequestView

@@ -21,7 +21,7 @@ import Notfound from './NotFound';
 import Requests from './containers/TripsContainer/Requests';
 import SocialLogin from './containers/user/social/SocialAuthLogin';
 import verifyEmailView from './views/auth/verifyEmailView';
-import RoundTrip from './containers/trips/RoundTrip';
+import RoundTrip from './containers/TripsContainer/RoundTrip';
 import './assets/css/App.scss';
 import './assets/css/style.scss';
 import SingleRequest from './containers/TripsContainer/SingleRequest';

@@ -35,6 +35,9 @@ const state = {
       singleRequestData: {},
       requestCommentsData: {},
       requestsError: {},
+      paginatedRequest: [],
+      paginationStart: 0,
+      paginationEnd: 5,
     },
   },
   viewProfile: {

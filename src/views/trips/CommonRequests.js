@@ -5,9 +5,20 @@ import { Link } from 'react-router-dom';
 
 class RequestView extends Component {
   render() {
-    const { navs, tableHeads, entities } = this.props;
+    const {
+      data,
+      navs,
+      tableHeads,
+      entities,
+      paginationEnd,
+      paginationStart,
+      paginatedRequest,
+      paginationAction,
+    } = this.props;
+
     return (
       <>
+
         {navs && (
           <div className="tableNav">
             {navs.map((head) => (
@@ -42,6 +53,33 @@ class RequestView extends Component {
             &nbsp; to create one
           </div>
         )}
+        <div className="corasselButtons">
+          <div>
+            <button
+              id="back"
+              type="button"
+              onClick={() => paginationAction({
+                data,
+                currentPage: data.slice(paginationStart, paginationEnd),
+                paginationStart: paginationStart - 5,
+                paginationEnd: paginationEnd - 5,
+              })}
+            />
+          </div>
+          <div>
+            <button
+              id="front"
+              type="button"
+              onClick={() => paginationAction({
+                data,
+                currentPage: data.slice(paginationStart, paginationEnd),
+                paginationStart: paginationStart + 5,
+                paginationEnd: paginationEnd + 5,
+              })}
+            />
+          </div>
+
+        </div>
       </>
     );
   }

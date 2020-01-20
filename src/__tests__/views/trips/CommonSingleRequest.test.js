@@ -28,6 +28,7 @@ describe('Common Single Request page ', () => {
           jest.fn();
           return jest.fn(value);
         }}
+        postCommentsAction={jest.fn()}
       />,
 
     );
@@ -41,6 +42,7 @@ describe('Common Single Request page ', () => {
       <CommonSingleRequest
         comments={init.trips.requests.requestCommentsData}
         trips={init.trips.requests.singleRequestData}
+        postCommentsAction={jest.fn()}
       />,
 
     );
@@ -53,6 +55,7 @@ describe('Common Single Request page ', () => {
         <CommonSingleRequest
           comments={init.trips.requests.requestCommentsData}
           trips={init.trips.requests.singleRequestData}
+          postCommentsAction={jest.fn()}
         />
       </Router>,
     );
@@ -67,6 +70,7 @@ describe('Common Single Request page ', () => {
         <CommonSingleRequest
           comments={init.trips.requests.requestCommentsData}
           trips={init.trips.requests.singleRequestData}
+          postCommentsAction={jest.fn()}
         />
       </Router>,
     );
@@ -74,8 +78,7 @@ describe('Common Single Request page ', () => {
     button.simulate('click');
     expect(plusDivs.mock.calls).toBeDefined();
   });
-
-  it('it Should dispatch approve button successfully', async () => {
+  it('it Should dispatch hit submit button successfully', async () => {
     const plusDivs = jest.fn();
     wrapper = mount(
       <Router>
@@ -84,6 +87,8 @@ describe('Common Single Request page ', () => {
           trips={init.trips.requests.singleRequestData}
           params={{ tripRequestId: 8 }}
           approveRequest={jest.fn()}
+          postCommentsAction={jest.fn()}
+          updateCommentInputAction={jest.fn()}
         />
       </Router>,
     );
@@ -98,8 +103,31 @@ describe('Common Single Request page ', () => {
           trips={init.trips.requests.singleRequestData}
           params={{ tripRequestId: 8 }}
           approveRequest={jest.fn()}
+          postCommentsAction={jest.fn()}
+          updateCommentInputAction={jest.fn()}
         />
       </Router>,
     );
+    const button = wrapper.find('textarea');
+    button.simulate('change');
+    expect(plusDivs.mock.calls).toBeDefined();
+  });
+  it('it Should dispatch hit submit button successfully', async () => {
+    const plusDivs = jest.fn();
+    wrapper = mount(
+      <Router>
+        <CommonSingleRequest
+          comments={init.trips.requests.requestCommentsData}
+          trips={init.trips.requests.singleRequestData}
+          postCommentsAction={jest.fn()}
+          deleteCommentAction={jest.fn()}
+          params={{ tripRequestId: 8 }}
+          approveRequest={jest.fn()}
+        />
+      </Router>,
+    );
+    const button = wrapper.find('#deleteComment');
+    button.simulate('click');
+    expect(plusDivs.mock.calls).toBeDefined();
   });
 });

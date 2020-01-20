@@ -9,6 +9,7 @@ import {
   notificationError,
   notificationSuccess,
 } from '../../helpers/notificationPopUp';
+import errorProcessor from '../../helpers/errorProcessor';
 
 export const updateSignupInputAction = (data) => ({
   type: SIGNUP_INPUT,
@@ -41,11 +42,7 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
         payload: signupResponse.data,
       });
     } catch (error) {
-      let err = error.response ? error.response : error.response = { data: { message: 'Ooops! Network Error' } };
-      err = error.response.data.message
-        ? error.response.data.message
-        : error.response.data.error;
-      err = typeof err === 'object' ? err : [err];
+      const err = errorProcessor(error);
       err.map((e) => notificationError(e));
       dispatch(spinnerStatusAction(false));
       dispatch({
