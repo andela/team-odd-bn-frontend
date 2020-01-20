@@ -22,7 +22,6 @@ const allUsers = ({
     ...Paginate(searchedData || users, itemsPerPage),
   };
 
-
   const entities = users && (searchedData || paginatedData[pageNo]).map((user, index) => [
     { className: 'firstName', attribute: user.firstName, key: `firstName${index}` },
     { className: 'LastName', attribute: user.lastName, key: `lastName${index}` },

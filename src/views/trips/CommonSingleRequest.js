@@ -156,10 +156,10 @@ class RequestView extends Component {
                   verifyToken(localStorage.getItem('token')).id !==
                     trips.userId ? (
                     <>
-                      <div className="firstname">
+                      <div className="firstName">
                         {trips && trips.user.firstName}
                       </div>
-                      <div className="lastname">
+                      <div className="lastName">
                         {trips && trips.user.lastName}
                       </div>
                     </>

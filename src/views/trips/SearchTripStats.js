@@ -25,7 +25,7 @@ export const RequestsView = ({ getStats, pageNo, itemsPerPage }) => {
     : [];
 
   const entities = data && data.map((request) => [
-    { className: 'tripType', attribute: request.originId, key: 'tripType' },
+    { attribute: request.originId },
     { className: 'createdAt', attribute: request.destinationId, key: 'createdAt' },
     { className: 'createdAt', attribute: request.createdAt && request.createdAt.slice(0, 10), key: 'date' },
     { className: 'action', attribute: <Action background="#34c6f3" url={`/requests/${request.tripRequestId}`} action="View" />, key: 'action' },

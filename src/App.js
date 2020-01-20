@@ -33,7 +33,7 @@ import { checkPrevilege } from './helpers/checkPrevilege';
 import Dashboard from './views/Dashboard';
 import OneWayTrip from './containers/TripsContainer/oneway';
 import ApprovalRequests from './containers/Trips/ApprovalTable';
-
+import viewAllBookings from './containers/booking/viewAllBookings';
 import MulticityTrip from './containers/Trips/MulticityTrip';
 import SearchStats from './containers/trips/SearchStats';
 import ViewAccomodation from './containers/accommodation/ViewAccommodations';
@@ -64,6 +64,7 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/bookings" exact component={viewAllBookings} />
           <Route
             path="/successful-verification"
             exact
@@ -87,13 +88,20 @@ const App = () => (
           />
           <Route path="/trips/oneway" exact component={OneWayTrip} />
           <Route path="/trips/approval" exact component={ApprovalRequests} />
-          <Route path="/trips/approval/:tripRequestId" exact component={SingleRequest} />
+          <Route
+            path="/trips/approval/:tripRequestId"
+            exact
+            component={SingleRequest}
+          />
           <Route path="/trips/multicity" exact component={MulticityTrip} />
           <Route
             path="/admin/roles"
             exact
             render={() => (checkPrevilege(1) ? (
-              <UserRolesView />) : (<Redirect to="/Dashboard" />))}
+              <UserRolesView />
+            ) : (
+              <Redirect to="/Dashboard" />
+            ))}
           />
           <Route path="/accommodations" exact component={ViewAccomodation} />
           <Route component={Notfound} />

@@ -14,6 +14,7 @@
 }
 .modal-header {
   text-align: center;
+  color: $logo-color;
 }
 .btn-long {
   width: 100px;
@@ -33,6 +34,10 @@
   width: 50%;
   max-height: 500px;
   overflow-y: auto;
+  border-radius: 4px;
+}
+.modal-content-small {
+  width: 35% !important;
 }
 .modal-body {
   display: flex;
@@ -42,11 +47,11 @@
   table {
     margin: auto;
     width: 100%;
-        font-size: 14px;
+    font-size: 14px;
     tr:nth-child(odd) {
       background-color: #dadada;
     }
-    th{
+    th {
       background-color: $logo-color;
       color: white;
     }
@@ -75,7 +80,28 @@
     font-size: 14px;
     margin-top: 10px;
     border: 1px solid #5c5c5c;
-    padding: 0px 0px 0px 10px!important;
+    padding: 0px 0px 0px 10px !important;
+  }
+}
+.modal-disabled-input {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  label{
+    margin-top: 10px;
+    width: 30%;
+    text-align: left;
+  }
+  .transparent-input {
+    margin-left: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 70%;
+    font-size: 16px;
+    padding-left: 5px;
+    border: 1px solid #c2c2c2;
+    border-radius: 3px;
   }
 }
 .room-type {
@@ -89,7 +115,7 @@
 }
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color: $logo-color;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -107,16 +133,28 @@
       flex-direction: column;
     }
   }
-    .center-element {
+  .center-element {
     text-align: left;
   }
   .room-type {
     select {
-    font-size: 14px;
+      font-size: 14px;
       margin-left: 0px;
     }
   }
   .btn-long {
     margin-left: 0px;
+  }
+  .modal-disabled-input {
+  display: flex;
+  flex-direction: column;
+   margin-top: 30px;
+  label{
+    width: 100%;
+  }
+  .transparent-input {
+    width: 100%;
+    margin-left: 0;
+  }
   }
 }
