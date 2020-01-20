@@ -1,0 +1,11 @@
+@import 'App.scss';
+@import 'base.scss';
+
+.selectOption {
+  height: 40px !important;
+  width: 100%;
+  border: 1px solid $logo-color;
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+}

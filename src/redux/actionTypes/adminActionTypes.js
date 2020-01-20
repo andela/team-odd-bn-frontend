@@ -1,0 +1,4 @@
+export const GET_ALL_ROLES = 'GET_ALL_ROLES';
+export const ASSIGN_ROLE_SUCCESS = 'ASSIGN_ROLE_SUCCESS';
+export const ADMIN_ERROR = 'ADMIN_ERROR';
+export const NEW_ROLE_INPUT = 'NEW_ROLE_INPUT';

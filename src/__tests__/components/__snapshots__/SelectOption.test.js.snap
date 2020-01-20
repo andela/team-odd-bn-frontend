@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for Select option component should call onChange prop for signup 1`] = `ShallowWrapper {}`;

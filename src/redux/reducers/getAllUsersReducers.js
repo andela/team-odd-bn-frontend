@@ -1,4 +1,7 @@
-import { GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR } from '../actionTypes/profileActionTypes';
+import {
+  GET_ALL_USERS_SUCCESS,
+  PAGINATION, GET_ALL_USERS_ERROR,
+} from '../actionTypes/profileActionTypes';
 
 const initialState = {
   users: null,
@@ -11,6 +14,14 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload,
+        paginatedRequest: action.payload.data.slice(0, 5),
+      };
+    case PAGINATION:
+      return {
+        ...state,
+        paginatedRequest: action.payload.currentPage,
+        paginationStart: action.payload.paginationStart,
+        paginationEnd: action.payload.paginationEnd,
       };
     case GET_ALL_USERS_ERROR:
       return {

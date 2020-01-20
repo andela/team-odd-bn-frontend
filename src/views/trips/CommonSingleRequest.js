@@ -64,106 +64,116 @@ class RequestView extends Component {
           }}
         >
           <div className="popupContainer">
-          <div className="popupMessage">Are you sure you want to delete?</div>
-          <div>
-            <div><button
-            onClick={async () => {
-              await deleteCommentAction(this.state.commentId)
-              await fetchRequestCommentsAction(this.state.tripRId)
-              this.setState({
-                ds: 'none',
-              })
-            }}
-            id="delete"
-          >
-            delete
-          </button></div>
-          <div>
-          <button
-          id="cancel"
-            onClick={async () => {
-              this.setState({
-                ds: 'none',
-              })
-            }}
-          >
-            cancel
-          </button>
-          </div>
-          </div>
+            <div className="popupMessage">Are you sure you want to delete?</div>
+            <div>
+              <div>
+                <button
+                  onClick={async () => {
+                    await deleteCommentAction(this.state.commentId)
+                    await fetchRequestCommentsAction(this.state.tripRId)
+                    this.setState({
+                      ds: 'none',
+                    })
+                  }}
+                  id="delete"
+                >
+                  delete
+                </button>
+              </div>
+              <div>
+                <button
+                  id="cancel"
+                  onClick={async () => {
+                    this.setState({
+                      ds: 'none',
+                    })
+                  }}
+                >
+                  cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="singleRequestHeader">
-
-          { verifyToken(localStorage.getItem('token')).roleId === 6
-            ? (
-              <>
-                <div>
-                  <button
-                    id="approve"
-                    disabled={isApproved}
-                    className="approve-button"
-                    onClick={() => {
-                      this.handleChange(false);
-                      approveRequest(params.tripRequestId, 'status=accept');
-                    }}
-                    background="#34c6f3"
-                    type="submit"
-                    action="approve"
-                  >
-                    {isApproved ? 'Approved' : 'Approve'}
-                  </button>
-
-                </div>
-                <div>
-                  <button
-                    id="reject"
-                    disabled={isRejected}
-                    className="reject-button"
-                    onClick={() => {
-                      this.handleChange(true);
-                      approveRequest(params.tripRequestId, 'status=reject');
-                    }}
-                    background="#34c6f3"
-                    type="submit"
-                    action="approve"
-                  >
-                    {isRejected ? 'Rejected' : 'Reject'}
-                  </button>
-                </div>
-              </>
-            )
-            : (
-              <div><Action background="#34c6f3" url="#" action="edit" /></div>
-            )}
+          {verifyToken(localStorage.getItem('token')).roleId === 6 &&
+          verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId ? (
+            <>
+              <div>
+                <button
+                  id="approve"
+                  disabled={isApproved}
+                  className="approve-button"
+                  onClick={() => {
+                    this.handleChange(false)
+                    approveRequest(params.tripRequestId, 'status=accept')
+                  }}
+                  background="#34c6f3"
+                  type="submit"
+                  action="approve"
+                >
+                  {isApproved ? 'Approved' : 'Approve'}
+                </button>
+              </div>
+              <div>
+                <button
+                  id="reject"
+                  disabled={isRejected}
+                  className="reject-button"
+                  onClick={() => {
+                    this.handleChange(true)
+                    approveRequest(params.tripRequestId, 'status=reject')
+                  }}
+                  background="#34c6f3"
+                  type="submit"
+                  action="approve"
+                >
+                  {isRejected ? 'Rejected' : 'Reject'}
+                </button>
+              </div>
+            </>
+          ) : (
+            <div>
+              <Action background="#34c6f3" url="#" action="edit" />
+            </div>
+          )}
         </div>
         <div className="singleRequest">
           <div className="trips" ref="trips">
-            <div><h3>Trip Details</h3></div>
-            {trips && trips.trips
-                && trips.trips.map((trip, index) => (
-                  <div className="trip" key={index} ref={(index) => index}>
-                    <div className="originId">{trip.originId}</div>
-                    <div className="destinationId">{trip.destinationId}</div>
-                    <div className="startDate">{trip.startDate.slice(0, 10)}</div>
-                    <div className="returnDate">{trip.returnDate === null ? null : trip.returnDate.slice(0, 10)}</div>
-                    <div className="reason">{trip.reason}</div>
-
+            <div>
+              <h3>Trip Details</h3>
+            </div>
+            {trips &&
+              trips.trips &&
+              trips.trips.map((trip, index) => (
+                <div className="trip" key={index} ref={index => index}>
+                  <div className="originId">{trip.originId}</div>
+                  <div className="destinationId">{trip.destinationId}</div>
+                  <div className="startDate">{trip.startDate.slice(0, 10)}</div>
+                  <div className="returnDate">
+                    {trip.returnDate === null
+                      ? null
+                      : trip.returnDate.slice(0, 10)}
+                  </div>
+                  <div className="reason">{trip.reason}</div>
                 </div>
               ))}
             <div className="corasselButtons">
-              {verifyToken(localStorage.getItem('token')).roleId === 6 ? (
+              {verifyToken(localStorage.getItem('token')).roleId === 6 
+              && verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId? (
                 <div>
-                  <a className="back-button" href="/trips/approval">Back To Trips</a>
+                  <a className="back-button" href="/trips/approval">
+                    Back To Trips
+                  </a>
                 </div>
-              )
-                : (
-                  <div>
-                    <a className="back-button" href="/requests">Back To Trips</a>
-
-                  </div>
-                )}
+              ) : (
+                <div>
+                  <a className="back-button" href="/requests">
+                    Back To Trips
+                  </a>
+                </div>
+              )}
               <div>
                 <button
                   id="back"
@@ -185,60 +195,59 @@ class RequestView extends Component {
             </div>
           </div>
           <div
-            ref={el => {
-              this.messagesEnd = el
-            }}
             className="comments"
           >
             <div>
               <h3>comments</h3>
             </div>
-            <div className='chats'>
-            {comments &&
-              comments.map((comment, index) => (
-                <div className="commentCardContainer" key={index}>
-                  <div className="commentCardHeader">
-                    <div className="commentCardHeaderLeftSide">
-                      {comment.user.firstName}
+            <div
+              ref={el => {
+              this.messagesEnd = el
+            }} className="chats">
+              {comments &&
+                comments.map((comment, index) => (
+                  <div className="commentCardContainer" key={index}>
+                    <div className="commentCardHeader">
+                      <div className="commentCardHeaderLeftSide">
+                        {comment.user.firstName}
+                      </div>
+                      <div className="commentCardHeaderCenterSide">
+                        {comment.updatedAt.slice(0, 10)}
+                      </div>
+                      <div className="commentCardHeaderRigthSide">
+                        <button
+                          id="deleteComment"
+                          onClick={async () => {
+                            this.setState({
+                              commentId: comment.id,
+                              tripRId: tripRequestId,
+                              ds: 'flex',
+                            })
+                          }}
+                          type="button"
+                        >
+                          <img
+                            alt="deleteCommentButton"
+                            src="https://img.icons8.com/color/48/000000/delete-forever.png"
+                          />
+                        </button>
+                      </div>
                     </div>
-                    <div className="commentCardHeaderCenterSide">
-                      {comment.updatedAt.slice(0, 10)}
-                    </div>
-                    <div className="commentCardHeaderRigthSide">
-                      <button
-                        id="deleteComment"
-                        onClick={async () => {
-                          this.setState({
-                            commentId: comment.id,
-                            tripRId: tripRequestId,
-                            ds: 'flex',
-                          })
-                        }}
-                        type="button"
-                      >
-                        <img
-                          alt="deleteCommentButton"
-                          src="https://img.icons8.com/color/48/000000/delete-forever.png"
-                        />
-                      </button>
+                    <div className="commentBody" key={comment.key}>
+                      {comment.comment}
                     </div>
                   </div>
-                  <div className="commentBody" key={comment.key}>
-                    {comment.comment}
-                  </div>
-                </div>
-
-              ))}
-              </div>
-              <div className="commentInputField">
-                <label>New Comment:</label>
-                <textarea
-                  value={inputValue}
-                  onChange={e =>
-                    updateCommentInputAction({ comment: e.target.value })
-                  }
-                  placeholder='Comment'
-                />
+                ))}
+            </div>
+            <div className="commentInputField">
+              <label>New Comment:</label>
+              <textarea
+                value={inputValue}
+                onChange={e =>
+                  updateCommentInputAction({ comment: e.target.value })
+                }
+                placeholder="Comment"
+              />
             </div>
             <div className="singleRequestFooter">
               <button

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-
 class RequestView extends Component {
   render() {
     const {
@@ -48,9 +47,9 @@ class RequestView extends Component {
           ))}
         {entities.length == 0 && (
           <div className="itemsNotFound">
-            No trip requests found click &nbsp;
-            <Link to="/trips/roundtrip">here</Link>
-            &nbsp; to create one
+            No trips found click &nbsp;
+            <Link to="/trips/oneWay">here</Link>
+            &nbsp; to request a new one
           </div>
         )}
         <div className="corasselButtons">

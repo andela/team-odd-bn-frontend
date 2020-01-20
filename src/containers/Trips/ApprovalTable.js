@@ -26,7 +26,6 @@ class ApprovalRequests extends Component {
       <>
         <Dashboard>
           { verifyToken(localStorage.getItem('token')).roleId === 6 ? <AvailRequestsView data={data} /> : <Redirect to="/requests" /> }
-          {/* <AvailRequestsView data={data} /> */}
         </Dashboard>
       </>
     );
