@@ -3,6 +3,10 @@ import CommonSingleRequest from './CommonSingleRequest';
 import CommonRequests from './CommonRequests';
 
 class RequestView extends Component {
+  componentDidUpdate() {
+    this.props.data;
+  }
+
   render() {
     const {
       params,
@@ -23,6 +27,7 @@ class RequestView extends Component {
       paginatedRequest,
       paginationAction,
       data,
+      userSearch,
     } = this.props;
 
     return (
@@ -30,7 +35,6 @@ class RequestView extends Component {
         <div className="tableContainer">
           {trips && comments && (
             <CommonSingleRequest
-
               tripRequestId={tripRequestId}
               updateCommentInputAction={updateCommentInputAction}
               postCommentsAction={postCommentsAction}
@@ -41,12 +45,12 @@ class RequestView extends Component {
               input={input}
               deleteCommentAction={deleteCommentAction}
               fetchRequestCommentsAction={fetchRequestCommentsAction}
-
             />
           )}
 
           {navs && tableHeads && entities && (
             <CommonRequests
+              userSearch={userSearch}
               data={data}
               paginationAction={paginationAction}
               navs={navs}

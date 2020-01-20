@@ -5,9 +5,7 @@ import thunk from 'redux-thunk';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import {
-  UserRoles, mapStateToProps,
-} from '../../../containers/admin/UserRoles';
+import { UserRoles, mapStateToProps } from '../../../containers/admin/UserRoles';
 import {
   defaultProps,
   updateDefaultProps,
@@ -15,80 +13,18 @@ import {
 } from '../../../__mocks__/admin/admin';
 import rootReducer from '../../../redux/reducers/index';
 
-const middlewares = [thunk];
-const testStore = (state) => {
-  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-  return createStoreWithMiddleware(rootReducer, state);
-};
-const setUp = (initialState = {}) => {
-  const store = testStore(initialState);
-  const wrapper = mount(
-    <Provider store={store}>
-      <Router>
-
-        <UserRoles {...defaultProps} store={store} />
-      </Router>
-    </Provider>,
-  );
-  return wrapper;
-};
-const setUpEmptyTable = (initialState = {}) => {
-  const store = testStore(initialState);
-  const wrapper = shallow(
-    <Router>
-      <UserRoles {...emptyDataComponent} store={store} />
-    </Router>,
-
-  );
-  return wrapper;
-};
-
-describe('User roles test suite', () => {
-  beforeEach(() => {
-    const input = document.createElement('input');
-    input.setAttribute('id', 'searchInput');
-    document.body.appendChild(input);
+describe('Expect to render', () => {
+  const wrapper = shallow(<UserRoles {...defaultProps} />);
+  it('should render successfully', () => {
+    expect(wrapper).toMatchSnapshot();
   });
-  beforeEach(() => {
-    const div = document.createElement('div');
-    div.innerHTML = `
-    <div class="entity">
-    <div class="firstName">user</div>
-    <div class="lastName">test</div>
-    <div class="Email">me@you.com</div>
-    <div class="role">user</div>
-    </div>
-    <div class="entity">
-    <div class="firstName">user</div>
-    <div class="lastName">test</div>
-    <div class="Email">admin@gmail.com</div>
-    <div class="role">user</div>
-    </div>
-    `;
-    div.setAttribute('class', 'tableContainer');
-    document.body.appendChild(div);
+  it('Should simulate on componentDidMount', () => {
+    const didUpdate = jest.spyOn(wrapper.instance(), 'componentDidUpdate');
+    wrapper.instance().componentDidUpdate();
+    expect(didUpdate).toHaveBeenCalledWith();
   });
-
-  it('Should mount without table data', () => {
-    const component = setUpEmptyTable({});
-    const componentDidMountSpy = jest.spyOn(
-      component.instance(),
-      'componentDidMount',
-    );
-    component.find('[data-test="userRoles-test"]');
-    expect(componentDidMountSpy).not.toHaveBeenCalled();
-  });
-  // it('Should call componentDidMount Successfully', () => {
-  //   const component = setUp({});
-  //   const componentDidMountSpy = jest.spyOn(component.instance(), 'componentDidMount');
-  //   component.find('[data-test="userRoles-test"]');
-  //   expect(componentDidMountSpy).not.toHaveBeenCalled();
-  // });
-  it('Should be able to search', () => {
-    const component = setUp({});
-    // component.find('[data-test="dataFilter-test"]').simulate('change', 'admin');
-    // component.find('[data-test="dataFilter-test"]').simulate('change', 'me');
-  });
+});
+describe('Onchange search ', () => {
   it('should map state to props', () => {
     const initialState = {};
     expect(mapStateToProps(initialState).adminState).toBeDefined();

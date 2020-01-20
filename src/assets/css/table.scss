@@ -53,6 +53,49 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     }
   }
 }
+.searchOption{
+ display: flex;
+ flex-direction: row;
+ margin-bottom: 10px;
+           @media screen and (min-width: 200px) and (max-width: 600px) {
+ flex-direction: column;
+          }
+      .search {
+          @media screen and (min-width: 200px) and (max-width: 600px) {
+            width: 90%;
+            margin-top: 10px;
+            margin-left: 10px;
+            height: 40px;
+          }
+          outline: none;
+          width: 235px;
+          height: 40px;
+          font-size: 14px;
+          background: #ffffff;
+          border: 1px solid #00b9f2;
+          border-radius: 10px;
+          padding-left: 5px;
+        
+      }
+}
+      .userSearch {
+         margin-bottom: 10px;
+          @media screen and (min-width: 200px) and (max-width: 600px) {
+            width: 90%;
+            margin: auto;
+            margin-top: 10px;
+            margin-left: 10px;
+            height: 40px;
+          }
+          width: 235px;
+          height: 40px;
+          font-size: 14px;
+          background: #ffffff;
+          border: 1px solid #00b9f2;
+          border-radius: 10px;
+          padding-left: 5px;
+        
+      }
 .tableMainContainer {
   height: 78%;
   margin-top: 4%;
@@ -118,7 +161,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       }
 
       .search {
-        height: 100%;
+        height: 100px;
         input {
           @media screen and (min-width: 200px) and (max-width: 600px) {
             width: 60%;
@@ -134,7 +177,6 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           padding-left: 5px;
           margin-right: 10px;
           margin-left: 60%;
-          width: 40%;
         }
       }
     }

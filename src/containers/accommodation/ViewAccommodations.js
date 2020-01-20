@@ -22,6 +22,7 @@ export class ViewAccommodations extends Component {
     }
   }
 
+
   render() {
     const { allLikesDislakes } = this.props;
     return (

@@ -16,14 +16,17 @@ let store;
 const trips = {};
 const comments = [];
 const navs = [];
-const tableHeads = [];
+const tableHeads = [
+  {
+    attribute: 'First name',
+  },
+];
 const entities = [];
 describe('Test Signup page ', () => {
   it('Test snapshot using the initial state', () => {
     store = mockStore(initialState);
 
     wrapper = mount(
-
       <Provider store={store}>
         <Router>
           <Requests

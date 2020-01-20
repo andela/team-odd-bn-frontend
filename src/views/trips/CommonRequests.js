@@ -21,12 +21,12 @@ class RequestView extends Component {
       changePageNo,
       changeItemsPerPage,
       pageNo,
+      userSearch
     } = this.props
 
     this.refs.mytrips &&
       this.refs.mytrips.children.length > 0 &&
       PaginationStyle(this.refs.mytrips.children, pageNo)
-
 
     return (
       <>
@@ -40,11 +40,14 @@ class RequestView extends Component {
           </div>
         )}
         {tableHeads && (
-          <div className="tableHead">
-            {tableHeads.map(head => (
-              <div key={head.key}>{head.attribute}</div>
-            ))}
-          </div>
+          <>
+            {userSearch}
+            <div className="tableHead">
+              {tableHeads.map(head => (
+                <div key={head.key}>{head.attribute}</div>
+              ))}
+            </div>
+          </>
         )}
 
         {entities &&
@@ -57,7 +60,10 @@ class RequestView extends Component {
               ))}
             </div>
           ))}
-        {entities.length == 0 && (
+        {entities.length == 0 && tableHeads[0].attribute === 'First name' && (
+          <div className="itemsNotFound">User not found! </div>
+        )}
+        {entities.length == 0 && tableHeads[0].attribute !== 'First name' && (
           <div className="itemsNotFound">
             No trips found click &nbsp;
             <Link to="/trips/oneWay">here</Link>
@@ -68,11 +74,9 @@ class RequestView extends Component {
           <div className="pageArrows">
             <button
               type="button"
-              onClick={() =>
-                changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)
-              }
+              onClick={() => changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)}
             >
-             <a href={`#${pageNo-1}`}> &#60;&#60;</a>
+              <a href={`#${pageNo - 1}`}> &#60;&#60;</a>
             </button>
           </div>
           <div className="pageButtons" ref="mytrips">
@@ -104,7 +108,7 @@ class RequestView extends Component {
                 changePageNo(pageNo === data.length - 1 ? pageNo : pageNo + 1)
               }
             >
-             <a href={`#${pageNo}`}> &#62;&#62;</a>
+              <a href={`#${pageNo}`}> &#62;&#62;</a>
             </button>
           </div>
         </div>

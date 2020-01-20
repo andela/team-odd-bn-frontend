@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { handleFilter } from '../helpers/filter';
 import { checkPrevilege } from '../helpers/checkPrevilege';
 import usersIcon from '../assets/images/users.png';
-
 
 export const tableHeads = [
   { className: 'fNameNav', attribute: 'First name', key: 'firstName' },
@@ -12,25 +12,28 @@ export const tableHeads = [
   { className: 'role', attribute: 'Role', key: 'role' },
   { className: 'EditRoleNav', attribute: 'Edit role', key: 'editRole' },
 ];
-export const userRoleNav = [
-  {
-    className: 'tableHeader',
-    attribute: <h2>Assign Roles</h2>,
-    key: 'tableHeader',
-  },
-  {
-    className: 'search',
-    attribute: <input data-test="dataFilter-test" id="searchInput" type="text" onChange={(e) => { handleFilter(e, 'Email'); }} placeholder="search by email" />,
-    key: 'search',
-  },
-];
+export const userRoleNav = (data) => {
+  let newData;
+  const roleNavs = [
+    {
+      className: 'tableHeader',
+      attribute: <h2>Assign Roles</h2>,
+      key: 'tableHeader',
+    },
+  ];
+  return { roleNavs, newData };
+};
 
-export const usersNav = () => (
-  checkPrevilege(1) && (
-    <div>
-      <img src={usersIcon} alt="Users icon" />
-      <span>Users</span>
-    </div>
-
-  )
+export const usersNav = () => checkPrevilege(1) && (
+<div>
+  <img src={usersIcon} alt="Users icon" />
+  <span>Users</span>
+</div>
 );
+export const mapStateToProps = (state) => ({
+  admin: state.allUsers.users,
+  pageNo: state.pagination.pageNo,
+  itemsPerPage: state.pagination.itemsPerPage,
+});
+
+export default connect(mapStateToProps, {})(userRoleNav);
