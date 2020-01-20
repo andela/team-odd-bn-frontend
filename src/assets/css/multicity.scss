@@ -1,0 +1,218 @@
+.multicity-container {
+  border: 1px solid #00B9F2;
+  width: 75%;
+}
+
+.multicity-default-trip {
+  border: 1px solid #00B9F2;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.trip-label {
+  width: 14%;
+  text-align: center;
+}
+
+.select-origin {
+  width: 95%;
+  display: flex;
+  padding-top: 1rem;
+}
+
+.select-trip-origin {
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .5rem;
+
+  select {
+    border: 1px solid #00B9F2;
+    height: 3rem;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.33);
+  }
+}
+
+.trip-reason {
+  width: 95%;
+  padding: 1rem 0;
+  display: flex;
+}
+
+.multicity-trip-reason  {
+  width: 86%;
+  padding: 0 .5rem;
+  textarea {
+    width: 100%;
+    border: 1px solid #00B9F2;
+    border-radius: 5px;
+    height: 7rem;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.33);
+    padding: 6px;
+    box-sizing: border-box;
+  }
+}
+
+.multicity-trip-date {
+  display: flex;
+  padding: 1rem 0;
+  width: 95%;
+
+  input[type=date] {
+    border: 1px solid #00B9F2;
+    height: 1.5rem;
+    border-radius: 3px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.33);
+  }
+}
+
+.add-trip {
+  height: 2.5rem;
+  background: #00B9F2;
+  width: 150px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-trip-btn {
+  background-color: #F44336;
+}
+
+.remove-trip-btn:hover {
+  border: 1px solid #00B9F2;
+}
+
+.add-trip-btn:hover {
+  border: 1px solid #ffffff;
+}
+
+.multicity-button {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btnField {
+  width: 50%;
+  margin-left: 29%;
+  margin-top: 10%;
+  margin-bottom: 2%;
+  .btn-submit {
+      width: 55%;
+      height: 45px;
+      @media screen and (min-width: 320px) and (max-width: 576px) {
+          width: 100%;
+          margin-left: -5%;
+          margin-top: -20em;
+      }
+  }
+}
+
+.form-message-container {
+  margin: 1.2rem auto;
+  padding: 1rem;
+  border-radius: 4px;
+  letter-spacing: .7px;
+  width: 60%;
+}
+
+.message-details {
+  padding-top: 0.1rem;
+  font-size: 1.03rem;
+  color: black;
+}
+
+.container-error-page {
+  border: 1px solid #ff000059;
+  background-color: #ce11260d;
+}
+
+.message-title {
+  text-align: center;
+  color: #293238ad;
+  margin-bottom: 1.5rem;
+}
+
+
+@media (max-width: 499px) and (min-width: 320px) {
+  .multicity-container {
+    width: 100%;
+  }
+  .multicity-default-trip {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .trip-label {
+    display: none;
+  }
+
+  .multicity-trip-date {
+    width: 95%;
+  }
+  .select-trip-origin {
+    width: 95%;
+  }
+  .multicity-trip-reason {
+    width: 95%;
+  }
+  .multicity-date {
+    width: 40%;
+  }
+  .select-trip-origin select {
+    width: 45%;
+    padding: 0.5rem;
+    height: 50px;
+  }
+  .multicity-trip-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .multicity-trip-date .multicity-date {
+    width: 40%;
+    input {
+      margin: 0;
+      padding: 10px 0;
+    }
+  }
+  .submitBtn .refreshButton {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 600px) {
+  .multicity-trip-date input[type=date] {
+    width: 100px;
+  }
+  .multicity-trip-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 95%;
+  }
+  .select-trip-origin select {
+    width: 40%,
+  }
+  .multicity-date input {
+    width: 150px;
+  }
+  .defaultFooter {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 901px) {
+  .multicity-date input {
+    width: 150px;
+  }
+}
+
+
