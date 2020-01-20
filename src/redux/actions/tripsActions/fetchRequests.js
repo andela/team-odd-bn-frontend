@@ -16,11 +16,16 @@ import {
   notificationSuccess,
 } from '../../../helpers/notificationPopUp';
 import errorProcessor from '../../../helpers/errorProcessor';
-import Paginate from '../../../helpers/Paginate';
+import { updateTripItem } from '../../reducers/multicityReducer';
 
+let options;
 export const updateCommentInputAction = (data) => ({
   type: UPDATE_COMMENT_INPUT,
   payload: data,
+});
+export const editTripsAction = (array, payload, data) => ({
+  type: FETCH_SINGLE_REQUEST_SUCCESS,
+  payload: { message: '', data: { ...data, trips: updateTripItem(array, payload) } },
 });
 export const paginationAction = (data) => {
   if (data.data.length < data.paginationEnd) {
@@ -31,18 +36,15 @@ export const paginationAction = (data) => {
     data.paginationStart = 0;
     data.paginationEnd = 5;
   }
-
-
   return {
     type: PAGINATION,
     payload: data,
   };
 };
 
-
 export const commonAsyncAction = (url, actionType) => async (dispatch) => {
   try {
-    const options = {
+    options = {
       headers: {
         token: localStorage.getItem('token'),
       },
@@ -64,15 +66,15 @@ export const commonAsyncAction = (url, actionType) => async (dispatch) => {
 export const fetchRequestsAction = () => commonAsyncAction('/trips', FETCH_REQUESTS_SUCCESS);
 export const fetchSingleRequestsAction = (tripRequestId) => commonAsyncAction(`/trips/${tripRequestId}`, FETCH_SINGLE_REQUEST_SUCCESS);
 export const fetchRequestCommentsAction = (tripRequestId) => commonAsyncAction(`/trips/${tripRequestId}/comments`, FETCH_COMMENTS_SUCCESS);
-export const postCommentsAction = (tripRequestId, data) => async (dispatch) => {
+
+export const commonManipulateData = (method) => async (dispatch) => {
   try {
-    const url = `/trips/${tripRequestId}/comment`;
-    const options = {
+    options = {
       headers: {
         token: localStorage.getItem('token'),
       },
     };
-    const fetchRequestsResponse = await apiCall.post(url, data, options);
+    const fetchRequestsResponse = await method;
     notificationSuccess(fetchRequestsResponse.data.message);
     dispatch({
       type: CREATE_COMMENT_SUCCESS,
@@ -87,14 +89,22 @@ export const postCommentsAction = (tripRequestId, data) => async (dispatch) => {
     });
   }
 };
+export const postCommentsAction = (tripRequestId, data) => commonManipulateData(
+  apiCall.post(`/trips/${tripRequestId}/comment`, data, options),
+);
+
+export const editRequestAction = (tripRequestId, data) => commonManipulateData(
+  apiCall.put(`/trips/edit/${tripRequestId}`, data, options),
+);
+
 export const deleteCommentAction = (commentId) => async (dispatch) => {
   try {
-    const url = `/trips/delete/${commentId}`;
-    const options = {
+    options = {
       headers: {
         token: localStorage.getItem('token'),
       },
     };
+    const url = `/trips/delete/${commentId}`;
     const fetchRequestsResponse = await apiCall.delete(url, options);
     notificationSuccess(fetchRequestsResponse.data.message);
     dispatch({

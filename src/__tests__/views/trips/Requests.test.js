@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { JsonWebTokenError } from 'jsonwebtoken';
 import Requests from '../../../containers/TripsContainer/Requests';
 import initialState from '../../../redux/store/initialState';
 import {
@@ -16,7 +17,7 @@ let store;
 describe('Test Signup page ', () => {
   it('Test snapshot using the initial state', () => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><Router><Requests /></Router></Provider>);
+    wrapper = mount(<Provider getTripAction={jest.fn()} store={store}><Router><Requests /></Router></Provider>);
     expect(wrapper).toMatchSnapshot();
   });
   it('Test snapshot using the initial state', () => {

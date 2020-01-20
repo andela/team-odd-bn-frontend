@@ -1,60 +1,33 @@
 import React, { Component } from 'react';
-import dotenv from 'dotenv';
-import '../assets/css/signup.scss';
-import '../assets/css/signin.scss';
-import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import '../assets/css/table.scss';
+import { fetchRequestsAction, paginationAction } from '../redux/actions/tripsActions/fetchRequests';
 
-dotenv.config();
 
-class SubmitButton extends Component {
+class Requests extends Component {
   render() {
-    const {
-      deleteCommentAction, fetchRequestCommentsAction, commentId, tripRId, display, style,
-    } = this.props;
+    const { popUp, display } = this.props;
 
     return (
       <div
         className="confirmPopup"
         style={{
-          display: style,
+          display,
         }}
       >
-        <div className="popupContainer">
-          <div className="popupMessage">Are you sure you want to delete?</div>
-          <div>
-            <div>
-              <button
-                type="button"
-                onClick={async () => {
-                  await deleteCommentAction(commentId);
-                  await fetchRequestCommentsAction(tripRId);
-                  display({
-                    display: 'none',
-                  });
-                }}
-                id="delete"
-              >
-      delete
-              </button>
+        {popUp}
 
-            </div>
-            <div>
-              <button
-                type="button"
-                id="cancel"
-                onClick={async () => {
-                  tdisplay({
-                    display: 'none',
-                  });
-                }}
-              >
-      cancel
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
 }
-export default SubmitButton;
+
+export const mapStateToProps = (state) => ({
+  stateObject: state,
+});
+const actions = {
+  fetchRequestsAction,
+  paginationAction,
+};
+
+export default connect(mapStateToProps, actions)(Requests);

@@ -4,6 +4,11 @@ const state = {
     key: '',
     payload: '',
   },
+  popUpsDisplay: {
+    deleteComment: 'none',
+    editTrip: 'none',
+    currentPopUp: 'editTrip',
+  },
   pagination: {
     pageNo: 0,
     itemsPerPage: 5,

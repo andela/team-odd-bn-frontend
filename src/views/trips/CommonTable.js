@@ -11,7 +11,6 @@ class RequestView extends Component {
     const {
       params,
       approveRequest,
-      trips,
       comments,
       navs,
       tableHeads,
@@ -29,16 +28,14 @@ class RequestView extends Component {
       data,
       userSearch,
     } = this.props;
-
     return (
       <div className="tableMainContainer">
         <div className="tableContainer">
-          {trips && comments && (
+          {comments && (
             <CommonSingleRequest
               tripRequestId={tripRequestId}
               updateCommentInputAction={updateCommentInputAction}
               postCommentsAction={postCommentsAction}
-              trips={trips}
               approveRequest={approveRequest}
               comments={comments}
               params={params}

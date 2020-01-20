@@ -21,16 +21,76 @@ $tt: (
   tripType:'Trip Type',
   status: 'Status',
   firstname: 'First Name',
-  lastName: 'Last Name',
+  lastname: 'Last Name',
 );
-$kk: destinationId originId startDate returnDate reason tripType status firstname lastName;
+$kk: destinationId originId startDate returnDate reason tripType status firstname lastname;
 $attributes: tripId tripType createdAt status action firstName LastName Email UserRole EditRole;
 
 %div_style {
   height: auto;
   padding: 10px 0px;
 }
+%corassel {
+  div{
+    background-color: transparent;
+  }
+  background-color: transparent;
+  justify-content: center;
+  width: auto;
+  max-width: 40%;
+  @media screen and (min-width: 200px) and (max-width: 1000px) {
+    width: 100% !important;
+  }
+  margin: auto;
+  .pageButtons {
+    padding: 0px;
+    width: auto;
+    overflow-x: auto;
+  }
+  div {
+    width: 40px;
+    div {
+      margin: 0 auto;
+      width: 30px;
 
+      button {
+        border-radius: 50%;
+        outline: none;
+        width: 30px;
+        height: 30px;
+        padding: 1px;
+        margin: 1px;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          color: inherit;
+          padding: 5px 0px;
+        }
+      }
+    }
+  }
+  .pageArrows {
+    max-width: 30px;
+    button {
+      border-radius: 50%;
+      outline: none;
+      width: 30px;
+      height: 30px;
+      padding: 1px;
+      margin: 1px;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #00b9f2;
+        padding: 5px 0px;
+      }
+    }
+  }
+}
 @each $attr in $kk {
   .#{$attr}:before {
     width: 50%;
@@ -187,22 +247,22 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       padding-left: 2%;
 
       div {
-        width: 100px;
-        margin-left: 2%;
+        width: 80px;
 
-        .actionButton {
-          margin-left: -13px;
-          width: 100px;
-          height: 30px;
+        button {
+          font-size: 15px;
+          outline: none;
+          color: white !important;
+          width: 100%;
+          min-width: 45px;
+          height: 37px;
           background: #34c6f3;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
-
-          a {
-            text-decoration: none;
-            color: #ffff;
-            margin: auto;
-          }
+        }
+        button:hover {
+          background: white !important;
+          color: #34c6f3 !important;
         }
       }
     }
@@ -213,6 +273,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       padding-left: 2%;
 
       button {
+        font-size: 15px !important;
         outline: none;
         color: white !important;
         margin-left: 78%;
@@ -222,6 +283,10 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
         background: #34c6f3;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
+      }
+      button:hover {
+        background: white !important;
+        color: #34c6f3 !important;
       }
     }
 
@@ -272,7 +337,18 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           overflow-y: auto;
           max-height: 250px;
         }
-
+        .tripFooter {
+          flex-direction: row;
+          .corasselButtons {
+            padding: 0;
+            margin: 0;
+            max-width: 400px !important;
+            @extend %corassel;
+          }
+          .backToTrips {
+            width: 30%;
+          }
+        }
         div {
           min-height: 40px;
 
@@ -284,43 +360,6 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
 
           div:nth-child(2n) {
             background: #dddddd;
-          }
-        }
-
-        .corasselButtons {
-          display: flex;
-          flex-direction: row;
-
-          div {
-            background-color: #f7f7f7 !important;
-
-            z-index: 1;
-
-            #back {
-              background-color: #f7f7f7 !important;
-              margin: auto;
-              width: 0;
-              height: 0;
-              border: solid 20px;
-              border-color: transparent transparent #34c6f3 transparent;
-              border-radius: 2px;
-              outline: none;
-              margin-right: 5px;
-              transform: matrix(0, -1, 1, 0, 0, 0);
-            }
-
-            #front {
-              background-color: #f7f7f7 !important;
-              margin: auto;
-              width: 0;
-              height: 0;
-              margin-left: 5px;
-              border: solid 20px;
-              outline: none;
-              border-color: transparent transparent #34c6f3 transparent;
-              border-radius: 2px;
-              transform: matrix(0, 1, -1, -0.01, 0, 0);
-            }
           }
         }
       }
@@ -447,38 +486,6 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     .entity:nth-child(2n) {
       background: white;
     }
-    .corasselButtons {
-      display: flex;
-      flex-direction: row;
-      div {
-        background-color: #f7f7f7 !important;
-        z-index: 1;
-        #back {
-          background-color: #f7f7f7 !important;
-          margin: auto;
-          width: 0;
-          height: 0;
-          border: solid 20px;
-          border-color: transparent transparent #34c6f3 transparent;
-          border-radius: 2px;
-          outline: none;
-          margin-right: 5px;
-          transform: matrix(0, -1, 1, 0, 0, 0);
-        }
-        #front {
-          background-color: #f7f7f7 !important;
-          margin: auto;
-          width: 0;
-          height: 0;
-          margin-left: 5px;
-          border: solid 20px;
-          outline: none;
-          border-color: transparent transparent #34c6f3 transparent;
-          border-radius: 2px;
-          transform: matrix(0, 1, -1, -0.01, 0, 0);
-        }
-      }
-    }
     .entity {
       @extend %div_style;
 
@@ -544,60 +551,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       }
     }
     .corasselButtons {
-      justify-content: center;
-      width: auto;
-      max-width: 40%;
-      @media screen and (min-width: 200px) and (max-width: 1000px) {
-        width: 100% !important;
-      }
-      margin: auto;
-      .pageButtons {
-        width: auto;
-        overflow-x: auto;
-      }
-      div {
-        width: 40px;
-        div {
-          margin: auto;
-          max-width: 30px;
-
-          button {
-            border-radius: 50%;
-            outline: none;
-            width: 30px;
-            height: 30px;
-            padding: 1px;
-            margin: 1px;
-            a {
-              display: block;
-              width: 100%;
-              height: 100%;
-              text-decoration: none;
-              color: inherit;
-              padding: 5px 0px;
-            }
-          }
-        }
-      }
-      .pageArrows {
-        max-width: 30px;
-        button {
-          border-radius: 50%;
-          outline: none;
-          width: 30px;
-          height: 30px;
-          padding: 1px;
-          margin: 1px;
-          a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: #00b9f2 ;
-            padding: 5px 0px;
-          }
-        }
-      }
+      @extend %corassel;
     }
   }
 }
@@ -606,7 +560,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
   width: 80% !important;
   margin: 20px auto;
   padding: 20px 5px;
-  border: green solid 1px;
+  border: green solid 1px !important;
 }
 
 .approve-button {
@@ -616,13 +570,13 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
   height: 40px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  background-color: rgb(49, 179, 49);
+  background-color: rgb(49, 179, 49) !important;
   color: #ffffff;
 }
 .approve-button:hover {
   background-color: #ffffff !important;
-  border: solid 1px rgb(49, 179, 49);
-  color: rgb(49, 179, 49);
+  border: solid 1px rgb(49, 179, 49) !important;
+  color: rgb(49, 179, 49) !important;
 }
 
 .reject-button {
@@ -632,13 +586,13 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
   height: 40px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  background-color: rgb(226, 64, 64);
+  background-color: rgb(226, 64, 64) !important;
   color: #ffffff;
 }
 .reject-button:hover {
   background-color: #ffffff !important;
-  border: solid 1px rgb(226, 64, 64);
-  color: rgb(226, 64, 64);
+  border: solid 1px rgb(226, 64, 64) !important;
+  color: rgb(226, 64, 64) !important;
 }
 
 .back-button {
@@ -668,6 +622,96 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
   height: 100% !important;
   background-color: rgba(0, 0, 0, 0.404);
 
+  .editPopupContainer {
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    margin: auto;
+    background-color: white;
+    flex-direction: column;
+    width: 35% !important;
+    height: 80% !important;
+    @media screen and (min-width: 200px) and (max-width: 600px) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+    @media screen and (min-width: 600px) and (max-width: 1100px) {
+      width: 80% !important;
+    }
+    .addTrip {
+      flex-direction: row;
+      width: 90% !important;
+      margin: auto;
+      button {
+        height: 35px;
+        width: 20%;
+        margin-left: 80%;
+        border-radius: 5px;
+        background-color: #00b9f2;
+        outline:none;
+        color: white;
+        font-size: 12px;
+        outline: none;
+      }
+      button:hover {
+        background: white !important;
+        color: #34c6f3;
+      }
+    }
+    .saveEditedRequests {
+      height: 10%;
+      flex-direction: row;
+      width: 90% !important;
+      margin: auto;
+      padding-top: 5px;
+      button {
+        height: 35px;
+        padding: 0px 20px;
+        margin: 10px 0px;
+        margin-right: 40px;
+        border-radius: 5px;
+        background-color: #00b9f2;
+        color: white;
+        font-size: 12px;
+      }
+      button:hover {
+        background: white !important;
+        color: #34c6f3;
+      }
+    }
+    .inputFields{
+      flex-direction: column;
+      .editRequestFields {
+        flex-direction: column;
+        width: 90% !important;
+        margin: auto;
+        .label {
+          padding-top: 20px;
+          font-weight: 700;
+        }
+        div {
+          width: 100%;
+          height: 32px;
+          select,
+          input,
+          textarea {
+            border: solid 1px #909090;
+            outline: none;
+            padding: 5px;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+
+    .corasselPopUpButtons {
+      margin: 20px auto;
+      @extend %corassel;
+    }
+  }
   .popupContainer {
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -693,6 +737,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       justify-content: space-evenly;
       div {
         width: 80px;
+        padding: 10px;
         button {
           width: 80px;
           margin: 3px;

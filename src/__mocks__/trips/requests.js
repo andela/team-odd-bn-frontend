@@ -45,7 +45,7 @@ export const init = {
   viewProfile: {
     profile: {},
   },
-  profileError: {},
+  profileError: { error: 'wrong' },
   auth: {
     signup: {
       signupInputData: {},
@@ -60,9 +60,10 @@ export const init = {
   },
   trips: {
     availRequests: {
-      approveRequestMessage: {},
+      approveRequestMessage: {
+      },
     },
-    tripRequests: { getCity: [{ id: 1, city: 'kenya' }] },
+    tripRequests: { getCity: [{ id: 1, city: 'kenya' }, { id: 2, city: 'kenya' }] },
     requests: {
       requestsData: {
         data: [
@@ -77,8 +78,8 @@ export const init = {
               {
                 id: 6,
                 tripRequestId: 5,
-                originId: 'Kampala',
-                destinationId: 'Kigali',
+                originId: 1,
+                destinationId: 2,
                 reason: 'kimjong',
                 startDate: '2029-12-23',
                 returnDate: null,
@@ -130,8 +131,8 @@ export const init = {
             {
               id: 10,
               tripRequestId: 8,
-              originId: 'Kampala',
-              destinationId: 'Nairobi',
+              originId: 1,
+              destinationId: 2,
               reason: 'kimjong',
               startDate: '2069-12-23',
               returnDate: null,
@@ -141,6 +142,7 @@ export const init = {
           ],
         },
       },
+
       requestCommentsData: [
         {
           id: 3,

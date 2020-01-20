@@ -1,19 +1,15 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import Requests from '../../../views/trips/CommonTable';
 import initialState from '../../../redux/store/initialState';
-import {
-  redirectInitialState,
-  spinnerInitialState,
-} from '../../../__mocks__/auth/authMock';
 
 const mockStore = configureStore([]);
 let wrapper;
 let store;
-const trips = {};
+const trips = { singleRequestData: { data: { trips: [] } } };
 const comments = [];
 const navs = [];
 const tableHeads = [

@@ -20,7 +20,6 @@ const RequestsView = ({
     input={input}
     postCommentsAction={postCommentsAction}
     updateCommentInputAction={updateCommentInputAction}
-    trips={data && data.trips}
     comments={data && data.comments && data.comments.data || []}
     deleteCommentAction={deleteCommentAction}
     fetchRequestCommentsAction={fetchRequestCommentsAction}
