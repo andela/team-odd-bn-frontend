@@ -6,9 +6,14 @@ import {
   fetchSingleRequestsAction,
   fetchRequestCommentsAction,
 } from '../../redux/actions/tripsActions/fetchRequests';
+import verifyToken from '../../helpers/verifyToken';
+import tokenExist from '../../helpers/tokenExist';
 
 class Requests extends Component {
   async componentDidMount() {
+    if (!verifyToken(tokenExist)) {
+      return this.props.history.push('/signin');
+    }
     const {
       fetchSingleRequestsAction,
       fetchRequestCommentsAction,
@@ -16,6 +21,10 @@ class Requests extends Component {
     const { tripRequestId } = this.props.match.params;
     await fetchSingleRequestsAction(tripRequestId);
     await fetchRequestCommentsAction(tripRequestId);
+    if (this.props.profileError.error
+      || this.props.profileError.message === 'You have provided an invalid token') {
+      return this.props.history.push('/signin');
+    }
   }
 
   render() {

@@ -15,6 +15,8 @@ import profilePicture from '../assets/images/profile-picture2.png';
 import TextInput from './common/TextInput';
 import Spinner from './Spinner';
 import { getManagers } from '../redux/actions/getAllUsersActions';
+import verifyToken from '../helpers/verifyToken';
+import tokenExist from '../helpers/tokenExist';
 
 export class Profile extends Component {
   constructor(props) {
@@ -45,14 +47,19 @@ export class Profile extends Component {
   }
 
   async componentDidMount() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return <Redirect to="/login" />;
+    if (!verifyToken(tokenExist)) {
+      return this.props.history.push('/signin');
     }
+
+    const token = localStorage.getItem('token');
     this.decode = jwtDecode(token);
     const { getProfile, updateSpinnerStatus, getManagers } = this.props;
     await getManagers();
     await getProfile();
+    if (this.props.profileError.error
+    || this.props.profileError.message === 'You have provided an invalid token') {
+      return this.props.history.push('/signin');
+    }
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
@@ -346,7 +353,7 @@ export class Profile extends Component {
 
 export const mapStatetoProps = (state) => ({
   profile: state.viewProfile.profile,
-  profileError: state.profileError,
+  profileError: state.viewProfile.profileError,
   message: state.updateProfile.message,
   updateProfileError: state.updateProfileError,
   imageURL: state.updateProfile.imageURL,

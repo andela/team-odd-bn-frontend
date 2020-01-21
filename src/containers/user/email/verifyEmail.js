@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import verifyToken from '../../../helpers/verifyToken';
 import Header from '../../../components/header';
@@ -18,6 +19,7 @@ import {
 import Spinner from '../../../components/Spinner';
 import emailBox from '../../../constants/verifyEmail';
 import { unverifiedUserMenu } from '../../../constants/passwordReset';
+import isTokenExist from '../../../helpers/tokenExist';
 
 
 export class VerifyEmail extends Component {

@@ -12,6 +12,9 @@ describe('Resend Email test suite', () => {
     location: {
       search: 'verifiedToken',
     },
+    history: {
+      push: jest.fn(),
+    },
   };
   it('should check `componentDidMount()`', () => {
     const wrapper = shallow(<SuccessfulEmailVerification {...props} />);

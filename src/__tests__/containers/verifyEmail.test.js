@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { applyMiddleware, createStore } from 'redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import {
   VerifyEmail,
@@ -24,14 +25,15 @@ describe('Resend Email test suite', () => {
   it('Should Mount Successfully', () => {
     const component = setUp(mainState);
     const handleSubmitSpy = jest.spyOn(component.instance(), 'handleSubmit');
-    component.find('[data-test="email"]').simulate('change', 'test@user.com');
-    component.find('[data-test="verifyEmail-form"]').simulate('submit', {
-      preventDefault() { },
-    });
     expect(handleSubmitSpy).not.toHaveBeenCalled();
   });
   it('should render spinner', () => {
-    const wrapper = mount(<VerifyEmail {...spinnerProps} />);
+    const wrapper = mount(
+      <Router>
+        <VerifyEmail {...spinnerProps} />
+      </Router>,
+    );
+
     expect(wrapper.find('[data-test="verifyEmail-spinner"]').length).toBe(1);
   });
   it('should map state to props', () => {
