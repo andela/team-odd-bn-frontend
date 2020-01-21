@@ -6,4 +6,5 @@ const verifyToken = (token) => jwt.verify(token, process.env.JWT_KEY, (err, deco
   }
   return decoded;
 });
+
 export default verifyToken;

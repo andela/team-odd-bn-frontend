@@ -360,5 +360,28 @@ const mockData = {
       },
     },
   },
+  jwtTokenMocks: {
+    error: {
+      message: 'Invalid token',
+    },
+    decoded: {
+      data: 'Token data',
+    },
+    verifyToken: jest.fn(),
+    from: {
+      props: {
+        location: '/signin',
+      },
+    },
+    token: 'I am token',
+    render: jest.fn(),
+    verifyTokenRoutes: ['dashboard', 'resend-email', 'signin'],
+    dashboardRoute: ['/dashboard'],
+    reSendendEmail: ['/resend-email'],
+    signin: ['/signin'],
+    result: {
+      isVerified: true,
+    },
+  },
 };
 export default mockData;

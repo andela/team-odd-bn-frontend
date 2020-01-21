@@ -36,10 +36,6 @@ dotenv.config();
 axios.defaults.BASE_URL = process.env.BASE_URL;
 
 
-dotenv.config();
-
-axios.defaults.BASE_URL = process.env.BASE_URL;
-const token = localStorage.getItem('token');
 const App = () => (
   <Provider store={store}>
     <Router>
@@ -47,6 +43,7 @@ const App = () => (
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/signin" exact component={Signin} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/social/auth/success" exact component={SocialLogin} />
           <Route path="/verify-email" exact component={verifyEmailView} />
           <Route path="/signup" exact component={Signup} />
@@ -59,7 +56,7 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
-          <Route path="/verify-email" exact component={verifyEmailView} />
+          <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/trips/roundtrip" exact component={RoundTrip} />
           <Route
             path="/successful-verification"

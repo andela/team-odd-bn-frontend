@@ -14,9 +14,9 @@ export const updateSignupInputAction = (data) => ({
   type: SIGNUP_INPUT,
   payload: data,
 });
-export const spinnerStatusAction = () => ({
+export const spinnerStatusAction = (status) => ({
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
+  payload: status,
 });
 
 export const signupAction = (signupData) => (signupData.password !== signupData.confirmPassword
@@ -30,11 +30,12 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
     });
   }
   : async (dispatch) => {
-    dispatch(spinnerStatusAction());
+    dispatch(spinnerStatusAction(true));
     try {
       const signupResponse = await apiCall.post('/auth/signup', signupData);
       notificationSuccess(signupResponse.data.message);
       localStorage.setItem('token', signupResponse.data.data);
+      dispatch(spinnerStatusAction(false));
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: signupResponse.data,
@@ -46,6 +47,7 @@ export const signupAction = (signupData) => (signupData.password !== signupData.
         : error.response.data.error;
       err = typeof err === 'object' ? err : [err];
       err.map((e) => notificationError(e));
+      dispatch(spinnerStatusAction(false));
       dispatch({
         type: SIGNUP_ERROR,
         payload: error.response.data,

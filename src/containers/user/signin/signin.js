@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
 import propTypes from 'prop-types';
 import dotenv from 'dotenv';
@@ -25,15 +25,16 @@ class Login extends Component {
 
   render() {
     const { updateSigninInputAction, signInState, signinAction } = this.props;
-    const { signinData, signinError } = signInState.auth.signin;
+    const { signinData, signinError,spinnerStatus } = signInState.auth.signin;
     const loggedUser = this.verifyExistToken();
+    toast.dismiss();
 
-    return (loggedUser !== false) || signinData.data ? (
+    return (loggedUser !== false) ? (
       <Redirect to="dashboard" />
     )
       : (
         <>
-          {Object.keys(signinData).length === 0 && Object.keys(signinError).length === 0 ? (
+          {spinnerStatus ? (
             <Spinner />
           ) : (
             ''

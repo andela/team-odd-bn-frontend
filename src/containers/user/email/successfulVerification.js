@@ -12,6 +12,9 @@ import Header from '../../../components/header';
 import Footer from '../../../components/footer';
 import verifiedAccount from '../../../assets/images/verified_account.png';
 import { unverifiedUserMenu } from '../../../constants/passwordReset';
+import verifyToken from '../../../helpers/verifyToken';
+import tokenExist from '../../../helpers/tokenExist';
+
 
 export class SuccessfulEmailVerification extends Component {
   componentDidMount() {
@@ -19,6 +22,10 @@ export class SuccessfulEmailVerification extends Component {
     const param = queryString.parse(location.search);
     const token = param.verifiedToken;
     const { verifyEmailAction } = this.props;
+    if (!verifyToken(tokenExist) || !token) {
+      return this.props.history.push('/signin');
+    }
+
     verifyEmailAction(token);
     localStorage.removeItem('token', token);
   }

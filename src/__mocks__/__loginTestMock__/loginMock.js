@@ -28,7 +28,10 @@ export const errorRequest = {
 };
 export const loginRequestErrorActions = [{
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
+  payload: true,
+}, {
+  payload: false,
+  type: 'UPDATE_SPINNER_STATUS',
 },
 {
   type: SIGNIN_ERROR,
@@ -38,24 +41,21 @@ export const loginRequestErrorActions = [{
 },
 ];
 
-export const loginSuccessActions = [{
-  type: UPDATE_SPINNER_STATUS,
-  payload: {},
-},
-{
-  type: SIGNIN_SUCCESS,
-  payload: {
-    status: 'success',
-    message: 'successfully logged in',
-    data: 'jkjhjhhjkb',
+export const loginSuccessActions = [
+  { payload: true, type: 'UPDATE_SPINNER_STATUS' },
+  {
+    payload:
+    { data: 'jkjhjhhjkb', message: 'successfully logged in', status: 'success' },
+    type: 'SIGNIN_SUCCESS',
   },
-},
-];
+  { payload: false, type: 'UPDATE_SPINNER_STATUS' }];
 export const loginErrorActions = [{
   type: UPDATE_SPINNER_STATUS,
-  payload: {},
-},
-{
+  payload: true,
+}, {
+  payload: false,
+  type: 'UPDATE_SPINNER_STATUS',
+}, {
   type: SIGNIN_ERROR,
   payload: {
     message: 'Incorrect Credential',
@@ -76,6 +76,7 @@ export const loginInitialState = {
 export const noDataInStore = {
   auth: {
     signin: {
+      spinnerStatus: true,
       signinInputData: {},
       signinData: { },
       signinError: { },

@@ -76,10 +76,10 @@ describe('login page', () => {
     });
   });
   it('Should handle changing spinner status', () => {
-    const newState = spinnerStatusAction();
+    const newState = spinnerStatusAction(true);
     expect(newState).toEqual({
       type: UPDATE_SPINNER_STATUS,
-      payload: {},
+      payload: true,
     });
   });
 });

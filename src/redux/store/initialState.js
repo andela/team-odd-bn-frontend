@@ -7,14 +7,16 @@ const state = {
   },
   auth: {
     signup: {
+      spinnerStatus: false,
       signupInputData: {},
-      signupData: { blockSpinner: 'blockSpinner' },
-      signupError: { blockSpinner: 'blockSpinner' },
+      signupData: { },
+      signupError: { },
     },
     signin: {
+      spinnerStatus: false,
       signinInputData: {},
-      signinData: { blockSpinner: 'blockSpinner' },
-      signinError: { blockSpinner: 'blockSpinner' },
+      signinData: {},
+      signinError: {},
     },
   },
   trips: {
@@ -28,6 +30,5 @@ const state = {
   viewProfile: {
     profile: {},
   },
-  profileError: {},
 };
 export default state;

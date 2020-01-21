@@ -238,9 +238,9 @@ describe('Expect to cover common map state to props ', () => {
   })
 
   it('Should have initial profile user', () => {
-    expect(wrapper6.props().children.props.profile).toBe('data')
-    expect(wrapper6.props().children.props.profileError).toBe('error')
-  })
+    expect(wrapper6.props().children.props.profile).toBe('data');
+    expect(wrapper6.props().children.props.state.profileError).toBe('error');
+  });
 
   it('Should disaptch user profile data', () => {
     const dispatchProfileAction = store2.dispatch({
