@@ -11,7 +11,6 @@ import signoutUser from '../../../redux/actions/signoutAction';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export const LeftSide = (props) => {
-
   const logout = async () => {
     await props.signoutUser();
     props.history.push('/signin');
@@ -38,7 +37,7 @@ export const LeftSide = (props) => {
           </Link>
         </li>
         <li>
-          <Link to="/accomodations">
+          <Link to="/accommodation/create">
             <img src={accommodationIcon} alt="accommodation icon" />
             <span>Accomodations</span>
           </Link>

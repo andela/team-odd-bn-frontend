@@ -7,6 +7,8 @@ import getAllUsersReducer from './getAllUsersReducers';
 import signoutReducer from './signoutReducer';
 import tripReducers from './tripReducers';
 import getAllCitiesReducers from './getAllCitiesReducers';
+import accommodationReducer from './accommodation';
+
 
 export default combineReducers({
   viewProfile: profileReducers,
@@ -17,4 +19,5 @@ export default combineReducers({
   signout: signoutReducer,
   trips: tripReducers,
   allCities: getAllCitiesReducers,
+  accommodation: accommodationReducer,
 });

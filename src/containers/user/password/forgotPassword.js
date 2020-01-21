@@ -27,23 +27,32 @@ export class ForgotPassword extends Component {
     return (
       <div>
         <Header menuList={menu} />
-        {
-          stateObject.auth.resetPassword.spinner ? <Spinner data-test="forgotPassword-spinner" />
-            : ('')
-}
+        {stateObject.auth.resetPassword.spinner ? (
+          <Spinner data-test="forgotPassword-spinner" />
+        ) : (
+          ''
+        )}
         <div data-testid="forgotPassword-Container" className="boxContainer">
           <div className="fieldContainer">
-            <div className="boxTitle">
-                Reset Password
-            </div>
+            <div className="boxTitle">Reset Password</div>
             <hr className="boxLine" />
             <div className="boxDescription">
-                Please enter your email address.
-                You will receive an email to create a new password via email.
+              Please enter your email address. You will receive an email to
+              create a new password via email.
             </div>
-            <form data-test="forgotPassword-form" className="center-form" onSubmit={this.handleSubmit.bind(this)}>
+            <form
+              data-test="forgotPassword-form"
+              className="center-form"
+              onSubmit={this.handleSubmit.bind(this)}
+            >
               <div className="inputbox">
-                <InputField data-test="email" name="requestEmail" handleChange={updateEmailInput} type="email" inputList={emailBox} />
+                <InputField
+                  data-test="email"
+                  name="requestEmail"
+                  handleChange={updateEmailInput}
+                  type="email"
+                  inputList={emailBox}
+                />
               </div>
               <div className="btn-box">
                 <SubmitButton
@@ -55,8 +64,6 @@ export class ForgotPassword extends Component {
             </form>
           </div>
         </div>
-
-
         <ToastContainer />
         <Footer className="authFooter" />
       </div>

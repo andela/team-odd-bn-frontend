@@ -1,4 +1,10 @@
 const state = {
+  accommodation: {
+    createAccommodation: {
+      rooms: [],
+      photos: [],
+    },
+  },
   auth: {
     signup: {
       signupInputData: {},

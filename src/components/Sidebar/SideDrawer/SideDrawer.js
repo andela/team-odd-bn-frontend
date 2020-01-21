@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Proptypes from 'prop-types';
-import '../../../assets/css/sidenav/SideDrawer.scss';
-import defaultUserIcon from '../../../assets/images/default_user_icon/default_user_64px.png';
-import houseIcon from '../../../assets/images/home_icon/house_24px.png';
-import tripIcon from '../../../assets/images/trip_icon/trip_24px.png';
-import bookingIcon from '../../../assets/images/booking_icon/booking_24px.png';
-import accommodationIcon from '../../../assets/images/accommodation_icon/accommodation_24px.png';
-import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png';
-import signoutUser from '../../../redux/actions/signoutAction';
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Proptypes from 'prop-types'
+import '../../../assets/css/sidenav/SideDrawer.scss'
+import defaultUserIcon from '../../../assets/images/default_user_icon/default_user_64px.png'
+import houseIcon from '../../../assets/images/home_icon/house_24px.png'
+import tripIcon from '../../../assets/images/trip_icon/trip_24px.png'
+import bookingIcon from '../../../assets/images/booking_icon/booking_24px.png'
+import accommodationIcon from '../../../assets/images/accommodation_icon/accommodation_24px.png'
+import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png'
+import signoutUser from '../../../redux/actions/signoutAction'
 
 export class SideDrawer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       image: defaultUserIcon,
       firstName: '',
       lastName: '',
-    };
+    }
   }
 
   UNSAFE_componentWillReceiveProps(prevProps, nextProps) {
@@ -29,22 +29,22 @@ export class SideDrawer extends Component {
         image: imageURL,
         firstName,
         lastName,
-      });
+      })
     }
   }
 
   logout = async () => {
-    await this.props.signoutUser();
-    return this.props.history.push('/signin');
+    await this.props.signoutUser()
+    return this.props.history.push('/signin')
   }
 
   render() {
-    let drawerClasses = 'side-drawer';
-    const { show } = this.props;
-    const { image, firstName, lastName } = this.state;
+    let drawerClasses = 'side-drawer'
+    const { show } = this.props
+    const { image, firstName, lastName } = this.state
 
     if (show) {
-      drawerClasses = 'side-drawer open';
+      drawerClasses = 'side-drawer open'
     }
 
     return (
@@ -73,7 +73,7 @@ export class SideDrawer extends Component {
             </Link>
           </li>
           <li>
-            <Link to="/accomodations">
+            <Link to="accommodation/create">
               <img src={accommodationIcon} alt="accommodation icon" />
               <span>Accomodations</span>
             </Link>
@@ -86,29 +86,29 @@ export class SideDrawer extends Component {
           </li>
         </ul>
       </nav>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     profile: state.viewProfile.profile,
     profileError: state.profileError,
     isLoggedIn: state,
-  };
-};
+  }
+}
 
 SideDrawer.propTypes = {
   signoutUser: Proptypes.func.isRequired,
   history: Proptypes.shape({
     push: Proptypes.func,
   }),
-};
+}
 
 SideDrawer.defaultProps = {
   history: {
     push: () => {},
   },
-};
+}
 
-export default withRouter(connect(mapStateToProps, { signoutUser })(SideDrawer));
+export default withRouter(connect(mapStateToProps, { signoutUser })(SideDrawer))

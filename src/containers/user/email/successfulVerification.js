@@ -39,7 +39,7 @@ export class SuccessfulEmailVerification extends Component {
             <div className="boxTitle">Successful</div>
             <hr className="boxLine" />
             <div className="boxDescription">
-                      Your email address has been successfully verified!
+              Your email address has been successfully verified!
             </div>
             <form>
               <div className="btn-box">
@@ -48,13 +48,8 @@ export class SuccessfulEmailVerification extends Component {
                   data-test="send-request-btn"
                   className="btn-long"
                 >
-                  <div className="btn-txt">
-                    Continue to signin
-
-                  </div>
-
+                  <div className="btn-txt">Continue to signin</div>
                 </Link>
-
               </div>
             </form>
           </div>
@@ -63,7 +58,7 @@ export class SuccessfulEmailVerification extends Component {
         <ToastContainer />
         <Footer className="authFooter" />
       </div>
-    );
+    )
   }
 }
 SuccessfulEmailVerification.propTypes = {

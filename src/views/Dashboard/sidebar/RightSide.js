@@ -8,7 +8,7 @@ export const RightSide = (props) => {
   return (
     <>
       <div className="right-side">
-        { RightSideContent }
+        {RightSideContent}
         <Footer />
       </div>
     </>

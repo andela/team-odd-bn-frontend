@@ -37,20 +37,30 @@ export class PasswordReset extends Component {
     return (
       <div>
         <Header menuList={menu} />
-        {stateObject.auth.resetPassword.spinner ? <Spinner data-test="resetPassword-spinner" />
-          : ('')}
+        {stateObject.auth.resetPassword.spinner ? (
+          <Spinner data-test="resetPassword-spinner" />
+        ) : (
+          ''
+        )}
         <div data-testid="resetPassword-View" className="boxContainer">
           <div className="fieldContainer">
-            <div className="boxTitle">
-                Reset Password
-            </div>
+            <div className="boxTitle">Reset Password</div>
             <hr className="boxLine" />
             <div className="boxDescription">
-                Please enter your new password to finalize password reset
+              Please enter your new password to finalize password reset
             </div>
-            <form className="center-form" data-test="resetPassword-form" onSubmit={this.handleSubmit.bind(this)}>
+            <form
+              className="center-form"
+              data-test="resetPassword-form"
+              onSubmit={this.handleSubmit.bind(this)}
+            >
               <div className="inputbox">
-                <InputField data-test="password" handleChange={updatePasswordInput} type="password" inputList={passwordBox} />
+                <InputField
+                  data-test="password"
+                  handleChange={updatePasswordInput}
+                  type="password"
+                  inputList={passwordBox}
+                />
               </div>
               <div className="btn-box">
                 <SubmitButton
