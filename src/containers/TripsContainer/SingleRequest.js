@@ -8,6 +8,7 @@ import {
 } from '../../redux/actions/tripsActions/fetchRequests';
 import verifyToken from '../../helpers/verifyToken';
 import tokenExist from '../../helpers/tokenExist';
+import approveRequest from '../../redux/actions/tripsActions/approveRequestAction';
 
 class Requests extends Component {
   async componentDidMount() {
@@ -32,12 +33,16 @@ class Requests extends Component {
       singleRequestData,
       requestCommentsData,
     } = this.props.stateObject.trips.requests;
+    const { approveRequestMessage } = this.props.stateObject.trips.availRequests;
     const data = singleRequestData ? singleRequestData.data : [];
 
     return (
+
       <Dashboard>
         <SingleRequestView
           data={{ trips: data, comments: requestCommentsData }}
+          approveRequest={this.props.approveRequest}
+          params={this.props.match.params}
         />
       </Dashboard>
     );
@@ -47,9 +52,11 @@ class Requests extends Component {
 export const mapStateToProps = (state) => ({
   stateObject: state,
 });
+
 const actions = {
   fetchRequestCommentsAction,
   fetchSingleRequestsAction,
+  approveRequest,
 };
 
 export default connect(mapStateToProps, actions)(Requests);

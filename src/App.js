@@ -31,6 +31,8 @@ import LandingPage from './components/LandingPage';
 import { isTravelAdmin } from './helpers/isTravelAdmin';
 import Dashboard from './views/Dashboard/sidebar/index';
 import OneWayTrip from './containers/TripsContainer/oneway';
+import ApprovalRequests from './containers/Trips/ApprovalTable';
+
 
 dotenv.config();
 
@@ -77,6 +79,8 @@ const App = () => (
             )}
           />
           <Route path="/trips/oneway" exact component={OneWayTrip} />
+          <Route path="/trips/approval" exact component={ApprovalRequests} />
+          <Route path="/trips/approval/:tripRequestId" exact component={SingleRequest} />
           <Route component={Notfound} />
         </Switch>
       </div>

@@ -11,3 +11,15 @@ export const navs = [
   { className: 'tableHeader', attribute: <h2>My Travel Requests</h2>, key: 'tableHeader' },
   { className: 'search', attribute: <input type="text" placeholder="search by date" />, key: 'search' },
 ];
+
+export const approvalNavs = [
+  { className: 'tableHeader', attribute: <h2>Travel Requests For Approval</h2>, key: 'tableHeader' },
+  { className: 'search', attribute: <input type="text" placeholder="search by date" />, key: 'search' },
+];
+export const approvalTableHeads = [
+  { attribute: 'First Name', key: 'firstname' },
+  { attribute: 'Last Name', key: 'lastname' },
+  { attribute: 'Trip Type', key: 'tripType' },
+  { attribute: 'Created At', key: 'created-at' },
+  { attribute: 'Action', key: 'action' },
+];

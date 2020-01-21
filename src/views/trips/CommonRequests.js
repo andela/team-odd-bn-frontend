@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 class RequestView extends Component {
   render() {
     const { navs, tableHeads, entities } = this.props;

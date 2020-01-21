@@ -8,7 +8,7 @@ import bookingIcon from '../../../assets/images/booking_icon/booking_24px.png';
 import accommodationIcon from '../../../assets/images/accommodation_icon/accommodation_24px.png';
 import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png';
 import signoutUser from '../../../redux/actions/signoutAction';
-
+import verifyToken from '../../../helpers/verifyToken';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export const LeftSide = (props) => {
@@ -25,12 +25,30 @@ export const LeftSide = (props) => {
             <span>Home</span>
           </Link>
         </li>
+        {verifyToken(localStorage.getItem('token')).roleId !== 1
+        && (
+        <li>
+          <Link to="/trips/oneway">
+            <img src={tripIcon} alt="trip icon" />
+            <span> New Trip Request</span>
+          </Link>
+        </li>
+        )}
         <li>
           <Link to="/requests">
             <img src={tripIcon} alt="trip icon" />
-            <span>Trips</span>
+            <span> My Trips</span>
           </Link>
         </li>
+        {verifyToken(localStorage.getItem('token')).roleId === 6
+        && (
+        <li>
+          <Link to="/trips/approval">
+            <img src={tripIcon} alt="trip icon" />
+            <span>Requests</span>
+          </Link>
+        </li>
+        )}
         <li>
           <Link to="/bookings">
             <img src={bookingIcon} alt="booking icon" />

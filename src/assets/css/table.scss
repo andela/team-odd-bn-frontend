@@ -6,7 +6,7 @@ $contents: (tripId: 'Trip Id ',
   status: 'status',
   action: 'action',
 );
-$tt: (originId: 'originId',
+$tt: (originId: 'origin',
   destinationId: 'destination',
   startDate: 'start date',
   returnDate: 'return date',
@@ -140,17 +140,20 @@ $attributes: tripId tripType createdAt status action;
       padding-left: 2%;
 
       div {
+        width: 100px;
         margin-left: 2%;
 
         .actionButton {
+          
           margin-left: -13px;
-          width: 70px;
+          width: 100px;
           height: 30px;
           background: #34c6f3;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
 
           a {
+            text-decoration: none;
             color: #ffff;
             margin: auto;
           }
@@ -208,6 +211,7 @@ $attributes: tripId tripType createdAt status action;
           div {
             width: 100%;
             flex-direction: row;
+            padding-top: 20px;
           }
 
           div:nth-child(2n) {
@@ -401,3 +405,42 @@ $attributes: tripId tripType createdAt status action;
   padding: 20px 5px;
   border: green solid 1px;
 }
+
+.approve-button {
+  padding: 0px !important;
+  text-align: center !important;
+  width: 80px;
+  height: 40px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  background-color: rgb(49, 179, 49);
+  color: #ffffff;
+}
+.approve-button:hover {
+  background-color: #ffffff !important;
+  border: solid 1px rgb(49, 179, 49);
+  color: rgb(49, 179, 49);
+}
+
+.reject-button {
+  padding: 0px !important;
+  text-align: center !important;
+  width: 80px;
+  height: 40px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  background-color: rgb(226, 64, 64);
+  color: #ffffff;
+}
+.reject-button:hover {
+  background-color: #ffffff !important;
+  border: solid 1px rgb(226, 64, 64);
+  color: rgb(226, 64, 64);
+}
+
+.back-button {
+  text-decoration: none;
+  width: 100px;
+  color: #00b9f2;
+}
+ 

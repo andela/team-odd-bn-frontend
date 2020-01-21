@@ -26,6 +26,10 @@ const state = {
       onewayError: {},
       onewayInput: {},
     },
+    availRequests: {
+      approveRequestMessage: {
+      },
+    },
     requests: {
       requestsData: [],
       singleRequestData: {},
