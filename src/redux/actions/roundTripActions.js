@@ -8,11 +8,11 @@ export const updateSpinnerStatus = (value) => ({
 });
 
 const createRoundTrip = (data) => async (dispatch) => {
+
   const API_URL = '/trips/twoWay';
   const HEADERS_REQUEST = {
     token: localStorage.getItem('token'),
   };
-
   try {
     const createRoundTripRequest = await apiCall.post(API_URL, data, { headers: HEADERS_REQUEST });
     dispatch(updateSpinnerStatus(false));

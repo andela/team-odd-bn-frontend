@@ -6,7 +6,7 @@ import ResetPassword from '../../containers/user/password/resetPassword';
 dotenv.config();
 
 const resetPasswordView = () => (
-  <div data-testid="resetPassword-View">
+  <div data_testid="resetPassword-View">
     <ResetPassword />
   </div>
 );

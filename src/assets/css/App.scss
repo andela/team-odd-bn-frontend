@@ -31,3 +31,26 @@
 .dashboard{
   min-height: 90%;
 }
+
+.submitBtn {
+  button {
+    font-size: 18px;
+    height: 80%;
+    background-color: #00b9f2;
+    color: white;
+    outline: none;
+    border: none;
+    margin: 2% 20%;
+    cursor: pointer;
+  }
+
+  .btn-short {
+    width: 60%;
+  }
+
+  button:hover {
+    background-color: white;
+    color: #00b9f2;
+    border: solid 1px #00b9f2;
+  }
+}

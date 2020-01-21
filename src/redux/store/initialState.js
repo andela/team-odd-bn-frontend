@@ -20,6 +20,12 @@ const state = {
     },
   },
   trips: {
+    tripRequests: {
+      getCity: [],
+      onewayData: {},
+      onewayError: {},
+      onewayInput: {},
+    },
     requests: {
       requestsData: [],
       singleRequestData: {},

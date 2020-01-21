@@ -56,7 +56,7 @@ export class ForgotPassword extends Component {
               </div>
               <div className="btn-box">
                 <SubmitButton
-                  data-test="send-request-btn"
+                  data_test="send-request-btn"
                   buttonName="Send reset request"
                   className="btn-long"
                 />

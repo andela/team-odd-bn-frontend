@@ -13,7 +13,7 @@ class TopLeftSide extends Component {
         <div className="nav-toggle-btn">
           <DrawerToggleButton click={drawerClickHandler} />
         </div>
-        <nav data-testid="header" className="top-left-custom-logo">
+        <nav data_testid="header" className="top-left-custom-logo">
           <a className="top-left-custom-nav-app-logo" href="/">
             <img
               className="top-left-custom-logo"

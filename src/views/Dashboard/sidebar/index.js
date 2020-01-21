@@ -19,7 +19,6 @@ export class Sidebar extends Component {
       tokenValid: false,
     };
   }
-
   async componentDidMount () {
     const { getCurrentUserinfo } = this.props;
     await getCurrentUserinfo(this.props.viewProfile);
@@ -36,17 +35,13 @@ export class Sidebar extends Component {
       sideDrawerOpen: !prevState.sideDrawerOpen,
     }));
   }
-
   backdropClickHandler = () => {
     this.setState({ sideDrawerOpen: false });
   }
-
   render() {
-    
     let backdrop;
     const { sideDrawerOpen } = this.state;
     const { children } = this.props;
-
     if (sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
@@ -60,9 +55,12 @@ export class Sidebar extends Component {
           localStorage.removeItem('token')
           return <Redirect to="/signin"/>;
         }
+      }}
+    if (this.props.profile.data) {
+      if (!this.props.profile.data.managerId) {
+        return <Redirect to="/profile"/>;
       }
     }
-
     return (
       <>
         <TopSide drawerClickHandler={this.drawerToggleClickHandler} />
@@ -76,18 +74,15 @@ export class Sidebar extends Component {
     );
   }
 }
-
 const mapStateToProps = (state) => {
   return {
     profile: state.viewProfile.profile,
     profileError: state.viewProfile.profileError,
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     getCurrentUserinfo: () => dispatch(profileActions()),
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

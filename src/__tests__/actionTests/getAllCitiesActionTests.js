@@ -1,10 +1,11 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
-import getCities from '../../redux/actions/getAllCitiesActions';
+import { getTripAction } from '../../redux/actions/tripsActions/onewayActions';
 import {
-  GET_ALL_CITIES_ERROR, GET_ALL_CITIES_SUCCESS,
-} from '../../redux/actionTypes/tripsActionTypes';
+  GET_CITY_ERROR, GET_CITY_SUCCESS, UPDATE_SPINNER_STATUS,
+
+} from '../../redux/actionTypes/tripsActionType';
 import apiCall from '../../helpers/apiCall';
 
 const middlewares = [thunk];
@@ -20,7 +21,7 @@ describe('Get All Cities Actions Test Suite', () => {
     moxios.uninstall(apiCall);
   });
 
-  it('Should dispatch GET_ALL_CITIES_SUCCESS', async () => {
+  it('Should dispatch GET_CITY_SUCCESS', async () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -32,38 +33,17 @@ describe('Get All Cities Actions Test Suite', () => {
     });
     const expectedActions = [
       {
+        spinner: false,
+        type: UPDATE_SPINNER_STATUS,
+      },
+      {
         payload: {
           message: 'Success',
         },
-        type: GET_ALL_CITIES_SUCCESS,
+        type: GET_CITY_SUCCESS,
       }];
     store = mockStore({});
-    await store.dispatch(getCities())
-      .then(async () => {
-        const calledActions = store.getActions();
-        expect(calledActions).toEqual(expectedActions);
-      });
-  });
-
-  it('Should dispatch GET_ALL_CITIES_ERROR', async () => {
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith({
-        status: 404,
-        response: {
-          message: 'Error',
-        },
-      });
-    });
-    const expectedActions = [
-      {
-        payload: {
-          message: 'Error',
-        },
-        type: GET_ALL_CITIES_ERROR,
-      }];
-    store = mockStore({});
-    await store.dispatch(getCities())
+    await store.dispatch(getTripAction())
       .then(async () => {
         const calledActions = store.getActions();
         expect(calledActions).toEqual(expectedActions);

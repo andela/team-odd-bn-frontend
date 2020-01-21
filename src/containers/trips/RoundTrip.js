@@ -8,7 +8,13 @@ import '../../assets/css/base.scss';
 import TripType from '../../components/trips/TripTypes';
 import TripHeader from '../../components/trips/TripHeader';
 import createRoundTrip, { updateSpinnerStatus } from '../../redux/actions/roundTripActions';
-import getCities from '../../redux/actions/getAllCitiesActions';
+import SelectCities from '../../components/trips/SelectCities';
+import DateFields from '../../components/trips/DateFields';
+import selectInputs from '../../constants/selectCities';
+import {
+  getTripAction,
+} from '../../redux/actions/tripsActions/onewayActions';
+import DateFieldInput from '../../constants/DateFieldInput';
 
 export class RoundTrip extends Component {
   constructor(props) {
@@ -31,36 +37,13 @@ export class RoundTrip extends Component {
   }
 
   async componentDidMount() {
-    const { createRoundTrip, updateSpinnerStatus, getCities } = this.props;
+    const { createRoundTrip, updateSpinnerStatus, getTripAction } = this.props;
     await updateSpinnerStatus();
-    await getCities();
+    await getTripAction();
   }
 
-  handleChangeInput(e) {
-    const { name, value } = e.target;
-    const formErrors = { ...this.state.formErrors };
-
-    switch (name) {
-      case 'reason':
-        formErrors.reason = value.length < 3 ? 'Reason should be a minimum of 2 letters' : '';
-        break;
-      case 'startDate':
-        const startDay = new Date(value);
-        const today = new Date();
-        formErrors.startDate = Number(startDay) <= Number(today) ? 'Start date should be a valid date after today(YY-MM-DD)' : '';
-        break;
-      case 'returnDate':
-        const returnDay = new Date(value);
-        const todayDate = new Date();
-        formErrors.returnDate = Number(returnDay) <= Number(todayDate) ? 'Return date should be a valid date after today(YY-MM-DD)' : '';
-        break;
-      default:
-        break;
-    }
-    this.setState({
-      formErrors,
-      [name]: value,
-    });
+  handleChangeInput = data => {
+    this.setState({ ...data, data })
   }
 
   async handleSubmit(e) {
@@ -74,35 +57,31 @@ export class RoundTrip extends Component {
       startDate,
       returnDate,
     } = this.state;
-
+    
     const data = {
       originId: parseInt(originId, 10),
       destinationId: parseInt(destinationId, 10),
       reason,
-      startDate,
-      returnDate,
+      startDate: startDate,
+      returnDate: returnDate,
     };
     await this.props.createRoundTrip(data);
   }
 
   render() {
     const {
-      spinner, roundTripMessage, roundTripError, cities,
+      spinner, roundTripMessage, roundTripError, cities, tripState,
     } = this.props;
 
     const {
-      originId,
-      destinationId,
       reason,
-      startDate,
-      returnDate,
-      formErrors,
     } = this.state;
 
+    const data = tripState.trips.tripRequests.getCity;    
     return (
 
       <Dashboard>
-        { roundTripMessage && <Redirect to="/requests" />}
+        { roundTripMessage && <Redirect to={`/requests/`} />}
         <div className="oneway-container">
 
 
@@ -117,105 +96,27 @@ export class RoundTrip extends Component {
                   <div className="cityLabel">
                     <label htmlFor="input">City</label>
                   </div>
-
-                  <div className="originCity">
-                    <select
-                      data-test="originId"
-                      placeholder="hhh"
-                      onChange={this.handleChangeInput}
-                      value={originId}
-                      name="originId"
-                    >
-                      <option>Origin</option>
-                      { cities && cities.data.map((item, index) => (
-                        <option
-                          key={index}
-                          value={item.id}
-                        >
-                          {item.city}
-                        </option>
-                      )) }
-                      {' '}
-                    </select>
-                  </div>
-
-                  <div className="originCity">
-                    <select
-                      data-test="destinationId"
-                      onChange={this.handleChangeInput}
-                      value={destinationId}
-                      name="destinationId"
-                    >
-                      <option>Destination</option>
-                      { cities && cities.data.map((item, index) => (
-                        <option
-                          key={index}
-                          value={item.id}
-                        >
-                          {item.city}
-                        </option>
-                      )) }
-                    </select>
-                  </div>
+                  <SelectCities handleChange={this.handleChangeInput} inputName={selectInputs} myData={data} />
                 </div>
 
                 <div className="reasonField">
                   <label htmlFor="textArea">Reason</label>
                   <textarea
-                    data-test="reason"
+                    data_test="reason"
                     id="textArea"
                     cols="30"
                     rows="10"
-                    onChange={this.handleChangeInput}
+                    onChange={e => this.handleChangeInput({reason: e.target.value})}
                     value={reason}
+                    required
+                    min='3'
                     name="reason"
                     placeholder="Reason for trip request"
                   />
-                  <br />
-                  <div className="error">
-                    {formErrors.reason.length > 3 && (
-                      <span className="errorMessageInputs">{formErrors.reason}</span>
-                    )}
-                  </div>
                 </div>
 
                 <div className="dateField">
-                  <div className="startingDate">
-                    <label htmlFor="startDate">Start date</label>
-                    <input
-                      data-test="startDate"
-                      type="date"
-                      name=""
-                      id="startDate"
-                      onChange={this.handleChangeInput}
-                      value={startDate}
-                      name="startDate"
-                    />
-                    <br />
-                    <div className="error">
-                      {formErrors.startDate && (
-                        <span className="errorMessageInputs">{formErrors.startDate}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="returningDate">
-                    <label htmlFor="startDate">Return date</label>
-                    <input
-                      data-test="returnDate"
-                      type="date"
-                      id="returnDate"
-                      onChange={this.handleChangeInput}
-                      value={returnDate}
-                      name="returnDate"
-                    />
-                    <br />
-                    <div className="error">
-                      {formErrors.returnDate && (
-                        <span className="errorMessageInputs">{formErrors.returnDate}</span>
-                      )}
-                    </div>
-                  </div>
+                  <DateFields dateFieldName={DateFieldInput}  handleChange={this.handleChangeInput}/>
                 </div>
 
                 <div className="btnField">
@@ -231,6 +132,7 @@ export class RoundTrip extends Component {
 }
 
 export const mapStateToProps = (state) => ({
+  tripState: state,
   roundTripMessage: state.trips.roundTrip.roundTripMessage,
   roundTripError: state.trips.roundTrip.roundTripError,
   spinner: state.trips.roundTrip.spinner,
@@ -240,4 +142,4 @@ export const mapStateToProps = (state) => ({
 
 });
 
-export default connect(mapStateToProps, { createRoundTrip, updateSpinnerStatus, getCities })(RoundTrip);
+export default connect(mapStateToProps, { createRoundTrip, updateSpinnerStatus, getTripAction })(RoundTrip);

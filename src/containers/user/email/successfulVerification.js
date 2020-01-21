@@ -34,7 +34,7 @@ export class SuccessfulEmailVerification extends Component {
     return (
       <div>
         <Header menuList={unverifiedUserMenu} />
-        <div data-testid="verifiedEmail-Container" className="boxContainer">
+        <div data_testid="verifiedEmail-Container" className="boxContainer">
           <div className="fieldContainer">
             <div className="center">
               <img
@@ -52,7 +52,7 @@ export class SuccessfulEmailVerification extends Component {
               <div className="btn-box">
                 <Link
                   to="/signin"
-                  data-test="send-request-btn"
+                  data_test="send-request-btn"
                   className="btn-long"
                 >
                   <div className="btn-txt">Continue to signin</div>

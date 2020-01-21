@@ -23,63 +23,6 @@ describe('Profile Actions Test Suite', () => {
     moxios.uninstall(apiCall);
   });
 
-  it('Should dispatch FETCH_PROFILE_SUCCESS', async () => {
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith({
-        status: 200,
-        response: {
-          message: 'Success',
-        },
-      });
-    });
-    const expectedActions = [
-      {
-        spinner: false,
-        type: SPINNER_STATUS,
-      },
-      {
-        payload: {
-          message: 'Success',
-        },
-        type: FETCH_PROFILE_SUCCESS,
-      }];
-    store = mockStore({});
-    await store.dispatch(getProfile())
-      .then(async () => {
-        const calledActions = store.getActions();
-        expect(calledActions).toEqual(expectedActions);
-      });
-  });
-
-  it('Should dispatch FETCH_PROFILE_ERROR', async () => {
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith({
-        status: 404,
-        response: {
-          message: 'Error',
-        },
-      });
-    });
-    const expectedActions = [
-      {
-        spinner: false,
-        type: SPINNER_STATUS,
-      }, {
-
-        payload: {
-          message: 'Error',
-        },
-        type: FETCH_PROFILE_ERROR,
-      }];
-    store = mockStore({});
-    await store.dispatch(getProfile())
-      .then(async () => {
-        const calledActions = store.getActions();
-        expect(calledActions).toEqual(expectedActions);
-      });
-  });
 
   it('Should dispatch UPDATE_PROFILE_SUCCESS', async () => {
     moxios.wait(() => {
@@ -174,6 +117,64 @@ describe('Profile Actions Test Suite', () => {
     }];
     store = mockStore({});
     await store.dispatch(uploadImage())
+      .then(async () => {
+        const calledActions = store.getActions();
+        expect(calledActions).toEqual(expectedActions);
+      });
+  });
+
+  it('Should dispatch FETCH_PROFILE_SUCCESS', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          message: 'Success',
+        },
+      });
+    });
+    const expectedActions = [
+      {
+        spinner: false,
+        type: SPINNER_STATUS,
+      },
+      {
+        payload: {
+          message: 'Success',
+        },
+        type: FETCH_PROFILE_SUCCESS,
+      }];
+    store = mockStore({});
+    await store.dispatch(getProfile())
+      .then(async () => {
+        const calledActions = store.getActions();
+        expect(calledActions).toEqual(expectedActions);
+      });
+  });
+
+  it('Should dispatch FETCH_PROFILE_ERROR', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: {
+          message: 'Error',
+        },
+      });
+    });
+    const expectedActions = [
+      {
+        spinner: false,
+        type: SPINNER_STATUS,
+      }, {
+
+        payload: {
+          message: 'Error',
+        },
+        type: FETCH_PROFILE_ERROR,
+      }];
+    store = mockStore({});
+    await store.dispatch(getProfile())
       .then(async () => {
         const calledActions = store.getActions();
         expect(calledActions).toEqual(expectedActions);

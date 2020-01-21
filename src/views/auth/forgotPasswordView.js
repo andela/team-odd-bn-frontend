@@ -6,7 +6,7 @@ import ForgotPassword from '../../containers/user/password/forgotPassword';
 dotenv.config();
 
 const forgotPasswordView = () => (
-  <div data-testid="forgotPassword-View">
+  <div data_testid="forgotPassword-View">
     <ForgotPassword />
   </div>
 );
