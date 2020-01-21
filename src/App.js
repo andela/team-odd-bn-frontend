@@ -22,6 +22,8 @@ import SingleRequest from './containers/Trips/SingleRequest';
 import Profile from './components/Profile';
 import './assets/css/style.css';
 import LandingPage from './components/LandingPage';
+import ApprovalRequests from './containers/Trips/ApprovalTable';
+import AvailSingleRequest from './containers/Trips/AvailSingleRequest';
 
 dotenv.config();
 
@@ -50,6 +52,8 @@ const App = () => (
           <Route path="/successful-verification" exact component={successfulVerification} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/trips/roundtrip" exact component={RoundTrip} />
+          <Route path="/trips/approval" exact component={ApprovalRequests} />
+          <Route path="/trips/approval/:tripRequestId" exact component={AvailSingleRequest} />
           <Route component={Notfound} />
         </Switch>
       </div>

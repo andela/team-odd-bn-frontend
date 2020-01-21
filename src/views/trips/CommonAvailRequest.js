@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import { plusDivs } from '../../helpers/carousel';
 import Action from '../../components/Action';
 
-
 class RequestView extends Component {
-
   render() {
-    const { comments, trips } = this.props;
+    const {
+      comments, trips, approveRequest, params,
+    } = this.props;
     this.refs.trips && plusDivs(1, this.refs.trips.children);
+    // const url = `/trips/${tripRequestId}?status=approve`;
+    // const url = `/trips/${tripRequestId}?status=approve`;
     return (
       <>
         <div className="singleRequestHeader">
-          <div><Action background="#34c6f3" url="#" action="edit" /></div>
+          <div><button onClick={() => approveRequest(params.tripRequestId, 'status=accept')} background="#34c6f3" type="submit" action="approve">Approve</button></div>
         </div>
         <div className="singleRequest">
           <div className="trips" ref="trips">
-            <div><h3>trips</h3></div>
+            <div><h3>Trip Details</h3></div>
             {trips && trips.trips
                 && trips.trips.map((trip, index) => (
                   <div className="trip" key={index} ref={(index) => index}>

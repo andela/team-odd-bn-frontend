@@ -348,7 +348,6 @@ const mockData = {
       trips: {
         roundTrip: {
           roundTripMessage: null,
-          roundTripError: null,
           spinner: null,
           spinnerError: null,
         },

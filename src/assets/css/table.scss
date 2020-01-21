@@ -125,13 +125,15 @@ $attributes: tripId tripType createdAt status action;
       div {
         margin-left: 2%;
         .actionButton {
+          
           margin-left: -13px;
-          width: 70px;
+          width: 100px;
           height: 30px;
           background: #34c6f3;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
           a {
+            text-decoration: none;
             color: #ffff;
             margin: auto;
           }

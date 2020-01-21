@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import CommonSingleRequest from './CommonSingleRequest';
-import AvailRequestCommonTable from './AvailRequestCommonTable';
+import CommonAvailRequest from './CommonAvailRequest';
 import CommonRequests from './CommonRequests';
 
 class RequestView extends Component {
   render() {
     const {
-      trips, comments, navs, tableHeads, entities, approveRequest,params
+      trips, comments, navs, tableHeads, entities,approveRequest,params
     } = this.props;
 
     return (
       <div className="tableMainContainer">
         <div className="tableContainer">
           {trips && comments && (
-            <AvailRequestCommonTable
+            <CommonAvailRequest
               trips={trips}
-              approveRequest={approveRequest}
               comments={comments}
+              approveRequest={approveRequest}
               params={params}
             />
           )}
