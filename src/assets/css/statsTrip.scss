@@ -1,0 +1,104 @@
+.statNavContainer {
+  display: flex;
+  flex-direction: column;
+
+  .statsTitle {
+    position: relative;
+    float: left;
+    font-family: Muli;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin-left: 63%;
+    margin-top: -3%;
+    margin-bottom: 5%;
+  }
+  button {
+    background-color: #34c6f3;
+    width: 60%;
+    padding-right: -40px;
+    font-size: 15px;
+  }
+
+  .dateContainer {
+    margin-top: -2%;
+    div {
+      margin-right: 10%;
+      width: 40%;
+      input {
+        font-weight: 200;
+        font-size: 14px;
+        font-weight: bold;
+        height: 13px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #34c6f3;
+      }
+      label {
+        font-family: Muli;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 23px;
+        margin-right: 4%;
+      }
+    }
+  }
+
+  .headButttons {
+    margin-bottom: -2%;
+    border: 2px solid #34c6f3;
+    .roundTrip {
+      border-right: 1px solid grey;
+      border-left: 1px solid grey;
+    }
+
+    a {
+      width: 100%;
+      font-family: Muli;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 23px;
+      display: flex;
+      align-items: center;
+      color: #737373;
+      text-decoration: none;
+      height: 30px;
+      padding: 5px 25px;
+    }
+  }
+}
+
+.searchBtn {
+  height: 100%;
+  margin-top: 2%;
+
+  button {
+    @media screen and (min-width: 200px) and (max-width: 600px) {
+      width: 60%;
+      margin: auto;
+      height: 40px;
+    }
+    outline: none;
+    text-decoration: none;
+    width: 235px;
+    background: #ffffff;
+    border: 1px solid #00b9f2;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding-left: 5px;
+    margin-right: 10px;
+    margin-left: 60%;
+    width: 20%;
+  }
+  button:hover {
+    background-color: #00b9f2;
+    color: white;
+  }
+}

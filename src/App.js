@@ -34,6 +34,7 @@ import OneWayTrip from './containers/TripsContainer/oneway';
 import ApprovalRequests from './containers/Trips/ApprovalTable';
 
 import MulticityTrip from './containers/Trips/MulticityTrip';
+import SearchStats from './containers/trips/SearchStats';
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ const App = () => (
       <div className="container">
         <Switch>
           <Route path="/" exact component={LandingPage} />
+          <Route path="/trips/stats" exact component={SearchStats} />
           <Route path="/signin" exact component={Signin} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/social/auth/success" exact component={SocialLogin} />
