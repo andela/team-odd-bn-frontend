@@ -5,7 +5,24 @@ import CommonRequests from './CommonRequests';
 class RequestView extends Component {
   render() {
     const {
-      trips, comments, navs, tableHeads, entities, approveRequest, params,
+      params,
+      approveRequest,
+      trips,
+      comments,
+      navs,
+      tableHeads,
+      entities,
+      input,
+      updateCommentInputAction,
+      postCommentsAction,
+      tripRequestId,
+      deleteCommentAction,
+      fetchRequestCommentsAction,
+      paginationEnd,
+      paginationStart,
+      paginatedRequest,
+      paginationAction,
+      data,
     } = this.props;
 
     return (
@@ -13,18 +30,31 @@ class RequestView extends Component {
         <div className="tableContainer">
           {trips && comments && (
             <CommonSingleRequest
+
+              tripRequestId={tripRequestId}
+              updateCommentInputAction={updateCommentInputAction}
+              postCommentsAction={postCommentsAction}
               trips={trips}
               approveRequest={approveRequest}
               comments={comments}
               params={params}
+              input={input}
+              deleteCommentAction={deleteCommentAction}
+              fetchRequestCommentsAction={fetchRequestCommentsAction}
+
             />
           )}
 
           {navs && tableHeads && entities && (
             <CommonRequests
+              data={data}
+              paginationAction={paginationAction}
               navs={navs}
               tableHeads={tableHeads}
               entities={entities}
+              paginationEnd={paginationEnd}
+              paginationStart={paginationStart}
+              paginatedRequest={paginatedRequest}
             />
           )}
         </div>

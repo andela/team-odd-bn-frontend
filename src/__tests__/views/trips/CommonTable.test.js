@@ -29,6 +29,7 @@ describe('Test Signup page ', () => {
           comments={comments}
           navs={navs}
           tableHeads={tableHeads}
+          postCommentsAction={jest.fn()}
           entities={entities}
         />
       </Router>,

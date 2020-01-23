@@ -5,10 +5,14 @@ import Dashboard from '../../views/Dashboard/sidebar';
 import {
   fetchSingleRequestsAction,
   fetchRequestCommentsAction,
+  updateCommentInputAction,
+  postCommentsAction,
+  deleteCommentAction,
 } from '../../redux/actions/tripsActions/fetchRequests';
 import verifyToken from '../../helpers/verifyToken';
 import tokenExist from '../../helpers/tokenExist';
 import approveRequest from '../../redux/actions/tripsActions/approveRequestAction';
+import Spinner from '../../components/Spinner';
 
 class Requests extends Component {
   async componentDidMount() {
@@ -30,33 +34,61 @@ class Requests extends Component {
 
   render() {
     const {
+      updateCommentInputAction,
+      postCommentsAction, fetchRequestCommentsAction,
+      approveRequest,
+      deleteCommentAction, stateObject,
+    } = this.props;
+
+    const {
       singleRequestData,
       requestCommentsData,
-    } = this.props.stateObject.trips.requests;
-    const { approveRequestMessage } = this.props.stateObject.trips.availRequests;
+      postCommentInput,
+      postCommentData,
+      requestsSpinnerStatus,
+
+    } = stateObject;
+    const { approveRequestMessage } = this.props.availRequests;
+    console.log('---------------');
+
     const data = singleRequestData ? singleRequestData.data : [];
-
     return (
-
-      <Dashboard>
-        <SingleRequestView
-          data={{ trips: data, comments: requestCommentsData }}
-          approveRequest={this.props.approveRequest}
-          params={this.props.match.params}
-        />
-      </Dashboard>
+      <>
+        {requestsSpinnerStatus ? (
+          <Spinner />
+        ) : (
+          ''
+        )}
+        <Dashboard>
+          <SingleRequestView
+            tripRequestId={this.props.match.params.tripRequestId}
+            data={{ trips: data, comments: requestCommentsData }}
+            updateCommentInputAction={updateCommentInputAction}
+            input={postCommentInput}
+            postCommentsAction={postCommentsAction}
+            deleteCommentAction={deleteCommentAction}
+            fetchRequestCommentsAction={fetchRequestCommentsAction}
+            approveRequest={approveRequest}
+            params={this.props.match.params}
+          />
+        </Dashboard>
+      </>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  stateObject: state,
+  stateObject: state.trips.requests,
+  availRequests: state.trips.availRequests,
 });
 
 const actions = {
   fetchRequestCommentsAction,
   fetchSingleRequestsAction,
   approveRequest,
+  updateCommentInputAction,
+  postCommentsAction,
+  deleteCommentAction,
 };
 
 export default connect(mapStateToProps, actions)(Requests);

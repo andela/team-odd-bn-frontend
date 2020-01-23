@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import '../../assets/css/table.scss';
 import RequestsView from '../../views/trips/RequestsView';
 import Dashboard from '../../views/Dashboard/sidebar';
-import { fetchRequestsAction } from '../../redux/actions/tripsActions/fetchRequests';
+import { fetchRequestsAction, paginationAction } from '../../redux/actions/tripsActions/fetchRequests';
 import verifyToken from '../../helpers/verifyToken';
 import tokenExist from '../../helpers/tokenExist';
+
 
 class Requests extends Component {
   async componentDidMount() {
@@ -23,11 +24,21 @@ class Requests extends Component {
   }
 
   render() {
-    const { requestsData } = this.props.stateObject.trips.requests;
+    const {
+      requestsData, paginationEnd,
+      paginationStart,
+      paginatedRequest,
+    } = this.props.stateObject.trips.requests;
     const data = requestsData && requestsData.data;
     return (
       <Dashboard>
-        <RequestsView data={data} />
+        <RequestsView
+          data={data}
+          paginationAction={this.props.paginationAction}
+          paginationEnd={paginationEnd}
+          paginationStart={paginationStart}
+          paginatedRequest={paginatedRequest}
+        />
       </Dashboard>
     );
   }
@@ -38,6 +49,7 @@ export const mapStateToProps = (state) => ({
 });
 const actions = {
   fetchRequestsAction,
+  paginationAction,
 };
 
 export default connect(mapStateToProps, actions)(Requests);

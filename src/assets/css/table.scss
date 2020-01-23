@@ -1,16 +1,17 @@
 @import 'base.scss';
 @import 'App.scss';
-$contents: (tripId: 'Trip Id ',
+$contents: (
+  tripId: 'Trip Id ',
   tripType: 'tripType',
   createdAt: 'createdAt',
   status: 'status',
   action: 'action',
 );
-$tt: (originId: 'origin',
-  destinationId: 'destination',
-  startDate: 'start date',
-  returnDate: 'return date',
-  reason: 'reason',
+$tt: (originId: 'Origin',
+  destinationId: 'Destination',
+  startDate: 'Start date',
+   returnDate: 'Return date',
+  reason: 'Reason',
 );
 $kk: destinationId originId startDate returnDate reason;
 $attributes: tripId tripType createdAt status action;
@@ -30,7 +31,6 @@ $attributes: tripId tripType createdAt status action;
       'Lucida Sans', Arial, sans-serif;
   }
 }
-
 @each $attr in $attributes {
   @media screen and (min-width: 200px) and (max-width: 600px) {
     .#{$attr}:before {
@@ -43,27 +43,23 @@ $attributes: tripId tripType createdAt status action;
     }
   }
 }
-
 .tableMainContainer {
-  height: 92%;
+  height: 78%;
   margin-top: 4%;
   width: 99%;
   overflow: auto;
-
   .tableContainer {
     width: 90%;
-
     @media screen and (min-width: 200px) and (max-width: 800px) {
       width: 100%;
     }
-
-    padding: 1% 0%;
+    padding-bottom: 10px;
     height: auto;
+    overflow-y: auto;
     margin: auto;
     display: flex;
     flex-direction: column;
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
-
     div {
       @extend %full-height-width;
       display: flex;
@@ -260,76 +256,141 @@ $attributes: tripId tripType createdAt status action;
 
     .comments {
       width: 98%;
+      max-height: 600px !important;
       margin-left: 2%;
-      @extend %div_style;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
-
-      .commentCardContainer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0px;
-
-        .commentCardHeader {
-          height: 30px;
-          flex-direction: row;
+      .commentInputField{
+        height: 70px;
+        label{
+          margin-bottom: 5px;
+          color: #34c6f3;
+        }
+        textarea{
+          height: 90%;
+          padding: 10px;
+        }
+      }
+      .chats{
+        height: 255px;
+        overflow-y: scroll;
+        .commentCardContainer {
           width: 100%;
           display: flex;
-          margin-bottom: 5px;
-
-          .commentCardHeaderLeftSide {
-            padding-left: 2px;
-            color: white !important;
-            width: 20%;
-            min-width: 161.41px;
-            background: #00b9f2;
-            border-radius: 0px 10px 0px 0px;
-            margin-right: 10px;
-
+          flex-direction: column;
+          margin: 10px 0px;
+  
+          .commentCardHeader {
+            height: 30px;
+            flex-direction: row;
+            width: 100%;
             display: flex;
+            .commentCardHeaderLeftSide {
+              padding-left: 2px;
+              color: white !important;
+              width: 20%;
+              min-width: 161.41px;
+              background: #00b9f2;
+              border-radius: 0px 10px 0px 0px;
+              margin-right: 10px;
+  
+              display: flex;
+            }
+  
+            .commentCardHeaderRigthSide {
+              display: flex;
+              width: 50px;
+              button {
+                height: 100%;
+                width: 100%;
+                background-color: transparent;
+                border: 0px;
+                outline: none;
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+            }
+            .commentCardHeaderCenterSide {
+              display: flex;
+            }
           }
-
-          .commentCardHeaderRigthSide {
-            display: flex;
-          }
-        }
-
-        .commentBody {
-          padding: 5px;
-          margin-right: 5px;
-          display: flex;
-          width: auto;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          box-sizing: border-box;
-          border-radius: 0px;
-
-          textarea {
-            height: 100%;
-          }
-        }
-
-        .commentInputField {
-          margin-right: 5px;
-          display: flex;
-          width: auto;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          box-sizing: border-box;
-          border-radius: 0px;
-
-          textarea {
-            border: none;
+  
+          .commentBody {
             padding: 5px;
-            height: 100%;
+            margin-right: 5px;
+            display: flex;
+            width: auto;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            border-radius: 0px;
+  
+            textarea {
+              height: 100%;
+            }
+          }
+  
+          .commentInputField {
+            margin-right: 5px;
+            display: flex;
+            width: auto;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            border-radius: 0px;
+  
+            textarea {
+              border: none;
+              padding: 5px;
+              height: 100%;
+            }
           }
         }
       }
+
     }
 
     .entity:nth-child(2n) {
       background: white;
     }
+    .corasselButtons {
+      display: flex;
+      flex-direction: row;
 
+      div {
+        background-color: #f7f7f7 !important;
+
+        z-index: 1;
+
+        #back {
+          background-color: #f7f7f7 !important;
+          margin: auto;
+          width: 0;
+          height: 0;
+          border: solid 20px;
+          border-color: transparent transparent #34c6f3 transparent;
+          border-radius: 2px;
+          outline: none;
+          margin-right: 5px;
+          transform: matrix(0, -1, 1, 0, 0, 0);
+        }
+
+        #front {
+          background-color: #f7f7f7 !important;
+          margin: auto;
+          width: 0;
+          height: 0;
+          margin-left: 5px;
+          border: solid 20px;
+          outline: none;
+          border-color: transparent transparent #34c6f3 transparent;
+          border-radius: 2px;
+          transform: matrix(0, 1, -1, -0.01, 0, 0);
+        }
+      }
+    }
     .entity {
       @extend %div_style;
 
@@ -343,7 +404,8 @@ $attributes: tripId tripType createdAt status action;
       div {
         width: 100%;
         text-align: center !important;
-
+        padding-left: 10px;
+        @extend %div_style;
         div {
           width: 90px;
           height: 20px;
@@ -391,9 +453,6 @@ $attributes: tripId tripType createdAt status action;
           background-color: #ffffff !important;
           border: solid 1px #00b9f2;
         }
-
-        padding-left: 10px;
-        @extend %div_style;
       }
     }
   }
@@ -444,3 +503,64 @@ $attributes: tripId tripType createdAt status action;
   color: #00b9f2;
 }
  
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.404);
+  z-index: 2;
+  cursor: pointer;
+}
+.confirmPopup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.404);
+
+  .popupContainer {
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    width: 300px !important;
+    height: 150px !important;
+    margin: auto;
+    background-color: white;
+    .popupMessage{
+      padding: 5px;
+    }
+    div {
+      margin-top:13px;
+      height: 50px;
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      div{
+        width: 80px;
+        button {
+          width: 80px;
+          margin: 5px;
+          border: 0px;
+          color: white;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 5px;
+        }
+        #delete {
+          background-color: red;
+          
+        }
+        #cancel {
+          background-color: #00b9f2;
+        }
+      }
+      
+    }
+  }
+}

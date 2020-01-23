@@ -3,7 +3,9 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {
   fetchRequestsAction, fetchSingleRequestsAction,
-  fetchRequestCommentsAction,
+  fetchRequestCommentsAction, postCommentsAction,
+  deleteCommentAction,
+  paginationAction,
 } from '../../../redux/actions/tripsActions/fetchRequests';
 import {
   SIGNUP_INPUT,
@@ -11,17 +13,9 @@ import {
 } from '../../../redux/actionTypes/authActionTypes';
 import apiCall from '../../../helpers/apiCall';
 import {
-  expectedSignupErrorTypeActions,
   errorTypeResponse,
   errorResponse,
-  successResponse,
-  expectedSignupErrorActions,
-  expectedSignupSuccessActions,
-  signupPasswordMismatch,
   errorRequest,
-  expectedSignuperrorRequestActions,
-  signupMatchingPasswords,
-  signupUnMatchingPasswords,
 } from '../../../__mocks__/auth/authMock';
 
 let store;
@@ -160,6 +154,111 @@ describe('Signup Tests ', () => {
       ]);
     });
   });
+
+  it('it Should dispatch post comment success', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          error: 'first name should be valid',
+        },
+      });
+    });
+
+    store = mockStore({});
+    const { dispatch } = store;
+    await dispatch(postCommentsAction(8)).then(async () => {
+      const calledActions = store.getActions();
+
+      expect(calledActions).toEqual([
+        {
+          type: 'CREATE_COMMENT_SUCCESS',
+          payload: {
+            error: 'first name should be valid',
+          },
+        },
+      ]);
+    });
+  });
+  it('it Should dispatch post comment error', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          error: 'first name should be valid',
+        },
+      });
+    });
+
+    store = mockStore({});
+    const { dispatch } = store;
+    await dispatch(postCommentsAction(8)).then(async () => {
+      const calledActions = store.getActions();
+
+      expect(calledActions).toEqual([
+        {
+          type: 'CREATE_COMMENT_ERROR',
+          payload: {
+            error: 'first name should be valid',
+          },
+        },
+      ]);
+    });
+  });
+  it('it Should dispatch delete comment error', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          error: 'first name should be valid',
+        },
+      });
+    });
+
+    store = mockStore({});
+    const { dispatch } = store;
+    await dispatch(deleteCommentAction(8)).then(async () => {
+      const calledActions = store.getActions();
+
+      expect(calledActions).toEqual([
+        {
+          type: 'DELETE_COMMENT_ERROR',
+          payload: {
+            error: 'first name should be valid',
+          },
+        },
+      ]);
+    });
+  });
+  it('it Should dispatch delete comment success', async () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          error: 'first name should be valid',
+        },
+      });
+    });
+
+    store = mockStore({});
+    const { dispatch } = store;
+    await dispatch(deleteCommentAction(8)).then(async () => {
+      const calledActions = store.getActions();
+
+      expect(calledActions).toEqual([
+        {
+          type: 'DELETE_COMMENT_SUCCESS',
+          payload: {
+            error: 'first name should be valid',
+          },
+        },
+      ]);
+    });
+  });
   it('it Should dispatch signup success', async () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -180,5 +279,53 @@ describe('Signup Tests ', () => {
         },
       ]);
     });
+  });
+  it('it Should dispatch signup success', async () => {
+    store = mockStore({});
+    const { dispatch } = store;
+    dispatch(paginationAction({ data: [], paginationEnd: 5, paginationStart: 0 }));
+    const calledActions = store.getActions();
+    expect(calledActions).toEqual([
+      {
+        payload: {
+          data: [],
+          paginationEnd: 5,
+          paginationStart: 0,
+        },
+        type: 'PAGINATION',
+      },
+    ]);
+  });
+  it('it Should dispatch signup success', async () => {
+    store = mockStore({});
+    const { dispatch } = store;
+    dispatch(paginationAction({ data: [], paginationEnd: 0, paginationStart: 0 }));
+    const calledActions = store.getActions();
+    expect(calledActions).toEqual([
+      {
+        payload: {
+          data: [],
+          paginationEnd: 5,
+          paginationStart: 0,
+        },
+        type: 'PAGINATION',
+      },
+    ]);
+  });
+  it('it Should dispatch signup success', async () => {
+    store = mockStore({});
+    const { dispatch } = store;
+    dispatch(paginationAction({ data: [1, 2, 4, 3, 5, 4, 3, 5, 5], paginationEnd: 5, paginationStart: 0 }));
+    const calledActions = store.getActions();
+    expect(calledActions).toEqual([
+      {
+        payload: {
+          data: [1, 2, 4, 3, 5, 4, 3, 5, 5],
+          paginationEnd: 5,
+          paginationStart: 0,
+        },
+        type: 'PAGINATION',
+      },
+    ]);
   });
 });
