@@ -22,7 +22,7 @@ const setUp = (initialState = {}) => {
   return wrapper;
 };
 
-describe('Profile Test Suite', () => {
+describe('Round Trip Test Suite', () => {
   it('Should Mount Successfully', () => {
     const component = setUp(mockData.roundTripMainState);
 

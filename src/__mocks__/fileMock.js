@@ -371,6 +371,15 @@ const mockData = {
             updatedAt: null,
           }],
         },
+        roundTrip: {
+          roundTripMessage: null,
+          spinner: null,
+          spinnerError: null,
+        },
+        allCities: {
+          cities: null,
+          citiesError: null,
+        },
       },
     },
     handleChange: jest.fn(),
@@ -398,5 +407,10 @@ const mockData = {
       isVerified: true,
     },
   },
+  ApprovalDataProps: {
+    spinner: true,
+  },
+  availRequests: jest.fn(),
+  updateSpinnerStatus: jest.fn(),
 };
 export default mockData;

@@ -5,7 +5,7 @@ import CommonRequests from './CommonRequests';
 class RequestView extends Component {
   render() {
     const {
-      trips, comments, navs, tableHeads, entities,
+      trips, comments, navs, tableHeads, entities, approveRequest, params,
     } = this.props;
 
     return (
@@ -14,7 +14,9 @@ class RequestView extends Component {
           {trips && comments && (
             <CommonSingleRequest
               trips={trips}
+              approveRequest={approveRequest}
               comments={comments}
+              params={params}
             />
           )}
 

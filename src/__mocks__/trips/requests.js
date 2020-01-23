@@ -134,3 +134,7 @@ export const init = {
 export const requestViewData = [{
   id: 1, tripType: { tripType: 'one way' }, createdAt: '2011-30-24', status: { status: 'pending' },
 }];
+
+export const ManagerViewData = [{
+  user: { firstName: 'Ivy', lastName: 'League' }, tripType: { tripType: 'one way' }, createdAt: '2011-30-24',
+}];

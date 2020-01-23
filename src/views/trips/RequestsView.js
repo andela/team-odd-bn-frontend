@@ -3,6 +3,7 @@ import CommonTable from './CommonTable';
 import Action from '../../components/Action';
 import Status from '../../components/Status';
 import { navs, tableHeads } from '../../constants/trips';
+import verifyToken from '../../helpers/verifyToken';
 
 const RequestsView = ({ data }) => {
   const entities = data ? data.map((request) => [

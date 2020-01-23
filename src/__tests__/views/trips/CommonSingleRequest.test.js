@@ -12,7 +12,7 @@ const mockStore = configureStore([]);
 let wrapper;
 let store;
 
-describe('Test Signup page ', () => {
+describe('Common Single Request page ', () => {
   it('Test snapshot using the initial state', () => {
     store = mockStore(initialState);
 
@@ -23,6 +23,10 @@ describe('Test Signup page ', () => {
         handleSubmit={async () => {
           jest.fn();
           return jest.fn();
+        }}
+        handleChange={(value) => {
+          jest.fn();
+          return jest.fn(value);
         }}
       />,
 
@@ -69,5 +73,33 @@ describe('Test Signup page ', () => {
     const button = wrapper.find('#front');
     button.simulate('click');
     expect(plusDivs.mock.calls).toBeDefined();
+  });
+
+  it('it Should dispatch approve button successfully', async () => {
+    const plusDivs = jest.fn();
+    wrapper = mount(
+      <Router>
+        <CommonSingleRequest
+          comments={init.trips.requests.requestCommentsData}
+          trips={init.trips.requests.singleRequestData}
+          params={{ tripRequestId: 8 }}
+          approveRequest={jest.fn()}
+        />
+      </Router>,
+    );
+  });
+
+  it('it Should dispatch reject button successfully', async () => {
+    const plusDivs = jest.fn();
+    wrapper = mount(
+      <Router>
+        <CommonSingleRequest
+          comments={init.trips.requests.requestCommentsData}
+          trips={init.trips.requests.singleRequestData}
+          params={{ tripRequestId: 8 }}
+          approveRequest={jest.fn()}
+        />
+      </Router>,
+    );
   });
 });

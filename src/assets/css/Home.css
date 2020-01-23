@@ -1,0 +1,34 @@
+.dashboard-home-header {
+  background-image: url('../images/background-home2.jpg');
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  text-align: center;
+
+}
+
+.dashboard-home-title {
+  
+  padding: 20px;
+} 
+
+.most-travelled-destination-card {
+    margin: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    height: 70vh; 
+    margin-bottom: 1rem;
+
+  }
+  
+  .most-travelled-destination-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+
+.most-travelled-destination-card img{
+  width: 100%;
+  height: 40vh;
+
+}
