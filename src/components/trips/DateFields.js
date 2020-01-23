@@ -3,7 +3,7 @@ import '../../assets/css/base.scss';
 import '../../assets/css/roundtrip.scss';
 
 const inputValues = {};
-const checkCurrentDate = () => {
+export const checkCurrentDate = () => {
   const currentDate = new Date();
   return JSON.stringify(currentDate).slice(1, 11);
 };
