@@ -9,6 +9,11 @@ import accommodationIcon from '../../../assets/images/accommodation_icon/accommo
 import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png';
 import signoutUser from '../../../redux/actions/signoutAction';
 import verifyToken from '../../../helpers/verifyToken';
+import usersIcon from '../../../assets/images/users.png';
+import { checkPrevilege } from '../../../helpers/checkPrevilege';
+import statisticsIcon from '../../../assets/images/statistics.png';
+import addNewTripIcon from '../../../assets/images/addNewTrip.png';
+
 
 // eslint-disable-next-line react/prefer-stateless-function
 export const LeftSide = (props) => {
@@ -20,19 +25,18 @@ export const LeftSide = (props) => {
     <div className="left-side">
       <ul>
         <li>
-          <Link to="/home">
+          <Link to="/Dashboard">
             <img src={houseIcon} alt="homepage icon" />
             <span>Home</span>
           </Link>
         </li>
-        {verifyToken(localStorage.getItem('token')).roleId !== 1
-        && (
-        <li>
-          <Link to="/trips/oneway">
-            <img src={tripIcon} alt="trip icon" />
-            <span> New Trip Request</span>
-          </Link>
-        </li>
+        {verifyToken(localStorage.getItem('token')).roleId !== 1 && (
+          <li>
+            <Link to="/trips/oneway">
+              <img src={addNewTripIcon} alt="trip icon" />
+              <span> New Trip Request</span>
+            </Link>
+          </li>
         )}
         <li>
           <Link to="/requests">
@@ -40,14 +44,19 @@ export const LeftSide = (props) => {
             <span> My Trips</span>
           </Link>
         </li>
-        {verifyToken(localStorage.getItem('token')).roleId === 6
-        && (
         <li>
-          <Link to="/trips/approval">
-            <img src={tripIcon} alt="trip icon" />
-            <span>Requests</span>
+          <Link to="/trips/stats">
+            <img src={statisticsIcon} alt="trip icon" />
+            <span> Stats</span>
           </Link>
         </li>
+        {checkPrevilege(6) && (
+          <li>
+            <Link to="/trips/approval">
+              <img src={tripIcon} alt="trip icon" />
+              <span>Requests</span>
+            </Link>
+          </li>
         )}
         <li>
           <Link to="/bookings">
@@ -55,12 +64,22 @@ export const LeftSide = (props) => {
             <span>Bookings</span>
           </Link>
         </li>
-        <li>
-          <Link to="/accommodation/create">
-            <img src={accommodationIcon} alt="accommodation icon" />
-            <span>Accomodations</span>
-          </Link>
-        </li>
+        {checkPrevilege(4) && (
+          <li>
+            <Link to="/accommodation/create">
+              <img src={accommodationIcon} alt="accommodation icon" />
+              <span>Accomodations</span>
+            </Link>
+          </li>
+        )}
+        {checkPrevilege(1) && (
+          <li>
+            <Link to="/admin/roles">
+              <img src={usersIcon} alt="Users icon" />
+              <span>Users</span>
+            </Link>
+          </li>
+        )}
         <li>
           <Link to="#" onClick={logout} className="signout">
             <img src={logoutIcon} alt="logout icon" />

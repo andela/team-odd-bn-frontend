@@ -49,7 +49,6 @@ class Requests extends Component {
 
     } = stateObject;
     const { approveRequestMessage } = this.props.availRequests;
-
     const data = singleRequestData ? singleRequestData.data : [];
     return (
       <>

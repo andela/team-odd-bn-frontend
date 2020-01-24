@@ -150,11 +150,14 @@ describe('View Profile Reducer Test Suite ', () => {
       type: GET_ALL_USERS_SUCCESS,
       payload: {
         message: 'Users retrieved successfully!',
-      }
+        data: [],
+      },
+      paginatedRequest: [],
     };
     const returnedState = getAllUsersReducer(undefined, successAction);
     expect(returnedState).toEqual({
       users: successAction.payload,
+      paginatedRequest: successAction.paginatedRequest,
       usersError: null,
     });
   });

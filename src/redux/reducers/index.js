@@ -9,6 +9,7 @@ import tripReducers from './tripReducers';
 import getAllCitiesReducers from './getAllCitiesReducers';
 import accommodationReducer from './accommodation';
 import multicityReducer from './multicityReducer';
+import adminReducer from './admin/adminReducer';
 
 
 export default combineReducers({
@@ -22,4 +23,5 @@ export default combineReducers({
   allCities: getAllCitiesReducers,
   accommodation: accommodationReducer,
   multicityTrip: multicityReducer,
+  admin: adminReducer,
 });

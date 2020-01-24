@@ -25,9 +25,8 @@ class Login extends Component {
 
   render() {
     const { updateSigninInputAction, signInState, signinAction } = this.props;
-    const { signinData, signinError,spinnerStatus } = signInState.auth.signin;
+    const { signinData, signinError, spinnerStatus } = signInState.auth.signin;
     const loggedUser = this.verifyExistToken();
-    toast.dismiss();
 
     return (loggedUser !== false) ? (
       <Redirect to="dashboard" />

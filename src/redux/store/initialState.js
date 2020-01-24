@@ -9,8 +9,8 @@ const state = {
     signup: {
       spinnerStatus: false,
       signupInputData: {},
-      signupData: { },
-      signupError: { },
+      signupData: {},
+      signupError: {},
     },
     signin: {
       spinnerStatus: false,
@@ -18,6 +18,11 @@ const state = {
       signinData: {},
       signinError: {},
     },
+  },
+  allUsers: {
+    paginatedRequest: [],
+    paginationStart: 0,
+    paginationEnd: 5,
   },
   trips: {
     tripRequests: {
