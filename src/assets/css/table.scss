@@ -109,7 +109,6 @@ $attributes: tripId tripType createdAt status action;
 
       .search {
         height: 100%;
-
         input {
           @media screen and (min-width: 200px) and (max-width: 600px) {
             width: 60%;

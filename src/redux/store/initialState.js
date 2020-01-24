@@ -39,6 +39,14 @@ const state = {
       paginationStart: 0,
       paginationEnd: 5,
     },
+    getStats: {
+      getStatsInput: {
+        tripType: 1,
+      },
+      getStatsData: {},
+      getStatsError: {},
+      tripStatsCounter: {},
+    },
   },
   viewProfile: {
     profile: {},

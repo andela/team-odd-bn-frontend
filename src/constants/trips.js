@@ -1,4 +1,5 @@
 import React from 'react';
+import StatsNav from '../components/GetStatsNav';
 
 export const tableHeads = [
   { className: 'tripIdNav', attribute: 'Trip Id', key: 'tripId' },
@@ -22,4 +23,15 @@ export const approvalTableHeads = [
   { attribute: 'Trip Type', key: 'tripType' },
   { attribute: 'Created At', key: 'created-at' },
   { attribute: 'Action', key: 'action' },
+];
+
+export const searchTableHeads = [
+
+  { className: 'tripTypeNav', attribute: 'Origin', key: 'tripType' },
+  { className: 'createdAtNav', attribute: 'Destination', key: 'createdAt' },
+  { className: 'status', attribute: 'Date', key: 'status' },
+  { className: 'actionNav', attribute: 'Action', key: 'action' },
+];
+export const searchNavs = [
+  { className: 'tableHeader', attribute: <StatsNav />, key: 'tableHeader' },
 ];
