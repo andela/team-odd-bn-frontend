@@ -13,6 +13,7 @@ import usersIcon from '../../../assets/images/users.png';
 import { checkPrevilege } from '../../../helpers/checkPrevilege';
 import statisticsIcon from '../../../assets/images/statistics.png';
 import addNewTripIcon from '../../../assets/images/addNewTrip.png';
+import viewAccommodation from '../../../assets/images/accommodation_icon/view_accommodation_24.png';
 
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -58,6 +59,12 @@ export const LeftSide = (props) => {
             </Link>
           </li>
         )}
+        <li>
+          <Link to="/accommodations">
+            <img src={viewAccommodation} alt="trip icon" />
+            <span>All Accommodations</span>
+          </Link>
+        </li>
         <li>
           <Link to="/bookings">
             <img src={bookingIcon} alt="booking icon" />

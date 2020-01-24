@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to search stats nav Should render successfully 1`] = `ShallowWrapper {}`;
+
+exports[`Expect to test and display trip stats with navigation Should render successfully 1`] = `ShallowWrapper {}`;
