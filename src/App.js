@@ -35,6 +35,7 @@ import ApprovalRequests from './containers/Trips/ApprovalTable';
 
 import MulticityTrip from './containers/Trips/MulticityTrip';
 import SearchStats from './containers/trips/SearchStats';
+import EditTrip from './containers/Trips/EditTrip';
 
 dotenv.config();
 
@@ -85,6 +86,7 @@ const App = () => (
           <Route path="/trips/approval" exact component={ApprovalRequests} />
           <Route path="/trips/approval/:tripRequestId" exact component={SingleRequest} />
           <Route path="/trips/multicity" exact component={MulticityTrip} />
+          <Route path="/editTrip" exact component={EditTrip} />
           <Route component={Notfound} />
         </Switch>
       </div>

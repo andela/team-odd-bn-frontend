@@ -1,6 +1,3 @@
-
-/* eslint-disable no-unused-expressions */
-
 import React, { Component } from 'react'
 import { plusDivs } from '../../helpers/carousel'
 import Action from '../../components/Action'
