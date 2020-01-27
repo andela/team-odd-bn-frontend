@@ -2,10 +2,9 @@ import React from 'react';
 import StatsNav from '../components/GetStatsNav';
 
 export const tableHeads = [
-  { className: 'tripIdNav', attribute: 'Trip Id', key: 'tripId' },
   { className: 'tripTypeNav', attribute: 'Trip Type', key: 'tripType' },
-  { className: 'createdAtNav', attribute: 'Created At', key: 'createdAt' },
   { className: 'status', attribute: 'Status', key: 'status' },
+  { className: 'createdAtNav', attribute: 'Requested On', key: 'Requested On' },
   { className: 'actionNav', attribute: 'Action', key: 'action' },
 ];
 export const navs = [
@@ -21,7 +20,7 @@ export const approvalTableHeads = [
   { attribute: 'First Name', key: 'firstname' },
   { attribute: 'Last Name', key: 'lastname' },
   { attribute: 'Trip Type', key: 'tripType' },
-  { attribute: 'Created At', key: 'created-at' },
+  { attribute: 'Requested On', key: 'requested-on' },
   { attribute: 'Action', key: 'action' },
 ];
 

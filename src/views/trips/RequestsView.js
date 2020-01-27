@@ -12,10 +12,9 @@ const RequestsView = ({
   paginationAction,
 }) => {
   const entities = paginatedRequest ? paginatedRequest.map((request) => [
-    { className: 'tripId', attribute: request.id, key: 'tripId' },
-    { className: 'tripType', attribute: request.tripType.tripType, key: 'tripType' },
+    { className: 'trip-type', attribute: request.tripType.tripType, key: 'tripType' },
+    { className: 'statuses', attribute: <Status className={request.status.status} status={request.status.status} />, key: 'status' },
     { className: 'createdAt', attribute: request.createdAt.slice(0, 10), key: 'createdAt' },
-    { className: 'status', attribute: <Status className={request.status.status} status={request.status.status} />, key: 'status' },
     { className: 'action', attribute: <Action background="#34c6f3" url={`/requests/${request.id}`} action="View" />, key: 'action' },
   ]) : [];
 

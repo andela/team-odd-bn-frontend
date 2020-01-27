@@ -17,8 +17,12 @@ $tt: (originId: 'Origin',
   startDate: 'Start date',
    returnDate: 'Return date',
   reason: 'Reason',
+  tripType:'Trip Type',
+  status: 'Status',
+  firstName: 'First Name',
+  lastName: 'Last Name',
 );
-$kk: destinationId originId startDate returnDate reason;
+$kk: destinationId originId startDate returnDate reason tripType status firstName lastName;
 $attributes: tripId tripType createdAt status action firstName LastName Email UserRole EditRole;
 
 %div_style {
@@ -193,16 +197,38 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
         display: flex;
         flex-direction: column;
       }
-
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #34c6f3; 
+        border-radius: 10px;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #34c6f3; 
+      }
       .trips {
         width: 98%;
         margin-left: 2%;
         display: flex;
+      
 
         .trip {
           border: 1px solid #dddddd;
-          padding: 5px;
-          margin-bottom: 20px;
+          padding: 2px;
+          margin-bottom: 5px;
+          overflow-y: auto;
+          max-height: 250px;
         }
 
         div {

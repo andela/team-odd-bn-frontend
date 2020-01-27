@@ -148,8 +148,15 @@ class RequestView extends Component {
               trips.trips &&
               trips.trips.map((trip, index) => (
                 <div className="trip" key={index} ref={index => index}>
+                  {verifyToken(localStorage.getItem('token')).roleId === 6 
+              && verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId? 
+                 <> 
+                 <div className="firstName">{trips.user.firstName}</div>
+                  <div className="lastName">{trips.user.lastName}</div>
+                  </>:''}
                   <div className="originId">{trip.originId}</div>
                   <div className="destinationId">{trip.destinationId}</div>
+                  <div className="tripType">{trips.tripType.tripType}</div>
                   <div className="startDate">{trip.startDate.slice(0, 10)}</div>
                   <div className="returnDate">
                     {trip.returnDate === null
@@ -157,6 +164,7 @@ class RequestView extends Component {
                       : trip.returnDate.slice(0, 10)}
                   </div>
                   <div className="reason">{trip.reason}</div>
+                  <div className="status">{trips.status.status}</div>
                 </div>
               ))}
             <div className="corasselButtons">
@@ -198,7 +206,7 @@ class RequestView extends Component {
             className="comments"
           >
             <div>
-              <h3>comments</h3>
+              <h3>Comments</h3>
             </div>
             <div
               ref={el => {
