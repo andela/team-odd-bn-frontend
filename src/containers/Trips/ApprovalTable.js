@@ -21,11 +21,10 @@ class ApprovalRequests extends Component {
 
   render() {
     const { availRequests } = this.props.stateObject;
-    const data = availRequests && availRequests.allRequests && availRequests.allRequests.data;
     return (
       <>
         <Dashboard>
-          { verifyToken(localStorage.getItem('token')).roleId === 6 ? <AvailRequestsView data={data} /> : <Redirect to="/requests" /> }
+          { verifyToken(localStorage.getItem('token')).roleId === 6 ? <AvailRequestsView /> : <Redirect to="/requests" /> }
         </Dashboard>
       </>
     );

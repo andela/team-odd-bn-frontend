@@ -19,20 +19,13 @@ export class UserRoles extends Component {
   }
 
   render() {
-    const data = this.props.adminState.allUsers.users
-      && this.props.adminState.allUsers.users.data;
     const options = this.props.adminState.admin.allRoles
       && this.props.adminState.admin.allRoles.data;
 
     return (
       <AllUsers
-        paginatedRequest={this.props.adminState.allUsers.paginatedRequest}
-        paginationAction={this.props.paginationAction}
-        paginationEnd={this.props.adminState.allUsers.paginationEnd}
-        paginationStart={this.props.adminState.allUsers.paginationStart}
         data-test="userRoles-test"
         handleChange={this.props.assignRole}
-        data={data}
         options={options}
       />
     );

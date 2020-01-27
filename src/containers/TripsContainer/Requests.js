@@ -15,8 +15,6 @@ class Requests extends Component {
     }
     const { fetchRequestsAction } = this.props;
     await fetchRequestsAction();
-
-
     if (this.props.profileError.error
   || this.props.profileError.message === 'You have provided an invalid token') {
       return this.props.history.push('/signin');
@@ -24,28 +22,15 @@ class Requests extends Component {
   }
 
   render() {
-    const {
-      requestsData, paginationEnd,
-      paginationStart,
-      paginatedRequest,
-    } = this.props.stateObject.trips.requests;
-    const data = requestsData && requestsData.data;
     return (
       <Dashboard>
-        <RequestsView
-          data={data}
-          paginationAction={this.props.paginationAction}
-          paginationEnd={paginationEnd}
-          paginationStart={paginationStart}
-          paginatedRequest={paginatedRequest}
-        />
+        <RequestsView />
       </Dashboard>
     );
   }
 }
-
 export const mapStateToProps = (state) => ({
-  stateObject: state,
+  profileError: state,
 });
 const actions = {
   fetchRequestsAction,

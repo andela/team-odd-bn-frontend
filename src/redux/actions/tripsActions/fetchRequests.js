@@ -16,6 +16,7 @@ import {
   notificationSuccess,
 } from '../../../helpers/notificationPopUp';
 import errorProcessor from '../../../helpers/errorProcessor';
+import Paginate from '../../../helpers/Paginate';
 
 export const updateCommentInputAction = (data) => ({
   type: UPDATE_COMMENT_INPUT,

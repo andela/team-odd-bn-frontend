@@ -20,6 +20,10 @@ export const entities = [
   { className: 'action', attribute: 'view', key: 'action' },
 ];
 export const init = {
+  pagination: {
+    pageNo: 0,
+    itemsPerPage: 5,
+  },
   viewProfile: {
     profile: {},
   },
@@ -124,6 +128,9 @@ export const init = {
           user: {
             firstName: 'John',
             lastName: 'Doe',
+            userProfile: {
+              imageURL: '/images/me.jpg',
+            },
           },
         },
       ],
