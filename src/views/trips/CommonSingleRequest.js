@@ -6,6 +6,7 @@ import { plusDivs } from '../../helpers/carousel'
 import Action from '../../components/Action'
 import { Redirect } from 'react-router-dom';
 import verifyToken from '../../helpers/verifyToken';
+import trashIcon from '../../assets/images/trash.png'
 
 
 class RequestView extends Component {
@@ -65,7 +66,7 @@ class RequestView extends Component {
         >
           <div className="popupContainer">
             <div className="popupMessage">Are you sure you want to delete?</div>
-            <div>
+            <div className="popupButtons">
               <div>
                 <button
                   onClick={async () => {
@@ -98,7 +99,8 @@ class RequestView extends Component {
 
         <div className="singleRequestHeader">
           {verifyToken(localStorage.getItem('token')).roleId === 6 &&
-          verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId ? (
+          verifyToken(localStorage.getItem('token')).id !==
+            this.props.trips.userId ? (
             <>
               <div>
                 <button
@@ -151,7 +153,7 @@ class RequestView extends Component {
                   {verifyToken(localStorage.getItem('token')).roleId === 6 
               && verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId? 
                  <> 
-                 <div className="firstName">{trips.user.firstName}</div>
+                 <div className="firstname">{trips.user.firstName}</div>
                   <div className="lastName">{trips.user.lastName}</div>
                   </>:''}
                   <div className="originId">{trip.originId}</div>
@@ -168,8 +170,9 @@ class RequestView extends Component {
                 </div>
               ))}
             <div className="corasselButtons">
-              {verifyToken(localStorage.getItem('token')).roleId === 6 
-              && verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId? (
+              {verifyToken(localStorage.getItem('token')).roleId === 6 &&
+              verifyToken(localStorage.getItem('token')).id !==
+                this.props.trips.userId ? (
                 <div>
                   <a className="back-button" href="/trips/approval">
                     Back To Trips
@@ -202,53 +205,52 @@ class RequestView extends Component {
               </div>
             </div>
           </div>
-          <div
-            className="comments"
-          >
+          <div className="comments">
             <div>
               <h3>Comments</h3>
             </div>
             <div
               ref={el => {
-              this.messagesEnd = el
-            }} className="chats">
+                this.messagesEnd = el
+              }}
+              className="chats"
+            >
               {comments &&
                 comments.map((comment, index) => (
                   <div className="commentCardContainer" key={index}>
+                    <img
+                      alt="deleteCommentButton"
+                      src={comment.user.userProfile.imageURL}
+                      className="commentProfileImg"
+                    />
                     <div className="commentCardHeader">
-                      <div className="commentCardHeaderLeftSide">
-                        {comment.user.firstName}
-                      </div>
-                      <div className="commentCardHeaderCenterSide">
+                      <div className="commenter">{comment.user.firstName}</div>
+                      <div className="commentText">{comment.comment}</div>
+                      <div className="commentDate">
                         {comment.updatedAt.slice(0, 10)}
                       </div>
-                      <div className="commentCardHeaderRigthSide">
-                        <button
-                          id="deleteComment"
-                          onClick={async () => {
-                            this.setState({
-                              commentId: comment.id,
-                              tripRId: tripRequestId,
-                              ds: 'flex',
-                            })
-                          }}
-                          type="button"
-                        >
-                          <img
-                            alt="deleteCommentButton"
-                            src="https://img.icons8.com/color/48/000000/delete-forever.png"
-                          />
-                        </button>
-                      </div>
                     </div>
-                    <div className="commentBody" key={comment.key}>
-                      {comment.comment}
+
+                    <div className="commentCardHeaderRigthSide">
+                      <button
+                        id="deleteComment"
+                        onClick={async () => {
+                          this.setState({
+                            commentId: comment.id,
+                            tripRId: tripRequestId,
+                            ds: 'flex',
+                          })
+                        }}
+                        type="button"
+                      >
+                        <img title="Delete comment" alt="deleteCommentButton" src={trashIcon} />
+                      </button>
                     </div>
                   </div>
                 ))}
             </div>
             <div className="commentInputField">
-              <label>New Comment:</label>
+              <label>Add New Comment:</label>
               <textarea
                 value={inputValue}
                 onChange={e =>
