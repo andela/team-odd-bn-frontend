@@ -15,6 +15,8 @@ import PaginationReducer from './PaginationReducer';
 import searchReducer from './searchReducers/searchReducers';
 import popUpReducer from './popUpReducer';
 import likeAndDislike from './accommodation/likeAndDislikeReducer';
+import notificationsReducers from './notificationsReducers';
+
 import bookingReducer from './bookings';
 
 export default combineReducers({
@@ -35,4 +37,5 @@ export default combineReducers({
   search: searchReducer,
   popUpsDisplay: popUpReducer,
   userLikesAndDislike: likeAndDislike,
+  notifications: notificationsReducers,
 });

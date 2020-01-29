@@ -31,14 +31,6 @@ export const LeftSide = (props) => {
             <span>Home</span>
           </Link>
         </li>
-        {verifyToken(localStorage.getItem('token')).roleId !== 1 && (
-          <li>
-            <Link to="/trips/oneway">
-              <img src={addNewTripIcon} alt="trip icon" />
-              <span> New Trip Request</span>
-            </Link>
-          </li>
-        )}
         <li>
           <Link to="/requests">
             <img src={tripIcon} alt="trip icon" />

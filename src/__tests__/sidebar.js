@@ -1,8 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
+import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
+import dotenv from 'dotenv';
 import ToolTip from '../components/Sidebar/ToolTip';
 import BackDrop from '../components/Sidebar/Backdrop/Backdrop';
 import DrawerToggleButton from '../components/Sidebar/SideDrawer/DrawerToggleButton';
@@ -17,6 +19,9 @@ import getProfile, { updateSpinnerStatus } from '../redux/actions/profileActions
 import apiCall from '../helpers/apiCall';
 import ProfileReducers from '../redux/reducers/ProfileReducers';
 import fileMock from '../__mocks__/fileMock';
+import 'jest-localstorage-mock';
+
+dotenv.config();
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -107,22 +112,6 @@ describe('Expect to mock user profile info', () => {
       userProfileMockData.spinnerStatusAction(false),
     ]);
   });
-
-
-  // it('Should user profile fetching info fail', async () => {
-  //   moxios.wait(() => {
-  //     const request = moxios.requests.mostRecent()
-  //     request.reject(userProfileMockData.errorResponse)
-  //   })
-
-  //   store = mockStore({})
-  //   await store.dispatch(getProfile()).catch(async error => {
-  //     const calledActions = store.getActions()
-  //     expect(calledActions).toEqual([
-  //       { type: 'SPINNER_STATUS', spinner: false },
-  //     ])
-  //   })
-  // })
 });
 
 describe('Expect profile action reducer to render', () => {
@@ -221,6 +210,8 @@ describe('Expect to cover common map state to props ', () => {
   it('Should have initial profile user', () => {
     expect(wrapper6.props().children.props.profile).toBe('data');
     expect(wrapper6.props().children.props.state.profileError).toBe('error');
+    expect(wrapper6.props().children.props.state.notifications.notifications.allNotifications).toEqual([]);
+    expect(wrapper6.props().children.props.state.allNotificationError).toBe('error');
   });
 
   it('Should disaptch user profile data', () => {
@@ -235,6 +226,8 @@ describe('Expect to cover common map state to props ', () => {
   it('Should TopRightSide map state to props covered', () => {
     expect(wrapper7.props().children.props.profile).toBe('data');
     expect(wrapper7.props().children.props.profileError).toBe('error');
+    expect(wrapper6.props().children.props.state.notifications.notifications.allNotifications).toEqual([]);
+    expect(wrapper6.props().children.props.state.allNotificationError).toBe('error');
   });
 });
 
@@ -253,5 +246,14 @@ describe('Expect Left side logout work', () => {
     const signout = wrapper5.find('.signout');
     signout.simulate('click');
     expect(signout.text()).toBe('Logout');
+  });
+});
+
+describe('Should simulate mark all read', () => {
+  const component = shallow(<TopRightSide {...sidebarProps} />);
+  it('Should simulate mark all read', () => {
+    const handleMarkAllAsRead = jest.spyOn(component.instance(), 'handleMarkAllAsRead');
+    component.instance().handleMarkAllAsRead();
+    expect(handleMarkAllAsRead).toHaveBeenCalledWith();
   });
 });

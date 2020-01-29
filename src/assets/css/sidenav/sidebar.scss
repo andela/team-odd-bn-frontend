@@ -85,6 +85,170 @@ ul li .signout {
       height: 30px;
       border-radius: 100%;
     }
+
+  .notification-content{
+    height: 180px;
+    display: none;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 20px;
+    position: absolute;
+    z-index: 1;
+    width: 480px;
+    right:0;
+    margin-left: -250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .notification-content::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  .notification-content::-webkit-scrollbar:vertical {
+    width: 7px;
+  }
+
+  .notification-content::-webkit-scrollbar:horizontal {
+    height: 11px;
+  }
+
+  .notification-content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid #00B9F2; /* should match background, can't be transparent */
+    background-color: #00B9F2;
+  }
+
+  .notification:hover .notification-content {
+      display: block;
+  }
+
+  .notification-item {
+      margin-top: 0px;
+      margin-bottom: 10px;
+      height: auto;
+  }
+
+  .notification-item img{
+      width: 30px;
+      height: 30px;
+  }
+    .notification-item p{
+      color: #00B9F2;
+      font-size: 13px;
+    }
+
+
+    .notification-item small{
+      color:#5c5c5c;
+      padding-left: 22px;
+      font-size: 10px;
+    }
+    .notification-details {
+    margin-bottom: 10px;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      display:inline-flex;
+
+    }
+    
+    .notification-details {
+      display:inline-flex;
+      align-self: flex-start;
+    }
+    .notification-date {
+      margin-left: 20px;
+    }
+
+    .notification-count {
+      height: 16px;
+      width: 16px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-flex;
+      text-align: center;
+      position: fixed;
+      margin-left: -12px;
+    }
+
+    .notification-count p {
+      font-size: 10px;
+      color: black;
+      text-align: center;
+      margin-left: 3px;
+      padding: 2px;
+    }
+
+    .dot {
+      display:inline-flex;
+      margin-left: 85%;
+      height: 5px;
+      width: 5px;
+      background-color: #00B9F2;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .notification-title {
+      display: flex;
+      margin-bottom: 20px;
+      align-items: center;
+     
+    }
+    .notification-title h2 {
+      margin-right: 190px;
+      font-size: 18px;
+    }
+
+    .notification-item-title img {
+      width: 20px;
+      height: 20px;
+      margin-right: 20px;
+
+    }
+    .notification-item-title a{
+      text-decoration: none;
+    }
+
+    .notification-title button{
+      font-size: 10px;
+      color: #00B9F2;
+      margin-left: 109px;
+      margin-top: 8px;
+      // align-self: center;
+      border:1px solid transparent;
+    }
+
+    .notification-border {
+      border:1px solid rgba(0, 0, 0, 0.31);
+      margin-bottom: 10px;
+      border-width: 0.3px;
+    }
+    .notification-item-title {
+      color: rgba(0, 0, 0, 0.46);
+      display: flex;
+      width: 100%;
+      align-items: center;
+
+    }
+    .notification-item-title h4{
+      padding-right: 220px;
+    }
+
+    .see-all {
+      position: -webkit-sticky;
+      position: sticky;
+      top:0;
+    }
+
+    .see-all a{
+      text-align: center;
+      font-size: 11px;
+      color:#00B9F2;
+      text-decoration: none;
+    }
   }
 }
 
@@ -116,8 +280,6 @@ ul li .signout {
   }
 }
 
-
-
 /***********************
   Responsiveness
 ***********************/
@@ -135,7 +297,6 @@ ul li .signout {
     width: 100%;
     height: auto;
   }
-
   .top-side .top-side-left .top-left-custom-logo .top-left-custom-nav-app-logo {
     font-size: 1.5rem;
     padding-left: 10px;
@@ -163,6 +324,30 @@ ul li .signout {
     ul li img {
       padding-right: 0.5rem;
     }
+  }
+  .notification-content{
+    height: 180px;
+    display: none;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 20px;
+    position: absolute;
+    z-index: 1;
+    width: 380px;
+    right:0;
+    margin-left: -250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .notification-title button{
+    font-size: 10px;
+    color: #00B9F2;
+    margin-left: 19px;
+    margin-top: 8px;
+    // align-self: center;
+    border:1px solid transparent;
   }
 }
 
@@ -256,5 +441,18 @@ ul li .signout {
         border-bottom: 2px solid white;
       }
     }
+    
   }
+
+  .notification-content {
+    width: 10%;
+   }
+   .notification-title button{
+     font-size: 10px;
+     color: #00B9F2;
+     margin-left: 19px;
+     margin-top: 8px;
+     // align-self: center;
+     border:1px solid transparent;
+   }
 }

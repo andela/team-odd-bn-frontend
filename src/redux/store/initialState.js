@@ -78,5 +78,10 @@ const state = {
   requestsData: {
     data: '',
   },
+  notifications: {
+    notifications: {
+      allNotifications: [],
+    },
+  },
 };
 export default state;

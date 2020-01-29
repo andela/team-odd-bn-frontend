@@ -137,6 +137,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           padding-left: 5px;
         
       }
+
 }
       .userSearch {
          margin-bottom: 10px;
@@ -194,6 +195,10 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     }
 
     .tableNav {
+      @media screen and (min-width: 200px) and (max-width: 750px) {
+        height: 150px !important;
+      }
+      
       margin: 10px 0px;
 
       display: flex;
@@ -219,6 +224,46 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           margin: auto;
         }
       }
+.navRequests {
+  width:100%;
+  justify-content: space-between !important;
+  @media screen and (min-width: 200px) and (max-width: 750px) {
+   flex-direction: column;
+  }
+  div{
+    @media screen and (min-width: 200px) and (max-width: 750px) {
+      width: 100% !important;
+     }
+  }
+.travelRequestHeaders{
+width: 70%;
+}
+.newTrip{
+  width: 30%;
+}
+  .add-newTrip-Link {
+    height: auto;
+    width: 50%;
+    text-align: center;
+    background-color: #00B9F2;
+    border: 1px solid #00b9f2;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+  }
+
+  .add-newTrip-Link:hover {
+    background-color: #ffffff !important;
+    border: solid 1px #00b9f2;
+    color: #00b9f2 !important;
+  }
+}
+      
 
       .search {
         height: 100px;

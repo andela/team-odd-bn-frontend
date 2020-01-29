@@ -78,8 +78,12 @@ trip requests
                 <h3 className="request-title">Your bookings</h3>
                 {bookings === null ? <p className="requests">You have 0 bookings</p> : (
                   <p className="requests">
-You have
+                    You have
+                    {' '}
                     {bookings.data.length}
+                    {' '}
+bookings
+
                   </p>
                 )}
                 <Link to="/bookings">
