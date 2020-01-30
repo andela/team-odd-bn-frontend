@@ -10,6 +10,7 @@ import getAllCitiesReducers from './getAllCitiesReducers';
 import accommodationReducer from './accommodation';
 import multicityReducer from './multicityReducer';
 import adminReducer from './admin/adminReducer';
+import viewAccomodationReducer from './accommodation/viewAccomodationReducer';
 import PaginationReducer from './PaginationReducer';
 
 import bookingReducer from './bookings';
@@ -26,6 +27,7 @@ export default combineReducers({
   accommodation: accommodationReducer,
   multicityTrip: multicityReducer,
   admin: adminReducer,
+  allAccomodation: viewAccomodationReducer,
   pagination: PaginationReducer,
   bookings: bookingReducer,
 });

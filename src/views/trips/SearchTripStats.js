@@ -5,7 +5,7 @@ import Action from '../../components/Action';
 import { searchNavs, searchTableHeads } from '../../constants/trips';
 import { Paginate } from '../../helpers/Paginate';
 
-const RequestsView = ({ getStats, pageNo, itemsPerPage }) => {
+export const RequestsView = ({ getStats, pageNo, itemsPerPage }) => {
   const { getStatsInput, tripStatsCounter } = getStats;
 
   let data;

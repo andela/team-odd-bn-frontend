@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { getStatsAction, handleInputsAction, updateTripCounter } from '../redux/actions/tripsActions/statsTripActions';
 import '../assets/css/statsTrip.scss';
 import {changePageNo} from '../redux/actions/PaginationAction'
-class StatsNav extends Component {
+
+export class StatsNav extends Component {
   state = {
     styleButtonOneway: '#34C6F3',
     styleButtonRoundTrip:'white',

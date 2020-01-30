@@ -36,6 +36,7 @@ import ApprovalRequests from './containers/Trips/ApprovalTable';
 
 import MulticityTrip from './containers/Trips/MulticityTrip';
 import SearchStats from './containers/trips/SearchStats';
+import ViewAccomodation from './containers/accommodation/ViewAccommodations';
 
 dotenv.config();
 
@@ -94,6 +95,7 @@ const App = () => (
             render={() => (checkPrevilege(1) ? (
               <UserRolesView />) : (<Redirect to="/Dashboard" />))}
           />
+          <Route path="/accommodations" exact component={ViewAccomodation} />
           <Route component={Notfound} />
         </Switch>
       </div>

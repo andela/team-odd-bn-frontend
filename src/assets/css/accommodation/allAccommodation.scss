@@ -1,0 +1,205 @@
+.accommodation-container {
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.accomodation-title {
+  padding: 2.5rem 0;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-weight: bold;
+  font-family: muli;
+}
+
+.accommodation-data {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  margin: 1.5rem auto;
+  box-shadow: 1px 2px 3px 0px #BABABA;
+}
+
+.accommodation-right-side {
+  width: 45%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.accommodation-left-side {
+  width: 55%;
+  background-color: #FFFFFF;
+}
+
+.accomodation-content-title {
+  font-size: 24px;
+  margin: 5px 0;
+  padding: 0 1rem;
+  font-family: muli;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+}
+.accomodation-content {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.common-content{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.accommodation-left-side .accomodation-content .accomodation-content-side-a {
+
+  .common-content img {
+    margin-right: 10px;
+    height: 25px;
+    width: 25px;
+  }
+  .common-content span {
+    font-size: 18.5px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+  .like-dislike-content {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0.5rem;
+    img {
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+    .dislike_icon {
+      margin-top: 15px;
+    }
+  }
+  .like-dislike {
+    margin-top: 5px;
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .likes_dislikes_data {
+    display: flex;
+    justify-content: start;
+    margin-top: -15px;
+    width: 60px;
+  }
+  .likes_side {
+    margin-right: 1.5rem;
+    width: 25px;
+  }
+}
+
+.accommodation-left-side .accomodation-content .accomodation-content-side-b {
+  display: flex;
+  flex-direction: column;
+  .rate-content {
+    display: flex;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .average-rate {
+    padding-right: 5px;
+    color: #7D7D7D;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .all-reviewes {
+    margin-top: 15px;
+    color: #7D7D7D;
+    font-weight: 900;
+  }
+  .check-in {
+    background-color: #32c8f4;
+    font-size: 1.1rem;
+    color: #fff;
+    border-radius: 7px;
+    height: 40px;
+    box-shadow: 1px 2px 3px 0px #BBBBBB;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 150px;
+  }
+  .check-in:hover {
+    background-color: #fff;
+    color: #32c8f4;
+    border: 1px solid #32c8f4;
+  }
+}
+
+@media (max-width: 575px) and (min-width: 320px) {
+  
+  .accommodation-data {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    margin: 1.5rem auto;
+    width: 90%;
+    height: 419px;
+  }
+  .accommodation-right-side {
+    width: 100%;
+    height: 190px;
+  }
+  .accommodation-left-side {
+    width: 100%;
+  }
+  .accommodation-left-side .accomodation-content .accomodation-content-side-a .common-content span {
+    font-size: 1rem;
+  }
+  .accomodation-content-title {
+    padding: 0.5rem 0.7rem;
+  }
+  .accommodation-left-side .accomodation-content .accomodation-content-side-b .check-in {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 576px) {
+  .accommodation-data {
+    height: 215px;
+    width: 95%;
+  }
+
+  .accommodation-left-side .accomodation-content .accomodation-content-side-a .common-content span {
+    font-size: 0.9rem;
+  }
+  .accommodation-left-side .accomodation-content .accomodation-content-side-b {
+    .check-in {
+      margin-top: 10px;
+    }
+     .all-reviewes {
+      margin-top: 10px;
+    }
+    .rate-content {
+      display: block
+    }
+  }
+}
+
+@media (max-width: 960px) and (min-width: 769px) {
+  .accommodation-left-side .accomodation-content .accomodation-content-side-b {
+    .check-in {
+      margin-top: 10px;
+    } 
+  }
+  .accommodation-left-side .accomodation-content .accomodation-content-side-a  {
+    .like-dislike {
+      margin-top: 0px;
+    }
+    .likes_dislikes_data {
+      margin-top: -22px;
+    }
+    .common-content span {
+      font-size: 17px;
+    }
+  }
+}

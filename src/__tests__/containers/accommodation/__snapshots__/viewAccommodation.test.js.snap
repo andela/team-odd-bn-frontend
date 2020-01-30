@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to load accommodation Should load accommodation 1`] = `ShallowWrapper {}`;
+
+exports[`Expect to render accommodation container Should render without problem 1`] = `ShallowWrapper {}`;

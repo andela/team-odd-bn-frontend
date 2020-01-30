@@ -12,8 +12,10 @@ import logoutIcon from '../../../assets/images/logout_icon/logout_24px.png'
 import signoutUser from '../../../redux/actions/signoutAction'
 import usersIcon from '../../../assets/images/users.png'
 import verifyToken from '../../../helpers/verifyToken';
-import statisticsIcon from '../../../assets/images/statistics.png'
-import addNewTripIcon from '../../../assets/images/addNewTrip.png'
+import statisticsIcon from '../../../assets/images/statistics.png';
+import addNewTripIcon from '../../../assets/images/addNewTrip.png';
+import viewAccommodation from '../../../assets/images/accommodation_icon/view_accommodation_24.png';
+
 export class SideDrawer extends Component {
   constructor(props) {
     super(props)
@@ -96,6 +98,12 @@ export class SideDrawer extends Component {
             <Link to="/bookings">
               <img src={bookingIcon} alt="booking icon" />
               <span>Bookings</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/accommodations">
+              <img src={viewAccommodation} alt="accommodation icon" />
+              <span>View Accomodations</span>
             </Link>
           </li>
           <li>

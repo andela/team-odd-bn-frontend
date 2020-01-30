@@ -7,13 +7,13 @@ import { getStatsAction, updateTripCounter } from '../../redux/actions/tripsActi
 import verifyToken from '../../helpers/verifyToken';
 import tokenExist from '../../helpers/tokenExist';
 
-class Requests extends Component {
+export class Requests extends Component {
   async componentDidMount() {
     if (!verifyToken(tokenExist)) {
       return this.props.history.push('/signin');
     }
     const { getStatsAction } = this.props;
-    await getStatsAction({ tripType: '1', from: '2020-01-22', to: '2020-01-26' });
+    getStatsAction({ tripType: '1', from: '2020-01-22', to: '2020-01-26' });
 
 
     if (this.props.profileError.error
