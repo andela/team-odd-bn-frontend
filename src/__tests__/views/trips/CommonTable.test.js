@@ -2,6 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Requests from '../../../views/trips/CommonTable';
 import initialState from '../../../redux/store/initialState';
 import {
@@ -23,16 +24,18 @@ describe('Test Signup page ', () => {
 
     wrapper = mount(
 
-      <Router>
-        <Requests
-          trips={trips}
-          comments={comments}
-          navs={navs}
-          tableHeads={tableHeads}
-          postCommentsAction={jest.fn()}
-          entities={entities}
-        />
-      </Router>,
+      <Provider store={store}>
+        <Router>
+          <Requests
+            trips={trips}
+            comments={comments}
+            navs={navs}
+            tableHeads={tableHeads}
+            postCommentsAction={jest.fn()}
+            entities={entities}
+          />
+        </Router>
+      </Provider>,
 
     );
     expect(wrapper).toMatchSnapshot();

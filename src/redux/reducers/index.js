@@ -10,6 +10,7 @@ import getAllCitiesReducers from './getAllCitiesReducers';
 import accommodationReducer from './accommodation';
 import multicityReducer from './multicityReducer';
 import adminReducer from './admin/adminReducer';
+import PaginationReducer from './PaginationReducer';
 
 
 export default combineReducers({
@@ -24,4 +25,5 @@ export default combineReducers({
   accommodation: accommodationReducer,
   multicityTrip: multicityReducer,
   admin: adminReducer,
+  pagination: PaginationReducer,
 });

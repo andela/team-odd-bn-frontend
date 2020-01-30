@@ -20,6 +20,10 @@ export const entities = [
   { className: 'action', attribute: 'view', key: 'action' },
 ];
 export const init = {
+  pagination: {
+    pageNo: 0,
+    itemsPerPage: 5,
+  },
   viewProfile: {
     profile: {},
   },
@@ -91,6 +95,18 @@ export const init = {
         statusId: 1,
         createdAt: '2020-01-11T22:08:54.891Z',
         updatedAt: '2020-01-11T22:08:54.891Z',
+        tripType: {
+          id: 3,
+          tripType: 'MultiCity',
+          createdAt: '2019-12-12T19:12:16.590Z',
+          updatedAt: '2019-12-12T19:12:16.590Z',
+        },
+        status: {
+          id: 1,
+          status: 'Pending',
+          createdAt: '2019-12-12T19:12:16.595Z',
+          updatedAt: '2019-12-12T19:12:16.595Z',
+        },
         trips: [
           {
             id: 10,
@@ -124,6 +140,9 @@ export const init = {
           user: {
             firstName: 'John',
             lastName: 'Doe',
+            userProfile: {
+              imageURL: '/images/me.jpg',
+            },
           },
         },
       ],

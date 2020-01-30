@@ -10,15 +10,20 @@ $contents: (
   LastName: 'Last name',
   Email: 'Email',
   UserRole: 'Role',
-  EditRole: 'Edit role'
+  EditRole: 'Edit role',
 );
-$tt: (originId: 'Origin',
+$tt: (
+  originId: 'Origin',
   destinationId: 'Destination',
   startDate: 'Start date',
-   returnDate: 'Return date',
+  returnDate: 'Return date',
   reason: 'Reason',
+  tripType:'Trip Type',
+  status: 'Status',
+  firstname: 'First Name',
+  lastName: 'Last Name',
 );
-$kk: destinationId originId startDate returnDate reason;
+$kk: destinationId originId startDate returnDate reason tripType status firstname lastName;
 $attributes: tripId tripType createdAt status action firstName LastName Email UserRole EditRole;
 
 %div_style {
@@ -144,7 +149,6 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
         margin-left: 2%;
 
         .actionButton {
-          
           margin-left: -13px;
           width: 100px;
           height: 30px;
@@ -193,16 +197,38 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
         display: flex;
         flex-direction: column;
       }
-
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #34c6f3; 
+        border-radius: 10px;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #34c6f3; 
+      }
       .trips {
         width: 98%;
         margin-left: 2%;
         display: flex;
+      
 
         .trip {
           border: 1px solid #dddddd;
-          padding: 5px;
-          margin-bottom: 20px;
+          padding: 2px;
+          margin-bottom: 5px;
+          overflow-y: auto;
+          max-height: 250px;
         }
 
         div {
@@ -266,77 +292,81 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       height: 100%;
       display: flex;
       flex-direction: column;
-      .commentInputField{
+      .commentInputField {
         height: 70px;
-        label{
+        margin-top: 30px;
+        label {
           margin-bottom: 5px;
           color: #34c6f3;
         }
-        textarea{
+        textarea {
           height: 90%;
           padding: 10px;
+          font-family: muli;
+          border-radius: 5px;
+          border: 1px solid #34c6f3;
+          font-size: 15px;
         }
       }
-      .chats{
+      .chats {
         height: 255px;
-        overflow-y: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
         .commentCardContainer {
-          width: 100%;
+          width: 95%;
+          height: auto;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           margin: 10px 0px;
-  
-          .commentCardHeader {
+          border: 1px solid rgb(185, 185, 185);
+          padding: 10px;
+          border-radius: 5px;
+          .commentProfileImg {
+            width: 30px;
             height: 30px;
-            flex-direction: row;
+            border-radius: 50px;
+          }
+          .commentCardHeader {
+            flex-direction: column;
             width: 100%;
+            height: 100%;
             display: flex;
-            .commentCardHeaderLeftSide {
-              padding-left: 2px;
-              color: white !important;
-              width: 20%;
-              min-width: 161.41px;
-              background: #00b9f2;
-              border-radius: 0px 10px 0px 0px;
-              margin-right: 10px;
-  
-              display: flex;
+            margin-left: 10px;
+            .commenter {
+              color: $logo-color;
+              font-weight: bold;
             }
-  
-            .commentCardHeaderRigthSide {
-              display: flex;
-              width: 50px;
-              button {
-                height: 100%;
-                width: 100%;
-                background-color: transparent;
-                border: 0px;
-                outline: none;
-                img {
-                  height: 100%;
-                  width: 100%;
-                }
-              }
+            .commentText {
+              font-size: 14px;
+              position: relative;
             }
+            .commentDate {
+              color: #909090;
+              font-size: 10px;
+              margin-top: 10px;
+              position: relative;
+            }
+
             .commentCardHeaderCenterSide {
               display: flex;
+              color: #909090;
             }
           }
-  
-          .commentBody {
-            padding: 5px;
-            margin-right: 5px;
+          .commentCardHeaderRigthSide {
             display: flex;
-            width: auto;
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            box-sizing: border-box;
-            border-radius: 0px;
-  
-            textarea {
-              height: 100%;
+            width: 50px;
+            button {
+              height: 20px;
+              width: 30px;
+              background-color: transparent;
+              border: 0px;
+              outline: none;
+              img {
+                height: 100%;
+                width: 70%;
+              }
             }
           }
-  
           .commentInputField {
             margin-right: 5px;
             display: flex;
@@ -344,7 +374,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
             border: 1px solid rgba(0, 0, 0, 0.12);
             box-sizing: border-box;
             border-radius: 0px;
-  
+
             textarea {
               border: none;
               padding: 5px;
@@ -353,44 +383,60 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           }
         }
       }
+      .chats::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
 
+      .chats::-webkit-scrollbar:vertical {
+        width: 11px;
+      }
+
+      .chats::-webkit-scrollbar:horizontal {
+        height: 11px;
+      }
+
+      .chats::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: $logo-color;
+      }
     }
 
     .entity:nth-child(2n) {
       background: white;
     }
-        .corasselButtons {
-          display: flex;
-          flex-direction: row;
-          div {
-            background-color: #f7f7f7 !important;
-            z-index: 1;
-            #back {
-              background-color: #f7f7f7 !important;
-              margin: auto;
-              width: 0;
-              height: 0;
-              border: solid 20px;
-              border-color: transparent transparent #34c6f3 transparent;
-              border-radius: 2px;
-              outline: none;
-              margin-right: 5px;
-              transform: matrix(0, -1, 1, 0, 0, 0);
-            }
-            #front {
-              background-color: #f7f7f7 !important;
-              margin: auto;
-              width: 0;
-              height: 0;
-              margin-left: 5px;
-              border: solid 20px;
-              outline: none;
-              border-color: transparent transparent #34c6f3 transparent;
-              border-radius: 2px;
-              transform: matrix(0, 1, -1, -0.01, 0, 0);
-            }
-          }
+    .corasselButtons {
+      display: flex;
+      flex-direction: row;
+      div {
+        background-color: #f7f7f7 !important;
+        z-index: 1;
+        #back {
+          background-color: #f7f7f7 !important;
+          margin: auto;
+          width: 0;
+          height: 0;
+          border: solid 20px;
+          border-color: transparent transparent #34c6f3 transparent;
+          border-radius: 2px;
+          outline: none;
+          margin-right: 5px;
+          transform: matrix(0, -1, 1, 0, 0, 0);
         }
+        #front {
+          background-color: #f7f7f7 !important;
+          margin: auto;
+          width: 0;
+          height: 0;
+          margin-left: 5px;
+          border: solid 20px;
+          outline: none;
+          border-color: transparent transparent #34c6f3 transparent;
+          border-radius: 2px;
+          transform: matrix(0, 1, -1, -0.01, 0, 0);
+        }
+      }
+    }
     .entity {
       @extend %div_style;
 
@@ -451,7 +497,63 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
 
         .actionButton:hover {
           background-color: #ffffff !important;
-          border: solid 1px #00b9f2;
+          border: solid 1px;
+        }
+      }
+    }
+    .corasselButtons {
+      justify-content: center;
+      width: auto;
+      max-width: 40%;
+      @media screen and (min-width: 200px) and (max-width: 1000px) {
+        width: 100% !important;
+      }
+      margin: auto;
+      .pageButtons {
+        width: auto;
+        overflow-x: auto;
+      }
+      div {
+        width: 40px;
+        div {
+          margin: auto;
+          max-width: 30px;
+
+          button {
+            border-radius: 50%;
+            outline: none;
+            width: 30px;
+            height: 30px;
+            padding: 1px;
+            margin: 1px;
+            a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              text-decoration: none;
+              color: inherit;
+              padding: 5px 0px;
+            }
+          }
+        }
+      }
+      .pageArrows {
+        max-width: 30px;
+        button {
+          border-radius: 50%;
+          outline: none;
+          width: 30px;
+          height: 30px;
+          padding: 1px;
+          margin: 1px;
+          a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #00b9f2 ;
+            padding: 5px 0px;
+          }
         }
       }
     }
@@ -502,7 +604,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
   width: 100px;
   color: #00b9f2;
 }
- 
+
 .overlay {
   position: fixed;
   width: 100%;
@@ -532,21 +634,26 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     height: 150px !important;
     margin: auto;
     background-color: white;
-    .popupMessage{
+    .popupMessage {
       padding: 5px;
     }
+    .popupButtons {
+      width: 40%;
+      display: flex;
+      margin-right: 50px;
+    }
     div {
-      margin-top:13px;
-      height: 50px;
+      margin-top: 13px;
+      height: 40px;
       width: 90%;
       margin: auto;
       display: flex;
-      justify-content: space-between;
-      div{
+      justify-content: space-evenly;
+      div {
         width: 80px;
         button {
           width: 80px;
-          margin: 5px;
+          margin: 3px;
           border: 0px;
           color: white;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -554,13 +661,11 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
         }
         #delete {
           background-color: red;
-          
         }
         #cancel {
           background-color: #00b9f2;
         }
       }
-      
     }
   }
 }

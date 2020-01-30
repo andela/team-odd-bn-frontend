@@ -1,4 +1,8 @@
 const state = {
+  pagination: {
+    pageNo: 0,
+    itemsPerPage: 5,
+  },
   accommodation: {
     createAccommodation: {
       rooms: [],

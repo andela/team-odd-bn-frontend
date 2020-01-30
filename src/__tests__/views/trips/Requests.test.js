@@ -21,7 +21,7 @@ describe('Test Signup page ', () => {
   });
   it('Test snapshot using the initial state', () => {
     store = mockStore(init);
-    wrapper = mount(<Provider store={store}><Router><Requests /></Router></Provider>);
+    wrapper = mount(<Provider pageNo={1} store={store}><Router><Requests /></Router></Provider>);
     expect(wrapper).toMatchSnapshot();
   });
 });
