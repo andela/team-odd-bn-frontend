@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/jsx-props-no-spreading
 import React from 'react';
 import { shallow } from 'enzyme';
 import moxios from 'moxios';

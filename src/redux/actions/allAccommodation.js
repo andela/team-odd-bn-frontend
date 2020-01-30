@@ -35,7 +35,6 @@ export const viewActionAccommodation = () => async (dispatch) => {
   } catch (error) {
     if (error.response) {
       const { message } = error.response.data;
-
       return dispatch(returnData(types.VIEW_ALL_ACCOMMODATION_ERROR, { message }));
     }
     if (error.request) {
