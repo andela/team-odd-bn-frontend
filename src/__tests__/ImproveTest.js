@@ -1,5 +1,3 @@
-// eslint-disable-next-line react/jsx-props-no-spreading
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
@@ -7,9 +5,14 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import { StatsNav } from '../components/GetStatsNav';
 import { Requests } from '../containers/trips/SearchStats';
-import SearchTripStats from '../views/trips/SearchTripStats';
+import { RequestsView as SearchTripStats } from '../views/trips/SearchTripStats';
 import { isTravelAdmin } from '../helpers/isTravelAdmin';
-import { getStatsAction, updateSpinnerStatus, handleInputsAction, updateTripCounter } from '../redux/actions/tripsActions/statsTripActions';
+import {
+  getStatsAction,
+  updateSpinnerStatus,
+  handleInputsAction,
+  updateTripCounter,
+} from '../redux/actions/tripsActions/statsTripActions';
 import apiCall from '../helpers/apiCall';
 import joinLikesAccomodation from '../helpers/joinLikesAccomodation';
 
@@ -20,6 +23,7 @@ const mockStore = configureStore(middlewares);
 const improveTestMockup = {
   handleInputsAction: jest.fn(),
   getStatsAction: jest.fn(),
+  changePageNo: jest.fn(),
   getStats: {
     getStatsInput: {
       to: '2020-01-31',
@@ -74,7 +78,6 @@ describe('Expect to test and display trip stats with navigation', () => {
   });
 });
 
-
 /* src/containers/trips/SearchStats.js */
 const searchTripStatisticsProps = {
   stateObject: {
@@ -105,42 +108,45 @@ describe('Expect to search stats nav', () => {
   });
 });
 
-
 /* views/trips SearchTripStats.js */
 const SearchTripStatsViewProps = {
-  getStatsInput: {
-    tripType: 1,
-  },
-  tripStatsCounter: {
-    onewayTripStats: {
-      userTrips: [
-        {
-          originId: 1,
-          destinationId: 2,
-          createdAt: '2020-01-28 12:26:00.452+02',
-          tripRequestId: 1,
-        },
-      ],
+  pageNo: 0,
+  itemsPerPage: 1,
+  getStats: {
+    getStatsInput: {
+      tripType: 1,
     },
-    roundTripStats: {
-      userTrips: [
-        {
-          originId: 1,
-          destinationId: 2,
-          createdAt: '2020-01-28 12:26:00.452+02',
-          tripRequestId: 1,
-        },
-      ],
-    },
-    multiTripStats: {
-      userTrips: [
-        {
-          originId: 1,
-          destinationId: 2,
-          createdAt: '2020-01-28 12:26:00.452+02',
-          tripRequestId: 1,
-        },
-      ],
+    tripStatsCounter: {
+      onewayTripStats: {
+        userTrips: [
+          {
+            originId: 1,
+            destinationId: 2,
+            createdAt: '2020-01-28 12:26:00.452+02',
+            tripRequestId: 1,
+          },
+        ],
+      },
+      roundTripStats: {
+        userTrips: [
+          {
+            originId: 1,
+            destinationId: 2,
+            createdAt: '2020-01-28 12:26:00.452+02',
+            tripRequestId: 1,
+          },
+        ],
+      },
+      multiTripStats: {
+        userTrips: [
+          {
+            originId: 1,
+            destinationId: 2,
+            createdAt: '2020-01-28 12:26:00.452+02',
+            tripRequestId: 1,
+          },
+        ],
+      },
     },
   },
 };
@@ -151,26 +157,24 @@ describe('Expect to search stats nav', () => {
     expect(viewSearchOneWayTrips).toBeTruthy();
   });
   it('Should search trips roundTrips statics viewed', () => {
-    SearchTripStatsViewProps.getStatsInput.tripType = 2;
-    SearchTripStatsViewProps.tripStatsCounter.onewayTripStats = '';
+    SearchTripStatsViewProps.getStats.getStatsInput.tripType = 2;
+    SearchTripStatsViewProps.getStats.tripStatsCounter.onewayTripStats = '';
     const viewSearchOneWayTrips = SearchTripStats(SearchTripStatsViewProps);
     expect(viewSearchOneWayTrips).toBeTruthy();
   });
   it('Should search trips roundTrips statics viewed', () => {
-    SearchTripStatsViewProps.getStatsInput.tripType = 3;
-    SearchTripStatsViewProps.tripStatsCounter.onewayTripStats = '';
-    SearchTripStatsViewProps.tripStatsCounter.roundTripStats = '';
+    SearchTripStatsViewProps.getStats.getStatsInput.tripType = 3;
+    SearchTripStatsViewProps.getStats.tripStatsCounter.onewayTripStats = '';
+    SearchTripStatsViewProps.getStats.tripStatsCounter.roundTripStats = '';
     const viewSearchOneWayTrips = SearchTripStats(SearchTripStatsViewProps);
     expect(viewSearchOneWayTrips).toBeTruthy();
   });
 });
-
 
 /* helpers/isTravelAdmin */
 describe('Expect to verify travel admin', () => {
   isTravelAdmin();
 });
-
 
 /* src/redux/actions/tripsActions/statsTripActions.js */
 const inputSearch = {
@@ -204,11 +208,10 @@ describe('Expect to mock error and reject to view accommodation', () => {
     });
 
     const store = mockStore({});
-    await store.dispatch(getStatsAction(inputSearch))
-      .catch((error) => {
-        expect(error.status).toEqual(errorResp.status);
-        expect(error.response.message).toEqual(errorResp.response.message);
-      });
+    await store.dispatch(getStatsAction(inputSearch)).catch((error) => {
+      expect(error.status).toEqual(errorResp.status);
+      expect(error.response.message).toEqual(errorResp.response.message);
+    });
   });
 });
 
@@ -237,7 +240,6 @@ describe('Expect to test all trips helper function', () => {
     });
   });
 });
-
 
 // src/helpers/joinLikes&Accomodation.js
 const allLikes = [
