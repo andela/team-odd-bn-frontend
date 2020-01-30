@@ -15,6 +15,9 @@ import { fetchRequestsAction } from '../../redux/actions/tripsActions/fetchReque
 import { likeAction, dislikeAction } from '../../redux/actions/likeAndDislikeAction';
 import { viewActionAccommodation } from '../../redux/actions/allAccommodation';
 import BookAccommodation from '../../views/accommodation/BookAccommodation'
+import { Link } from 'react-router-dom'
+import '../../assets/css/accommodation/allAccommodation.scss';
+import { checkPrevilege } from '../../helpers/checkPrevilege';
 
 export class viewAllAccomodation extends Component {
   async componentDidMount() {
@@ -76,12 +79,23 @@ export class viewAllAccomodation extends Component {
           display={display.bookAccommodation}
         />
         <div className="accommodation-container">
-          <div className="accomodation-title">Barefoot accomodations</div>
+          {
+            checkPrevilege(4) && (
+              <div className="add_new_accommodation">
+                <Link to="/accommodation/create">New accommodation</Link>
+              </div>
+            )
+          }
+          <div className="accomodation-title">
+            Barefoot accomodations
+          </div>
 
           {pageData && pageData.length !== 0 && pageData.map((items, index) => (
             <div key={index} className="accommodation-data">
               <div className="accommodation-right-side">
+              <Link className="accommodation-item-container" to={`accommodation/${items.id}`}>
                 <img src={items.imagesAccommodation[0].imageUrl} alt="accomodation" />
+              </Link>
               </div>
               <div className="accommodation-left-side">
                 <h2 className="accomodation-content-title">{items.name}</h2>
@@ -202,4 +216,4 @@ export const mapStateToProps = ({userLikesAndDislike}) => ({
   likeDislikeState:userLikesAndDislike,
 });
 
-export default connect(mapStateToProps, { likeAction,viewActionAccommodation, dislikeAction })(viewAllAccomodation);
+export default connect(mapStateToProps, { likeAction,viewActionAccommodation, dislikeAction, fetchRequestsAction })(viewAllAccomodation);

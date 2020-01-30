@@ -35,6 +35,15 @@ const webpack = {
           'sass-loader',
         ],
       },
+      {
+        include: path.resolve(__dirname, './node_modules/react-alice-carousel/lib/alice-carousel.css'),
+        test: /\.(s[ac]ss|css)$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
     ],
   },
   resolve: {

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to pin a house on map should pin a house on map successfully 1`] = `ShallowWrapper {}`;
+
+exports[`Expect to render map component Should render map successfully 1`] = `ShallowWrapper {}`;

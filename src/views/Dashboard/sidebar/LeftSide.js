@@ -54,7 +54,7 @@ export const LeftSide = (props) => {
         <li>
           <Link to="/accommodations">
             <img src={viewAccommodation} alt="trip icon" />
-            <span>All Accommodations</span>
+            <span>Accommodations</span>
           </Link>
         </li>
         <li>
@@ -63,14 +63,6 @@ export const LeftSide = (props) => {
             <span>Bookings</span>
           </Link>
         </li>
-        {checkPrevilege(4) && (
-          <li>
-            <Link to="/accommodation/create">
-              <img src={accommodationIcon} alt="accommodation icon" />
-              <span>Accomodations</span>
-            </Link>
-          </li>
-        )}
         {checkPrevilege(1) && (
           <li>
             <Link to="/admin/roles">

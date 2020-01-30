@@ -1,0 +1,200 @@
+.rates-container {
+  width: 700px;
+  background: #fff;
+  height: 500px;
+  margin: auto;
+};
+
+.rate-title {
+  padding: 15px 1.5rem;
+  background: #33c6f3;
+  h1 {
+    color: #fff;
+  }
+}
+
+.rate-content-data {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin: 40px auto 0 auto;
+}
+
+.rate-label {
+  width: 15%;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.rate-feedback-data {
+  width: 85%;
+  textarea {
+    width: 100%;
+    width: 522px;
+    height: 250px;
+    background-color: #E9E9E9;
+    border-radius: 3px;
+    border: 1px solid #33c6f3;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    color: #939393;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-family: muli;
+  }
+}
+
+.rate-count-star {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto 0 auto;
+
+  .rating-common-word {
+    color: #33c6f3;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  span {
+    padding: 0 2px 0 0;
+  }
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.rate-feedback-btn {
+  width: 100%;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+
+  .rate-common-btn {
+    padding: 8px 29px;
+    font-size: 15px;
+    border-radius: 7px;
+    font-weight: 900;
+  }
+
+  .rate-common-btn-submit {
+    color: white;
+    background-color: #33c6f3;
+    margin-left: 20px;
+  }
+
+  .rate-common-btn-cancel {
+    background-color: white;
+    color: #33c6f3;
+    border: 1px solid #33c6f3;
+  }
+
+  .rate-common-btn-cancel:hover, .rate-common-btn-cancel:active {
+    background-color: #F44336;
+    color: white;
+    border: 1px solid white;
+  }
+  .rate-common-btn-submit:hover, .rate-common-btn-submit:active  {
+    color: white;
+    background-color: #89cff0;
+    border: 1px solid white;
+  }
+}
+
+@media (max-width: 499px) and (min-width: 320px) {
+  .rates-container {
+    width: 95%;
+  }
+  .rate-content-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .rate-title {
+    h1 {
+      font-size: 23px;
+      text-align: center;
+    }
+    width: 85%;
+    margin: auto;
+  }
+  .rate-label {
+    display: none;
+  }
+  .rate-count-star {
+  //   font-size: 17px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    .rating-common-word {
+      font-size: 13px;
+    }
+  } 
+  .rate-feedback-data {
+    width: 100%;
+    textarea {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: 599px) and (min-width: 500px) {
+  .rates-container {
+    width: 100%;
+  }
+  .rate-title {
+    h1 {
+      font-size: 20px;
+    }
+    width: 90%;
+    margin: auto;
+  }
+  .rate-label {
+    font-size: 17px;
+    text-align: right;
+  }
+  .rate-count-star {
+    font-size: 17px;
+    img {
+      width: 22px;
+      height: 22px;
+    }
+    .rating-common-word {
+      font-size: 17px;
+    }
+  } 
+  .rate-feedback-data {
+    textarea {
+      width: 350px;
+    }
+  }
+  .rate-feedback-btn {
+    width: 90%;
+  }
+
+}
+@media (max-width: 900px) and (min-width: 600px) {
+  .rates-container {
+    width: 570px;
+  }
+  .rate-title {
+    h1 {
+      font-size: 21px;
+    }
+  }
+  .rate-count-star {
+    font-size: 17px;
+    img {
+      width: 22px;
+      height: 22px;
+    }
+  } 
+  .rate-feedback-data {
+    textarea {
+      width: 422px;
+    }
+  }
+}

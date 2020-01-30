@@ -13,6 +13,8 @@ describe('Pop up tests ', () => {
       currentPopUp: 'editTrip',
       deleteComment: 'none',
       editTrip: 'none',
+      rate: 'none',
+      map: 'none',
     });
   });
 });

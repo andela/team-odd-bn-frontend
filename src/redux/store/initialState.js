@@ -11,7 +11,9 @@ const state = {
   },
   popUpsDisplay: {
     deleteComment: 'none',
+    rate: 'none',
     editTrip: 'none',
+    map: 'none',
     currentPopUp: 'editTrip',
     bookAccommodation: 'none',
   },

@@ -16,6 +16,8 @@ import searchReducer from './searchReducers/searchReducers';
 import popUpReducer from './popUpReducer';
 import likeAndDislike from './accommodation/likeAndDislikeReducer';
 import notificationsReducers from './notificationsReducers';
+import rateReducers from './rateReducers';
+import singleAccommodationReducer from './accommodation/singleAccommodationReducer';
 
 import bookingReducer from './bookings';
 
@@ -38,4 +40,6 @@ export default combineReducers({
   popUpsDisplay: popUpReducer,
   userLikesAndDislike: likeAndDislike,
   notifications: notificationsReducers,
+  ratings: rateReducers,
+  specificAccommodation: singleAccommodationReducer,
 });
