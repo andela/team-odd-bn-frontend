@@ -412,5 +412,18 @@ const mockData = {
   },
   availRequests: jest.fn(),
   updateSpinnerStatus: jest.fn(),
+
+  successResponse: {
+    status: 200,
+    response: {
+      message: 'Success',
+    },
+  },
+  errorResponse: {
+    status: 404,
+    response: {
+      message: 'Error',
+    },
+  },
 };
 export default mockData;

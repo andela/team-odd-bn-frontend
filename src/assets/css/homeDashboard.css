@@ -1,0 +1,160 @@
+.dashboard {
+  max-height: 85%;
+}
+
+.dashboard-title {
+  text-transform: uppercase;
+  padding: 20px;
+  padding-left: 35px;
+}
+
+.most-travelled-title {
+  padding-top: 10px;
+  font-size: 18px;
+  text-align: start;
+  margin-bottom: 2em;
+}
+
+.column, .column-requests, .column-bookings {
+  float: left;
+  width: 25%;
+}
+
+.destination-details {
+  padding: 48px 0px;
+  text-align: left;
+  display: block;
+ }
+/* Clear floats after the columns */
+.firstRow:after, .lastRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.most-travelled-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 35px;
+  width: 1000px;
+  text-align: center;
+  background-color: #fff;
+  display: inline-flex;
+  padding: 0px 20px;
+}
+
+.most-travelled-card img {
+  width: 330px;
+  height: 221px;
+
+}
+
+.destination-details img {
+  width: 20px;
+  height: 20px;
+  margin-left: 40px;
+  margin-right: 20px;
+
+}
+
+.destination-details p {
+  padding: 9px;
+}
+
+.card-requests {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  text-align: center;
+  background-color: #fff;
+  height: 20vh;
+  width: 50vh;
+  margin: 25px; 
+
+}
+
+.card-requests a {
+  color: #00b9f2;
+  text-decoration: none;
+
+}  
+
+.card-bookings {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  text-align: center;
+  background-color: #fff;
+  height: 20vh;
+  width: 50vh;
+  margin: 25px;
+  margin-left: 350px;
+}
+
+.card-bookings a {
+  color: #00b9f2;
+  text-decoration: none;
+
+} 
+
+.lastRow {
+  padding: 10px;
+}
+
+.request-title {
+  text-align: start;
+  margin-bottom: 2em;
+}
+
+.requests{
+  padding: 10px;
+  } 
+
+/* Responsive columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+.most-travelled-card {
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+  }
+
+.most-travelled-card img{
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .destination-details img {
+    width: 20px;
+    height: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+  }
+
+
+  .card-requests, .card-bookings {
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+  }
+
+  .column-requests , .column-bookings{
+    margin-left: 0px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+}

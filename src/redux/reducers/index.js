@@ -12,6 +12,7 @@ import multicityReducer from './multicityReducer';
 import adminReducer from './admin/adminReducer';
 import PaginationReducer from './PaginationReducer';
 
+import bookingReducer from './bookings';
 
 export default combineReducers({
   viewProfile: profileReducers,
@@ -26,4 +27,5 @@ export default combineReducers({
   multicityTrip: multicityReducer,
   admin: adminReducer,
   pagination: PaginationReducer,
+  bookings: bookingReducer,
 });
