@@ -6,11 +6,12 @@ export const returnData = (actioName, data) => ({
   payload: data,
 });
 
-const HEADERS_REQUEST = {
-  token: localStorage.getItem('token'),
-};
 
 export const getAllLikesDislikes = (data) => async (dispatch) => {
+  const HEADERS_REQUEST = {
+    token: localStorage.getItem('token'),
+  };
+
   let getAllLikesDislikesContent = data.map(async (item) => {
     const API_URL_LIKES = `accommodations/${item.id}/likes`;
     const likesContent = await apiCall.get(API_URL_LIKES, { headers: HEADERS_REQUEST });
@@ -22,6 +23,9 @@ export const getAllLikesDislikes = (data) => async (dispatch) => {
 };
 
 export const viewActionAccommodation = () => async (dispatch) => {
+  const HEADERS_REQUEST = {
+    token: localStorage.getItem('token'),
+  };
   const API_URL = '/accommodations';
   try {
     const getaccomodations = await apiCall.get(API_URL, { headers: HEADERS_REQUEST });
@@ -31,6 +35,7 @@ export const viewActionAccommodation = () => async (dispatch) => {
   } catch (error) {
     if (error.response) {
       const { message } = error.response.data;
+
       return dispatch(returnData(types.VIEW_ALL_ACCOMMODATION_ERROR, { message }));
     }
     if (error.request) {

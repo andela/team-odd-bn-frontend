@@ -16,9 +16,6 @@ import Spinner from '../../components/Spinner';
 
 class Requests extends Component {
   async componentDidMount() {
-    if (!verifyToken(tokenExist)) {
-      return this.props.history.push('/signin');
-    }
     const {
       fetchSingleRequestsAction,
       fetchRequestCommentsAction,

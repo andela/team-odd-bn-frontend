@@ -12,6 +12,7 @@ import multicityReducer from './multicityReducer';
 import adminReducer from './admin/adminReducer';
 import viewAccomodationReducer from './accommodation/viewAccomodationReducer';
 import PaginationReducer from './PaginationReducer';
+import searchReducer from './searchReducers/searchReducers';
 
 import bookingReducer from './bookings';
 
@@ -30,4 +31,5 @@ export default combineReducers({
   allAccomodation: viewAccomodationReducer,
   pagination: PaginationReducer,
   bookings: bookingReducer,
+  search: searchReducer,
 });

@@ -1,13 +1,11 @@
-
 /* eslint-disable no-unused-expressions */
 
 import React, { Component } from 'react'
 import { plusDivs } from '../../helpers/carousel'
 import Action from '../../components/Action'
-import { Redirect } from 'react-router-dom';
-import verifyToken from '../../helpers/verifyToken';
+import { Redirect } from 'react-router-dom'
+import verifyToken from '../../helpers/verifyToken'
 import trashIcon from '../../assets/images/trash.png'
-
 
 class RequestView extends Component {
   state = {
@@ -38,7 +36,7 @@ class RequestView extends Component {
     this.setState({
       isApproved: !value,
       isRejected: value,
-    });
+    })
   }
 
   render() {
@@ -150,12 +148,16 @@ class RequestView extends Component {
               trips.trips &&
               trips.trips.map((trip, index) => (
                 <div className="trip" key={index} ref={index => index}>
-                  {verifyToken(localStorage.getItem('token')).roleId === 6 
-              && verifyToken(localStorage.getItem('token')).id !== this.props.trips.userId? 
-                 <> 
-                 <div className="firstname">{trips.user.firstName}</div>
-                  <div className="lastName">{trips.user.lastName}</div>
-                  </>:''}
+                  {verifyToken(localStorage.getItem('token')).roleId === 6 &&
+                  verifyToken(localStorage.getItem('token')).id !==
+                    this.props.trips.userId ? (
+                    <>
+                      <div className="firstname">{trips.user.firstName}</div>
+                      <div className="lastName">{trips.user.lastName}</div>
+                    </>
+                  ) : (
+                    ''
+                  )}
                   <div className="originId">{trip.originId}</div>
                   <div className="destinationId">{trip.destinationId}</div>
                   <div className="tripType">{trips.tripType.tripType}</div>

@@ -1,4 +1,9 @@
+
 const state = {
+  search: {
+    key: '',
+    payload: '',
+  },
   pagination: {
     pageNo: 0,
     itemsPerPage: 5,
@@ -36,8 +41,7 @@ const state = {
       onewayInput: {},
     },
     availRequests: {
-      approveRequestMessage: {
-      },
+      approveRequestMessage: {},
     },
     requests: {
       requestsData: [],
@@ -59,6 +63,9 @@ const state = {
   },
   viewProfile: {
     profile: {},
+  },
+  requestsData: {
+    data: '',
   },
 };
 export default state;

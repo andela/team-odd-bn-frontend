@@ -1,4 +1,3 @@
-
 import {
   ASSIGN_ROLE_SUCCESS,
   GET_ALL_ROLES,
@@ -96,32 +95,48 @@ export const adminError = {
 };
 export const getAllRoles = {
   type: GET_ALL_ROLES,
-  allRoles: [{
-    id: 1,
-    type: 'super admin',
-  }],
+  allRoles: [
+    {
+      id: 1,
+      type: 'super admin',
+    },
+  ],
 };
 export const assignRole = {
   type: ASSIGN_ROLE_SUCCESS,
   payload: {
     data: {
       message: 'Role assigned successfully',
-      data:
-        {
-          role: 'super admin',
-        },
+      data: {
+        role: 'super admin',
+      },
     },
   },
 };
 
 export const defaultProps = {
   adminState: {
-    admin: {
-    },
+    admin: {},
     allUsers: {
       users: {
         message: '',
-        data: [{
+        data: [
+          {
+            id: 1,
+            email: 'me@you.com',
+            firstName: 'me',
+            lastName: 'you',
+            roleId: 3,
+            role: {
+              type: 'user',
+            },
+          },
+        ],
+      },
+    },
+    search: {
+      payload: [
+        {
           id: 1,
           email: 'me@you.com',
           firstName: 'me',
@@ -130,14 +145,37 @@ export const defaultProps = {
           role: {
             type: 'user',
           },
-
-        }],
-      },
+        },
+      ],
     },
   },
+  itemsPerPage: 1,
+  users: [
+    {
+      id: 50,
+      firstName: 'Victor',
+      lastName: 'KARANGWA',
+      email: 'victor.karangwa@andela.com',
+      roleId: 3,
+      role: {
+        type: 'user',
+      },
+    },
+    {
+      id: 16,
+      firstName: 'Wlly 2',
+      lastName: 'Boris 2',
+      email: 'sugiraw@gmail.com',
+      roleId: 3,
+      role: {
+        type: 'user',
+      },
+    },
+  ],
   getAllUsers: jest.fn(),
   getRolesAction: jest.fn(),
   assignRole: jest.fn(),
+  searchResults: jest.fn(),
 };
 
 export const updateDefaultProps = {
@@ -180,7 +218,10 @@ export const updateDefaultProps = {
 
 export const emptyDataComponent = {
   adminState: {
-    admin: {},
+    admin: {
+      payload: 'data',
+      allRoles: [1, 2, 3],
+    },
     allUsers: {
       users: {
         message: '',
@@ -188,11 +229,33 @@ export const emptyDataComponent = {
       },
     },
   },
+  users: [
+    {
+      id: 50,
+      firstName: 'Victor',
+      lastName: 'KARANGWA',
+      email: 'victor.karangwa@andela.com',
+      roleId: 3,
+      role: {
+        type: 'user',
+      },
+    },
+    {
+      id: 16,
+      firstName: 'Wlly 2',
+      lastName: 'Boris 2',
+      email: 'sugiraw@gmail.com',
+      roleId: 3,
+      role: {
+        type: 'user',
+      },
+    },
+
+  ],
   getAllUsers: jest.fn(),
   getRolesAction: jest.fn(),
   assignRole: jest.fn(),
 };
-
 
 export const options = [
   { id: 6, type: 'manager' },

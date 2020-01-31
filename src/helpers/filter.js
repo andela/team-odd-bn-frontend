@@ -1,16 +1,41 @@
 // eslint-disable-next-line import/prefer-default-export
-export const handleFilter = (e, key) => {
-  const input = document.getElementById('searchInput');
-  const filter = input.value.toUpperCase();
-  const allRows = document.getElementsByClassName('tableContainer')[0];
-  const singleRow = allRows.getElementsByClassName('entity');
-  for (let i = 0; i < singleRow.length; i++) {
-    const txtValue = singleRow[i].getElementsByClassName(key)[0]
-      .textContent;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      singleRow[i].style.display = '';
-    } else {
-      singleRow[i].style.display = 'none';
-    }
+export const handleFilter = (e, data, key) => {
+  let items;
+  if (key === 'createdAt' || key === 'email') {
+    items = data.filter(
+      (item) => item[key].toLowerCase().search(e.target.value.toLowerCase()) !== -1,
+    );
+    return items;
   }
+  if (key === 'trips.origin') {
+    items = data.filter(
+      (item) => item.trips.length && (item.trips[0].originId
+        .toLowerCase()
+        .search(e.target.value.toLowerCase()) !== -1),
+    );
+    return items;
+  }
+  if (key === 'trips.destination') {
+    items = data.filter(
+      (item) => item.trips.length
+          && (item.trips[0].destinationId
+            .toLowerCase()
+            .search(e.target.value.toLowerCase()) !== -1),
+    );
+    return items;
+  }
+  if (key === 'firstName' || key === 'lastName') {
+    items = data.filter(
+      (item) => (item.user[key]
+        .toLowerCase()
+        .search(e.target.value.toLowerCase()) !== -1),
+    );
+    return items;
+  }
+  items = data.filter(
+    (item) => item[key][key]
+      .toLowerCase()
+      .search(e.target.value.toLowerCase()) !== -1,
+  );
+  return items;
 };
