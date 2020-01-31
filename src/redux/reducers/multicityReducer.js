@@ -16,7 +16,6 @@ const initialState = {
 
 
 export const updateTripItem = (array, payload) => {
-
   const editedPayload = convertInput(payload);
   return array.data.map((item, index) => {
     if (index !== editedPayload.tripIndex) {

@@ -46,7 +46,6 @@ class Requests extends Component {
 
     } = stateObject;
     const { approveRequestMessage } = this.props.availRequests;
-    const data = singleRequestData ? singleRequestData.data : [];
     return (
       <>
         {requestsSpinnerStatus ? (
@@ -57,7 +56,7 @@ class Requests extends Component {
         <Dashboard>
           <SingleRequestView
             tripRequestId={this.props.match.params.tripRequestId}
-            data={{ trips: data, comments: requestCommentsData }}
+            data={{ comments: requestCommentsData }}
             updateCommentInputAction={updateCommentInputAction}
             input={postCommentInput}
             postCommentsAction={postCommentsAction}

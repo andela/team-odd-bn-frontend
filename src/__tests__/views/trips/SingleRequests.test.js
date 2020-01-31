@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Requests from '../../../containers/TripsContainer/SingleRequest';
-import initialState from '../../../redux/store/initialState';
+import { init } from '../../../__mocks__/trips/requests';
 
 const mockStore = configureStore([]);
 let wrapper;
@@ -12,7 +12,7 @@ let store;
 
 describe('Test Signup page ', () => {
   it('Test snapshot using the initial state', () => {
-    store = mockStore(initialState);
+    store = mockStore(init);
     wrapper = mount(
       <Provider store={store}>
         <Router>
@@ -22,7 +22,9 @@ describe('Test Signup page ', () => {
                 tripRequestId: 4,
               },
             }}
+            cities={init.trips.tripRequests.getCity}
           />
+,
         </Router>
       </Provider>,
     );

@@ -74,7 +74,10 @@ class RequestView extends Component {
           <div className="pageArrows">
             <button
               type="button"
-              onClick={() => changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)}
+              id='page1'
+              onClick={() =>
+                changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)
+              }
             >
               <a href={`#${pageNo - 1}`}> &#60;&#60;</a>
             </button>
@@ -84,15 +87,10 @@ class RequestView extends Component {
               data.map((item, index) => (
                 <div id={`${index}`}>
                   <button
+                  id='page2'
                     key={index}
                     type="button"
                     onClick={() => {
-                      const c = this.state.currentIndex > index ? -1 : 1
-
-                      this.setState({
-                        currentIndex: index,
-                        a: c,
-                      })
                       changePageNo(index)
                     }}
                   >
@@ -103,6 +101,7 @@ class RequestView extends Component {
           </div>
           <div className="pageArrows">
             <button
+            id='page3'
               type="button"
               onClick={() =>
                 changePageNo(pageNo === data.length - 1 ? pageNo : pageNo + 1)

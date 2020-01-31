@@ -34,3 +34,10 @@ export const searchTableHeads = [
 export const searchNavs = [
   { className: 'tableHeader', attribute: <StatsNav />, key: 'tableHeader' },
 ];
+export const newTrip = {
+  originId: '',
+  destinationId: '',
+  reason: '',
+  startDate: '',
+  returnDate: '',
+};
