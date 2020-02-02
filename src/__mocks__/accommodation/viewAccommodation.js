@@ -1,4 +1,5 @@
 export const viewAccommodationProps = {
+
   allLikesDislakes: [
     {
       likeCounter: 1,
@@ -121,6 +122,12 @@ export const viewAccommodationProps = {
   ],
   viewActionAccommodation: jest.fn(),
   accommodation: {
+    display: {
+      deleteComment: 'none',
+      editTrip: 'none',
+      currentPopUp: 'editTrip',
+      bookAccommodation: 'none',
+    },
     allAccomodation: [
       {
         id: 45,

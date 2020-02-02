@@ -42,7 +42,6 @@ dotenv.config();
 
 axios.defaults.BASE_URL = process.env.BASE_URL;
 
-
 const App = () => (
   <Provider store={store}>
     <Router>

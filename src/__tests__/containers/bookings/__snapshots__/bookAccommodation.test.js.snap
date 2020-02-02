@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Common Single Request page  it Should dispatch reject button successfully 1`] = `ReactWrapper {}`;
+
+exports[`Common Single Request page  it Should dispatch reject button successfully 2`] = `ReactWrapper {}`;

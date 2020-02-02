@@ -15,7 +15,6 @@ import PaginationReducer from './PaginationReducer';
 import searchReducer from './searchReducers/searchReducers';
 import popUpReducer from './popUpReducer';
 import likeAndDislike from './accommodation/likeAndDislikeReducer';
-
 import bookingReducer from './bookings';
 
 export default combineReducers({

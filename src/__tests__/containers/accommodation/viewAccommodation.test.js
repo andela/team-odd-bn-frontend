@@ -22,6 +22,8 @@ describe('Expect to mock accommodation state', () => {
   const component = shallow(<ViewAllAccomodationView {...viewAccommodationProps} />);
   it('Should simulate on change paginate by arrow function', () => {
     const addButton = component.find('button').at(0);
+    const showBookingPopUp = component.find('#showBookingPopUp');
+    showBookingPopUp.simulate('click');
     addButton.simulate('click');
   });
 
