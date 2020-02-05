@@ -40,27 +40,6 @@ describe('Expect to mock accommodation state', () => {
     addButton.simulate('click');
   });
 
-  it('Should simulate on click and increment likes', () => {
-    const likeItem = jest.spyOn(component.instance(), 'handleClick');
-    component.instance().handleClick('true', { id: 45 });
-    expect(likeItem).toHaveBeenCalledWith('true', { id: 45 });
-  });
-
-  it('Should simulate on click and decrement likes and increment dislikes', () => {
-    const likeItem = jest.spyOn(component.instance(), 'handleClick');
-    component.instance().handleClick('false', { id: 45 });
-    expect(likeItem).toHaveBeenCalledWith('false', { id: 45 });
-  });
-  it('Should simulate on click without likes and dislikes', () => {
-    const likeItem = jest.spyOn(component.instance(), 'handleClick');
-    component.instance().handleClick('', { id: '' });
-    expect(likeItem).toHaveBeenCalledWith('', { id: '' });
-  });
-
-  it('Should simulate on click img likes and add like', () => {
-    const addImg = component.find('.likes_icon_img');
-    addImg.simulate('click');
-  });
   it('Should simulate on click img dislike and remove like', () => {
     const removeImg = component.find('.dislike_icon');
     removeImg.simulate('click');

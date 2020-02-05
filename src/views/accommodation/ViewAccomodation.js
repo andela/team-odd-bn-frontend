@@ -33,22 +33,6 @@ export class viewAllAccomodation extends Component {
      dislikeInput: false
   }
 
- handleClick = async(like, items) =>{ 
-
-  const { likeAction,viewActionAccommodation, dislikeAction } = this.props;
-
-  if(like === "true"){
-  const passData =  await likeAction({like: true, id: items.id}) 
-    const updateView = await viewActionAccommodation()
-    return  { passData, updateView };
-  } 
-  else if(like === "false"){
-    const passData = await dislikeAction( {dislike: true, id: items.id})
-    const updateView =  await viewActionAccommodation();
-    return  { passData, updateView };
-  }
-  return await viewActionAccommodation();
-}
   render() {
     const {
       allAccomodation,
@@ -115,10 +99,10 @@ available rooms
                     </section>
                     <section className="common-content like-dislike">
                       <div className="like-dislike-content">
-                        <img onClick={() => this.handleClick('true', items)} className="likes_icon_img"  src={likeIcon} alt="like icon" />
+                        <img src={likeIcon} alt="like icon" />
                       </div>
                       <div className="like-dislike-content">
-                        <img onClick={() => this.handleClick('false', items)} className="dislike_icon" src={disLikeIcon} alt="dislike icon" />
+                        <img className="dislike_icon" src={disLikeIcon} alt="dislike icon" />
                       </div>
                     </section>
                     <section className="common-content likes_dislikes_data">

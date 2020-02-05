@@ -3,54 +3,28 @@ import { shallow, mount } from 'enzyme';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { ViewSingleBooking, mapStateToProps } from '../../../containers/bookings/viewSingleBooking';
-import { defaultProps, initiaState, tempViewAllBooking } from '../../../__mocks__/booking/booking';
+import {
+  defaultProps, initiaState, tempViewAllBooking, viewBookingsMockData,
+} from '../../../__mocks__/booking/booking';
 import rootReducer from '../../../redux/reducers/index';
 
-const middlewares = [thunk];
-const testStore = (state) => {
-  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-  return createStoreWithMiddleware(rootReducer, state);
-};
-const setUp = (initialState = {}) => {
-  const store = testStore(initialState);
-  const wrapper = shallow(<ViewSingleBooking {...defaultProps} store={store} />);
-  return wrapper;
-};
+describe('Expect to view specific', () => {
+  const wrapper = shallow(<ViewSingleBooking {...viewBookingsMockData} />);
+  it('Should view specific booking', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 
-const emptySetUp = (initialState = {}) => {
-  const store = testStore(initialState);
-  const wrapper = shallow(<ViewSingleBooking {...tempViewAllBooking} store={store} />);
-  return wrapper;
-};
-describe('View single booking test suite', () => {
-  it('Should close modal Successfully', () => {
-    const component = setUp(defaultProps);
-    const closeModalSpy = jest.spyOn(component.instance(), 'closeModal');
-    component.find('[data-test="close-modal"]').simulate('click', {
-      preventDefault() {},
-    });
-    component.find('[data-test="close-modal"]').simulate('KeyDown', {
-      preventDefault() {},
-    });
-    expect(closeModalSpy).toHaveBeenCalled();
+  it('Should simulate on handle submit', () => {
+    const e = { preventDefault: () => '' };
+    const removeTrip = jest.spyOn(wrapper.instance(), 'handleSubmit');
+    wrapper.instance().handleSubmit(e, 0, 0);
+    expect(removeTrip).toHaveBeenCalledWith(e, 0, 0);
   });
-  it('Should close modal Successfully', () => {
-    const component = setUp(defaultProps);
-    const closeModalSpy = jest.spyOn(component.instance(), 'closeModal');
-    component.find('[data-test="close-modal-btn"]').simulate('submit', {
-      preventDefault() {},
-    });
-    expect(closeModalSpy).toHaveBeenCalled();
-  });
-  it('Should close modal Successfully', () => {
-    const component = emptySetUp(tempViewAllBooking);
-    const closeModalSpy = jest.spyOn(component.instance(), 'closeModal');
-    component.find('[data-test="close-modal-btn"]').simulate('submit', {
-      preventDefault() {},
-    });
-    expect(closeModalSpy).toHaveBeenCalled();
-  });
-  it('should map state to props', () => {
-    expect(mapStateToProps(initiaState)).toBeDefined();
+
+
+  it('Should close model', () => {
+    const removeTrip = jest.spyOn(wrapper.instance(), 'closeModal');
+    wrapper.instance().closeModal({ ...viewBookingsMockData });
+    expect(removeTrip).toHaveBeenCalledWith({ ...viewBookingsMockData });
   });
 });

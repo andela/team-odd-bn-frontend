@@ -8,29 +8,40 @@ import matchCitiesWithIds from '../../helpers/matchCitiesWithIds'
 
 export class ViewSingleBooking extends Component {
 
+  state={
+    modall: true
+  }
 
+  handleSubmit  = (e, id, index) => {     
+    e.preventDefault();
+    this.setState(prevState=>(
+      {
+        modall: !prevState.modall,
+        index
+      }
+    ))
+    this.props.openSingleBooking(true);
+  }
   closeModal = props => {
     props.openSingleBooking(false)
-    
   }
   render() {
-    const { data, cities } = this.props;
-    const userBooking = data && data.myBookingsresult[0];
+    
+    const {modal, allBookings,handleUpdateModal } = this.props;
+
+    const userBooking = allBookings && allBookings.data.myBookingsresult[this.props.myIndex];
     
     return (
-      <div id="myModal" className="modal">
+      <>
+{    this.state.modall &&  <div id="myModal" className="modal">
         <div className="modal-content modal-content-small">
           <span
             data-test="close-modal"
             role="button"
             tabIndex={0}
             className="close"
-            onClick={() => {
-              this.closeModal(this.props)
-            }}
-            onKeyDown={() => {
-              this.closeModal(this.props)
-            }}
+            onClick={() =>handleUpdateModal(modal)}
+         
           >
             &times;
           </span>
@@ -41,9 +52,7 @@ export class ViewSingleBooking extends Component {
             <div className="center-element">
               <form
                 data-test="close-modal-btn"
-                onSubmit={() => {
-                  this.closeModal(this.props)
-                }}
+                onSubmit={() =>handleUpdateModal(modal)}
               >
                 <div className="modal-disabled-input">
                   <label>Accommodation</label>
@@ -51,7 +60,7 @@ export class ViewSingleBooking extends Component {
                     className="transparent-input"
                     type="text"
                     value={
-                      (data && userBooking['room.accommodation.name']) || ''
+                      (userBooking && userBooking.room.accommodation.name) || ''
                     }
                     disabled
                   />
@@ -62,7 +71,7 @@ export class ViewSingleBooking extends Component {
                     className="transparent-input"
                     type="text"
                     value={
-                      (data && userBooking['room.accommodation.address']) || ''
+                      (userBooking && userBooking.room.accommodation.address) || ''
                     }
                     disabled
                   />
@@ -72,7 +81,7 @@ export class ViewSingleBooking extends Component {
                   <input
                     className="transparent-input"
                     type="text"
-                    value={(data && userBooking['room.roomType']) || ''}
+                    value={(userBooking && userBooking.room.roomType) || ''}
                     disabled
                   />
                 </div>
@@ -81,7 +90,7 @@ export class ViewSingleBooking extends Component {
                   <input
                     className="transparent-input"
                     type="text"
-                    value={(data && userBooking['room.name']) || ''}
+                    value={(userBooking && userBooking.room.name) || ''}
                     disabled
                   />
                 </div>
@@ -91,7 +100,7 @@ export class ViewSingleBooking extends Component {
                     className="transparent-input"
                     type="text"
                     value={
-                      (data && userBooking['checkInDate'].slice(0, 10)) || ''
+                      (userBooking && userBooking.checkInDate.slice(0, 10)) || ''
                     }
                     disabled
                   />
@@ -102,7 +111,7 @@ export class ViewSingleBooking extends Component {
                     className="transparent-input"
                     type="text"
                     value={
-                      (data && userBooking['checkOutDate'].slice(0, 10)) || ''
+                      (userBooking && userBooking.checkOutDate.slice(0, 10)) || ''
                     }
                     disabled
                   />
@@ -112,7 +121,8 @@ export class ViewSingleBooking extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
+      </>
     )
   }
 }
@@ -121,12 +131,13 @@ export const mapStateToProps = state => {
   return {
     bookings: state.bookings,
     data: state.bookings.modal.payload && state.bookings.modal.payload.data,
-    cities: state.accommodation.createAccommodation.retrievedCities.data
+    cities: state.accommodation.createAccommodation.retrievedCities.data,
+    allBookings: state.bookings.bookings.allBookings,
   }
 }
   
 export const mapDispatchToProps = {
-
+  
 };
 
 

@@ -45,18 +45,6 @@ describe('Rooms modal test suite', () => {
     document.body.appendChild(div);
   });
 
-
-  it('Should append new row Successfully', () => {
-    const component = setUp(mainState);
-    const appendRowSpy = jest.spyOn(component.instance(), 'appendRow');
-    component.find('[data-test="addNew-row"]').simulate(
-      'submit',
-      {
-        preventDefault() {},
-      },
-    );
-    expect(appendRowSpy).not.toHaveBeenCalled();
-  });
   it('Should handle submit Successfully', () => {
     const component = setUp(mainState);
     const handleSubmitSpy = jest.spyOn(component.instance(), 'handleSubmit');
@@ -68,17 +56,7 @@ describe('Rooms modal test suite', () => {
     );
     expect(handleSubmitSpy).not.toHaveBeenCalled();
   });
-  it('Should close modal Successfully', () => {
-    const component = setUp(mainState);
-    const closeModalSpy = jest.spyOn(component.instance(), 'closeModal');
-    component.find('[data-test="close-modal"]').simulate('click', {
-      preventDefault() {},
-    });
-    component.find('[data-test="close-modal"]').simulate('KeyDown', {
-      preventDefault() {},
-    });
-    expect(closeModalSpy).toHaveBeenCalled();
-  });
+
   it('should map state to props', () => {
     const initialState = {
       accommodation: {

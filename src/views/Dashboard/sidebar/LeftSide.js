@@ -16,7 +16,7 @@ import addNewTripIcon from '../../../assets/images/addNewTrip.png';
 import viewAccommodation from '../../../assets/images/accommodation_icon/view_accommodation_24.png';
 
 
-// eslint-disable-next-line react/prefer-stateless-function
+//eslint-disable-next-line react/prefer-stateless-function
 export const LeftSide = (props) => {
   const logout = async () => {
     await props.signoutUser();
