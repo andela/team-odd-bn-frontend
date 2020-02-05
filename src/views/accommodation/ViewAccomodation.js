@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 import Dashboard from '../Dashboard/sidebar/index';
 import '../../assets/css/accommodation/allAccommodation.scss';
@@ -9,21 +10,47 @@ import disLikeIcon from '../../assets/images/dislike_icon/thumbs-down_32.png';
 import findAverageRates from '../../helpers/averageRatings';
 import { Paginate, PaginationStyle } from '../../helpers/Paginate';
 import newAccommodation from '../../helpers/joinLikesAccomodation';
+import { likeAction, dislikeAction } from '../../redux/actions/likeAndDislikeAction';
+import { viewActionAccommodation } from '../../redux/actions/allAccommodation';
 
-class viewAllAccomodation extends Component {
+export class viewAllAccomodation extends Component {
   state = {
     currentIndex: 0,
      a: 1 ,
+     likeInput: false,
+     dislikeInput: false
+  }
+ componentDidMount(){
+   const {allAccomodation} = this.props.accommodation
+   this.setState({allAccomodation})
+ }
+ handleClick = async(like, items) =>{ 
+
+    const { likeAction,viewActionAccommodation, dislikeAction } = this.props;
+
+    if(like === "true"){
+    const passData =  await likeAction({like: true, id: items.id}) 
+      const updateView = await viewActionAccommodation()
+      return  { passData, updateView };
+    } 
+    else if(like === "false"){
+      const passData = await dislikeAction( {dislike: true, id: items.id})
+      const updateView =  await viewActionAccommodation();
+      return  { passData, updateView };
+    }
+    return await viewActionAccommodation();
   }
   render() {
     const {
       allAccomodation, allLikesDislakes, pageNo, itemsPerPage, changePageNo,
     } = this.props.accommodation;
     const totalAccommodation = newAccommodation(allAccomodation, allLikesDislakes);
+  
+    
     const chunkPages = Paginate(totalAccommodation, itemsPerPage);
     const pageData = { ...chunkPages }[pageNo];
+    
     const averageRates = findAverageRates(pageData);
-
     this.refs.mytrips &&
     this.refs.mytrips.children.length > 0 &&
     PaginationStyle(this.refs.mytrips.children, pageNo);
@@ -58,10 +85,10 @@ available rooms
                     </section>
                     <section className="common-content like-dislike">
                       <div className="like-dislike-content">
-                        <img src={likeIcon} alt="like icon" />
+                        <img onClick={() => this.handleClick('true', items)} className="likes_icon_img"  src={likeIcon} alt="like icon" />
                       </div>
                       <div className="like-dislike-content">
-                        <img className="dislike_icon" src={disLikeIcon} alt="dislike icon" />
+                        <img onClick={() => this.handleClick('false', items)} className="dislike_icon" src={disLikeIcon} alt="dislike icon" />
                       </div>
                     </section>
                     <section className="common-content likes_dislikes_data">
@@ -135,4 +162,8 @@ reviews
   }
 }
 
-export default viewAllAccomodation;
+export const mapStateToProps = ({userLikesAndDislike}) => ({
+  likeDislikeState:userLikesAndDislike,
+});
+
+export default connect(mapStateToProps, { likeAction,viewActionAccommodation, dislikeAction })(viewAllAccomodation);

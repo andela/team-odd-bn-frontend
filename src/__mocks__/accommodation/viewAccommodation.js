@@ -192,6 +192,9 @@ export const viewAccommodationProps = {
     itemsPerPage: 5,
     changePageNo: jest.fn(),
   },
+  likeAction: jest.fn(),
+  dislikeAction: jest.fn(),
+  statusInputAction: jest.fn(),
 };
 
 export const accommodationReducer = {

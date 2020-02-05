@@ -120,7 +120,6 @@ describe('Common Single Request page ', () => {
   it('it Should dispatch reject button successfully', async () => {
     store = mockStore(init);
     localStorage.setItem('token', process.env.TESTING_TOKEN);
-    console.log('{{{{}}}}{{{{{{', init.trips.tripRequests.getCity);
 
     wrapper = mount(
       <Provider store={store}>
