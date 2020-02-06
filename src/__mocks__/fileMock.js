@@ -364,12 +364,14 @@ const mockData = {
     tripState: {
       trips: {
         tripRequests: {
-          getCity: [{
-            id: null,
-            city: null,
-            createdAt: null,
-            updatedAt: null,
-          }],
+          getCity: [
+            {
+              id: null,
+              city: null,
+              createdAt: null,
+              updatedAt: null,
+            },
+          ],
         },
         roundTrip: {
           roundTripMessage: null,
@@ -417,6 +419,18 @@ const mockData = {
     status: 200,
     response: {
       message: 'Success',
+    },
+  },
+  singleBookingSuccessResponse: {
+    status: 200,
+    response: {
+      message: 'Success',
+    },
+  },
+  singleBookingErrorResponse: {
+    status: 404,
+    response: {
+      message: 'Error',
     },
   },
   errorResponse: {
