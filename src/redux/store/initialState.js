@@ -1,5 +1,10 @@
 
 const state = {
+  bookings: {
+    bookAccommodation: {
+      bookAccommodationInput: {},
+    },
+  },
   search: {
     key: '',
     payload: '',
@@ -8,6 +13,7 @@ const state = {
     deleteComment: 'none',
     editTrip: 'none',
     currentPopUp: 'editTrip',
+    bookAccommodation: 'none',
   },
   pagination: {
     pageNo: 0,

@@ -29,11 +29,77 @@ export const entities = [
   ],
 ];
 export const init = {
+  allAccomodation: {
+    accommodations: [
+      {
+        id: 46,
+        userId: 15,
+        name: 'Victor Palace',
+        cityId: 5,
+        address: 'Lagos',
+        description: ' Queens palace is the best accomodation facility you could ever get',
+        googleCoordinates: '-77, -56',
+        accommodationRooms: [
+          {
+            id: 90,
+            accommodationId: 46,
+            name: '12',
+            roomType: 'single',
+          },
+          {
+            id: 91,
+            accommodationId: 46,
+            name: '13',
+            roomType: 'single',
+          },
+          {
+            id: 92,
+            accommodationId: 46,
+            name: '14',
+            roomType: 'single',
+          },
+        ],
+        imagesAccommodation: [
+          {
+            id: 63,
+            accommodationId: 46,
+            imageUrl: 'https://images.unsplash.com/photo-1549638441-b787d2e11f14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+          },
+        ],
+        city: {
+          id: 2,
+          city: 'Kigali',
+        },
+        ratings: [
+          {
+            id: 28,
+            userId: 153,
+            accommodationId: 46,
+            rating: '5',
+            review: 'It has wifi issue',
+          },
+        ],
+      }],
+  },
+  bookings: {
+    bookAccommodation: {
+      bookAccommodationInput: {
+        destination: 'Kigali',
+        accommodationId: 45,
+        roomType: 'single',
+        roomId: 23,
+        checkOutDate: '2020-12-11',
+        checkInDate: '2022-12-11',
+        tripId: 21,
+      },
+    },
+  },
   search: {
     key: '',
     payload: [],
   },
   popUpsDisplay: {
+    bookAccommodation: 'none',
     deleteComment: 'none',
     editTrip: 'none',
     currentPopUp: 'editTrip',
@@ -78,8 +144,8 @@ export const init = {
               {
                 id: 6,
                 tripRequestId: 5,
-                originId: 1,
-                destinationId: 2,
+                originId: 'Nairobi',
+                destinationId: 'Kigali',
                 reason: 'kimjong',
                 startDate: '2029-12-23',
                 returnDate: null,

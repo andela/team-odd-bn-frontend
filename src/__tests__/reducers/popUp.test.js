@@ -9,6 +9,7 @@ describe('Pop up tests ', () => {
       payload: 2,
     });
     expect(newState).toEqual({
+      bookAccommodation: 'none',
       currentPopUp: 'editTrip',
       deleteComment: 'none',
       editTrip: 'none',

@@ -103,13 +103,9 @@ describe('Common Single Request page ', () => {
     const submitComment = wrapper.find('#submitComment');
     const deleteComment = wrapper.find('#deleteComment');
     const edit = wrapper.find('#edit');
-    // const approve = wrapper.find('#approve');
-    // const reject = wrapper.find('#reject');
     const page1 = wrapper.find('#page1S');
-    // const page2 = wrapper.find('#page2S');
     const page3 = wrapper.find('#page3S');
     page1.simulate('click');
-    // page2.simulate('click');
     page3.simulate('click');
     postComment.simulate('change');
     submitComment.simulate('click');
