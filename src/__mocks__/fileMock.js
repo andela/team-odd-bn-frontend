@@ -78,6 +78,20 @@ const mockData = {
     updateProfile: jest.fn(),
     uploadImage: jest.fn(),
   },
+
+  notificationProps: {
+    notifications: {
+      notifications: {
+        allNotifications: [],
+      },
+    },
+    allNotifications: [],
+    allNotificationError: {},
+    handleMarkAsRead: jest.fn(),
+    getAllNotifications: jest.fn(),
+    markOneAsRead: jest.fn(),
+
+  },
   props: {
     spinner: true,
     profile: {
@@ -208,6 +222,34 @@ const mockData = {
       message: null,
     },
   },
+  notificationsMainState: {
+    notifications: {
+      notifications: {
+        allNotifications: [{
+          id: 96,
+          userId: 2,
+          message: 'The Trip request no 28 has been commented on',
+          updatedAt: '2020-02-04T15:15:04.018Z',
+          createdAt: '2020-02-04T15:15:04.018Z',
+          tripRequestId: null,
+          markRead: false,
+          bookingId: null,
+          commentsId: null,
+          accommodationsId: null,
+        }],
+        allNotificationError: null,
+      },
+      newNotification: null,
+    },
+    markOneAsRead: {
+      markOne: null,
+      markOneError: null,
+    },
+    markAsRead: {
+      markAll: null,
+      markAllError: null,
+    },
+  },
   signoutProps: {
     signout: jest.fn(),
     isSignout: true,
@@ -245,6 +287,34 @@ const mockData = {
     drawerClickHandler: jest.fn(),
     mapStateToProps: jest.fn(),
     mapDispatchToProps: jest.fn(),
+    handleMarkAsRead: jest.fn(),
+    markAllAsRead: jest.fn(),
+    markOneAsRead: jest.fn(),
+    getAllNotifications: jest.fn(),
+    allNotifications: [{
+      id: 1022,
+      userId: 2,
+      tripRequestId: 253,
+      message: 'The Trip request no 253 has been commented on',
+      updatedAt: '2020-02-05T09:51:20.535Z',
+      createdAt: '2020-02-05T09:51:20.535Z',
+      markRead: false,
+      bookingId: null,
+      commentsId: null,
+      accommodationsId: null,
+    },
+    {
+      id: 1023,
+      userId: 2,
+      tripRequestId: 254,
+      message: 'The Trip request no 254 has been commented on',
+      updatedAt: '2020-02-05T09:51:20.535Z',
+      createdAt: '2020-02-05T09:51:20.535Z',
+      markRead: false,
+      bookingId: null,
+      commentsId: null,
+      accommodationsId: null,
+    }],
     show: true,
     sideDrawerOpen: true,
     image: 'image.jpg',
@@ -266,6 +336,12 @@ const mockData = {
       profileError: 'error',
       sideDrawerOpen: 'function',
       children: 'children component',
+      notifications: {
+        notifications: {
+          allNotifications: [],
+        },
+      },
+      allNotificationError: 'error',
     },
     prevProps: {
       profile: {

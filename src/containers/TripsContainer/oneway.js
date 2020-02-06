@@ -8,8 +8,10 @@ import {
 import Spinner from '../../components/Spinner';
 import OnewayView from '../../views/trips/oneWayView';
 
+
 class Oneway extends Component {
   async componentDidMount() {
+
     await this.props.getTripAction();
   }
 

@@ -340,7 +340,6 @@ export class Profile extends Component {
                   >
                     Save Changes
                   </button>
-
                 )}
               </div>
             </form>

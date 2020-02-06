@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const tableHeads = [
   { className: 'tripIdNav', attribute: 'Trip Id', key: 'tripId' },
@@ -7,10 +8,15 @@ export const tableHeads = [
   { className: 'status', attribute: 'Status', key: 'status' },
   { className: 'actionNav', attribute: 'Action', key: 'action' },
 ];
+
 export const navs = [
   {
     className: 'tableHeader',
-    attribute: <h2>My Travel Requests</h2>,
+    attribute:
+  <div>
+    <h2>My Requests</h2>
+    <h1>here</h1>
+  </div>,
     key: 'tableHeader',
   },
   {
@@ -80,6 +86,11 @@ export const init = {
           },
         ],
       }],
+  },
+  notifications: {
+    notifications: {
+      allNotifications: [],
+    },
   },
   bookings: {
     bookAccommodation: {

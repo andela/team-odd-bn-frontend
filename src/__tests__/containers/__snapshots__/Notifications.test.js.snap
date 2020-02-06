@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Test Suite Should return initial data 1`] = `ShallowWrapper {}`;

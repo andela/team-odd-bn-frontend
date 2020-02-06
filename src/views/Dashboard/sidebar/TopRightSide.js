@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 import '../../../assets/css/App.scss';
 import '../../../assets/css/sidenav/sidebar.scss';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,11 @@ import notificationIcon from '../../../assets/images/notification_icon/notificat
 import settingsIcon from '../../../assets/images/settings_icon/settings_32px.png';
 import defaultUserIcon from '../../../assets/images/default_user_icon/default_user_32px.png';
 import ToolTip from '../../../components/Sidebar/ToolTip';
+import initializeSocket from '../../../helpers/notificationHelper';
+import markAllAsRead from '../../../redux/actions/notifications/markAllAsReadActions';
+import markOneAsRead from '../../../redux/actions/notifications/markOneAsReadActions';
+import getAllNotifications from '../../../redux/actions/notifications/getAllNotificationActions';
+import verifyToken from '../../../helpers/verifyToken';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export class TopRightSide extends Component {
@@ -16,12 +22,19 @@ export class TopRightSide extends Component {
       image: defaultUserIcon,
       firstName: '',
       lastName: '',
+
     };
+    this.handleMarkAllAsRead = this.handleMarkAllAsRead.bind(this);
+  }
+
+  async componentDidMount() {
+    const { getAllNotifications } = this.props;
+    await getAllNotifications();
   }
 
   UNSAFE_componentWillReceiveProps(prevProps, nextProps) {
     const { profile } = prevProps;
-    if (profile) {
+    if (profile && profile.data) {
       const {
         data: {
           imageURL,
@@ -44,15 +57,79 @@ export class TopRightSide extends Component {
     }
   }
 
+  async handleMarkAllAsRead() {
+    const { markAllAsRead, allNotifications, getAllNotifications } = this.props;
+    const notificationIds = [];
+    const userNotifications = allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id);
+    userNotifications.map((item) => notificationIds.push(item.id));
+    await markAllAsRead(notificationIds);
+    await getAllNotifications();
+  }
+
+  async handleMarkAsRead(notificationId) {
+    const { markOneAsRead } = this.props;
+    await markOneAsRead(notificationId);
+  }
+
+
   render() {
+    const { allNotifications } = this.props;
+    const verifyAllNotifications = allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).filter((item) => !item.markRead);
     const { image, firstName, lastName } = this.state;
     return (
       <div className="top-side-right">
         <ul>
           <li className="tooltip notification-icon">
-            <Link to="/notification">
+            <div className="notification">
               <img src={notificationIcon} alt="notification icon" />
-            </Link>
+              {allNotifications !== 'no new notification' && allNotifications === 0 && (
+              <span className="notification-count"><p>{allNotifications && allNotifications !== 'no new notification' && allNotifications.length > 0 && allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).filter((item) => !item.markRead).length}</p></span>)}
+              <div className="notification-content">
+                <div className="notification-title">
+                  <h2>Notifications</h2>
+                  <button onClick={() => this.handleMarkAllAsRead()}> Mark all as read</button>
+                </div>
+                <hr className="notification-border" />
+                <div
+                  className="notification-item"
+                  onClick={() => this.props.markOneAsRead(notificationId)}
+                >
+                  {allNotifications && allNotifications !== 'no new notification' && allNotifications.length > 0 ? (
+                    <>
+                      {verifyAllNotifications.length === 0 && (<p>No New Notifications</p>)}
+                      {verifyAllNotifications.map((item, index) => (
+                        <>
+                          <div className="notification-item-title">
+                            <img src={image} alt="pic" />
+                            {item.tripRequestId && (
+                            <Link className="links" to={`/requests/${item.tripRequestId}`} onClick={() => this.handleMarkAsRead(item.id)}>
+                              <p>{item.message}</p>
+                            </Link>
+                            )}
+                            {item.bookingId && (
+                            <Link className="links" to={`/bookings/${item.bookingId}`} onClick={() => this.handleMarkAsRead(item.id)}>
+                              <p>{item.message}</p>
+                            </Link>
+                            )}
+                            {!item.markRead && (
+                            <span className="dot" />
+                            )}
+                          </div>
+                          <small className="notification-date"><Moment fromNow>{item.createdAt}</Moment></small>
+                          <hr className="notification-border" />
+                        </>
+                      ))}
+                    </>
+                  ) : <p>No New Notifications</p>}
+                </div>
+                <div className="see-all">
+                  <Link to="/Notifications">
+                    <p>See All</p>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
           </li>
           <li className="tooltip settings-icon">
             <Link to="/profile">
@@ -75,6 +152,10 @@ export class TopRightSide extends Component {
 const mapStateToProps = (state) => ({
   profile: state.viewProfile.profile,
   profileError: state.profileError,
+  allNotifications: state.notifications.notifications.allNotifications,
+  allNotificationsError: state.notifications.notifications.allNotificationsError,
 });
 
-export default connect(mapStateToProps, null)(TopRightSide);
+export default connect(mapStateToProps, {
+  markAllAsRead, markOneAsRead, initializeSocket, getAllNotifications,
+})(TopRightSide);

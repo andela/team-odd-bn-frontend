@@ -1,0 +1,93 @@
+.notification-container {
+  margin: 0 auto;
+  min-height: 85%;
+  height: 140px;
+  padding: 20px 12px 0;
+  width: 840px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+  /* width */
+  .notification-container::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.notification-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.notification-container::-webkit-scrollbar-thumb {
+  background: #00B9F2; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.notification-container::-webkit-scrollbar-thumb:hover {
+  background: #00B9F2; 
+}
+
+
+.title-underline {
+  margin-top: 10px;
+  border:1px solid rgba(0, 0, 0, 0.31);
+  margin-bottom: 10px;
+  border-width: 0.5px;
+}
+.single-notification {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-element {
+  display: flex;
+}
+
+.notification-element a{
+margin-top: 4px;
+text-decoration: none;
+color: #00B9F2;
+}
+
+.notification-item-title a{
+  text-decoration: none;
+}
+
+.notification-item-title a{
+  text-decoration: none;
+}
+
+.notification-element img{
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+
+}
+
+.unread {
+  display:inline-flex;
+  margin-left: 15%;
+  height: 5px;
+  width: 5px;
+  background-color: #00B9F2;
+  border-radius: 50%;
+}
+
+.single-notification-date p{
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: 0px;
+  font-size: 10px;
+  color: #90949c;
+}
+
+
+
+.content-underline{
+  margin-top: 10px;
+  border:1px solid rgba(0, 0, 0, 0.31);
+  margin-bottom: 10px;
+  border-width: 0.5px;
+}

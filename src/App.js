@@ -37,8 +37,12 @@ import viewAllBookings from './containers/booking/viewAllBookings';
 import MulticityTrip from './containers/Trips/MulticityTrip';
 import SearchStats from './containers/trips/SearchStats';
 import ViewAccomodation from './containers/accommodation/ViewAccommodations';
+import Notifications from './containers/notifications/Notifications';
+import initializeSocket from './helpers/notificationHelper';
 
 dotenv.config();
+
+initializeSocket();
 
 axios.defaults.BASE_URL = process.env.BASE_URL;
 
@@ -103,6 +107,7 @@ const App = () => (
             ))}
           />
           <Route path="/accommodations" exact component={ViewAccomodation} />
+          <Route path="/notifications" exact component={Notifications} />
           <Route component={Notfound} />
         </Switch>
       </div>

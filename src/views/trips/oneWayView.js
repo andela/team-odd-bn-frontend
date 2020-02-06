@@ -11,6 +11,7 @@ import selectInputs from '../../constants/selectCities';
 import SelectCities from '../../components/trips/SelectCities';
 import { onewayDateInputs } from '../../constants/DateFieldInput';
 import DateFields from '../../components/trips/DateFields';
+import initializeSocket from '../../helpers/notificationHelper';
 
 class OnewayTrip extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class OnewayTrip extends Component {
                   e.preventDefault();
                   this.props.onewayAction(this.props.tripState.trips.tripRequests.onewayInput)
                   this.props.updateSpinnerStatus(true);
+              
                 }}
               >
                 <div className="cityField">
