@@ -7,7 +7,7 @@ import { changePageNo } from '../../redux/actions/PaginationAction'
 import popUpAction from '../../redux/actions/popUpAction';
 import { fetchRequestsAction } from '../../redux/actions/tripsActions/fetchRequests';
 import {  updateBookAccommodationInput } from '../../redux/actions/bookings/bookAnAccommodation';
-
+import { getAllBookings } from '../../redux/actions/bookings/getAllBookingsActions';
 export class ViewAccommodations extends Component {
   async componentDidMount() {
     const { viewActionAccommodation,fetchRequestsAction } = this.props

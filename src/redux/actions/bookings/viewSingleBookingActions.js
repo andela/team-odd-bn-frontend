@@ -20,6 +20,7 @@ export const getSingleBooking = (id) => async (dispatch) => {
     const getSingleBookingData = await apiCall.get(API_URL, {
       headers: HEADERS_REQUEST,
     });
+
     dispatch({
       type: GET_SINGLE_BOOKINGS_SUCCESS,
       payload: getSingleBookingData.data,

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to view bookings should view all bookings successfully 1`] = `ShallowWrapper {}`;
