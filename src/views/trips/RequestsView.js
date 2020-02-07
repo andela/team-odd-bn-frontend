@@ -21,7 +21,6 @@ const RequestsView = ({
   const searchedData = search.payload;
   const userInput = search.input;
   const { data } = requestsData;
-
   const entities = requestsData.data
     ? (searchedData || requestsData.data).map((request) => [
       {
@@ -67,7 +66,6 @@ const RequestsView = ({
       },
     ])
     : [];
-
   const userSearch = [
     <>
       <div className="searchOption">
@@ -103,7 +101,6 @@ const RequestsView = ({
             searchInput(e.target.value.trimLeft());
             searchResults(newData);
           }}
-          // disabled={!search.key && 'disabled'}
           placeholder="Search trips"
         />
         {userInput && (

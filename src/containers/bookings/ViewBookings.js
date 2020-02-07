@@ -15,6 +15,9 @@ import {
   dislikeAction,
 } from '../../redux/actions/likeAndDislikeAction'
 import { viewActionAccommodation } from '../../redux/actions/allAccommodation'
+import {
+  bookAccommodationAction,
+} from '../../redux/actions/bookings/bookAnAccommodation'
 import likeIcon from '../../assets/images/like_icon/thumbs-up_32.png'
 import disLikeIcon from '../../assets/images/dislike_icon/thumbs-down_32.png'
 import joinLikesAccomodation from '../../helpers/joinLikesAccomodation'
@@ -45,6 +48,7 @@ export class ViewBookings extends Component {
     await this.props.getAllBookings()
     const { allAccomodation } = this.props.accommodation
     this.setState({ allAccomodation })
+    this.props.bookAccommodationAction('');
   }
 
   handleSubmit = (e, id, index) => {
@@ -121,12 +125,16 @@ export class ViewBookings extends Component {
 
               {accommodationsData.length > 0 && (
                 <Pagination
-                  activeStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
+                  activePageStyle={{
+                    backgroundColor: '#00b9f2',
+                    color: 'white',
+                  }}
                   itemsPerPage={6}
-                  next={<img src={next}/>}
-                  prev={<img src={prev}/>}
+                  next={<img src={next} />}
+                  prev={<img src={prev} />}
                   data={accommodationsData.length ? accommodationsData : []}
-                  oneItem={(booking, index) => (
+                  pageButtons={10}
+                  onePage={(booking, index) => (
                     <div key={index} className="singleBooking">
                       <div
                         className="bookingImage"
@@ -274,4 +282,5 @@ export default connect(mapStateToProps, {
   getCitiesAction,
   popUpAction,
   onEditInputAction,
+  bookAccommodationAction,
 })(ViewBookings)

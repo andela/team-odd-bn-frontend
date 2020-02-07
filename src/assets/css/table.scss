@@ -374,7 +374,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
           display: flex;
     flex-direction: column;
         }
-
         div {
           min-height: 40px;
 
@@ -384,12 +383,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
             padding-top: 20px;
           }
 
-//           .arrows{
-// padding: 0px !important;
-//           }
-//           .pages{
-//             padding: 0px !important;
-//           }
 
           div:nth-child(2n) {
             background: #dddddd;

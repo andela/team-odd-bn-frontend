@@ -51,7 +51,7 @@ class RequestView extends Component {
         {entities.length > 0 && (
           <Pagination
             activePageStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
-            itemsPerPage={7}
+            itemsPerPage={6}
             next={<img src={next} />}
             prev={<img src={prev} />}
             data={entities ? entities : []}

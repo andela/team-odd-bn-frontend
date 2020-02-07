@@ -27,6 +27,7 @@ class BookAccommodation extends Component {
     );
   }
 
+
   async componentDidMount() {
     const { viewActionAccommodation, getTripAction } = this.props;
     await getTripAction();
@@ -40,12 +41,16 @@ class BookAccommodation extends Component {
         bookAccommodation: 'none',
       });
       await this.props.bookAccommodationAction(this.props.bookAccommodation.bookAccommodationInput);
+      changeBookings(true);
     };
+
     const {
       accomodations,
       bookAccommodation,
       updateBookAccommodationInput,
       popUpAction,
+      bookings,
+      changeBookings,
     } = this.props;
     const {
       bookAccommodationInput,
@@ -78,38 +83,34 @@ class BookAccommodation extends Component {
       updateBookAccommodationInput,
       roomType,
     );
-    return (
-      bookAccommodationData ? <Redirect to="/bookings" /> : (
-        <div className="bookingAccommodationPopupContainer">
-          <div className="saveEditedRequests">
-            <button
-              type="button"
-              id="cancel"
-              onClick={() => {
-                popUpAction({
-                  currentPopUp: 'bookAccommodation',
-                  bookAccommodation: 'none',
-                });
-              }}
-            >
+    return bookAccommodationData && bookings ? (
+      <Redirect to="/bookings" />
+    ) : (
+      <div className="bookingAccommodationPopupContainer">
+        <div className="saveEditedRequests">
+          <button
+            type="button"
+            id="cancel"
+            onClick={() => {
+              popUpAction({
+                currentPopUp: 'bookAccommodation',
+                bookAccommodation: 'none',
+              });
+            }}
+          >
             &times;
-            </button>
-          </div>
-          <div className="bookingHeaderContainer">
-            <div>Accommodation Booking</div>
-          </div>
-          {bookingInputList.map((item) => this.inputF(item.inputField, item.label))}
-          <div className="saveEditedRequests">
-            <button
-              type="button"
-              id="save"
-              onClick={handleBooking}
-            >
-           Book now!
-            </button>
-          </div>
+          </button>
         </div>
-      )
+        <div className="bookingHeaderContainer">
+          <div>Accommodation Booking</div>
+        </div>
+        {bookingInputList.map((item) => this.inputF(item.inputField, item.label))}
+        <div className="saveEditedRequests">
+          <button type="button" id="save" onClick={handleBooking}>
+            Book now!
+          </button>
+        </div>
+      </div>
     );
   }
 }
