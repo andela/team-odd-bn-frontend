@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to render all rooms Should retrieve all roooms images successfully 1`] = `ShallowWrapper {}`;

@@ -113,7 +113,7 @@
     font-weight: 900;
   }
   .all-reviewes {
-    margin-top: 15px;
+    margin-top: 10px;
     color: #7D7D7D;
     font-weight: 900;
   }
@@ -125,7 +125,7 @@
     height: 40px;
     box-shadow: 1px 2px 3px 0px #BBBBBB;
     cursor: pointer;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 150px;
   }
   .check-in:hover {
@@ -202,4 +202,50 @@
       font-size: 17px;
     }
   }
+}
+
+.view-specific-accommodation {
+  margin-top: 10px;
+  a {
+    font-weight: 900;
+    color: #32c8f4;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.add_new_accommodation {
+  width: 80%;
+  margin: 30px auto 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  a {
+    background-color: #32c8f4;
+    text-align: center;
+    margin-top: 15px;
+    padding: 12px 7px;
+    font-family: muli;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 0px #BBBBBB;
+    color: white;
+    font-family: muli;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: #0daddcdb;
+  }
+}
+
+a.accommodation-item-container :hover {
+  opacity: .8;
+}
+
+a.accommodation-item-container img {
+  border: 0.2px solid #ddd;
+  border-radius: 2px;
+}
+
+a.accommodation-item-container img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }

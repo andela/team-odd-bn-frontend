@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to popup the rating form Rate form should render successfully 1`] = `ShallowWrapper {}`;

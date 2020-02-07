@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { ViewSingleBooking, mapStateToProps } from '../../../containers/booking/viewSingleBooking';
+import { ViewSingleBooking, mapStateToProps } from '../../../containers/bookings/viewSingleBooking';
 import { defaultProps, initiaState, tempViewAllBooking } from '../../../__mocks__/booking/booking';
 import rootReducer from '../../../redux/reducers/index';
 

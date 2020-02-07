@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import {
   AllBookings,
   mapStateToProps,
-} from '../../../containers/booking/viewAllBookings';
+} from '../../../containers/bookings/viewAllBookings';
 import {
   tempViewAllBooking,
   initiaState,

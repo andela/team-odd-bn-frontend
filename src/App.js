@@ -33,12 +33,14 @@ import { checkPrevilege } from './helpers/checkPrevilege';
 import Dashboard from './views/Dashboard';
 import OneWayTrip from './containers/TripsContainer/oneway';
 import ApprovalRequests from './containers/Trips/ApprovalTable';
-import viewAllBookings from './containers/booking/viewAllBookings';
+import viewAllBookings from './containers/bookings/viewAllBookings';
 import MulticityTrip from './containers/Trips/MulticityTrip';
 import SearchStats from './containers/trips/SearchStats';
 import ViewAccomodation from './containers/accommodation/ViewAccommodations';
 import Notifications from './containers/notifications/Notifications';
 import initializeSocket from './helpers/notificationHelper';
+import AvailableBookings from './containers/bookings/AvailableBookings';
+import ViewSpecificAccommodation from './containers/accommodation/ViewSpecificAccommodation';
 
 dotenv.config();
 
@@ -67,7 +69,6 @@ const App = () => (
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
           <Route path="/profile" exact component={Profile} />
-          <Route path="/bookings" exact component={viewAllBookings} />
           <Route
             path="/successful-verification"
             exact
@@ -108,6 +109,8 @@ const App = () => (
           />
           <Route path="/accommodations" exact component={ViewAccomodation} />
           <Route path="/notifications" exact component={Notifications} />
+          <Route path="/accommodation/:id" exact component={ViewSpecificAccommodation} />
+          <Route path="/bookings" exact component={AvailableBookings} />
           <Route component={Notfound} />
         </Switch>
       </div>

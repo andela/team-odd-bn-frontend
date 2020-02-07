@@ -103,12 +103,6 @@ export class SideDrawer extends Component {
           <li>
             <Link to="/accommodations">
               <img src={viewAccommodation} alt="accommodation icon" />
-              <span>View Accomodations</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/accommodation/create">
-              <img src={accommodationIcon} alt="accommodation icon" />
               <span>Accomodations</span>
             </Link>
           </li>

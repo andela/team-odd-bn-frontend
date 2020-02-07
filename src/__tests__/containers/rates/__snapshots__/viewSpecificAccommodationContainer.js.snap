@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expect to view specific accommodation Should not continue if no specific accommodation available 1`] = `ShallowWrapper {}`;
+
+exports[`Expect to view specific accommodation Should render specific accommodation successfully 1`] = `ShallowWrapper {}`;
