@@ -28,24 +28,21 @@ class Login extends Component {
     const { signinData, signinError, spinnerStatus } = signInState.auth.signin;
     const loggedUser = this.verifyExistToken();
 
-    return (loggedUser !== false) ? (
-      <Redirect to="dashboard" />
-    )
-      : (
-        <>
-          {spinnerStatus ? (
-            <Spinner />
-          ) : (
-            ''
-          )}
-          <LoginView
-            updateSigninInputAction={updateSigninInputAction}
-            signInState={signInState}
-            loginAction={signinAction}
-          />
-          <ToastContainer />
-        </>
-      );
+    return loggedUser !== false ? (
+      <>
+        <Redirect to="dashboard" />
+      </>
+    ) : (
+      <>
+        {spinnerStatus ? <Spinner /> : ''}
+        <LoginView
+          updateSigninInputAction={updateSigninInputAction}
+          signInState={signInState}
+          loginAction={signinAction}
+        />
+        <ToastContainer />
+      </>
+    );
   }
 }
 Login.propTypes = {

@@ -4,20 +4,34 @@ import AllUsers from './allUsers';
 import {
   paginationAction, getRolesAction, newRoleInput, assignRole,
 } from '../../redux/actions/admin/adminAction';
-import { searchResults } from '../../redux/actions/search/searchAction';
+import { searchResults, searchInput } from '../../redux/actions/search/searchAction';
 import getAllUsers from '../../redux/actions/getAllUsersActions';
 import { handleFilter } from '../../helpers/filter';
 
+let searchData = '';
 export class UserRoles extends Component {
   componentDidMount() {
     this.props.searchResults();
+    this.props.searchInput();
     this.props.getAllUsers();
     this.props.getRolesAction();
   }
 
   componentDidUpdate() {
+    this.props.adminState.search.payload = undefined;
     this.props.adminState.admin.payload && this.props.getAllUsers();
     this.props.adminState.admin.payload = undefined;
+    if (this.props.adminState.allUsers.users && this.props.adminState.search.payload) {
+      const p = this.props.adminState.allUsers.users
+      && this.props.adminState.allUsers.users.data;
+      const e = {
+        target: {
+          value: document.getElementById('searchInput').value,
+        },
+      };
+
+      this.props.adminState.search.payload = handleFilter(e, p);
+    }
   }
 
 
@@ -26,8 +40,9 @@ export class UserRoles extends Component {
       && this.props.adminState.admin.allRoles.data;
     const data = this.props.adminState.allUsers.users
       && this.props.adminState.allUsers.users.data;
-    const searchData = this.props.adminState.search.payload;
 
+    searchData = this.props.adminState.search.payload;
+    const userInput = this.props.adminState.search.input;
     const userSearch = [
       <div className="searchOption">
         <input
@@ -36,16 +51,22 @@ export class UserRoles extends Component {
           id="searchInput"
           type="text"
           onChange={(e) => {
-            const newData = handleFilter(e, data, 'email');
+            const newData = handleFilter(e, data);
             this.props.searchResults(newData);
-            return handleFilter(e, data, 'email');
+            this.props.searchInput(e.target.value.trimLeft());
+            return handleFilter(e, data);
           }}
-          placeholder="search by email"
+          placeholder="Search"
         />
-        ,
+        { userInput && (
+        <div className="search-results-counter">
+          {searchData && searchData.length}
+          {' '}
+Result(s) found
+        </div>
+        )}
       </div>,
     ];
-
     return (
       <>
         <AllUsers
@@ -69,4 +90,5 @@ export default connect(mapStateToProps, {
   assignRole,
   paginationAction,
   searchResults,
+  searchInput,
 })(UserRoles);

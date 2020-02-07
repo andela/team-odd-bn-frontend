@@ -57,7 +57,7 @@ export class VerifyEmail extends Component {
             <hr className="boxLine" />
             <div className="boxDescription blue-bg">
               {` We have sent you a verification email to ${
-                verifyToken(localStorage.getItem('token')).email
+                verifyToken(localStorage.token).email
               }`}
             </div>
             <div className="boxDescription">
@@ -92,7 +92,7 @@ export class VerifyEmail extends Component {
         <ToastContainer />
         <Footer className="authFooter" />
       </div>
-    );
+    )
   }
 }
 VerifyEmail.propTypes = {

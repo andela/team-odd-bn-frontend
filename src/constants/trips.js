@@ -4,6 +4,8 @@ import StatsNav from '../components/GetStatsNav';
 
 export const tableHeads = [
   { className: 'tripTypeNav', attribute: 'Trip Type', key: 'tripType' },
+  { className: 'tripOriginNav', attribute: 'Origin', key: 'tripOrigin' },
+  { className: 'tripDestinationNav', attribute: 'Destination', key: 'tripDestination' },
   { className: 'status', attribute: 'Status', key: 'status' },
   { className: 'createdAtNav', attribute: 'Requested On', key: 'Requested On' },
   { className: 'actionNav', attribute: 'Action', key: 'action' },

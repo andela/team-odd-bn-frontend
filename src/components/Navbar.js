@@ -39,7 +39,7 @@ export class Navbar extends Component {
             <img src={logo} alt="logo" />
           </div>
           <div className="profile-logo-name">
-            <a href="#home">Barefoot</a>
+            <a href="/dashboard">Barefoot</a>
           </div>
         </div>
         <div className="align-right">

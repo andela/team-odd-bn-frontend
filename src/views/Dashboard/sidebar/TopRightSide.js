@@ -22,7 +22,6 @@ export class TopRightSide extends Component {
       image: defaultUserIcon,
       firstName: '',
       lastName: '',
-
     };
     this.handleMarkAllAsRead = this.handleMarkAllAsRead.bind(this);
   }
@@ -60,7 +59,11 @@ export class TopRightSide extends Component {
   async handleMarkAllAsRead() {
     const { markAllAsRead, allNotifications, getAllNotifications } = this.props;
     const notificationIds = [];
-    const userNotifications = allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id);
+    const userNotifications = allNotifications
+      && allNotifications !== 'no new notification'
+      && allNotifications.filter(
+        (item) => item.userId === verifyToken(localStorage.getItem('token')).id,
+      );
     userNotifications.map((item) => notificationIds.push(item.id));
     await markAllAsRead(notificationIds);
     await getAllNotifications();
@@ -69,12 +72,18 @@ export class TopRightSide extends Component {
   async handleMarkAsRead(notificationId) {
     const { markOneAsRead } = this.props;
     await markOneAsRead(notificationId);
+    await getAllNotifications();
   }
-
 
   render() {
     const { allNotifications } = this.props;
-    const verifyAllNotifications = allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).filter((item) => !item.markRead);
+    const verifyAllNotifications = allNotifications
+      && allNotifications !== 'no new notification'
+      && allNotifications
+        .filter(
+          (item) => item.userId === verifyToken(localStorage.getItem('token')).id,
+        )
+        .filter((item) => !item.markRead);
     const { image, firstName, lastName } = this.state;
     return (
       <div className="top-side-right">
@@ -82,52 +91,82 @@ export class TopRightSide extends Component {
           <li className="tooltip notification-icon">
             <div className="notification">
               <img src={notificationIcon} alt="notification icon" />
-              {allNotifications !== 'no new notification' && allNotifications === 0 && (
-              <span className="notification-count"><p>{allNotifications && allNotifications !== 'no new notification' && allNotifications.length > 0 && allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).filter((item) => !item.markRead).length}</p></span>)}
+              {verifyAllNotifications !== 'no new notification'
+                && verifyAllNotifications.length > 0 && (
+                  <span className="notification-count">
+                    <p>
+                      {allNotifications
+                        && allNotifications !== 'no new notification'
+                        && allNotifications.length > 0
+                        && allNotifications
+                          .filter(
+                            (item) => item.userId
+                              === verifyToken(localStorage.getItem('token')).id,
+                          )
+                          .filter((item) => !item.markRead).length}
+                    </p>
+                  </span>
+              )}
               <div className="notification-content">
                 <div className="notification-title">
                   <h2>Notifications</h2>
-                  <button onClick={() => this.handleMarkAllAsRead()}> Mark all as read</button>
+                  <button onClick={() => this.handleMarkAllAsRead()}>
+                    {' '}
+                    Mark all as read
+                  </button>
                 </div>
                 <hr className="notification-border" />
                 <div
                   className="notification-item"
                   onClick={() => this.props.markOneAsRead(notificationId)}
                 >
-                  {allNotifications && allNotifications !== 'no new notification' && allNotifications.length > 0 ? (
-                    <>
-                      {verifyAllNotifications.length === 0 && (<p>No New Notifications</p>)}
+                  {allNotifications
+                  && allNotifications !== 'no new notification'
+                  && allNotifications.length > 0 ? (
+                      <>
+                      {verifyAllNotifications.length === 0 && (
+                        <p>No New Notifications</p>
+                        )}
                       {verifyAllNotifications.map((item, index) => (
-                        <>
+                          <>
                           <div className="notification-item-title">
-                            <img src={image} alt="pic" />
-                            {item.tripRequestId && (
-                            <Link className="links" to={`/requests/${item.tripRequestId}`} onClick={() => this.handleMarkAsRead(item.id)}>
-                              <p>{item.message}</p>
-                            </Link>
+                              <img src={image} alt="pic" />
+                              {item.tripRequestId && (
+                              <Link
+                                className="links"
+                                to={`/requests/${item.tripRequestId}`}
+                                onClick={() => this.handleMarkAsRead(item.id)}
+                              >
+                                <p>{item.message}</p>
+                              </Link>
                             )}
-                            {item.bookingId && (
-                            <Link className="links" to={`/bookings/${item.bookingId}`} onClick={() => this.handleMarkAsRead(item.id)}>
-                              <p>{item.message}</p>
-                            </Link>
+                              {item.bookingId && (
+                              <Link
+                                className="links"
+                                to="/bookings"
+                                onClick={() => this.handleMarkAsRead(item.id)}
+                              >
+                                <p>{item.message}</p>
+                              </Link>
                             )}
-                            {!item.markRead && (
-                            <span className="dot" />
-                            )}
-                          </div>
-                          <small className="notification-date"><Moment fromNow>{item.createdAt}</Moment></small>
+                              {!item.markRead && <span className="dot" />}
+                            </div>
+                          <small className="notification-date">
+                              <Moment fromNow>{item.createdAt}</Moment>
+                            </small>
                           <hr className="notification-border" />
-                        </>
-                      ))}
+                          </>
+                        ))}
                     </>
-                  ) : <p>No New Notifications</p>}
+                    ) : (
+                      <p>No New Notifications</p>
+                    )}
                 </div>
                 <div className="see-all">
                   <Link to="/Notifications">
                     <p>See All</p>
                   </Link>
                 </div>
-
               </div>
             </div>
           </li>
@@ -153,9 +192,13 @@ const mapStateToProps = (state) => ({
   profile: state.viewProfile.profile,
   profileError: state.profileError,
   allNotifications: state.notifications.notifications.allNotifications,
-  allNotificationsError: state.notifications.notifications.allNotificationsError,
+  allNotificationsError:
+    state.notifications.notifications.allNotificationsError,
 });
 
 export default connect(mapStateToProps, {
-  markAllAsRead, markOneAsRead, initializeSocket, getAllNotifications,
+  markAllAsRead,
+  markOneAsRead,
+  initializeSocket,
+  getAllNotifications,
 })(TopRightSide);

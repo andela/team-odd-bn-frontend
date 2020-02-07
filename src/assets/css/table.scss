@@ -3,6 +3,8 @@
 $contents: (
   tripId: 'Trip Id ',
   tripType: 'tripType',
+  tripOrigin: 'tripOrigin',
+  tripDestination: 'tripDestination',
   createdAt: 'createdAt',
   status: 'status',
   action: 'action',
@@ -18,20 +20,24 @@ $tt: (
   startDate: 'Start date',
   returnDate: 'Return date',
   reason: 'Reason',
-  tripType:'Trip Type',
+  tripType: 'Trip Type',
+  tripOrigin: 'Origin',
+  tripDestination: 'Destination',
   status: 'Status',
-  firstname: 'First Name',
-  lastname: 'Last Name',
+  Firstname: 'First Name',
+  Lastname: 'Last Name',
 );
-$kk: destinationId originId startDate returnDate reason tripType status firstname lastname;
-$attributes: tripId tripType createdAt status action firstName LastName Email UserRole EditRole;
+$kk: destinationId originId startDate returnDate reason tripType tripOrigin
+  tripDestination status Firstname Lastname;
+$attributes: tripId tripType tripOrigin tripDestination createdAt status action
+  firstName LastName Email UserRole EditRole;
 
 %div_style {
   height: auto;
   padding: 6.5px 0px;
 }
 %corassel {
-  div{
+  div {
     background-color: transparent;
   }
   background-color: transparent;
@@ -42,36 +48,28 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     width: 100% !important;
   }
   margin: auto;
-  .pageButtons {
+  .pages {
     padding: 0px;
-    width: auto;
+    width: auto !important;
     overflow-x: auto;
-  }
-  div {
-    width: 40px;
     div {
-      margin: 0 auto;
-      width: 30px;
-
       button {
         border-radius: 50%;
         outline: none;
-        width: 30px;
+        width: 30px !important;
         height: 30px;
         padding: 1px;
         margin: 1px;
-        a {
+        a{
           display: block;
-          width: 100%;
-          height: 100%;
           text-decoration: none;
           color: inherit;
-          padding: 5px 0px;
         }
       }
     }
   }
-  .pageArrows {
+
+  .arrows {
     max-width: 30px;
     button {
       border-radius: 50%;
@@ -80,14 +78,14 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       height: 30px;
       padding: 1px;
       margin: 1px;
-      a {
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;
-        color: #00b9f2;
-        padding: 5px 0px;
-      }
+      a{
+          display: block;
+          text-decoration: none;
+          color: inherit;
+        }
+         a:active{
+          background-color: red;
+        }
     }
   }
 }
@@ -113,50 +111,47 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
     }
   }
 }
-.searchOption{
- display: flex;
- flex-direction: row;
- margin-bottom: 10px;
-           @media screen and (min-width: 200px) and (max-width: 600px) {
- flex-direction: column;
-          }
-      .search {
-          @media screen and (min-width: 200px) and (max-width: 600px) {
-            width: 90%;
-            margin-top: 10px;
-            margin-left: 10px;
-            height: 40px;
-          }
-          outline: none;
-          width: 235px;
-          height: 40px;
-          font-size: 14px;
-          background: #ffffff;
-          border: 1px solid #00b9f2;
-          border-radius: 10px;
-          padding-left: 5px;
-        
-      }
-
+.searchOption {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  @media screen and (min-width: 200px) and (max-width: 600px) {
+    flex-direction: column;
+  }
+  .search {
+    @media screen and (min-width: 200px) and (max-width: 600px) {
+      width: 90%;
+      margin-top: 10px;
+      margin-left: 10px;
+      height: 40px;
+    }
+    outline: none;
+    width: 235px;
+    height: 40px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid #00b9f2;
+    border-radius: 10px;
+    padding-left: 5px;
+  }
 }
-      .userSearch {
-         margin-bottom: 10px;
-          @media screen and (min-width: 200px) and (max-width: 600px) {
-            width: 90%;
-            margin: auto;
-            margin-top: 10px;
-            margin-left: 10px;
-            height: 40px;
-          }
-          width: 235px;
-          height: 40px;
-          font-size: 14px;
-          background: #ffffff;
-          border: 1px solid #00b9f2;
-          border-radius: 10px;
-          padding-left: 5px;
-        
-      }
+.userSearch {
+  margin-bottom: 10px;
+  @media screen and (min-width: 200px) and (max-width: 600px) {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 40px;
+  }
+  width: 235px;
+  height: 40px;
+  font-size: 14px;
+  background: #ffffff;
+  border: 1px solid #00b9f2;
+  border-radius: 10px;
+  padding-left: 5px;
+}
 .tableMainContainer {
   height: 78%;
   margin-top: 4%;
@@ -198,7 +193,7 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
       @media screen and (min-width: 200px) and (max-width: 750px) {
         height: 150px !important;
       }
-      
+
       margin: 10px 0px;
 
       display: flex;
@@ -224,46 +219,44 @@ $attributes: tripId tripType createdAt status action firstName LastName Email Us
           margin: auto;
         }
       }
-.navRequests {
-  width:100%;
-  justify-content: space-between !important;
-  @media screen and (min-width: 200px) and (max-width: 750px) {
-   flex-direction: column;
-  }
-  div{
-    @media screen and (min-width: 200px) and (max-width: 750px) {
-      width: 100% !important;
-     }
-  }
-.travelRequestHeaders{
-width: 70%;
-}
-.newTrip{
-  width: 30%;
-}
-  .add-newTrip-Link {
-    height: auto;
-    width: 50%;
-    text-align: center;
-    background-color: #00B9F2;
-    border: 1px solid #00b9f2;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
+      .navRequests {
+        width: 100%;
+        justify-content: space-between !important;
+        @media screen and (min-width: 200px) and (max-width: 750px) {
+          flex-direction: column;
+        }
+        div {
+          @media screen and (min-width: 200px) and (max-width: 750px) {
+            width: 100% !important;
+          }
+        }
+        .travelRequestHeaders {
+          width: 70%;
+        }
+        .newTrip {
+          width: 30%;
+        }
+        .add-newTrip-Link {
+          height: auto;
+          width: 50%;
+          text-align: center;
+          background-color: #00b9f2;
+          border: 1px solid #00b9f2;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+          color: white;
+          padding: 10px 0;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+        }
 
-  }
-
-  .add-newTrip-Link:hover {
-    background-color: #ffffff !important;
-    border: solid 1px #00b9f2;
-    color: #00b9f2 !important;
-  }
-}
-      
+        .add-newTrip-Link:hover {
+          background-color: #ffffff !important;
+          border: solid 1px #00b9f2;
+          color: #00b9f2 !important;
+        }
+      }
 
       .search {
         height: 100px;
@@ -353,28 +346,27 @@ width: 70%;
       ::-webkit-scrollbar {
         width: 10px;
       }
-      
+
       /* Track */
       ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey; 
+        box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
       }
-       
+
       /* Handle */
       ::-webkit-scrollbar-thumb {
-        background: #34c6f3; 
+        background: #34c6f3;
         border-radius: 10px;
       }
-      
+
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
-        background: #34c6f3; 
+        background: #34c6f3;
       }
       .trips {
         width: 98%;
         margin-left: 2%;
         display: flex;
-      
 
         .trip {
           border: 1px solid #dddddd;
@@ -382,18 +374,18 @@ width: 70%;
           margin-bottom: 5px;
           overflow-y: auto;
         }
-        .tripFooter {
-          flex-direction: row;
-          .corasselButtons {
-            padding: 0;
-            margin: 0;
-            max-width: 400px !important;
-            @extend %corassel;
-          }
-          .backToTrips {
-            width: 30%;
-          }
-        }
+        // .tripFooter {
+        //   flex-direction: row;
+        //   .corasselButtons {
+        //     padding: 0;
+        //     margin: 0;
+        //     max-width: 400px !important;
+        //     @extend %corassel;
+        //   }
+        //   .backToTrips {
+        //     width: 30%;
+        //   }
+        // }
         div {
           min-height: 40px;
 
@@ -528,7 +520,11 @@ width: 70%;
         background-color: $logo-color;
       }
     }
-
+    .pagination-container {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
     .entity:nth-child(2n) {
       background: white;
     }
@@ -596,9 +592,9 @@ width: 70%;
         }
       }
     }
-    .corasselButtons {
-      @extend %corassel;
-    }
+    // .corasselButtons {
+    //   @extend %corassel;
+    // }
   }
 }
 
@@ -667,106 +663,106 @@ width: 70%;
   width: 100% !important;
   height: 100% !important;
   background-color: rgba(0, 0, 0, 0.404);
-.bookingAccommodationPopupContainer{
-  justify-content: space-evenly;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  flex-direction: column;
-  margin: auto;
-  background-color: white;
-  flex-direction: column;
-  width: 35% !important;
-  height: 55% !important;
-  @media screen and (min-width: 200px) and (max-width: 600px) {
-    width: 100% !important;
-    height: 100% !important;
-  }
-  @media screen and (min-width: 600px) and (max-width: 1100px) {
-    width: 80% !important;
-  }
-  .saveEditedRequests {
-    height: 16%;
-    flex-direction: row;
-    width: 90% !important;
+  .bookingAccommodationPopupContainer {
+    justify-content: space-evenly;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
     margin: auto;
-    text-align: right;
-    padding-top: 5px;
-    button {
-      height: 35px;
-      padding: 0px 20px;
-      margin: 10px 0px;
-      margin-left: 40px;
-      border-radius: 5px;
-      background-color: #00b9f2;
-      color: white;
-      font-size: 12px;
+    background-color: white;
+    flex-direction: column;
+    width: 35% !important;
+    height: 55% !important;
+    @media screen and (min-width: 200px) and (max-width: 600px) {
+      width: 100% !important;
+      height: 100% !important;
     }
-    button:hover {
-      background: white !important;
+    @media screen and (min-width: 600px) and (max-width: 1100px) {
+      width: 80% !important;
+    }
+    .saveEditedRequests {
+      height: 16%;
+      flex-direction: row;
+      width: 90% !important;
+      margin: auto;
+      text-align: right;
+      padding-top: 5px;
+      button {
+        height: 35px;
+        padding: 0px 20px;
+        margin: 10px 0px;
+        margin-left: 40px;
+        border-radius: 5px;
+        background-color: #00b9f2;
+        color: white;
+        font-size: 12px;
+      }
+      button:hover {
+        background: white !important;
+        color: #34c6f3;
+      }
+    }
+    .bookingHeaderContainer {
+      height: 10%;
       color: #34c6f3;
-    }
-  }
-  .bookingHeaderContainer{
-    height: 10%;
-    color: #34c6f3;
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin: auto;
-    padding-top: 20px;
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      margin: auto;
+      padding-top: 20px;
 
-    div{
-      font-weight: 900;
-      font-size: 20px;
-      height: 50%;
-      width: 100%;
-      text-align: center;
+      div {
+        font-weight: 900;
+        font-size: 20px;
+        height: 50%;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .inputFieldsContainer {
+      height: 16%;
+      width: 90%;
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      @media screen and (min-width: 200px) and (max-width: 700px) {
+        flex-direction: column;
+      }
+      .labelSide {
+        width: 30%;
+        padding: 0px;
+        margin: 0px;
+        @media screen and (min-width: 200px) and (max-width: 700px) {
+          width: 100%;
+        }
+      }
+      .inputSide {
+        width: 70%;
+        padding: 0px;
+        margin: 0px;
+        @media screen and (min-width: 200px) and (max-width: 700px) {
+          width: 100%;
+        }
+      }
+      input,
+      select {
+        padding: 7px 0px;
+        margin: 0px;
+        border: solid 1px #909090 !important;
+        outline: none;
+        width: 100%;
+        border-radius: 2px !important;
+        option {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      input {
+        width: 96%;
+        padding: 7px 2%;
+      }
     }
   }
-  .inputFieldsContainer{
-    height: 16%;
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    @media screen and (min-width: 200px) and (max-width: 700px) {
-      flex-direction: column;
-    }
-    .labelSide{
-      width: 30%;
-      padding: 0px;
-      margin: 0px;
-      @media screen and (min-width: 200px) and (max-width: 700px) {
-        width: 100%;
-      }
-    }
-    .inputSide{
-      width: 70%;
-      padding: 0px;
-      margin: 0px;
-      @media screen and (min-width: 200px) and (max-width: 700px) {
-        width: 100%;
-      }
-    }
-    input, select {
-      padding: 7px 0px;
-      margin:  0px;
-      border: solid 1px #909090 !important;
-      outline: none;
-      width: 100%;
-      border-radius: 2px !important;
-      option{
-        height: 100%;
-        width: 100%;
-      }
-    }
-    input{
-      width: 96%;
-      padding: 7px 2%;
-    }
-  }
-
-}
   .editPopupContainer {
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -793,7 +789,7 @@ width: 70%;
         margin-left: 80%;
         border-radius: 5px;
         background-color: #00b9f2;
-        outline:none;
+        outline: none;
         color: white;
         font-size: 12px;
         outline: none;
@@ -824,8 +820,7 @@ width: 70%;
         color: #34c6f3;
       }
     }
-    .inputFields{
-     
+    .inputFields {
       flex-direction: column;
       .editRequestFields {
         flex-direction: column;
@@ -851,11 +846,6 @@ width: 70%;
           }
         }
       }
-    }
-
-    .corasselPopUpButtons {
-      margin: 20px auto;
-      @extend %corassel;
     }
   }
   .popupContainer {
@@ -901,4 +891,9 @@ width: 70%;
       }
     }
   }
+}
+.pagination-buttons {
+  margin: 20px auto;
+  @extend %corassel;
+  overflow-x: auto;
 }

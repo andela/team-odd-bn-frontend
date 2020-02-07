@@ -47,7 +47,7 @@ export class Profile extends Component {
   }
 
   async componentDidMount() {
-    if (!verifyToken(tokenExist)) {
+    if (!verifyToken(localStorage.token)) {
       return this.props.history.push('/signin');
     }
 

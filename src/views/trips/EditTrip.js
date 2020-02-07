@@ -41,7 +41,7 @@ class Requests extends Component {
             type="button"
             id="save"
             onClick={async () => {
-              trips && await editRequestAction(id, { itinerary: trips });
+              trips && (await editRequestAction(id, { itinerary: trips }));
               await fetchRequestsAction(id);
               this.props.popUpAction({
                 currentPopUp: 'editTrip',
@@ -64,153 +64,162 @@ class Requests extends Component {
             cancel
           </button>
         </div>
-        {data && currentPage.map((trip, index) => (
-          <div key={index} className="inputFields">
-            <div className="editRequestFields">
-              <div className="label">Origin</div>
-              <div>
-                <select
-                  value={currentPage[0].originId}
-                  name="originId"
-                  id="originId"
-                  onChange={(e) => trips && editTripsAction(
-                    { data: trips },
-                    {
-                      tripIndex: pageNo,
-                      name: e.target.name,
-                      value: e.target.value,
-                    },
-                    rest,
-                  )}
-                >
-                  {cities
-                    && cities.map((city, index) => (
-                      <option name="originId" key={city.id} value={city.id}>
-                        {city.city}
-                      </option>
+        {data
+          && currentPage && currentPage.map((trip, index) => (
+            <div key={index} className="inputFields">
+              <div className="editRequestFields">
+                <div className="label">Origin</div>
+                <div>
+                  <select
+                    value={currentPage[0].originId}
+                    name="originId"
+                    id="originId"
+                    onChange={(e) => trips
+                      && editTripsAction(
+                        { data: trips },
+                        {
+                          tripIndex: pageNo,
+                          name: e.target.name,
+                          value: e.target.value,
+                        },
+                        rest,
+                      )}
+                  >
+                    {cities
+                      && cities.map((city, index) => (
+                        <option name="originId" key={city.id} value={city.id}>
+                          {city.city}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+              <div key={`${index}nd`} className="editRequestFields">
+                <div className="label">Destination</div>
+                <div>
+                  <select
+                    value={currentPage[0].destinationId}
+                    name="destinationId"
+                    id="destinationId"
+                    onChange={(e) => editTripsAction(
+                      { data: trips },
+                      {
+                        tripIndex: pageNo,
+                        name: e.target.name,
+                        value: e.target.value,
+                      },
+                      rest,
+                    )}
+                  >
+                    {cities
+                      && cities.map((city) => (
+                        <option
+                          name="destinationId"
+                          key={city.id}
+                          value={city.id}
+                        >
+                          {city.city}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+              <div key={`${index}nth`} className="editRequestFields">
+                <div className="label">Start date</div>
+                <div>
+                  <input
+                    type="date"
+                    id="startDate"
+                    name="startDate"
+                    value={currentPage[0].startDate}
+                    onChange={(e) => editTripsAction(
+                      { data: trips },
+                      {
+                        tripIndex: pageNo,
+                        name: e.target.name,
+                        value: e.target.value,
+                      },
+                      rest,
+                    )}
+                  />
+                </div>
+              </div>
+              <div key={`${index}rd`} className="editRequestFields">
+                <div className="label">Return date</div>
+                <div>
+                  <input
+                    type="date"
+                    onChange={(e) => editTripsAction(
+                      { data: trips },
+                      {
+                        tripIndex: pageNo,
+                        name: e.target.name,
+                        value: e.target.value,
+                      },
+                      rest,
+                    )}
+                    id="returnDate"
+                    name="returnDate"
+                    value={currentPage[0].returnDate}
+                  />
+                </div>
+              </div>
+              <div key={`${index}th`} className="editRequestFields">
+                <div className="label">reason</div>
+                <div>
+                  <textarea
+                    type="text"
+                    onChange={(e) => editTripsAction(
+                      { data: trips },
+                      {
+                        tripIndex: pageNo,
+                        name: e.target.name,
+                        value: e.target.value,
+                      },
+                      rest,
+                    )}
+                    name="reason"
+                    value={currentPage[0].reason}
+                  />
+                </div>
+              </div>
+              <div key={`${index}stnd`} className="corasselPopUpButtons">
+                <div className="pageArrows">
+                  <button
+                    id="page1"
+                    type="button"
+                    onClick={() => changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)}
+                  >
+                    <a href={`#${pageNo - 1}`}> &#60;&#60;</a>
+                  </button>
+                </div>
+                <div className="pageButtons">
+                  {tripChunks
+                    && tripChunks.map((trip, index) => (
+                      <div className="" key={index}>
+                        <button
+                          id="page2"
+                          type="button"
+                          onClick={() => changePageNo(index)}
+                        >
+                          {index}
+                        </button>
+                      </div>
                     ))}
-                </select>
+                </div>
+                <div className="pageArrows">
+                  <button
+                    id="page3"
+                    type="button"
+                    onClick={() => changePageNo(
+                      pageNo === tripChunks.length - 1 ? pageNo : pageNo + 1,
+                    )}
+                  >
+                    <a href={`#${pageNo}`}> &#62;&#62;</a>
+                  </button>
+                </div>
               </div>
             </div>
-            <div key={`${index}nd`} className="editRequestFields">
-              <div className="label">Destination</div>
-              <div>
-                <select
-                  value={currentPage[0].destinationId}
-                  name="destinationId"
-                  id="destinationId"
-                  onChange={(e) => editTripsAction(
-                    { data: trips },
-                    {
-                      tripIndex: pageNo,
-                      name: e.target.name,
-                      value: e.target.value,
-                    },
-                    rest,
-                  )}
-                >
-                  {cities
-                    && cities.map((city) => (
-                      <option name="destinationId" key={city.id} value={city.id}>
-                        {city.city}
-                      </option>
-                    ))}
-                </select>
-              </div>
-            </div>
-            <div key={`${index}nth`} className="editRequestFields">
-              <div className="label">Start date</div>
-              <div>
-                <input
-                  type="date"
-                  id="startDate"
-                  name="startDate"
-                  value={currentPage[0].startDate}
-                  onChange={(e) => editTripsAction(
-                    { data: trips },
-                    {
-                      tripIndex: pageNo,
-                      name: e.target.name,
-                      value: e.target.value,
-                    },
-                    rest,
-                  )}
-                />
-              </div>
-            </div>
-            <div key={`${index}rd`} className="editRequestFields">
-              <div className="label">Return date</div>
-              <div>
-                <input
-                  type="date"
-                  onChange={(e) => editTripsAction(
-                    { data: trips },
-                    {
-                      tripIndex: pageNo,
-                      name: e.target.name,
-                      value: e.target.value,
-                    },
-                    rest,
-                  )}
-                  id="returnDate"
-                  name="returnDate"
-                  value={currentPage[0].returnDate}
-                />
-              </div>
-            </div>
-            <div key={`${index}th`} className="editRequestFields">
-              <div className="label">reason</div>
-              <div>
-                <textarea
-                  type="text"
-                  onChange={(e) => editTripsAction(
-                    { data: trips },
-                    {
-                      tripIndex: pageNo,
-                      name: e.target.name,
-                      value: e.target.value,
-                    },
-                    rest,
-                  )}
-                  name="reason"
-                  value={currentPage[0].reason}
-                />
-              </div>
-            </div>
-            <div key={`${index}stnd`} className="corasselPopUpButtons">
-              <div className="pageArrows">
-                <button
-                  id="page1"
-                  type="button"
-                  onClick={() => changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)}
-                >
-                  <a href={`#${pageNo - 1}`}> &#60;&#60;</a>
-                </button>
-              </div>
-              <div className="pageButtons">
-                {tripChunks
-                && tripChunks.map((trip, index) => (
-                  <div className="" key={index}>
-
-                    <button id="page2" type="button" onClick={() => changePageNo(index)}>
-                      {index}
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <div className="pageArrows">
-                <button
-                  id="page3"
-                  type="button"
-                  onClick={() => changePageNo(
-                    pageNo === tripChunks.length - 1 ? pageNo : pageNo + 1,
-                  )}
-                >
-                  <a href={`#${pageNo}`}> &#62;&#62;</a>
-                </button>
-              </div>
-            </div>
-          </div>
         ))}
       </div>
     );
