@@ -25,6 +25,9 @@
   "homepage": "https://github.com/andela/team-odd-bn-frontend#readme",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@progress/kendo-react-popup": "^3.10.1",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/react": "^5.2.8",

@@ -15,7 +15,6 @@ export const likeAction = ({ id }) => async (dispatch) => {
     };
 
     const likeResponse = await apiCall.post(`/accommodations/${id}?like=${true}`, '', options);
-
     dispatch({
       type: types.LIKES_SUCCESS,
       payload: likeResponse.data,
