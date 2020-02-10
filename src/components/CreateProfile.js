@@ -9,7 +9,7 @@ import getProfile, { updateSpinnerStatus } from '../redux/actions/profileActions
 import updateProfile, {
   uploadImage,
 } from '../redux/actions/updateProfileActions';
-import '../assets/css/profile.css';
+import '../assets/css/createProfile.css';
 import Navbar from './Navbar';
 import profilePicture from '../assets/images/profile-picture2.png';
 import TextInput from './common/TextInput';
@@ -17,9 +17,9 @@ import Spinner from './Spinner';
 import { getManagers } from '../redux/actions/getAllUsersActions';
 import verifyToken from '../helpers/verifyToken';
 import tokenExist from '../helpers/tokenExist';
-import Dashboard from '../views/Dashboard/sidebar/index';
 
-export class Profile extends Component {
+
+export class CreateProfile extends Component {
     constructor(props) {
         super(props);
         this.decode = '';
@@ -33,7 +33,6 @@ export class Profile extends Component {
         department: '',
         imageURL: null,
         managerId: '',
-        loading: false,
         bio: '',
         formErrors: {
             address: '',
@@ -88,7 +87,7 @@ export class Profile extends Component {
         this.setState({ ...this.state, imageURL: image });
         }
     }
-    handleEditButtonChange = (e)=> {
+    handleEditButtonChange = (e) => {
         e.preventDefault();
         this.setState({
             isEdit: false,
@@ -115,8 +114,9 @@ export class Profile extends Component {
     [name]: value,
     });
 }
-    handleSubmit = async(e) =>{
+    handleSubmit = async (e) => {
         e.preventDefault();
+        this.props.updateSpinnerStatus(true);
         const {
         firstName,
         lastName,
@@ -128,7 +128,6 @@ export class Profile extends Component {
         imageURL,
         birthDate,
         } = this.state;
-        this.setState({ loading: true })
     
         const data = {
         userFirstName: firstName,
@@ -147,11 +146,12 @@ export class Profile extends Component {
             delete data[item]
         }
         })
+      
         await this.props.updateProfile(data);
         await this.props.getProfile();
         this.props.history.push('/dashboard');
     }
-    handleFiles = async(files) => {
+    handleFiles= async(files) => {
         const file = files.fileList[0];
         const { uploadImage } = this.props;
         await uploadImage(file);
@@ -175,16 +175,14 @@ export class Profile extends Component {
         } = this.state;
             return (
                 <>
-                <Dashboard >
-                <div className="main-profile-row">
+                <h2 className="edit-profile-title">EDIT PROFILE</h2>
+                <div className="profile-row">
                     <div className="profile-column-form">
-                        <h2 className="profile-title">PROFILE</h2>
                         <div className="profile-details-row">
                             <div className="col-75">
-                                <div className="container">
-                                {this.state.loading ? <Spinner /> : null}
+                                <div className="profile-container">
                                      <form onSubmit={this.handleSubmit}>
-                                                <p className="profile-title-details">Personal Details</p>
+                                                <p className="edit-profile-title-details">Personal Details</p>
                                                 <hr className="legend" />
                                         <div className="profile-details-row">
                                             <div className="col-50">
@@ -227,7 +225,7 @@ export class Profile extends Component {
                                                         <option
                                                         key={index}
                                                         value={item.id}
-                                                        defaultValue={(profile && profile.data && item.id === profile.data.managerId)}
+                                                        selected={(profile && profile.data && item.id === profile.data.managerId)}
                                                         >
                                                         {`${item.firstName} ${item.lastName}`}
                                                         </option>
@@ -274,10 +272,10 @@ export class Profile extends Component {
                                             type="submit"
                                             onClick={this.handleEditButtonChange}
                                         >
-                                        <p>Edit Profile</p>
+                                        Edit Profile
                                       </button>
                                     ) : (
-                                        <button type="submit" data_test="submitButton" value="Save" className="btn">Save Profile</button>
+                                        <button type="submit" value="Save" className="btn">Save Profile</button>
                                     )}
                                     </div>
                                     
@@ -287,8 +285,8 @@ export class Profile extends Component {
                         </div>
 
                     </div>
-                    <div className="profile-column-picture" >
-                        <div className="profile-picture">
+                    <div className="edit-profile-column-picture" >
+                        <div className="edit-profile-picture">
             <h3 className="profile-picture-title">Profile Picture</h3>
             <img src={imageURL || profilePicture} alt="profilePicture" />
             {isEdit ? null : (
@@ -303,11 +301,9 @@ export class Profile extends Component {
               </ReactFileReader>
             )}
           </div>
-    </div>
+                    </div>
         </div>
-        </Dashboard >
                 </>
-               
             );
         }
     }
@@ -325,4 +321,4 @@ export class Profile extends Component {
       export default
       connect(mapStatetoProps, {
         getProfile, updateProfile, uploadImage, updateSpinnerStatus, getManagers,
-      })(Profile);
+      })(CreateProfile);

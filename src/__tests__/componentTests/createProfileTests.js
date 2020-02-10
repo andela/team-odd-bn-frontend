@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import MainProfile, { Profile, mapStatetoProps } from '../../components/Profile';
+import MainProfile, { CreateProfile, mapStatetoProps } from '../../components/CreateProfile';
 import rootReducer from '../../redux/reducers/index';
 import mockData from '../../__mocks__/fileMock';
 
@@ -17,7 +17,7 @@ const testStore = (state) => {
 const setUp = (initialState = {}) => {
   store = testStore(initialState);
   const wrapper = shallow(
-    <Profile {...mockData.props} store={store} />,
+    <CreateProfile {...mockData.props} store={store} />,
   );
   return wrapper;
 };
@@ -35,13 +35,14 @@ describe('Profile Test Suite', () => {
     const address = { target: { name: 'address', value: 'Kigali' }, preventDefault:jest.fn() };
     const department = { target: { name: 'department', value: 'Finance' }, preventDefault:jest.fn() };
 
+
     component.find('[data_test="editButton"]').simulate('click', {preventDefault:jest.fn()});
     component.find('[data_test="firstName"]').simulate('change', firstName);
     component.find('[data_test="lastName"]').simulate('change', lastName);
     component.find('[data_test="gender"]').simulate('change', gender);
     component.find('[data_test="address"]').simulate('change', address);
     component.find('[data_test="department"]').simulate('change', department);
-    component.find('[data_test="submitButton"]').simulate('click');
+
     component.find('form').simulate('submit', {
       preventDefault() {},
     });
@@ -66,7 +67,7 @@ describe('Profile Test Suite', () => {
   it('Should return initial data', () => {
     const stores = testStore(mockData.profileMainState);
     expect(shallow(
-      <Profile spinner={null} store={stores} />,
+      <CreateProfile spinner={null} store={stores} />,
     )).toMatchSnapshot();
   });
 

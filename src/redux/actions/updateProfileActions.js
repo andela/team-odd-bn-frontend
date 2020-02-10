@@ -31,7 +31,7 @@ const updateProfile = (data) => async (dispatch) => {
     });
   } catch (error) {
     dispatch(updateSpinnerStatus(false));
-    toast.error('Unable to update profile successfully. Ensure you have filled in all the fields');
+    toast.error(error.response.data.message[0]);
     return dispatch({
       type: UPDATE_PROFILE_ERROR,
       payload: error.response.data,

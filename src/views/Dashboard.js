@@ -76,11 +76,11 @@ trip requests
             <div className="column-bookings">
               <div className="card-bookings">
                 <h3 className="request-title">Your bookings</h3>
-                {bookings === null ? <p className="requests">You have 0 bookings</p> : (
+                {bookings === null ?  <p className="requests">You have 0 bookings</p> : (
                   <p className="requests">
                     You have
                     {' '}
-                    {bookings.data.length}
+                    {bookings.data && bookings.data.length}
                     {' '}
 bookings
 
