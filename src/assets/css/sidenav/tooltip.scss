@@ -1,5 +1,17 @@
+%icon_sizes{
+  img{
+    height: 23px;
+    width: 23px;
+  }
+}
 .tooltip {
   position: relative;
+  a{
+    @extend %icon_sizes;
+  }
+  div{
+    @extend %icon_sizes;
+  }
 }
 
 .tooltip .tooltiptext {

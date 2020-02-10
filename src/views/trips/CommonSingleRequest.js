@@ -7,11 +7,14 @@ import trashIcon from '../../assets/images/trash.png'
 import PopUp from '../../components/PopUp'
 import popUpAction from '../../redux/actions/popUpAction'
 import { connect } from 'react-redux'
-import { Paginate } from '../../helpers/Paginate'
 import { changePageNo } from '../../redux/actions/PaginationAction'
 import DeleteComment from './DeleteComment'
 import EditTrip from './EditTrip'
-import matchCitiesWithIds from '../../helpers/matchCitiesWithIds'
+import matchCitiesWithIds from '../../helpers/matchCitiesWithIds';
+import {fetchSingleRequestsAction} from '../../redux/actions/tripsActions/fetchRequests'
+import Pagination from 'custom_react_pages'
+import prev from '../../assets/images/prev_icon.png'
+import next from '../../assets/images/next_icon.png'
 class RequestView extends Component {
   state = {
     ds: 'none',
@@ -37,11 +40,12 @@ class RequestView extends Component {
       ? (this.messagesEnd.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0)
       : ''
   }
-  handleChange(value) {
+   handleChange(value) {
     this.setState({
       isApproved: !value,
       isRejected: value,
     })
+    
   }
 
   render() {
@@ -55,22 +59,13 @@ class RequestView extends Component {
       updateCommentInputAction,
       input,
       tripRequestId,
-      deleteCommentAction,
       fetchRequestCommentsAction,
-      pageNo,
-      itemsPerPage,
-      changePageNo,
       display,
-      currentPopUp,
-      popUpAction,
       cities,
     } = this.props
     const trips = singleRequestData.data
 
     const inputValue = input ? input.comment : ''
-    const tripChunks = trips && Paginate(trips.trips, 1)
-    const paginatedTrips = { ...tripChunks }
-    const currentPage = paginatedTrips[pageNo]
 
     return (
       <>
@@ -97,9 +92,10 @@ class RequestView extends Component {
                   id="approve"
                   disabled={isApproved}
                   className="approve-button"
-                  onClick={() => {
+                  onClick={async () => {
                     this.handleChange(false)
-                    approveRequest(params.tripRequestId, 'status=accept')
+                    await approveRequest(params.tripRequestId, 'status=accept');
+                    await this.props.fetchSingleRequestsAction(this.props.tripRequestId)
                   }}
                   background="#34c6f3"
                   type="submit"
@@ -113,9 +109,10 @@ class RequestView extends Component {
                   id="reject"
                   disabled={isRejected}
                   className="reject-button"
-                  onClick={() => {
+                  onClick={async() => {
                     this.handleChange(true)
-                    approveRequest(params.tripRequestId, 'status=reject')
+                    await approveRequest(params.tripRequestId, 'status=reject')
+                    await this.props.fetchSingleRequestsAction(this.props.tripRequestId)
                   }}
                   background="#34c6f3"
                   type="submit"
@@ -148,48 +145,59 @@ class RequestView extends Component {
             <div>
               <h3>Trip Details</h3>
             </div>
-            {currentPage &&
-              currentPage.map((trip, index) => (
-                <div className="trip" key={index} ref={index => index}>
-                  {trips &&
-                  verifyToken(localStorage.getItem('token')).roleId === 6 &&
-                  verifyToken(localStorage.getItem('token')).id !==
-                    trips.userId ? (
-                    <>
-                      <div className="Firstname">
-                        {trips && trips.user.firstName}
-                      </div>
-                      <div className="Lastname">
-                        {trips && trips.user.lastName}
-                      </div>
-                    </>
-                  ) : (
-                    ''
-                  )}
-                  <div className="originId">
-                    {matchCitiesWithIds(trip.destinationId, cities).length >
-                      0 && matchCitiesWithIds(trip.originId, cities)[0].city}
+            {trips && (
+          <Pagination
+            activePageStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
+            itemsPerPage={1}
+            next={<img src={next} />}
+            prev={<img src={prev} />}
+            data={trips.trips ? trips.trips : []}
+            pageName="Trip"
+            pageButtons={10}
+            onePage={(trip, index) => (
+              <div className="trip" key={index} ref={index => index}>
+              {trips &&
+              verifyToken(localStorage.getItem('token')).roleId === 6 &&
+              verifyToken(localStorage.getItem('token')).id !==
+                trips.userId ? (
+                <>
+                  <div className="Firstname">
+                    {trips && trips.user.firstName}
                   </div>
-                  <div className="destinationId">
-                    {matchCitiesWithIds(trip.destinationId, cities).length >
-                      0 &&
-                      matchCitiesWithIds(trip.destinationId, cities)[0].city}
+                  <div className="Lastname">
+                    {trips && trips.user.lastName}
                   </div>
-                  <div className="tripType">
-                    {trips && trips.tripType.tripType}
-                  </div>
-                  <div className="startDate">
-                    {trips && trip.startDate.slice(0, 10)}
-                  </div>
-                  <div className="returnDate">
-                    {trip.returnDate === null
-                      ? null
-                      : trip.returnDate.slice(0, 10)}
-                  </div>
-                  <div className="reason">{trip.reason}</div>
-                  <div className="status">{trips && trips.status.status}</div>
-                </div>
-              ))}
+                </>
+              ) : (
+                ''
+              )}
+              <div className="originId">
+                {matchCitiesWithIds(trip.destinationId, cities).length >
+                  0 && matchCitiesWithIds(trip.originId, cities)[0].city}
+              </div>
+              <div className="destinationId">
+                {matchCitiesWithIds(trip.destinationId, cities).length >
+                  0 &&
+                  matchCitiesWithIds(trip.destinationId, cities)[0].city}
+              </div>
+              <div className="tripType">
+                {trips && trips.tripType.tripType}
+              </div>
+              <div className="startDate">
+                {trips && trip.startDate.slice(0, 10)}
+              </div>
+              <div className="returnDate">
+                {trip.returnDate === null
+                  ? null
+                  : trip.returnDate.slice(0, 10)}
+              </div>
+              <div className="reason">{trip.reason}</div>
+              <div className="status">{trips && trips.status.status}</div>
+            </div>
+          
+            )}
+          />
+        )}
             <div className="tripFooter">
               {trips &&
               verifyToken(localStorage.getItem('token')).roleId === 6 &&
@@ -206,47 +214,7 @@ class RequestView extends Component {
                   </a>
                 </div>
               )}
-              <div className="corasselButtons">
-                <div className="pageArrows">
-                  <button
-                    type="button"
-                    id="page1S"
-                    onClick={() =>
-                      changePageNo(pageNo - 1 < 0 ? 0 : pageNo - 1)
-                    }
-                  >
-                    <a href={`#${pageNo - 1}`}> &#60;&#60;</a>
-                  </button>
-                </div>
-                <div className="pageButtons">
-                  {tripChunks &&
-                    tripChunks.map((trip, index) => (
-                      <div className="" key={index}>
-                        <button
-                          type="button"
-                          id="page2S"
-                          onClick={() => changePageNo(index)}
-                        >
-                          {index}
-                        </button>
-                      </div>
-                    ))}
-                </div>
-                <div className="pageArrows">
-                  <button
-                    type="button"
-                    id="page3S"
-                    onClick={() =>
-                      changePageNo(
-                        pageNo === tripChunks.length - 1 ? pageNo : pageNo + 1
-                      )
-                    }
-                  >
-                    <a href={`#${pageNo}`}> &#62;&#62;</a>
-                  </button>
-                </div>
-              </div>
-            </div>
+           </div>
           </div>
           <div className="comments">
             <div>
@@ -338,6 +306,7 @@ export const mapStateToProps = state => ({
 const actions = {
   popUpAction,
   changePageNo,
+  fetchSingleRequestsAction
 }
 
 export default connect(mapStateToProps, actions)(RequestView)

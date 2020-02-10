@@ -460,7 +460,7 @@ export const viewBookingsMockData = {
     },
   },
   pageNo: 0,
-  itemsPerPage: 5,
+  itemsPerPage: 7,
   changePageNo: jest.fn(),
   allAccomodation: {
     accommodations: [

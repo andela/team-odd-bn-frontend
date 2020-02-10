@@ -1,95 +1,107 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Dashboard from '../../views/Dashboard/sidebar';
-import { getAllBookings } from '../../redux/actions/bookings/getAllBookingsActions';
-import { Paginate } from '../../helpers/Paginate';
-import { changePageNo } from '../../redux/actions/PaginationAction';
-import '../../assets/css/bookings/userBookings.scss';
-import icon1 from '../../assets/images/ViewAllBookings/icon1.png';
-import icon2 from '../../assets/images/ViewAllBookings/icon2.png';
-import icon3 from '../../assets/images/ViewAllBookings/icon3.png';
-import icon4 from '../../assets/images/ViewAllBookings/icon4.png';
-import { likeAction, dislikeAction } from '../../redux/actions/likeAndDislikeAction';
-import { viewActionAccommodation } from '../../redux/actions/allAccommodation';
-import likeIcon from '../../assets/images/like_icon/thumbs-up_32.png';
-import disLikeIcon from '../../assets/images/dislike_icon/thumbs-down_32.png';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Dashboard from '../../views/Dashboard/sidebar'
+import { getAllBookings } from '../../redux/actions/bookings/getAllBookingsActions'
+import { Paginate } from '../../helpers/Paginate'
+import { changePageNo } from '../../redux/actions/PaginationAction'
+import '../../assets/css/bookings/userBookings.scss'
+import icon1 from '../../assets/images/ViewAllBookings/icon1.png'
+import icon2 from '../../assets/images/ViewAllBookings/icon2.png'
+import icon3 from '../../assets/images/ViewAllBookings/icon3.png'
+import icon4 from '../../assets/images/ViewAllBookings/icon4.png'
+import {
+  likeAction,
+  dislikeAction,
+} from '../../redux/actions/likeAndDislikeAction'
+import { viewActionAccommodation } from '../../redux/actions/allAccommodation'
+import likeIcon from '../../assets/images/like_icon/thumbs-up_32.png'
+import disLikeIcon from '../../assets/images/dislike_icon/thumbs-down_32.png'
 import joinLikesAccomodation from '../../helpers/joinLikesAccomodation'
-import { getCitiesAction } from '../../redux/actions/createAccommodationActions';
-import { openSingleBooking, getSingleBooking } from '../../redux/actions/bookings/viewSingleBookingActions';
-import ViewSingleBooking from '../../containers/bookings/viewSingleBooking';
+import { getCitiesAction } from '../../redux/actions/createAccommodationActions'
+import {
+  openSingleBooking,
+  getSingleBooking,
+} from '../../redux/actions/bookings/viewSingleBookingActions'
+import ViewSingleBooking from '../../containers/bookings/viewSingleBooking'
 import { onEditInputAction } from '../../redux/actions/ratingAction'
-import popUpAction from '../../redux/actions/popUpAction';
-import PopUp from '../../components/PopUp';
-import RatesBookings from '../../views/bookings/RatesBookings';
-import Pagination from 'custom_react_pages'
+import popUpAction from '../../redux/actions/popUpAction'
+import PopUp from '../../components/PopUp'
+import RatesBookings from '../../views/bookings/RatesBookings'
+import Pagination from 'custom_react_pages';
+import prev from '../../assets/images/prev_icon.png'
+import next from '../../assets/images/next_icon.png'
+
 
 export class ViewBookings extends Component {
-
   state = {
     modal: false,
     index: null,
   }
-  async componentDidMount() {    
-    this.props.getCitiesAction();
-    const { viewActionAccommodation } = this.props;
-    viewActionAccommodation();
-    await this.props.getAllBookings();
-    const { allAccomodation } = this.props.accommodation;
-    this.setState({ allAccomodation });
-  }
-  
-  handleSubmit  = (e, id, index) => {  
-    e.preventDefault();
-    this.setState(prevState=>(
-      {
-        modal: !prevState.modal,
-        index
-      }
-    ))
-    this.props.openSingleBooking(true);
-    this.props.getSingleBooking(id.id);
+  async componentDidMount() {
+    this.props.getCitiesAction()
+    const { viewActionAccommodation } = this.props
+    viewActionAccommodation()
+    await this.props.getAllBookings()
+    const { allAccomodation } = this.props.accommodation
+    this.setState({ allAccomodation })
   }
 
-  handleClick = async(like, item) =>{       
-    const { likeAction,viewActionAccommodation, dislikeAction } = this.props;
+  handleSubmit = (e, id, index) => {
+    e.preventDefault()
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+      index,
+    }))
+    this.props.openSingleBooking(true)
+    this.props.getSingleBooking(id.id)
+  }
 
-    if(like === "true"){
-    const passData =  await likeAction({like: true, id: item})
+  handleClick = async (like, item) => {
+    const { likeAction, viewActionAccommodation, dislikeAction } = this.props
+
+    if (like === 'true') {
+      const passData = await likeAction({ like: true, id: item })
       const updateView = await viewActionAccommodation()
-      return  { passData, updateView };
+      return { passData, updateView }
+    } else if (like === 'false') {
+      const passData = await dislikeAction({ dislike: true, id: item })
+      const updateView = await viewActionAccommodation()
+      return { passData, updateView }
     }
-    else if(like === "false"){
-      const passData = await dislikeAction( {dislike: true, id: item})
-      const updateView =  await viewActionAccommodation();
-      return  { passData, updateView };
-    }
-    return await viewActionAccommodation();
+    return await viewActionAccommodation()
   }
 
   render() {
-  
     const {
-      allBookings, pageNo, itemsPerPage, changePageNo, allAccomodation, popUpAction, display, onEditInputAction
-    } = this.props;
-    const { accommodations, allLikes } = allAccomodation;
+      allBookings,
+      pageNo,
+      itemsPerPage,
+      changePageNo,
+      allAccomodation,
+      popUpAction,
+      display,
+      onEditInputAction,
+    } = this.props
+    const { accommodations, allLikes } = allAccomodation
 
-    allLikes.map((like, index) => Object.assign(accommodations[index], like));
-    
-    const accommodationsData = allBookings ? allBookings.data.myBookingsresult.map(item=>item):[];
-    
-    joinLikesAccomodation(accommodations,allLikes).map((item)=>{
+    allLikes.map((like, index) => Object.assign(accommodations[index], like))
+
+    const accommodationsData = allBookings
+      ? allBookings.data.myBookingsresult.map(item => item)
+      : []
+
+    joinLikesAccomodation(accommodations, allLikes).map(item => {
       accommodationsData.forEach(element => {
-        if(item.id === element.room.accommodationId){
-          Object.assign(element,item)
+        if (item.id === element.room.accommodationId) {
+          Object.assign(element, item)
         }
-      });
+      })
     })
-  
-    const chunkBookings = Paginate(accommodationsData, itemsPerPage);
-    const bookingsPages = { ...chunkBookings };
-    const currentPage = bookingsPages[pageNo];
-    
+
+    const chunkBookings = Paginate(accommodationsData, itemsPerPage)
+    const bookingsPages = { ...chunkBookings }
+    const currentPage = bookingsPages[pageNo]
 
     return (
       <Dashboard>
@@ -109,9 +121,10 @@ export class ViewBookings extends Component {
 
               {accommodationsData.length > 0 && (
                 <Pagination
+                  activeStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
                   itemsPerPage={6}
-                  next="next"
-                  prev="previous"
+                  next={<img src={next}/>}
+                  prev={<img src={prev}/>}
                   data={accommodationsData.length ? accommodationsData : []}
                   oneItem={(booking, index) => (
                     <div key={index} className="singleBooking">
@@ -248,12 +261,17 @@ export const mapStateToProps = (state, { userLikesAndDislike }) => ({
   allAccomodation: state.allAccomodation,
   bookings: state.bookings,
   display: state.popUpsDisplay,
-});
+})
 
 export default connect(mapStateToProps, {
-  getAllBookings, changePageNo, viewActionAccommodation, likeAction, 
-  dislikeAction, openSingleBooking, getSingleBooking, getCitiesAction, 
-  popUpAction, onEditInputAction
-})(
-  ViewBookings,
-);
+  getAllBookings,
+  changePageNo,
+  viewActionAccommodation,
+  likeAction,
+  dislikeAction,
+  openSingleBooking,
+  getSingleBooking,
+  getCitiesAction,
+  popUpAction,
+  onEditInputAction,
+})(ViewBookings)

@@ -13,6 +13,8 @@ $contents: (
   Email: 'Email',
   UserRole: 'Role',
   EditRole: 'Edit role',
+  trip-type:'Trip Type',
+  statuses: 'Status',
 );
 $tt: (
   originId: 'Origin',
@@ -49,22 +51,23 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
   }
   margin: auto;
   .pages {
-    padding: 0px;
+    display: flex;
+    flex-direction: row !important;
+    padding: 0px !important;
     width: auto !important;
     overflow-x: auto;
+    background-color: transparent !important;
     div {
+      background-color: transparent !important;
       button {
         border-radius: 50%;
         outline: none;
-        width: 30px !important;
+        min-width: 30px;
+        width: auto !important;
         height: 30px;
-        padding: 1px;
+        padding: 8px 2px;
         margin: 1px;
-        a{
-          display: block;
-          text-decoration: none;
-          color: inherit;
-        }
+        color: #00b9f2;
       }
     }
   }
@@ -76,16 +79,13 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
       outline: none;
       width: 30px;
       height: 30px;
-      padding: 1px;
+      padding: 5px 3px;
       margin: 1px;
-      a{
-          display: block;
-          text-decoration: none;
-          color: inherit;
-        }
-         a:active{
-          background-color: red;
-        }
+      color: #00b9f2;
+      img{
+        height: 20px;
+        width: 20px;
+      }
     }
   }
 }
@@ -153,10 +153,9 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
   padding-left: 5px;
 }
 .tableMainContainer {
-  height: 78%;
-  margin-top: 4%;
+  min-height: 91%;
+  margin-top: 2%;
   width: 99%;
-  overflow: auto;
   .tableContainer {
     width: 90%;
     @media screen and (min-width: 200px) and (max-width: 800px) {
@@ -164,7 +163,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
     }
     padding-bottom: 10px;
     height: auto;
-    overflow-y: auto;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -172,6 +170,7 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
     div {
       @extend %full-height-width;
       display: flex;
+      // flex-direction: column;
     }
 
     .tableHead {
@@ -331,7 +330,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
     .singleRequest {
       @extend %div_style;
       flex-direction: column;
-
       @media screen and (min-width: 200px) and (max-width: 1000px) {
         flex-direction: column;
       }
@@ -373,19 +371,10 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
           padding: 2px;
           margin-bottom: 5px;
           overflow-y: auto;
+          display: flex;
+    flex-direction: column;
         }
-        // .tripFooter {
-        //   flex-direction: row;
-        //   .corasselButtons {
-        //     padding: 0;
-        //     margin: 0;
-        //     max-width: 400px !important;
-        //     @extend %corassel;
-        //   }
-        //   .backToTrips {
-        //     width: 30%;
-        //   }
-        // }
+
         div {
           min-height: 40px;
 
@@ -394,6 +383,13 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
             flex-direction: row;
             padding-top: 20px;
           }
+
+//           .arrows{
+// padding: 0px !important;
+//           }
+//           .pages{
+//             padding: 0px !important;
+//           }
 
           div:nth-child(2n) {
             background: #dddddd;
@@ -427,7 +423,7 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
         }
       }
       .chats {
-        height: 100%;
+        height: 80%;
         overflow-y: auto;
         overflow-x: hidden;
         word-break: break-all;
@@ -440,6 +436,7 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
           border: 1px solid rgb(185, 185, 185);
           padding: 10px;
           border-radius: 5px;
+          word-break: break-all;
           .commentProfileImg {
             width: 30px;
             height: 30px;
@@ -571,9 +568,10 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
           height: 40px;
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
           border-radius: 4px;
+          border: solid 1px #00b9f2;
 
           a {
-            margin: 10px auto;
+            padding-top: 10px  !important;
             color: white;
             text-decoration: none;
             display: block;
@@ -588,13 +586,9 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
 
         .actionButton:hover {
           background-color: #ffffff !important;
-          border: solid 1px;
         }
       }
     }
-    // .corasselButtons {
-    //   @extend %corassel;
-    // }
   }
 }
 
@@ -663,23 +657,24 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
   width: 100% !important;
   height: 100% !important;
   background-color: rgba(0, 0, 0, 0.404);
-  .bookingAccommodationPopupContainer {
-    justify-content: space-evenly;
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    flex-direction: column;
-    margin: auto;
-    background-color: white;
-    flex-direction: column;
-    width: 35% !important;
-    height: 55% !important;
-    @media screen and (min-width: 200px) and (max-width: 600px) {
-      width: 100% !important;
-      height: 100% !important;
-    }
-    @media screen and (min-width: 600px) and (max-width: 1100px) {
-      width: 80% !important;
-    }
+.bookingAccommodationPopupContainer{
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  margin: auto;
+  background-color: white;
+  flex-direction: column;
+  width: 35% !important;
+  height: 70% !important;
+  @media screen and (min-width: 200px) and (max-width: 600px) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1100px) {
+    width: 80% !important;
+  }
+
     .saveEditedRequests {
       height: 16%;
       flex-direction: row;
@@ -744,12 +739,16 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
           width: 100%;
         }
       }
-      input,
-      select {
-        padding: 7px 0px;
-        margin: 0px;
-        border: solid 1px #909090 !important;
-        outline: none;
+    input, select {
+      height: 30px;
+      padding: 7px 0px;
+      margin:  0px;
+      border: solid 1px #909090 !important;
+      outline: none;
+      width: 100%;
+      border-radius: 2px !important;
+      option{
+        height: 100%;
         width: 100%;
         border-radius: 2px !important;
         option {
@@ -763,91 +762,7 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
       }
     }
   }
-  .editPopupContainer {
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    flex-direction: column;
-    margin: auto;
-    background-color: white;
-    flex-direction: column;
-    width: 35% !important;
-    height: 80% !important;
-    @media screen and (min-width: 200px) and (max-width: 600px) {
-      width: 100% !important;
-      height: 100% !important;
-    }
-    @media screen and (min-width: 600px) and (max-width: 1100px) {
-      width: 80% !important;
-    }
-    .addTrip {
-      flex-direction: row;
-      width: 90% !important;
-      margin: auto;
-      button {
-        height: 35px;
-        width: 20%;
-        margin-left: 80%;
-        border-radius: 5px;
-        background-color: #00b9f2;
-        outline: none;
-        color: white;
-        font-size: 12px;
-        outline: none;
-      }
-      button:hover {
-        background: white !important;
-        color: #34c6f3;
-      }
-    }
-    .saveEditedRequests {
-      height: 10%;
-      flex-direction: row;
-      width: 90% !important;
-      margin: auto;
-      padding-top: 5px;
-      button {
-        height: 35px;
-        padding: 0px 20px;
-        margin: 10px 0px;
-        margin-right: 40px;
-        border-radius: 5px;
-        background-color: #00b9f2;
-        color: white;
-        font-size: 12px;
-      }
-      button:hover {
-        background: white !important;
-        color: #34c6f3;
-      }
-    }
-    .inputFields {
-      flex-direction: column;
-      .editRequestFields {
-        flex-direction: column;
-        width: 90% !important;
-        margin: auto;
-        .label {
-          padding-top: 20px;
-          font-weight: 700;
-        }
-        div {
-          width: 100%;
-          height: 32px;
-          select,
-          input,
-          textarea {
-            border: solid 1px #909090 !important;
-            outline: none;
-            padding: 5px;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 2px !important;
-          }
-        }
-      }
-    }
-  }
+
   .popupContainer {
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -892,8 +807,99 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
     }
   }
 }
+}
 .pagination-buttons {
+  display: flex;
+  flex-direction: row !important;
   margin: 20px auto;
+  background-color: transparent !important;
   @extend %corassel;
   overflow-x: auto;
+}
+.saveEditedRequests {
+  height: 10% !important;
+  flex-direction: row;
+  justify-content: right;
+  width: 90% !important;
+  margin-left: 35%;
+  padding-top: 5px;
+  button {
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    width: 120px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+  }
+  #cancel {
+    background-color: rgb(252, 35, 35) !important;
+    margin-left: 60%;
+    width: 10%;
+    font-size: 25px;
+  }
+  #save {
+    background-color: #00b9f2 !important;
+  }
+  #cancel:hover {
+    background: white !important;
+    color:  rgb(252, 35, 35);
+    padding: 5px;
+  }
+  #save:hover {
+    background: white !important;
+    color: #34c6f3;
+  }
+}
+.editPopupContainer {
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  margin: auto;
+  background-color: white !important;
+  flex-direction: column;
+  width: 35% !important;
+  height: 90% !important;
+  @media screen and (min-width: 200px) and (max-width: 600px) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1100px) {
+    width: 80% !important;
+  }
+  .pagination-container{
+    width: 100%;
+    height: 100% !important;
+    .pagination-buttons{
+height: 50px;
+    }
+  .inputFields{
+   height: 100% !important;
+    flex-direction: column;
+    .editRequestFields {
+      flex-direction: column;
+      width: 90% !important;
+      margin: auto;
+      .label {
+        padding-top: 20px;
+        font-weight: 700;
+      }
+      div {
+        width: 100%;
+        height: 32px;
+        select,
+        input,
+        textarea {
+          border: solid 1px #909090 !important;
+          outline: none;
+          padding: 5px;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 2px !important;
+        }
+      }
+    }
+  }
+}
 }

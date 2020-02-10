@@ -81,6 +81,20 @@ class BookAccommodation extends Component {
     return (
       bookAccommodationData ? <Redirect to="/bookings" /> : (
         <div className="bookingAccommodationPopupContainer">
+          <div className="saveEditedRequests">
+            <button
+              type="button"
+              id="cancel"
+              onClick={() => {
+                popUpAction({
+                  currentPopUp: 'bookAccommodation',
+                  bookAccommodation: 'none',
+                });
+              }}
+            >
+            &times;
+            </button>
+          </div>
           <div className="bookingHeaderContainer">
             <div>Accommodation Booking</div>
           </div>
@@ -92,18 +106,6 @@ class BookAccommodation extends Component {
               onClick={handleBooking}
             >
            Book now!
-            </button>
-            <button
-              type="button"
-              id="cancel"
-              onClick={() => {
-                popUpAction({
-                  currentPopUp: 'bookAccommodation',
-                  bookAccommodation: 'none',
-                });
-              }}
-            >
-            cancel
             </button>
           </div>
         </div>

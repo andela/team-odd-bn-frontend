@@ -1,6 +1,5 @@
 .accommodation-container {
-  height: 93%;
-  overflow-y: auto;
+  min-height: 100%;
 }
 
 .accomodation-title {
@@ -248,8 +247,6 @@ a.accommodation-item-container img {
 a.accommodation-item-container img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
-
 .specific-accommodation-container{
-  height: 90%;
-  overflow-y: auto;
+  min-height: 100%;
 }

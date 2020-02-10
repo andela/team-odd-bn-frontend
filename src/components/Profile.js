@@ -64,7 +64,6 @@ export class Profile extends Component {
 
   UNSAFE_componentWillReceiveProps(prevProps) {
     const { profile, imageURL: image } = prevProps;
-
     if (profile && profile.data) {
       const {
         gender,
@@ -92,7 +91,7 @@ export class Profile extends Component {
       });
     }
     if (image) {
-      this.setState({ imageURL: image });
+      this.setState({ ...this.state, imageURL: image });
     }
   }
 

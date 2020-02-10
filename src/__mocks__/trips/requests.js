@@ -117,7 +117,7 @@ export const init = {
   },
   pagination: {
     pageNo: 0,
-    itemsPerPage: 5,
+    itemsPerPage: 7,
   },
   viewProfile: {
     profile: {},

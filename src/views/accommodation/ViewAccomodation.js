@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux'
 import StarRatings from 'react-star-ratings'
 import Dashboard from '../Dashboard/sidebar/index'
 import '../../assets/css/accommodation/allAccommodation.scss'
@@ -12,26 +12,31 @@ import { Paginate, PaginationStyle } from '../../helpers/Paginate'
 import newAccommodation from '../../helpers/joinLikesAccomodation'
 import PopUp from '../../components/PopUp'
 import { fetchRequestsAction } from '../../redux/actions/tripsActions/fetchRequests'
-import { likeAction, dislikeAction } from '../../redux/actions/likeAndDislikeAction';
-import { viewActionAccommodation } from '../../redux/actions/allAccommodation';
+import {
+  likeAction,
+  dislikeAction,
+} from '../../redux/actions/likeAndDislikeAction'
+import { viewActionAccommodation } from '../../redux/actions/allAccommodation'
 import BookAccommodation from '../../views/accommodation/BookAccommodation'
 import { Link } from 'react-router-dom'
-import '../../assets/css/accommodation/allAccommodation.scss';
-import { checkPrevilege } from '../../helpers/checkPrevilege';
+import '../../assets/css/accommodation/allAccommodation.scss'
+import { checkPrevilege } from '../../helpers/checkPrevilege'
 import Pagination from 'custom_react_pages'
+import prev from '../../assets/images/prev_icon.png'
+import next from '../../assets/images/next_icon.png'
 
 export class viewAllAccomodation extends Component {
   async componentDidMount() {
     const { fetchRequestsAction } = this.props
-    const {allAccomodation} = this.props.accommodation
-   this.setState({allAccomodation})
+    const { allAccomodation } = this.props.accommodation
+    this.setState({ allAccomodation })
     await fetchRequestsAction()
   }
   state = {
     currentIndex: 0,
-     a: 1 ,
-     likeInput: false,
-     dislikeInput: false
+    a: 1,
+    likeInput: false,
+    dislikeInput: false,
   }
 
   render() {
@@ -44,7 +49,7 @@ export class viewAllAccomodation extends Component {
       display,
       popUpAction,
       updateBookAccommodationInput,
-    } = this.props.accommodation    
+    } = this.props.accommodation
     const totalAccommodation = newAccommodation(
       allAccomodation,
       allLikesDislakes
@@ -72,9 +77,10 @@ export class viewAllAccomodation extends Component {
           <div className="accomodation-title">Barefoot accomodations</div>
           {totalAccommodation.length !== 0 && (
             <Pagination
+              activeStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
               itemsPerPage={6}
-              next="next"
-              prev="previous"
+              next={<img src={next}/>}
+              prev={<img src={prev}/>}
               data={totalAccommodation.length !== 0 ? totalAccommodation : []}
               oneItem={(items, index) => (
                 <div className="accommodation-data">
@@ -178,8 +184,13 @@ export class viewAllAccomodation extends Component {
   }
 }
 
-export const mapStateToProps = ({userLikesAndDislike}) => ({
-  likeDislikeState:userLikesAndDislike,
-});
+export const mapStateToProps = ({ userLikesAndDislike }) => ({
+  likeDislikeState: userLikesAndDislike,
+})
 
-export default connect(mapStateToProps, { likeAction,viewActionAccommodation, dislikeAction, fetchRequestsAction })(viewAllAccomodation);
+export default connect(mapStateToProps, {
+  likeAction,
+  viewActionAccommodation,
+  dislikeAction,
+  fetchRequestsAction,
+})(viewAllAccomodation)

@@ -38,12 +38,10 @@ export class ViewSpecificAccommodation extends Component {
   }
 }
 
-export const mapStateToProps = (state) => {
-  return {
-    accommodationItem: state.specificAccommodation.singleAccommodation[0],
-    accommodationItemError: state.specificAccommodation.singleAccommodationError,
-  };
-};
+export const mapStateToProps = (state) => ({
+  accommodationItem: state.specificAccommodation.singleAccommodation[0],
+  accommodationItemError: state.specificAccommodation.singleAccommodationError,
+});
 
 export const mapDispatchToprops = {
   singleAccommodation,

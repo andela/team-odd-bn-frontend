@@ -6,8 +6,8 @@ import {
   changeItemsPerPage,
 } from '../../redux/actions/PaginationAction'
 import { PaginationStyle } from '../../helpers/Paginate'
-import Pagination from 'custom_react_pages';
-import prev from '../../assets/images/prev_icon.png';
+import Pagination from 'custom_react_pages'
+import prev from '../../assets/images/prev_icon.png'
 import next from '../../assets/images/next_icon.png'
 
 class RequestView extends Component {
@@ -26,7 +26,6 @@ class RequestView extends Component {
       pageNo,
       userSearch,
     } = this.props
-
 
     return (
       <>
@@ -51,12 +50,14 @@ class RequestView extends Component {
         )}
         {entities.length > 0 && (
           <Pagination
-            itemsPerPage={6}
+            activePageStyle={{ backgroundColor: '#00b9f2', color: 'white' }}
+            itemsPerPage={7}
             next={<img src={next} />}
             prev={<img src={prev} />}
             data={entities ? entities : []}
-            oneItem={item => (
-              <div className="entity">
+            pageButtons={10}
+            onePage={(item, index) => (
+              <div key={index} className="entity">
                 {item.map(i => (
                   <div key={i.key} className={i.className}>
                     {i.attribute}

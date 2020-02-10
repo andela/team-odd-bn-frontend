@@ -10,7 +10,7 @@ describe('Pagination tests ', () => {
     });
     expect(newState).toEqual({
       pageNo: 2,
-      itemsPerPage: 5,
+      itemsPerPage: 7,
     });
   });
   it('Should update items per page', () => {

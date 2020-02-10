@@ -18,6 +18,7 @@ import {
 import errorProcessor from '../../../helpers/errorProcessor';
 import { updateTripItem } from '../../reducers/multicityReducer';
 
+
 let options;
 export const updateCommentInputAction = (data) => ({
   type: UPDATE_COMMENT_INPUT,
@@ -93,9 +94,11 @@ export const postCommentsAction = (tripRequestId, data) => commonManipulateData(
   apiCall.post(`/trips/${tripRequestId}/comment`, data, options),
 );
 
-export const editRequestAction = (tripRequestId, data) => commonManipulateData(
-  apiCall.put(`/trips/edit/${tripRequestId}`, data, options),
-);
+export const editRequestAction = (tripRequestId, data) => {
+  const { itinerary: [{ returnDate, ...rest }] } = data;
+  const tripData = !data.itinerary[0].returnDate ? rest : data;
+  return commonManipulateData(apiCall.put(`/trips/edit/${tripRequestId}`, tripData, options));
+};
 
 export const deleteCommentAction = (commentId) => async (dispatch) => {
   try {
