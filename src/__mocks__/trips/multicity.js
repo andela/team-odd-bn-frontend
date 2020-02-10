@@ -10,7 +10,7 @@ const multicityProps = {
       },
     ],
     error: '',
-    message: 'Successfully created trip',
+    message: 'Trip requested successfully',
   },
   viewProfile: {
     spinner: true,
@@ -37,6 +37,9 @@ const multicityProps = {
     },
   },
   getCitiesAction: jest.fn(),
+  history: {
+    push: jest.fn(),
+  },
 };
 
 export const checkInputData = {

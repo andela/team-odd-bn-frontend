@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 import { MulticityTrip } from '../../../containers/Trips/MulticityTrip';
 import multicityProps, { checkInputData } from '../../../__mocks__/trips/multicity';
 import { MulticityTripView } from '../../../views/trips/Multicity';
@@ -89,7 +90,6 @@ describe('Expect to simulate multicity trip view', () => {
 });
 
 describe('Expect to check and convert data', () => {
-
   it('Expect payload to have originId be converted', () => {
     const checkedData = convertInput(checkInputData.payload);
     expect(checkedData).toBeTruthy();
@@ -109,5 +109,25 @@ describe('Expect to check and convert data', () => {
 describe('Expect to find word', () => {
   it('Should find a word', () => {
     findWordInText('I am word', 'am');
+  });
+});
+
+describe('Expect to update the page on multicity trip request', () => {
+  const component = shallow(
+    <MulticityTrip {...multicityProps} />,
+  );
+
+  it('Should render new page successfully', () => {
+    const prevProps = {
+      multicityTripData: {
+        data: [],
+        error: '',
+      },
+    };
+
+    multicityProps.multicityTripData.message = 'Trip requested successfully';
+    const redirectTrip = jest.spyOn(component.instance(), 'componentDidUpdate');
+    component.instance().componentDidUpdate(prevProps);
+    expect(redirectTrip).toHaveBeenCalledWith(prevProps);
   });
 });

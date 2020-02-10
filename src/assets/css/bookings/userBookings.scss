@@ -1,10 +1,15 @@
+.userBookingContainer {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .userBookingsHeader {
   display: flex;
   flex-direction: row;
   @media screen and (min-width: 200px) and (max-width: 750px) {
     flex-direction: column;
   }
-  padding: 2.5rem 0;
   font-size: 30px;
   letter-spacing: 0.5px;
   text-align: center;
@@ -13,8 +18,8 @@
   height: 130px;
   width: 80%;
   margin: auto;
-  margin-top: -2px;
-  justify-content: space-between;
+  padding: 0px 0 1rem 0px;
+  justify-content: center;
   div {
     height: 40%;
     margin: auto 0px;
@@ -246,3 +251,39 @@
   }
 }
 
+.empty-bookings-container {
+  width: 50%;
+  margin: auto;
+  padding: 10px 0 10px 5px;
+  border: green solid 1px !important;
+  border-radius: 4px;
+  
+  .error-message-booking {
+    font-size: 17px;
+    margin: 20px 0px 10px 0;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 575px) {
+  .empty-bookings-container {
+    width: 90%;
+    padding: 10px 0 10px 5px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width:760px) {
+  .empty-bookings-container {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 760px) and (max-width: 900px) {
+  .empty-bookings-container {
+    width: 60%;
+  }
+}
+@media (min-width: 900px) {
+  .empty-bookings-container {
+    width: 50%;
+  }
+}
