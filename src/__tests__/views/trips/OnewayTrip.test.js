@@ -5,6 +5,7 @@ import { mount, shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import stores from '../../../redux/store';
 import OnewayTrip from '../../../containers/TripsContainer/oneway';
+import { Oneway as OneWayNamed } from '../../../containers/TripsContainer/oneway';
 import initialState from '../../../redux/store/initialState';
 import {
   redirectInitialState1,
@@ -65,5 +66,46 @@ describe('On Oneway page', () => {
       </Provider>,
     );
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('Expect to update the page on oneway trip request', () => {
+
+  const prevProps = {
+    tripState: {
+      trips: {
+        tripRequests: {
+          payload: undefined,
+        },
+      },
+    },
+  };
+
+  const mockProps = {
+    tripState: {
+      trips: {
+        tripRequests: {
+          payload: {
+            message: 'Trip requested successfully',
+            data: {
+              id: 1,
+            },
+          },
+        },
+      },
+    },
+    history: {
+      push: jest.fn(),
+    },
+  };
+
+  const component = shallow(
+    <OneWayNamed {...mockProps} />,
+  );
+
+  it('Should render new page successfully', () => {
+    const redirectTrip = jest.spyOn(component.instance(), 'componentDidUpdate');
+    component.instance().componentDidUpdate(prevProps);
+    expect(redirectTrip).toHaveBeenCalledWith(prevProps);
   });
 });

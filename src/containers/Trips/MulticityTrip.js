@@ -15,7 +15,10 @@ import Spinner from '../../components/Spinner';
 import { updateSpinnerStatus } from  '../../redux/actions/profileActions';
 
 export class MulticityTrip extends Component {
-
+  UNSAFE_componentWillMount(){
+    const {multicityTripData } = this.props;
+    multicityTripData.message = ''
+  }
    componentDidMount() {
     const { getCitiesAction } = this.props;
      getCitiesAction();
@@ -55,6 +58,16 @@ export class MulticityTrip extends Component {
     sendMulticityTrip(multicityTripData);
   }
 
+  componentDidUpdate(prevProps) {
+    const { history } = this.props;
+    const { multicityTripData } = this.props;
+    if (prevProps.multicityTripData !== multicityTripData) {
+      if (multicityTripData.message === 'Trip requested successfully') {
+        return history.push('/requests');
+      }
+    }
+  }
+
   render() {
     const { multicityTripData, viewProfile } = this.props;
     return (
@@ -62,8 +75,6 @@ export class MulticityTrip extends Component {
         {viewProfile.spinner && <Spinner/>}
         <div className="oneway-container">
           <TripHeader />
-          { multicityTripData.message && <Redirect to="/requests" /> }
-
           <div className="trip-field-container">
             <TripType />
             <div className="multicity-container">

@@ -46,6 +46,12 @@ export const getStatsAction = (payload) => async (dispatch) => {
     const onewayTripStats = await apiCall.get(`/trips/stats/1/?from=${payload.from}&&to=${payload.to}`, options);
     const roundTripStats = await apiCall.get(`/trips/stats/2/?from=${payload.from}&&to=${payload.to}`, options);
     const multiTripStats = await apiCall.get(`/trips/stats/3/?from=${payload.from}&&to=${payload.to}`, options);
+
+    const tripRequestCollection = multiTripStats.data.data.userTrips.map((item) => item.tripRequestId);
+    let newDataSet = new Set(tripRequestCollection);
+    newDataSet = Array.from(newDataSet);
+    multiTripStats.data.data.tripsCounter = newDataSet.length;
+
     dispatch({
       type: TRIP_COUNTER_INPUT,
       payload: {

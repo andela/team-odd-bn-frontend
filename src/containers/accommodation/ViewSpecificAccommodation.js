@@ -27,11 +27,11 @@ export class ViewSpecificAccommodation extends Component {
         { accommodationItemError.length > 0 && <Redirect to="/accommodations" /> }
         { !accommodationItem ? <Spinner />
           : (
-            <>
+            <div className="specific-accommodation-container">
               <ViewAccomodationDetails />
               <AccommodationsRooms />
               <AccommodationReviews />
-            </>
+            </div>
           )}
       </Dashboard>
     );

@@ -337,12 +337,13 @@ width: 70%;
 
     .singleRequest {
       @extend %div_style;
+      flex-direction: column;
 
       @media screen and (min-width: 200px) and (max-width: 1000px) {
         flex-direction: column;
       }
 
-      width: 98%;
+      width: 70%;
       margin: 10px auto;
 
       div {
@@ -380,7 +381,6 @@ width: 70%;
           padding: 2px;
           margin-bottom: 5px;
           overflow-y: auto;
-          max-height: 250px;
         }
         .tripFooter {
           flex-direction: row;
@@ -435,9 +435,10 @@ width: 70%;
         }
       }
       .chats {
-        height: 255px;
+        height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
+        word-break: break-all;
         .commentCardContainer {
           width: 95%;
           height: auto;

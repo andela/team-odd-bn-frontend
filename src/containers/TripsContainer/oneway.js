@@ -9,21 +9,27 @@ import Spinner from '../../components/Spinner';
 import OnewayView from '../../views/trips/oneWayView';
 
 
-class Oneway extends Component {
+export class Oneway extends Component {
   async componentDidMount() {
-
     await this.props.getTripAction();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { payload: incomingData } =  this.props.tripState.trips.tripRequests;
+    const { payload: oldData } = prevProps.tripState.trips.tripRequests;
+    const { history } = this.props;
+    if (incomingData !== oldData) {
+      if (incomingData.message === 'Trip requested successfully') {
+        return history.push(`/requests/${incomingData.data.id}`);
+      }
+    }
   }
 
 
   render() {
     const { payload, spinner } = this.props.tripState.trips.tripRequests;
 
-    return payload && payload.message ? (
-
-
-      <Redirect to={`/requests/${payload.data.id}`} />
-    ) : (
+    return (
       <>
         { spinner ? (
           <Spinner />

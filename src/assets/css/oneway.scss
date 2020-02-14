@@ -7,10 +7,10 @@
     font-style: normal;
     font-weight: normal;
     line-height: 30px;
-    min-height: 100%;
-    margin-bottom: 10%;
     width: 90%;
     z-index: -2;
+    height: 85%;
+    overflow-y: auto;
 
 
     @media screen and (min-width: 320px) and (max-width: 576px) {
