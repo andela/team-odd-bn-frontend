@@ -4,30 +4,53 @@ import AllUsers from './allUsers';
 import {
   paginationAction, getRolesAction, newRoleInput, assignRole,
 } from '../../redux/actions/admin/adminAction';
-import { searchResults } from '../../redux/actions/search/searchAction';
+import { searchResults, searchInput } from '../../redux/actions/search/searchAction';
 import getAllUsers from '../../redux/actions/getAllUsersActions';
 import { handleFilter } from '../../helpers/filter';
 
+let searchData = '';
 export class UserRoles extends Component {
   componentDidMount() {
-    this.props.searchResults();
-    this.props.getAllUsers();
-    this.props.getRolesAction();
+    const {
+      searchResults, searchInput, getAllUsers, getRolesAction,
+    } = this.props;
+    searchResults();
+    searchInput();
+    getAllUsers();
+    getRolesAction();
   }
 
   componentDidUpdate() {
-    this.props.adminState.admin.payload && this.props.getAllUsers();
-    this.props.adminState.admin.payload = undefined;
+    const { adminState, getAllUsers } = this.props;
+    const { search, admin, allUsers } = adminState;
+    search.payload = undefined;
+    admin.payload && getAllUsers();
+    admin.payload = undefined;
+    if (allUsers.users && search.payload) {
+      const p = allUsers.users
+      && allUsers.users.data;
+      const e = {
+        target: {
+          value: document.getElementById('searchInput').value,
+        },
+      };
+
+      search.payload = handleFilter(e, p);
+    }
   }
 
 
   render() {
-    const options = this.props.adminState.admin.allRoles
-      && this.props.adminState.admin.allRoles.data;
-    const data = this.props.adminState.allUsers.users
-      && this.props.adminState.allUsers.users.data;
-    const searchData = this.props.adminState.search.payload;
+    const {
+      adminState, searchResults, searchInput, assignRole,
+    } = this.props;
+    const options = adminState.admin.allRoles
+      && adminState.admin.allRoles.data;
+    const data = adminState.allUsers.users
+      && adminState.allUsers.users.data;
 
+    searchData = adminState.search.payload;
+    const userInput = adminState.search.input;
     const userSearch = [
       <div className="searchOption">
         <input
@@ -36,22 +59,28 @@ export class UserRoles extends Component {
           id="searchInput"
           type="text"
           onChange={(e) => {
-            const newData = handleFilter(e, data, 'email');
-            this.props.searchResults(newData);
-            return handleFilter(e, data, 'email');
+            const newData = handleFilter(e, data);
+            searchResults(newData);
+            searchInput(e.target.value.trim());
+            return handleFilter(e, data);
           }}
-          placeholder="search by email"
+          placeholder="Search"
         />
-        ,
+        { userInput && (
+        <div className="search-results-counter">
+          {searchData && searchData.length}
+          {' '}
+Result(s) found
+        </div>
+        )}
       </div>,
     ];
-
     return (
       <>
         <AllUsers
           userSearch={userSearch}
           data-test="userRoles-test"
-          handleChange={this.props.assignRole}
+          handleChange={assignRole}
           options={options}
           users={searchData || data}
         />
@@ -69,4 +98,5 @@ export default connect(mapStateToProps, {
   assignRole,
   paginationAction,
   searchResults,
+  searchInput,
 })(UserRoles);

@@ -19,7 +19,7 @@ const state = {
   },
   pagination: {
     pageNo: 0,
-    itemsPerPage: 5,
+    itemsPerPage: 7,
   },
   accommodation: {
     createAccommodation: {

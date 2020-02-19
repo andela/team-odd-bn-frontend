@@ -6,13 +6,14 @@ import Dashboard from '../../views/Dashboard/sidebar';
 import { fetchRequestsAction, paginationAction } from '../../redux/actions/tripsActions/fetchRequests';
 import verifyToken from '../../helpers/verifyToken';
 import tokenExist from '../../helpers/tokenExist';
-import { searchResults } from '../../redux/actions/search/searchAction';
+import { searchResults, searchInput } from '../../redux/actions/search/searchAction';
 
 
 class Requests extends Component {
   UNSAFE_componentWillMount() {
     const data = '';
     this.props.searchResults(data);
+    this.props.searchInput(data);
   }
 
   async componentDidMount() {
@@ -41,6 +42,7 @@ const actions = {
   fetchRequestsAction,
   paginationAction,
   searchResults,
+  searchInput,
 };
 
 export default connect(mapStateToProps, actions)(Requests);

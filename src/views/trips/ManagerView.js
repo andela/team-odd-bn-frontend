@@ -18,28 +18,27 @@ const AvailRequestsView = ({
   searchKey,
   searchResults,
 }) => {
-  const paginatedData = availRequests && availRequests.data;
-  const data = paginatedData;
   const searchedData = search.payload;
-  const entities = paginatedData
-    && (searchedData || { ...Paginate(paginatedData, itemsPerPage) }[pageNo]).map(
-      (request) => [
-        { attribute: request.user && request.user.firstName, key: 'firstName' },
-        { attribute: request.user && request.user.lastName, key: 'lastName' },
-        { attribute: request.tripType.tripType, key: 'tripType' },
-        { attribute: request.createdAt.slice(0, 10), key: 'created-at' },
-        {
-          attribute: (
-            <Action
-              background="#34c6f3"
-              url={`/trips/approval/${request.id}`}
-              action="View"
-            />
-          ),
-          key: 'action',
-        },
-      ],
-    );
+  const managerData = availRequests && availRequests.data;
+  const data = managerData;
+
+  const entities = managerData
+    && (managerData.length ? (searchedData || managerData).map((request) => [
+      { attribute: request.user && request.user.firstName, key: 'firstName' },
+      { attribute: request.user && request.user.lastName, key: 'lastName' },
+      { attribute: request.tripType.tripType, key: 'tripType' },
+      { attribute: request.createdAt.slice(0, 10), key: 'created-at' },
+      {
+        attribute: (
+          <Action
+            background="#34c6f3"
+            url={`/trips/approval/${request.id}`}
+            action="View"
+          />
+        ),
+        key: 'action',
+      },
+    ]) : []);
   const userSearch = [
     <div className="searchOption">
       <select
@@ -56,6 +55,7 @@ const AvailRequestsView = ({
         <option value="tripType">Trip type</option>
         <option value="firstName">First name</option>
         <option value="lastName">Last name</option>
+        <option value="lastName">Any</option>
       </select>
       <input
         data-test="dataFilter-test"
@@ -63,10 +63,9 @@ const AvailRequestsView = ({
         id="searchInput"
         type="text"
         onChange={(e) => {
-          const newData = handleFilter(e, data, search.key);
+          const newData = handleFilter(e, data, search.key || 'manager.trips.any');
           searchResults(newData);
         }}
-        disabled={!search.key && 'disabled'}
         placeholder="Search trips"
       />
     </div>,
@@ -74,7 +73,7 @@ const AvailRequestsView = ({
   return (
     <CommonTable
       data={
-        paginatedData && Paginate(searchedData || paginatedData, itemsPerPage)
+        managerData && Paginate(searchedData || managerData, itemsPerPage)
       }
       navs={approvalNavs}
       tableHeads={approvalTableHeads}

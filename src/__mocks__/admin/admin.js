@@ -176,6 +176,7 @@ export const defaultProps = {
   getRolesAction: jest.fn(),
   assignRole: jest.fn(),
   searchResults: jest.fn(),
+  searchInput: jest.fn(),
 };
 
 export const updateDefaultProps = {
@@ -214,6 +215,7 @@ export const updateDefaultProps = {
   getAllUsers: jest.fn(),
   getRolesAction: jest.fn(),
   assignRole: jest.fn(),
+  searchInput: jest.fn(),
 };
 
 export const emptyDataComponent = {
@@ -250,11 +252,11 @@ export const emptyDataComponent = {
         type: 'user',
       },
     },
-
   ],
   getAllUsers: jest.fn(),
   getRolesAction: jest.fn(),
   assignRole: jest.fn(),
+  searchInput: jest.fn(),
 };
 
 export const options = [

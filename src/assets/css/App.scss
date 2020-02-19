@@ -14,6 +14,11 @@
    height: 85%;
  }
 //  ***************
+.search-results-counter{
+  margin-top: 10px;
+  margin-left: 10px;
+  color: gray;
+}
  .submitBtn {
    button {
      font-size: 18px;
@@ -35,7 +40,7 @@
    }
  }
 .dashboard{
-  min-height: 85%;
+  min-height: 95%;
 }
 
 .submitBtn {

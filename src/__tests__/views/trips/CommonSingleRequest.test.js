@@ -103,10 +103,6 @@ describe('Common Single Request page ', () => {
     const submitComment = wrapper.find('#submitComment');
     const deleteComment = wrapper.find('#deleteComment');
     const edit = wrapper.find('#edit');
-    const page1 = wrapper.find('#page1S');
-    const page3 = wrapper.find('#page3S');
-    page1.simulate('click');
-    page3.simulate('click');
     postComment.simulate('change');
     submitComment.simulate('click');
     deleteComment.simulate('click');

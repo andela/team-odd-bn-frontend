@@ -196,7 +196,7 @@ export const viewAccommodationProps = {
       },
     ],
     pageNo: 0,
-    itemsPerPage: 5,
+    itemsPerPage: 7,
     changePageNo: jest.fn(),
   },
   likeAction: jest.fn(),

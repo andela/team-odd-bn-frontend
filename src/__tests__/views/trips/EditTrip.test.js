@@ -33,9 +33,6 @@ describe('Test Signup page ', () => {
     const button2 = wrapper.find('textarea');
     const cancel = wrapper.find('#cancel');
     const save = wrapper.find('#save');
-    const page1 = wrapper.find('#page1');
-    const page2 = wrapper.find('#page2');
-    const page3 = wrapper.find('#page3');
     button.simulate('change');
     input.simulate('change');
     button1.simulate('change');
@@ -43,9 +40,6 @@ describe('Test Signup page ', () => {
     button2.simulate('change');
     cancel.simulate('click');
     save.simulate('click');
-    page1.simulate('click');
-    page2.simulate('click');
-    page3.simulate('click');
     expect(jest.fn().mock.calls).toBeDefined();
     expect(wrapper).toMatchSnapshot();
   });

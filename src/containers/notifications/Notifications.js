@@ -41,7 +41,7 @@ export class Notifications extends Component {
             <div className="all-notification-content">
               {allNotifications && allNotifications !== 'no new notification' && allNotifications.length > 0 ? (
                 <>
-                  {allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).map((item, index) => (
+                  { allNotifications && allNotifications !== 'no new notification' && allNotifications.filter((item) => item.userId === verifyToken(localStorage.getItem('token')).id).map((item, index) => (
                     <div className="single-notification-content">
                       <div className="single-notification">
                         <div className="notification-element" key={item.id} role="button" tabIndex="0">
@@ -52,7 +52,7 @@ export class Notifications extends Component {
                           </Link>
                           )}
                           {item.bookingId && (
-                          <Link to={`/bookings/${item.bookingId}`} onClick={() => this.handleMarkAsRead(item.id)}>
+                          <Link to="/bookings" onClick={() => this.handleMarkAsRead(item.id)}>
                             <p>{item.message}</p>
                           </Link>
                           )}

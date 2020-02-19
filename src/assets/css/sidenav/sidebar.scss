@@ -22,7 +22,7 @@ ul li .signout {
 
 .top-side {
   @extend %top-side-header;
-  height: 10%;
+  height: 6%;
   display: flex;
   align-items: center;
   width: 100%;
@@ -47,6 +47,10 @@ ul li .signout {
       }
 
       .top-left-custom-nav-app-logo {
+        img{
+          width: 30px;
+          height: 35px;
+        }
         display: flex;
         text-decoration: none;
         color: #00B9F2;
@@ -255,12 +259,12 @@ ul li .signout {
 .both-side {
   min-height: 500px;
   display: flex;
-  height: 90%;
+  height: 94%;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-end;
   position: relative;
-  top: 10%;
+  top: 6%;
   width: 100%;
 
   .left-side {
