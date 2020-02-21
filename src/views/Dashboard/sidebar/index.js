@@ -19,14 +19,14 @@ export class Sidebar extends Component {
       tokenValid: false,
     };
   }
-  async componentDidMount () {
+  async componentDidMount() {
     const { getCurrentUserinfo } = this.props;
     await getCurrentUserinfo(this.props.viewProfile);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.profileError !== prevProps.profileError) {
-    this.setState({ tokenValid: true })
+      this.setState({ tokenValid: true })
     }
   }
 
@@ -41,25 +41,25 @@ export class Sidebar extends Component {
   render() {
     let backdrop;
     const { sideDrawerOpen } = this.state;
-    const { children } = this.props;
+    const { children, profileError, profile } = this.props;
+    const { tokenValid } = this.state;
+
     if (sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-    if(this.state.tokenValid) {
-      if (this.props.profileError) {        
-        if(this.props.profileError.error) {
-          return <Redirect to="/verify-email"/>;
-        }
-        if(this.props.profileError.message) {
-          localStorage.removeItem('token')
-          return <Redirect to="/signin"/>;
-        }
-      }}
-    if (this.props.profile.data) {
-      if (!this.props.profile.data.managerId) {
-        return <Redirect to="/create-profile"/>;
-      }
+
+    if (tokenValid && profileError && profileError.error) {
+      return <Redirect to="/verify-email" />;
+    }
+
+    if (tokenValid && profileError && profileError.message) {
+      localStorage.removeItem('token')
+      return <Redirect to="/signin" />;
+    }
+
+    if (profile.data && !profile.data.managerId) {
+      return <Redirect to="/profile" />;
     }
     return (
       <>
@@ -69,7 +69,7 @@ export class Sidebar extends Component {
           <LeftSide />
           <RightSide RightSideContent={children} />
         </div>
-        { backdrop }
+        {backdrop}
       </>
     );
   }

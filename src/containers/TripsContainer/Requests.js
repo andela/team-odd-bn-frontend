@@ -17,11 +17,11 @@ class Requests extends Component {
   }
 
   async componentDidMount() {
-    const { fetchRequestsAction, searchResults } = this.props;
+    const { fetchRequestsAction, searchResults, profileError } = this.props;
     await searchResults();
     await fetchRequestsAction();
-    if (this.props.profileError.error
-  || this.props.profileError.message === 'You have provided an invalid token') {
+    if (profileError.error
+  || profileError.message === 'You have provided an invalid token') {
       return this.props.history.push('/signin');
     }
   }
