@@ -31,8 +31,7 @@
   .bookingTitle {
     font-weight: bold;;
   }
-  .bookingSearch {
-  }
+
 }
 .userBookingsContainer {
   display: flex;
@@ -76,25 +75,28 @@
       background-color: #fff;
       color: #32c8f4;
       border: 1px solid #32c8f4;
+      border: 1px solid #2d6272;
     }
       .booking-like-contents {
         margin-top: 0px ;
         .like-dislikes{
           width: 25%;
           .like-container{
-            img{
-              width: 25px;
-              height: 25px;
+            .svg-inline--fa{
+              width: 20px;
+              height: 20px;
+              color: #32c8f4;
             }
             img:hover{
               cursor: pointer;
             }
           }
           .dislike-container{
-            img{
-              width: 25px;
-              height: 25px;
+            .svg-inline--fa{
+              width: 20px;
+              height: 20px;
               margin-left: -16px;
+              color: #32c8f4;
             }
             img:hover{
               cursor: pointer;

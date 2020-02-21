@@ -12,7 +12,6 @@ const state = initialState;
 const {
   successAccomodationReducer,
   errorAccomodationReducer,
-  likesDislikesAccomodationReducer,
 } = accommodationReducer;
 
 describe('Expect to mock accommodation', () => {
@@ -45,6 +44,11 @@ describe('Expect to mock accommodation', () => {
       ],
     };
     const likesDislikes = viewAccommodationReducer(state, action);
-    expect(likesDislikes).toEqual(likesDislikesAccomodationReducer);
+
+    expect(likesDislikes).toEqual({
+      accommodations: [],
+      accommodationErrors: [],
+      allLikes: { 0: { likeCounter: 1, dislikeCounter: 0 } },
+    });
   });
 });

@@ -44,6 +44,48 @@
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
+  .accomodation-content-side-a {
+    margin-top: 0px ;
+
+    .like-dislikes{
+      width: 25%;
+      margin-top: 10%;
+      padding-bottom: 5px;
+      .like-container{
+        margin-left: 2%;
+        .svg-inline--fa{
+          width: 20px;
+          height: 20px;
+          color: #32c8f4;
+        }
+        img:hover{
+          cursor: pointer;
+        }
+      }
+      .dislike-container{
+       
+        margin-left: 100%;
+        margin-top: 10%;
+        padding-bottom: 5px;
+        .svg-inline--fa{
+     
+          color: #32c8f4;
+          width: 20px;
+          height: 20px;
+          margin-left: -26px;
+        }
+        img:hover{
+          cursor: pointer;
+        }
+      }
+    }
+    .likes_dislikes_data{
+      display: flex;
+      width: 13%;
+      justify-content: space-between;
+    }
+    
+  }
 }
 .common-content{
   display: flex;
@@ -61,18 +103,6 @@
     font-size: 18.5px;
     letter-spacing: 0.5px;
     font-weight: bold;
-  }
-  .like-dislike-content {
-    display: flex;
-    flex-direction: column;
-    margin-right: 0.5rem;
-    img {
-      cursor: pointer;
-      margin-bottom: 12px;
-    }
-    .dislike_icon {
-      margin-top: 15px;
-    }
   }
   .like-dislike {
     margin-top: 5px;

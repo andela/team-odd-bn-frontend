@@ -123,15 +123,15 @@ export class TopRightSide extends Component {
                   {allNotifications
                   && allNotifications !== 'no new notification'
                   && allNotifications.length > 0 ? (
-                      <>
-                      {verifyAllNotifications.length === 0 && (
+                    <>
+                        {verifyAllNotifications.length === 0 && (
                         <p>No New Notifications</p>
-                        )}
-                      {verifyAllNotifications.map((item, index) => (
-                          <>
-                          <div className="notification-item-title">
-                              <img src={image} alt="pic" />
-                              {item.tripRequestId && (
+                      )}
+                        {verifyAllNotifications.map((item, index) => (
+                        <>
+                            <div className="notification-item-title">
+                            <img src={image} alt="pic" />
+                            {item.tripRequestId && (
                               <Link
                                 className="links"
                                 to={`/requests/${item.tripRequestId}`}
@@ -139,8 +139,8 @@ export class TopRightSide extends Component {
                               >
                                 <p>{item.message}</p>
                               </Link>
-                            )}
-                              {item.bookingId && (
+                              )}
+                            {item.bookingId && (
                               <Link
                                 className="links"
                                 to="/bookings"
@@ -148,16 +148,16 @@ export class TopRightSide extends Component {
                               >
                                 <p>{item.message}</p>
                               </Link>
-                            )}
-                              {!item.markRead && <span className="dot" />}
-                            </div>
-                          <small className="notification-date">
-                              <Moment fromNow>{item.createdAt}</Moment>
-                            </small>
-                          <hr className="notification-border" />
-                          </>
-                        ))}
-                    </>
+                              )}
+                            {!item.markRead && <span className="dot" />}
+                          </div>
+                            <small className="notification-date">
+                            <Moment fromNow>{item.createdAt}</Moment>
+                          </small>
+                            <hr className="notification-border" />
+                        </>
+                      ))}
+                      </>
                     ) : (
                       <p>No New Notifications</p>
                     )}

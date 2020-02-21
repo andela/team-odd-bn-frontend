@@ -170,7 +170,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
     div {
       @extend %full-height-width;
       display: flex;
-      // flex-direction: column;
     }
 
     .tableHead {

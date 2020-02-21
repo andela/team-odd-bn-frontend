@@ -16,6 +16,7 @@ import {
 } from '../redux/actions/tripsActions/statsTripActions';
 import apiCall from '../helpers/apiCall';
 import joinLikesAccomodation from '../helpers/joinLikesAccomodation';
+import likeAndDislikeStyle from '../helpers/likeAndDislikeStyle';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -39,6 +40,22 @@ const improveTestMockup = {
       roundTripStats: {
         tripsCounter: 3,
       },
+    },
+  },
+  likesDislikesColor: {
+    allAboutWhoReacted: {
+      liked: true,
+    },
+  },
+  likesDislikesColor2: {
+    allAboutWhoReacted: {
+      liked: false,
+      disliked: false,
+    },
+  },
+  likesDislikesColor3: {
+    allAboutWhoReacted: {
+      disliked: true,
     },
   },
 };
@@ -249,18 +266,54 @@ const allLikes = [
 
 const accommodation = [
   {
-    item1: [],
+    id: 45,
+    userId: 15,
+    name: 'Eric Palace',
+    cityId: 2,
+    address: 'Kigali',
+    description: 'I am going there',
   },
 ];
 
 describe('Expect to join likes and dislikes', () => {
   it('Should join accommodation with likes ', () => {
     const result = joinLikesAccomodation(accommodation, allLikes);
+
     expect(result).toEqual([
       {
-        item1: [],
-        LikesDislikes: { likeCounter: 0, dislikeCounter: 1 },
+        id: 45,
+        userId: 15,
+        name: 'Eric Palace',
+        cityId: 2,
+        address: 'Kigali',
+        description: 'I am going there',
+        likesDislikes:
+          { likeCounter: 0, dislikeCounter: 1 },
+
       },
     ]);
+  });
+});
+// src/helpers/likeAndDislikeStyle.js
+describe('Expect to change color when likes and dislikes', () => {
+  it('Should change color when user clicks ', () => {
+    const result = likeAndDislikeStyle(improveTestMockup.likesDislikesColor);
+    const result3 = likeAndDislikeStyle(improveTestMockup.likesDislikesColor3);
+    const result2 = likeAndDislikeStyle(improveTestMockup.likesDislikesColor2);
+    const expectedData = {
+      like: '#2d6272',
+    };
+    const expectedData3 = {
+      dislike: '#2d6272',
+    };
+
+    const expectedData2 = {
+      like: '#32c8f4',
+      dislike: '#32c8f4',
+    };
+
+    expect(result).toEqual(expectedData);
+    expect(result3).toEqual(expectedData3);
+    expect(result2).toEqual(expectedData2);
   });
 });

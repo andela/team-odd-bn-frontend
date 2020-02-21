@@ -5,8 +5,8 @@ import Dashboard from '../Dashboard/sidebar/index'
 import '../../assets/css/accommodation/allAccommodation.scss'
 import roomBedIcon from '../../assets/images/room_bed/room-bed_32.png'
 import roomMapIcon from '../../assets/images/room_map/map_32.png'
-import likeIcon from '../../assets/images/like_icon/thumbs-up_32.png'
-import disLikeIcon from '../../assets/images/dislike_icon/thumbs-down_32.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import findAverageRates from '../../helpers/averageRatings'
 import { Paginate, PaginationStyle } from '../../helpers/Paginate'
 import newAccommodation from '../../helpers/joinLikesAccomodation'
@@ -27,6 +27,7 @@ import { checkPrevilege } from '../../helpers/checkPrevilege'
 import Pagination from 'custom_react_pages'
 import prev from '../../assets/images/prev_icon.png'
 import next from '../../assets/images/next_icon.png'
+import likeAndDislikeColor from '../../helpers/likeAndDislikeStyle'
 
 export class viewAllAccomodation extends Component {
          state = {
@@ -65,7 +66,6 @@ export class viewAllAccomodation extends Component {
            this.refs.mytrips &&
              this.refs.mytrips.children.length > 0 &&
              PaginationStyle(this.refs.mytrips.children, pageNo)
-           console.log('ooooooooooooo')
 
            return (
              <Dashboard>
@@ -132,26 +132,30 @@ export class viewAllAccomodation extends Component {
                                  <img src={roomMapIcon} alt="map icon" />
                                  <span>{items.address}</span>
                                </section>
-                               <section className="common-content like-dislike">
-                                 <div className="like-dislike-content">
-                                   <img src={likeIcon} alt="like icon" />
-                                 </div>
-                                 <div className="like-dislike-content">
-                                   <img
-                                     className="dislike_icon"
-                                     src={disLikeIcon}
-                                     alt="dislike icon"
-                                   />
-                                 </div>
-                               </section>
-                               <section className="common-content likes_dislikes_data">
-                                 <span className="likes_side">
-                                   {items.LikesDislikes.likeCounter}
-                                 </span>
-                                 <span className="dislikes_side">
-                                   {items.LikesDislikes.dislikeCounter}
-                                 </span>
-                               </section>
+                              <section className="common-content like-dislikes">
+                                 <div className="like-dislike-contents like-container">
+                                    <FontAwesomeIcon
+                                      style={{color : likeAndDislikeColor(items.likesDislikes).like}}
+                                      className="likes_icon_img" alt="like icon" 
+                                      icon={faThumbsUp} 
+                                    />
+                                  
+                                  </div>
+                                  <div className="like-dislike-contents dislike-container">
+                          
+                                    <FontAwesomeIcon
+                                      style={{color : likeAndDislikeColor(items.likesDislikes).dislike}}
+                                        className="dislike_icon"  alt="dislike icon" 
+                                        icon={faThumbsDown} 
+                                      
+                                    />
+
+                                  </div>
+                              </section>
+                              <section className="common-content likes_dislikes_data">
+                                <span className="likes_side">{items.likesDislikes && items.likesDislikes.likeCounter}</span>
+                                <span className="dislikes_side">{items.likesDislikes && items.likesDislikes.dislikeCounter}</span>
+                              </section>
                              </div>
                              <div className="accomodation-content-side-b">
                                <section className="rate-content">
@@ -196,11 +200,6 @@ export class viewAllAccomodation extends Component {
                      )}
                    />
                  )}
-                 {/* {pageData &&
-            pageData.length !== 0 &&
-            pageData.map((items, index) => (
-
-            ))} */}
                </div>
              </Dashboard>
            )
@@ -208,8 +207,6 @@ export class viewAllAccomodation extends Component {
        }
 
 export const mapStateToProps = (state) => {
-console.log('--->', state);
-
  return {
          likeDislikeState: state.userLikesAndDislike,
          bookAccommodation: state.bookings.bookAccommodation,}

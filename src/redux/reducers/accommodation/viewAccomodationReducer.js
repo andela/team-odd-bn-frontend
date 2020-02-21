@@ -21,7 +21,7 @@ const viewAcommodationsReducer = (state = initialState, { type, payload }) => {
     case types.VIEW_ALL_LIKES_SUCCESS:
       return {
         ...state,
-        allLikes: [...payload],
+        allLikes: { ...payload },
       };
     default:
       return state;

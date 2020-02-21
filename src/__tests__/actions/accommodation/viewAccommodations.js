@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import {
   returnData,
   viewActionAccommodation,
-  getAllLikesDislikes
+  getAllLikesDislikes,
 } from '../../../redux/actions/allAccommodation';
 import { viewAccommodationProps } from '../../../__mocks__/accommodation/viewAccommodation';
 import apiCall from '../../../helpers/apiCall';
