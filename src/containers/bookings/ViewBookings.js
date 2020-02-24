@@ -181,8 +181,6 @@ export class ViewBookings extends Component {
                           
                           </div>
                           <div className="like-dislike-contents dislike-container">
-                       { console.log(likeAndDislikeColor(booking.likesDislikes)&&likeAndDislikeColor(booking.likesDislikes).like)}
-                            
                             <FontAwesomeIcon
                               style={{color : likeAndDislikeColor(booking.likesDislikes)&&likeAndDislikeColor(booking.likesDislikes).dislike}}
                               onClick={() => {

@@ -1,10 +1,14 @@
+.profile-row{
+        background-color: white;
+    margin-left: 0px;
+    height: 100%;
 * {
     box-sizing: border-box;
-}
-
+} 
 .profile-column-form {
     float: left;
     width: 64%;
+    padding: 10px;
     background-color: white;
 }
 
@@ -12,39 +16,29 @@
     color: red;
 }
 
-.profile-column-picture {
+.edit-profile-column-picture {
     float: left;
     width: 35%;
-    height: 440px;
+    height: 450px;
     background-color: white;
     padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
-    margin-top: 79px;
+    margin-top: 99px;
 }
 
-.main-profile-row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
-.main-profile-row {
-    background-color: white;
-    margin-bottom: 100px;
-    margin-top: 40px;
-}
 
-.profile-title {
-    margin: 10px;
+.edit-profile-title {
+    padding-top: 35px;
     margin-left: 20px;
-
+    text-align: center;
+    
 }
 
-.profile-title-details {
+.edit-profile-title-details {
     margin: 5px 0;
     height: 30px;
-    padding: 10px;
 }
 
 .legend {
@@ -67,7 +61,7 @@
 }
 
 .profile-details-row {
-    display: -ms-flexbox; /* IE10 */
+       display: -ms-flexbox; /* IE10 */
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
@@ -87,19 +81,21 @@
   
 .col-75 {
     -ms-flex: 75%; /* IE10 */
-    flex: 60%;
+    flex: 75%;
 }
   
 .col-25,
 .col-50,
 .col-75 {
-    padding: 0 16px;
+    padding: 0 16px 0 0;
 }
   
-.container {
+.profile-container {
     background-color: white;
+    padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
+    margin-top: 70px;
 }
   
 input[type=text] {
@@ -122,7 +118,7 @@ select {
 label {
     margin-bottom: 10px;
     display: block;
-}
+} 
   
 .icon-container {
     margin-bottom: 20px;
@@ -130,26 +126,25 @@ label {
     font-size: 24px;
 }
   
-.btn {
+ .btn {
     background-color: #00B9F2;
     color: white;
     padding: 12px;
     margin: 20px;
     border: none;
-    width: 30%;
+    width: 100px;
+    height: 50px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 17px;
-}
+} 
 
 .edit-btn {
     background-color: #00B9F2;
     color: white;
-    padding: 12px;
-    margin: 10px;
-    margin-left: 17px;
     border: none;
-    width: 30%;
+    width: 250px;
+    height: 50px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 17px;
@@ -167,18 +162,18 @@ hr {
     border: 1px solid lightgrey;
 }
 
-.profile-picture {
+.edit-profile-picture {
     display: grid;
     justify-content: space-evenly;
     margin: 10px;
 }
 
-.profile-picture-title {
+.edit-profile-picture-title {
     margin: 20px;
     text-align: center;
 }
   
-.profile-picture h3 {
+.edit-profile-picture h3 {
     font-family: Muli;
     font-style: normal;
     font-weight: bold;
@@ -188,14 +183,14 @@ hr {
     text-align: center;
 }
   
-.profile-picture img{
+.edit-profile-picture img{
     width: 140px;
     height: 150px;
     border-radius: 50%;
     margin: 10px;
 }
   
-.profile-picture button {
+.edit-profile-picture button {
     width: 160px;
     height: 40px;
     border: 1px solid #00B9F2;
@@ -209,22 +204,34 @@ hr {
     height: 40px;
 }
   
-.profile-picture p {
+.edit-profile-picture p {
     color: #00B9F2;
 }
   
 .profile-details {
     margin-left: 30px;
 }
+  
+}
+.profile-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-    .main-profile-row {
+  @media (max-width: 800px) {
+    .profile-row {
       display: flex;
       flex-direction: column-reverse;
 
-    }
-    .main-profile-row  div{
+   .profile-column-form {
+    width: 100%;
+}
+.edit-profile-column-picture {
+    width: 100%;
+}
+    div{
         width: 100%;
     }
     .col-25 {
@@ -238,5 +245,5 @@ hr {
         width: 400px;
         height: 70px;
     }
-    
+    } 
 }
