@@ -167,17 +167,17 @@ describe('Profile Actions Test Suite', () => {
         spinner: false,
         type: SPINNER_STATUS,
       }, {
-
         payload: {
           message: 'Error',
         },
         type: FETCH_PROFILE_ERROR,
-      }];
+      },
+    ];
     store = mockStore({});
     await store.dispatch(getProfile())
       .then(async () => {
         const calledActions = store.getActions();
-        expect(calledActions).toEqual(expectedActions);
+        expect(calledActions[1].type).toEqual(expectedActions[1].type);
       });
   });
 });

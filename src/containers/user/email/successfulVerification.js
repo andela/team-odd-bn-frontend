@@ -21,9 +21,9 @@ export class SuccessfulEmailVerification extends Component {
     const { location } = this.props;
     const param = queryString.parse(location.search);
     const token = param.verifiedToken;
-    const { verifyEmailAction } = this.props;
+    const { verifyEmailAction, history } = this.props;
     if (!verifyToken(tokenExist) || !token) {
-      return this.props.history.push('/signin');
+      return history.push('/signin');
     }
 
     verifyEmailAction(token);

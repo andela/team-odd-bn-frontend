@@ -51,10 +51,6 @@ export class Profile extends Component {
         const { getProfile, updateSpinnerStatus, getManagers, profileError } = this.props;
         await getManagers();
         await getProfile();
-        if (profileError.error
-            || profileError.message === 'You have provided an invalid token') {
-            return this.props.history.push('/signin');
-        }
     }
     UNSAFE_componentWillReceiveProps(prevProps) {
         const { profile, imageURL: image } = prevProps;

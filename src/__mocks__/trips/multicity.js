@@ -100,7 +100,14 @@ export const multicityTripAction = {
   expectedMulticityReturn: [
     {
       type: 'SEND_MULTIPLE_DATA_SUCCESS',
-      payload: { message: 'Created successfully' },
+      payload: {
+        data: [
+          {
+            id: 10,
+            type: 'multicity',
+          },
+        ],
+      },
     },
   ],
   currentMulticityRequest: {

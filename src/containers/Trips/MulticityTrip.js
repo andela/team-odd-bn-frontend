@@ -63,9 +63,10 @@ export class MulticityTrip extends Component {
     const { multicityTripData } = this.props;
     if (
         (prevProps.multicityTripData !== multicityTripData) && 
-        (multicityTripData.message === 'Trip requested successfully')
+        (multicityTripData.message.status === 201)
       ) {
-      return history.push('/requests');
+        const { id } = multicityTripData.message.data.data;
+      return history.push(`/requests/${id}`);
     }
   }
 

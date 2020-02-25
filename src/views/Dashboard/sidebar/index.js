@@ -7,8 +7,6 @@ import RightSide from './RightSide';
 import SideDrawer from '../../../components/Sidebar/SideDrawer/SideDrawer';
 import Backdrop from '../../../components/Sidebar/Backdrop/Backdrop';
 import profileActions from '../../../redux/actions/profileActions';
-import isWordExist from '../../../helpers/findWordInText';
-import isTokenExist from '../../../helpers/tokenExist';
 
 
 export class Sidebar extends Component {
@@ -48,12 +46,11 @@ export class Sidebar extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-
-    if (tokenValid && profileError && profileError.error) {
+    if (tokenValid && profileError && profileError.data.error) {   
       return <Redirect to="/verify-email" />;
     }
 
-    if (tokenValid && profileError && profileError.message) {
+    if (tokenValid && profileError && profileError.data.message) {
       localStorage.removeItem('token')
       return <Redirect to="/signin" />;
     }

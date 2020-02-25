@@ -47,12 +47,12 @@ export class CreateProfile extends Component {
         }
         const token = localStorage.getItem('token');
         this.decode = jwtDecode(token);
-        const { getProfile, updateSpinnerStatus, getManagers } = this.props;
+        const { getProfile, updateSpinnerStatus, getManagers, profileError, history } = this.props;
         await getManagers();
         await getProfile();
-        if (this.props.profileError.error
-        || this.props.profileError.message === 'You have provided an invalid token') {
-        return this.props.history.push('/signin');
+        if (profileError.error
+        || profileError.status === 401) {
+            return history.push('/signin');
         }
     }
     UNSAFE_componentWillReceiveProps(prevProps) {

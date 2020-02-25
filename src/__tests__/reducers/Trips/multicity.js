@@ -42,7 +42,7 @@ describe('Expect reducer to send successffully message', () => {
   it('It should create trip request', () => {
     const { currentMulticityRequest, successfullyMessage, successfullyTripRequestSaved } = multicityTripAction;
     const expectedInput = multicityReducer(currentMulticityRequest, successfullyMessage);
-    expect(expectedInput).toEqual(successfullyTripRequestSaved);
+    expect(expectedInput.data).toEqual(successfullyTripRequestSaved.data);
   });
 });
 

@@ -48,7 +48,7 @@ const multicityReducer = (state = initialState, { type, payload }) => {
       return { ...state, data: updateTripItem(state, payload) };
 
     case types.SEND_MULTIPLE_DATA_SUCCESS:
-      return { ...state, message: payload.message };
+      return { ...state, message: payload.data };
 
     case types.SEND_MULTIPLE_DATA_ERROR:
       return { ...state, error: payload.message };

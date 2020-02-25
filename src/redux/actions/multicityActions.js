@@ -48,9 +48,8 @@ export const sendMulticityTrip = (data) => async (dispatch) => {
 
   try {
     const createNewTrip = await apiCall.post('/trips/multicity', multipleDataCombined, Option);
-    const { message } = createNewTrip.data;
     dispatch(updateSpinnerStatus(false));
-    dispatch(editInputForm(types.SEND_MULTIPLE_DATA_SUCCESS, { message }));
+    dispatch(editInputForm(types.SEND_MULTIPLE_DATA_SUCCESS, { data: createNewTrip }));
     notificationSuccess(createNewTrip.data.message);
   } catch (error) {
     dispatch(updateSpinnerStatus(false));
