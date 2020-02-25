@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-expressions */
-
 import React, { Component } from 'react'
 import { plusDivs } from '../../helpers/carousel'
 import verifyToken from '../../helpers/verifyToken'
@@ -27,11 +26,9 @@ class RequestView extends Component {
     this.refs.trips && plusDivs(1, this.refs.trips.children)
     this.scrollToBottom()
   }
-
   componentDidUpdate() {
     this.scrollToBottom()
   }
-
   scrollToBottom() {
     const scrollHeight = this.messagesEnd && this.messagesEnd.scrollHeight
     const height = this.messagesEnd && this.messagesEnd.clientHeight
@@ -47,7 +44,6 @@ class RequestView extends Component {
     })
     
   }
-
   render() {
     const { isApproved, isRejected } = this.state
     const {
@@ -64,9 +60,7 @@ class RequestView extends Component {
       cities,
     } = this.props
     const trips = singleRequestData.data
-
     const inputValue = input ? input.comment : ''
-
     return (
       <>
         <PopUp
@@ -241,7 +235,6 @@ class RequestView extends Component {
                         {comment.updatedAt.slice(0, 10)}
                       </div>
                     </div>
-
                     <div className="commentCardHeaderRigthSide">
                       <button
                         id="deleteComment"
@@ -308,5 +301,4 @@ const actions = {
   changePageNo,
   fetchSingleRequestsAction
 }
-
-export default connect(mapStateToProps, actions)(RequestView)
+export default connect(mapStateToProps, actions)(RequestView);

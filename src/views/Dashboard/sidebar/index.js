@@ -58,7 +58,7 @@ export class Sidebar extends Component {
       }}
     if (this.props.profile.data) {
       if (!this.props.profile.data.managerId) {
-        return <Redirect to="/profile"/>;
+        return <Redirect to="/create-profile"/>;
       }
     }
     return (

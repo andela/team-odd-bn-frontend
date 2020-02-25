@@ -26,6 +26,7 @@ import RoundTrip from './containers/TripsContainer/RoundTrip';
 import './assets/css/App.scss';
 import './assets/css/style.scss';
 import SingleRequest from './containers/TripsContainer/SingleRequest';
+import CreateProfile from './components/CreateProfile';
 import Profile from './components/Profile';
 import './assets/css/style.css';
 import LandingPage from './components/LandingPage';
@@ -68,6 +69,7 @@ const App = () => (
           />
           <Route path="/reset-password" exact component={resetPasswordView} />
           <Route path="/forgot-password" exact component={forgotPasswordView} />
+          <Route path="/create-profile" exact component={CreateProfile} />
           <Route path="/profile" exact component={Profile} />
           <Route
             path="/successful-verification"
@@ -108,6 +110,7 @@ const App = () => (
             ))}
           />
           <Route path="/accommodations" exact component={ViewAccomodation} />
+          
           <Route path="/notifications" exact component={Notifications} />
           <Route path="/accommodation/:id" exact component={ViewSpecificAccommodation} />
           <Route path="/bookings/all" exact component={AvailableBookings} />
