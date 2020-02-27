@@ -21,11 +21,12 @@ class Requests extends Component {
       fetchRequestCommentsAction,
     } = this.props;
     const { tripRequestId } = this.props.match.params;
+    const { profileError, history } = this.props;
     await fetchSingleRequestsAction(tripRequestId);
     await fetchRequestCommentsAction(tripRequestId);
-    if (this.props.profileError.error
-      || this.props.profileError.message === 'You have provided an invalid token') {
-      return this.props.history.push('/signin');
+    if (profileError.error
+      || profileError.status === 401) {
+      return history.push('/signin');
     }
   }
 

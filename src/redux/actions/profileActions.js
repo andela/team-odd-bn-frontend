@@ -25,7 +25,7 @@ const getProfile = () => async (dispatch) => {
     dispatch(updateSpinnerStatus(false));
     return dispatch({
       type: FETCH_PROFILE_ERROR,
-      payload: error.response.data,
+      payload: error.response,
     });
   }
 };

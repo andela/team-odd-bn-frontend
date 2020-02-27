@@ -12,13 +12,13 @@ export class Requests extends Component {
     if (!verifyToken(tokenExist)) {
       return this.props.history.push('/signin');
     }
-    const { getStatsAction } = this.props;
+    const { getStatsAction, profileError, history } = this.props;
     getStatsAction({ tripType: '1', from: '2020-01-22', to: '2020-01-26' });
 
 
-    if (this.props.profileError.error
-  || this.props.profileError.message === 'You have provided an invalid token') {
-      return this.props.history.push('/signin');
+    if (profileError.error
+  || profileError.status === 401) {
+      return history.push('/signin');
     }
   }
 

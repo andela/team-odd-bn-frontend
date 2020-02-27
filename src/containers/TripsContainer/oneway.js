@@ -15,13 +15,14 @@ export class Oneway extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { payload: incomingData } =  this.props.tripState.trips.tripRequests;
+    const { payload: incomingData } = this.props.tripState.trips.tripRequests;
     const { payload: oldData } = prevProps.tripState.trips.tripRequests;
     const { history } = this.props;
-    if (incomingData !== oldData) {
-      if (incomingData.message === 'Trip requested successfully') {
-        return history.push(`/requests/${incomingData.data.id}`);
-      }
+    if (
+      (incomingData !== oldData)
+      && (incomingData.message === 'Trip requested successfully')
+    ) {
+      return history.push(`/requests/${incomingData.data.id}`);
     }
   }
 

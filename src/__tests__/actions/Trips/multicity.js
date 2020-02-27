@@ -75,6 +75,12 @@ describe('Expect to mock trip request', () => {
         status: 201,
         response: {
           message: 'Created successfully',
+          data: [
+            {
+              id: 10,
+              type: 'multicity',
+            },
+          ],
         },
       });
     });
@@ -83,7 +89,7 @@ describe('Expect to mock trip request', () => {
     await store.dispatch(sendMulticityTrip(multicityTripAction.multicityObjectData))
       .then(async () => {
         const calledActions = store.getActions();
-        expect(calledActions).toEqual(multicityTripAction.expectedMulticityReturn);
+        expect(calledActions[0].type).toEqual(multicityTripAction.expectedMulticityReturn[0].type);
       });
   });
 });
