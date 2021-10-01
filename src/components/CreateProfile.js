@@ -9,7 +9,7 @@ import getProfile, { updateSpinnerStatus } from '../redux/actions/profileActions
 import updateProfile, {
   uploadImage,
 } from '../redux/actions/updateProfileActions';
-import '../assets/css/createProfile.css';
+import '../assets/css/createProfile.scss';
 import Navbar from './Navbar';
 import profilePicture from '../assets/images/profile-picture2.png';
 import TextInput from './common/TextInput';
@@ -175,8 +175,8 @@ export class CreateProfile extends Component {
         } = this.state;
             return (
                 <>
-                <h2 className="edit-profile-title">EDIT PROFILE</h2>
                 <div className="profile-row">
+                <h2 className="edit-profile-title">EDIT PROFILE</h2>
                     <div className="profile-column-form">
                         <div className="profile-details-row">
                             <div className="col-75">

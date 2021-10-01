@@ -125,6 +125,7 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
       margin-left: 10px;
       height: 40px;
     }
+    margin-right: 20px;
     outline: none;
     width: 235px;
     height: 40px;
@@ -754,50 +755,6 @@ $attributes: tripId tripType tripOrigin tripDestination createdAt status action
       }
     }
   }
-
-  .popupContainer {
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    flex-direction: column;
-    width: 300px !important;
-    height: 150px !important;
-    margin: auto;
-    background-color: white;
-    .popupMessage {
-      padding: 5px;
-    }
-    .popupButtons {
-      width: 40%;
-      display: flex;
-      margin-right: 50px;
-    }
-    div {
-      margin-top: 13px;
-      height: 40px;
-      width: 90%;
-      margin: auto;
-      display: flex;
-      justify-content: space-evenly;
-      div {
-        width: 80px;
-        padding: 10px;
-        button {
-          width: 80px;
-          margin: 3px;
-          border: 0px;
-          color: white;
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-          border-radius: 5px;
-        }
-        #delete {
-          background-color: red;
-        }
-        #cancel {
-          background-color: #00b9f2;
-        }
-      }
-    }
-  }
 }
 }
 .pagination-buttons {
@@ -894,4 +851,50 @@ height: 50px;
     }
   }
 }
+}
+
+.popupContainer {
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: column !important;
+  width: 300px !important;
+  height: 150px !important;
+  margin: auto;
+  background-color: white;
+  .popupMessage {
+    padding: 5px;
+  }
+  .popupButtons {
+    width: 40%;
+    display: flex;
+    margin-right: 50px;
+  }
+  div {
+    margin-top: 13px;
+    height: 20px;
+    width: 80% !important;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    div {
+      width: 60px;
+      padding: 1px;
+      height: 40px;
+      button {
+        height: 40px;
+        width: 80px;
+        margin: 1px;
+        border: 0px;
+        color: white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+      }
+      #delete {
+        background-color: red;
+      }
+      #cancel {
+        background-color: #00b9f2;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/profile.css';
+import '../../assets/css/profile.scss';
 
 const TextInput = ({
   placeholder, name, value, disabled, onChange, pattern, title,

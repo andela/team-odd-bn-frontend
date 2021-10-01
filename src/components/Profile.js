@@ -9,7 +9,7 @@ import getProfile, { updateSpinnerStatus } from '../redux/actions/profileActions
 import updateProfile, {
     uploadImage,
 } from '../redux/actions/updateProfileActions';
-import '../assets/css/profile.css';
+import '../assets/css/profile.scss';
 import Navbar from './Navbar';
 import profilePicture from '../assets/images/profile-picture2.png';
 import TextInput from './common/TextInput';
